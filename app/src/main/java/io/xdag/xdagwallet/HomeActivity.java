@@ -11,6 +11,6 @@ import io.xdag.common.base.BaseActivity;
 public class HomeActivity extends BaseActivity {
     @Override
     protected int getLayoutResId() {
-        return 0;
+        return R.layout.activity_home;
     }
 }
