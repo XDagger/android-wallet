@@ -34,6 +34,8 @@ captures/
 
 # IntelliJ
 *.iml
+.idea/
+
 
 # Keystore files
 # Uncomment the following line if you do not want to check your keystore files in.
@@ -56,12 +58,3 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
-.idea/
-app/
-build.gradle
-common/
-gradle.properties
-gradle/
-gradlew
-gradlew.bat
-settings.gradle
