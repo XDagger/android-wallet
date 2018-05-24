@@ -1,6 +1,5 @@
 package io.xdag.xdagwallet.fragment;
 
-import android.support.v4.app.Fragment;
 import android.view.View;
 import io.xdag.common.base.BaseFragment;
 import io.xdag.xdagwallet.R;

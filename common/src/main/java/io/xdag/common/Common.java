@@ -26,6 +26,6 @@ public class Common {
 
 
     public static Resources getResources() {
-        return sContext.getResources();
+        return getContext().getResources();
     }
 }
