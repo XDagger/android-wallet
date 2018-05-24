@@ -10,16 +10,16 @@ public class MLog {
     /**
      * 日志的TAG
      */
-    public static String TAG = "";
+    public static String sTag = "";
 
     /**
      * 日志级别，默认为 V
      */
-    private static LogLev MLev;
+    private static LogLev sLogLev;
 
 
     static {
-        MLev = LogLev.V;
+        sLogLev = LogLev.V;
     }
 
 
@@ -35,80 +35,80 @@ public class MLog {
      * @param lev {@link LogLev#V,LogLev#D,LogLev#I,LogLev#W,LogLev#E,LogLev#NO_LOG}
      */
     public static void setLogLev(LogLev lev) {
-        MLev = lev;
+        sLogLev = lev;
     }
 
 
     public static void v(Object obj) {
-        if (MLev.lev <= LogLev.V.lev) {
-            printLog(TAG, LogLev.V, getMsg(obj));
+        if (sLogLev.lev <= LogLev.V.lev) {
+            printLog(sTag, LogLev.V, getMsg(obj));
         }
     }
 
 
     public static void v(String tag, Object obj) {
 
-        if (MLev.lev <= LogLev.V.lev) {
+        if (sLogLev.lev <= LogLev.V.lev) {
             printLog(tag, LogLev.V, getMsg(obj));
         }
     }
 
 
     public static void d(Object obj) {
-        if (MLev.lev <= LogLev.D.lev) {
-            printLog(TAG, LogLev.D, getMsg(obj));
+        if (sLogLev.lev <= LogLev.D.lev) {
+            printLog(sTag, LogLev.D, getMsg(obj));
         }
     }
 
 
     public static void d(String tag, Object obj) {
 
-        if (MLev.lev <= LogLev.D.lev) {
+        if (sLogLev.lev <= LogLev.D.lev) {
             printLog(tag, LogLev.D, getMsg(obj));
         }
     }
 
 
     public static void i(Object obj) {
-        if (MLev.lev <= LogLev.I.lev) {
-            printLog(TAG, LogLev.I, getMsg(obj));
+        if (sLogLev.lev <= LogLev.I.lev) {
+            printLog(sTag, LogLev.I, getMsg(obj));
         }
     }
 
 
     public static void i(String tag, Object obj) {
 
-        if (MLev.lev <= LogLev.I.lev) {
+        if (sLogLev.lev <= LogLev.I.lev) {
             printLog(tag, LogLev.I, getMsg(obj));
         }
     }
 
 
     public static void w(Object obj) {
-        if (MLev.lev <= LogLev.W.lev) {
-            printLog(TAG, LogLev.W, getMsg(obj));
+        if (sLogLev.lev <= LogLev.W.lev) {
+            printLog(sTag, LogLev.W, getMsg(obj));
         }
     }
 
 
     public static void w(String tag, Object obj) {
 
-        if (MLev.lev <= LogLev.W.lev) {
+        if (sLogLev.lev <= LogLev.W.lev) {
             printLog(tag, LogLev.W, getMsg(obj));
         }
     }
 
 
     public static void e(Object obj) {
-        if (MLev.lev <= LogLev.E.lev) {
-            printLog(TAG, LogLev.E, getMsg(obj));
+        if (sLogLev.lev <= LogLev.E.lev) {
+            printLog(sTag, LogLev.E, getMsg(obj));
         }
     }
 
 
     public static void e(String tag, Object obj) {
 
-        if (MLev.lev <= LogLev.E.lev) {
+        if (sLogLev.lev <= LogLev.E.lev) {
             printLog(tag, LogLev.E, getMsg(obj));
         }
     }
@@ -122,20 +122,20 @@ public class MLog {
      */
     private static void printLog(String defaultTag, LogLev lev, String msg) {
 
-        // 记录下全局 TAG
-        String tmpTAG = TAG;
-        TAG = defaultTag;
+        // 记录下全局 sTag
+        String tmpTAG = sTag;
+        sTag = defaultTag;
 
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         byte index = 4;
         String fileName = stackTrace[index].getFileName();
         String className = stackTrace[index].getClassName();
-        className = className.substring(className.lastIndexOf(".") + 1);
+        className = className.substring(className.lastIndexOf('.') + 1);
         String methodName = stackTrace[index].getMethodName();
         int lineNumber = stackTrace[index].getLineNumber();
         String tag = "[%s.%s(%s:%d)]";
         tag = String.format(Locale.getDefault(), tag, className, methodName, fileName, lineNumber);
-        tag = TextUtils.isEmpty(TAG) ? tag : TAG + ":" + tag;
+        tag = TextUtils.isEmpty(sTag) ? tag : sTag + ":" + tag;
 
         switch (lev) {
             case V:
@@ -158,8 +158,8 @@ public class MLog {
             default:
         }
 
-        // 恢复全局 TAG
-        TAG = tmpTAG;
+        // 恢复全局 sTag
+        sTag = tmpTAG;
     }
 
 

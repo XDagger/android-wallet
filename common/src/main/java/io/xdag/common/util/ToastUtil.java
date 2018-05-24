@@ -8,7 +8,7 @@ import io.xdag.common.Common;
 
 public class ToastUtil {
 
-    private static final Toast mToast = Toast.makeText(Common.getContext(), "", Toast.LENGTH_SHORT);
+    private static final Toast TOAST = Toast.makeText(Common.getContext(), "", Toast.LENGTH_SHORT);
     private static final int TOAST_DEFAULT_OFF_Y = DensityUtil.dp2px(64);
 
 
@@ -29,9 +29,9 @@ public class ToastUtil {
             return;
         }
         // Toast 的默认位置是 Bottom 向上偏移 64dp
-        mToast.setGravity(Gravity.BOTTOM, 0, TOAST_DEFAULT_OFF_Y);
-        mToast.setText(msg);
-        mToast.show();
+        TOAST.setGravity(Gravity.BOTTOM, 0, TOAST_DEFAULT_OFF_Y);
+        TOAST.setText(msg);
+        TOAST.show();
     }
 
 
@@ -45,8 +45,8 @@ public class ToastUtil {
         if (TextUtils.isEmpty(msg)) {
             return;
         }
-        mToast.setGravity(Gravity.CENTER, 0, 0);
-        mToast.setText(msg);
-        mToast.show();
+        TOAST.setGravity(Gravity.CENTER, 0, 0);
+        TOAST.setText(msg);
+        TOAST.show();
     }
 }
