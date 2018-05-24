@@ -2,9 +2,7 @@ package io.xdag.common.base;
 
 import android.app.Application;
 
-import com.squareup.leakcanary.LeakCanary;
-import io.xdag.common.Common;
-import io.xdag.common.tools.InitManager;
+import io.xdag.common.tool.InitManager;
 
 /**
  * created by ssyijiu  on 2018/5/22

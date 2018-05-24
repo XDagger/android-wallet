@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import butterknife.BindView;
 import io.xdag.common.base.BaseActivity;
+import io.xdag.common.util.MLog;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;

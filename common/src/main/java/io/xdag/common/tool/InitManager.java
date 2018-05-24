@@ -1,4 +1,4 @@
-package io.xdag.common.tools;
+package io.xdag.common.tool;
 
 import android.app.Application;
 import com.squareup.leakcanary.LeakCanary;
