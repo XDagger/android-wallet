@@ -23,6 +23,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected Activity mContext;
     protected Unbinder mUnbinder;
+    private boolean mFirstShow = true;
 
 
     @Override
@@ -44,10 +45,21 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mUnbinder = ButterKnife.bind(this, view);
+        // bind view for subclass except ToolbarFragment
+        if (!(this instanceof ToolbarFragment)) {
+            mUnbinder = ButterKnife.bind(this, view);
+        }
         initView(view);
     }
 
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        // for lazy init data
+        if (!hidden && mFirstShow) {
+            mFirstShow = false;
+            initData();
+        }
+    }
 
     @Override
     public void onDestroyView() {
@@ -62,4 +74,7 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayoutResId();
 
     protected abstract void initView(View rootView);
+
+    protected void initData() {
+    }
 }
