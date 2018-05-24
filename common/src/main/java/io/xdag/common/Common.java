@@ -3,6 +3,7 @@ package io.xdag.common;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.annotation.ColorRes;
 
 /**
  * created by ssyijiu  on 2018/5/22
@@ -28,5 +29,9 @@ public class Common {
 
     public static Resources getResources() {
         return getContext().getResources();
+    }
+
+    public static int getColor(@ColorRes int id) {
+        return getResources().getColor(id);
     }
 }

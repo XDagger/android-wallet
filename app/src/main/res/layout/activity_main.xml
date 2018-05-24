@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/navigation_height"
         android:layout_gravity="bottom"
+        android:elevation="@dimen/elevation"
         app:itemIconTint="@color/selector_navigation"
         app:itemTextColor="@color/selector_navigation"
         app:menu="@menu/navigation_items" />

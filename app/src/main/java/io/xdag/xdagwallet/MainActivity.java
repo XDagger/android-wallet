@@ -11,6 +11,7 @@ import android.view.View;
 
 import butterknife.BindView;
 import io.xdag.common.base.BaseActivity;
+import io.xdag.common.base.ToolbarActivity;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
@@ -22,10 +23,10 @@ import io.xdag.xdagwallet.fragment.SettingFragment;
  * desc : The home activity
  */
 
-public class MainActivity extends BaseActivity
+public class MainActivity extends ToolbarActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R2.id.navigation)
+    @BindView(R.id.navigation)
     BottomNavigationView mNavigationView;
     private FragmentManager mFragmentManager;
     private HomeFragment mHomeFragment;
@@ -123,5 +124,10 @@ public class MainActivity extends BaseActivity
             default:
         }
         return true;
+    }
+
+    @Override
+    protected int getToolbarMode() {
+        return R.string.app_name;
     }
 }

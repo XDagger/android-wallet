@@ -34,7 +34,6 @@ allprojects {
 
     apply plugin: 'com.jakewharton.butterknife'
     apply plugin: 'okcheck'
-
     okcheck {
         checkstyle {
             ignoreFailures = true
