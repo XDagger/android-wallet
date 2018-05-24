@@ -8,9 +8,9 @@ import io.xdag.common.base.BaseActivity;
  * desc : The home activity
  */
 
-public class HomeActivity extends BaseActivity {
+public class MainActivity extends BaseActivity {
     @Override
     protected int getLayoutResId() {
-        return R.layout.activity_home;
+        return R.layout.activity_main;
     }
 }

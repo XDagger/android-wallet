@@ -1,5 +1,6 @@
 package io.xdag.common;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 /**
@@ -10,7 +11,7 @@ import android.content.Context;
 
 public class Common {
 
-    private static Context sContext;
+    @SuppressLint("StaticFieldLeak") private static Context sContext;
 
     public static void init(Context context) {
         sContext = context;

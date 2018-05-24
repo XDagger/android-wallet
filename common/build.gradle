@@ -1,15 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion compile_version
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        minSdkVersion min_version
+        targetSdkVersion target_version
     }
 
     buildTypes {
@@ -21,7 +16,19 @@ android {
 
 }
 
+def butterknifeVersion = '8.8.1'
+def leakcanaryVersion = '1.5.4'
+
 dependencies {
     compileOnly "com.android.support:support-v4:${support_version}"
     compileOnly "com.android.support:appcompat-v7:${support_version}"
+
+    // https://github.com/JakeWharton/butterknife
+    implementation "com.jakewharton:butterknife:${butterknifeVersion}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
+
+    // https://github.com/square/leakcanary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${leakcanaryVersion}"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}"
+    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}"
 }
