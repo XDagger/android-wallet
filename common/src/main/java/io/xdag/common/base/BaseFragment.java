@@ -45,10 +45,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // bind view for subclass except ToolbarFragment
-        if (!(this instanceof ToolbarFragment)) {
-            mUnbinder = ButterKnife.bind(this, view);
-        }
+        mUnbinder = ButterKnife.bind(this, view);
         initView(view);
     }
 
