@@ -2,6 +2,7 @@ package io.xdag.common.util;
 
 import android.text.TextUtils;
 import android.util.Log;
+
 import java.util.Locale;
 
 public class MLog {
@@ -154,6 +155,7 @@ public class MLog {
                 break;
             case NO_LOG:
                 break;
+            default:
         }
 
         // 恢复全局 TAG

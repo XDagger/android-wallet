@@ -2,7 +2,7 @@
 
 buildscript {
 
-    ext.kotlin_version = '1.2.41'
+    ext.kotlin_version = '1.2.0'
     ext.support_version = '27.1.1'
     ext.compile_version = 27
     ext.min_version = 21
@@ -18,6 +18,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.jakewharton:butterknife-gradle-plugin:${butterknife_version}"
+        classpath 'com.liulishuo.okcheck:gradle:0.1.8'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -30,6 +31,9 @@ allprojects {
         jcenter()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
+
+    apply plugin: 'com.jakewharton.butterknife'
+    apply plugin: 'okcheck'
 }
 
 task clean(type: Delete) {

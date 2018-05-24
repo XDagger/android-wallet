@@ -3,6 +3,7 @@ package io.xdag.common.util;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.widget.Toast;
+
 import io.xdag.common.Common;
 
 public class ToastUtil {

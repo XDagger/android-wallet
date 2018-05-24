@@ -8,9 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.MenuItem;
 import android.view.View;
+
 import butterknife.BindView;
 import io.xdag.common.base.BaseActivity;
-import io.xdag.common.util.MLog;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
@@ -23,8 +23,10 @@ import io.xdag.xdagwallet.fragment.SettingFragment;
  */
 
 public class MainActivity extends BaseActivity
-    implements BottomNavigationView.OnNavigationItemSelectedListener {
+        implements BottomNavigationView.OnNavigationItemSelectedListener {
 
+    @BindView(R2.id.navigation)
+    BottomNavigationView mNavigationView;
     private FragmentManager mFragmentManager;
     private HomeFragment mHomeFragment;
     private ReceiveFragment mReceiveFragment;
@@ -32,16 +34,14 @@ public class MainActivity extends BaseActivity
     private SettingFragment mSettingFragment;
     private Fragment mShowFragment;
 
-    @BindView(R.id.navigation) BottomNavigationView mNavigationView;
-
-
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_main;
     }
 
 
-    @Override protected void initView(View rootView, Bundle savedInstanceState) {
+    @Override
+    protected void initView(View rootView, Bundle savedInstanceState) {
         mFragmentManager = getSupportFragmentManager();
         if (savedInstanceState == null) {
             addFragment();
@@ -59,13 +59,13 @@ public class MainActivity extends BaseActivity
         mSettingFragment = SettingFragment.newInstance();
 
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
-            HomeFragment.class.getName());
+                HomeFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mReceiveFragment, R.id.container,
-            ReceiveFragment.class.getName());
+                ReceiveFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSendFragment, R.id.container,
-            SendFragment.class.getName());
+                SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
-            SettingFragment.class.getName());
+                SettingFragment.class.getName());
 
         showFragment(mHomeFragment);
     }
@@ -73,25 +73,25 @@ public class MainActivity extends BaseActivity
 
     private void recoverFragment() {
         mHomeFragment = (HomeFragment) mFragmentManager.findFragmentByTag(
-            HomeFragment.class.getName());
+                HomeFragment.class.getName());
         mReceiveFragment = (ReceiveFragment) mFragmentManager.findFragmentByTag(
-            ReceiveFragment.class.getName());
+                ReceiveFragment.class.getName());
         mSendFragment = (SendFragment) mFragmentManager.findFragmentByTag(
-            SendFragment.class.getName());
+                SendFragment.class.getName());
         mSettingFragment = (SettingFragment) mFragmentManager.findFragmentByTag(
-            SettingFragment.class.getName());
+                SettingFragment.class.getName());
     }
 
 
     private void showFragment(Fragment fragment) {
         if (mShowFragment != fragment) {
             mFragmentManager.beginTransaction()
-                .hide(mHomeFragment)
-                .hide(mReceiveFragment)
-                .hide(mSendFragment)
-                .hide(mSettingFragment)
-                .show(fragment)
-                .commit();
+                    .hide(mHomeFragment)
+                    .hide(mReceiveFragment)
+                    .hide(mSendFragment)
+                    .hide(mSettingFragment)
+                    .show(fragment)
+                    .commit();
             mShowFragment = fragment;
         }
     }
@@ -105,7 +105,8 @@ public class MainActivity extends BaseActivity
     }
 
 
-    @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_home:
                 showFragment(mHomeFragment);
@@ -119,6 +120,7 @@ public class MainActivity extends BaseActivity
             case R.id.action_setting:
                 showFragment(mSettingFragment);
                 break;
+            default:
         }
         return true;
     }

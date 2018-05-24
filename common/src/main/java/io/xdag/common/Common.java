@@ -12,7 +12,8 @@ import android.content.res.Resources;
 
 public class Common {
 
-    @SuppressLint("StaticFieldLeak") private static Context sContext;
+    @SuppressLint("StaticFieldLeak")
+    private static Context sContext;
 
 
     public static void init(Context context) {
