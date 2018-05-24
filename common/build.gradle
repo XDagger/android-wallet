@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion compile_version
@@ -16,19 +17,18 @@ android {
 
 }
 
-def butterknifeVersion = '8.8.1'
-def leakcanaryVersion = '1.5.4'
+def leakcanary_version = '1.5.4'
 
 dependencies {
     compileOnly "com.android.support:support-v4:${support_version}"
     compileOnly "com.android.support:appcompat-v7:${support_version}"
 
     // https://github.com/JakeWharton/butterknife
-    implementation "com.jakewharton:butterknife:${butterknifeVersion}"
-    annotationProcessor "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
+    implementation "com.jakewharton:butterknife:${butterknife_version}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butterknife_version}"
 
     // https://github.com/square/leakcanary
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:${leakcanaryVersion}"
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}"
-    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${leakcanary_version}"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanary_version}"
+    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanary_version}"
 }
