@@ -1,5 +1,6 @@
 package io.xdag.xdagwallet.model;
 
+import io.xdag.common.Common;
 import io.xdag.xdagwallet.R;
 
 /**
@@ -8,6 +9,11 @@ import io.xdag.xdagwallet.R;
  * desc :
  */
 public class TransactionModel {
+
+    public enum Type {
+        INPUT, OUTPUT
+    }
+
 
     public String address;
     public String amount;
@@ -32,7 +38,20 @@ public class TransactionModel {
     }
 
 
-    public enum Type {
-        INPUT, OUTPUT
+    public String getAmount() {
+        if (Type.INPUT.equals(type)) {
+            return String.format("+%s", amount);
+        } else {
+            return String.format("-%s", amount);
+        }
+    }
+
+
+    public int getAmountColor() {
+        if (Type.INPUT.equals(type)) {
+            return Common.getColor(R.color.colorPrimary);
+        } else {
+            return Common.getColor(R.color.colorAccent);
+        }
     }
 }

@@ -47,6 +47,7 @@
         app:layout_constraintTop_toTopOf="@id/item_transaction_tv_type"/>
 
     <TextView
+        android:textColor="@color/GERY"
         android:id="@+id/item_transaction_tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

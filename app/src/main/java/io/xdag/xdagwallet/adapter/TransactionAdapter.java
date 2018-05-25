@@ -49,7 +49,8 @@ public class TransactionAdapter extends BaseQuickAdapter<TransactionModel, BaseV
 
     @Override protected void convert(BaseViewHolder helper, TransactionModel item) {
         helper.setText(R.id.item_transaction_tv_address, item.address);
-        helper.setText(R.id.item_transaction_tv_amount, item.amount);
+        helper.setText(R.id.item_transaction_tv_amount, item.getAmount());
+        helper.setTextColor(R.id.item_transaction_tv_amount, item.getAmountColor());
         helper.setText(R.id.item_transaction_tv_time, item.time);
         helper.setImageResource(R.id.item_transaction_tv_type, item.getTypeImage());
     }
