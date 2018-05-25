@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="navigation_height">54dp</dimen>
+    <dimen name="sp_title">18sp</dimen>
+    <dimen name="sp_text">14sp</dimen>
 </resources>
