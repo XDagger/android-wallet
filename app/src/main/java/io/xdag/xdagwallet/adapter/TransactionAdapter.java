@@ -1,6 +1,5 @@
 package io.xdag.xdagwallet.adapter;
 
-import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import io.xdag.xdagwallet.R;

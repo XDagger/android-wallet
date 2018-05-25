@@ -17,9 +17,11 @@ public class InitManager {
     private InitManager() {
     }
 
+
     public static InitManager getInstance() {
         return Lazy.INSTANCE;
     }
+
 
     public void init(Application application) {
         mApplication = application;
@@ -27,12 +29,14 @@ public class InitManager {
         initLeakCanary();
     }
 
+
     private void initLeakCanary() {
         if (LeakCanary.isInAnalyzerProcess(mApplication)) {
             return;
         }
         LeakCanary.install(mApplication);
     }
+
 
     private static class Lazy {
         private static final InitManager INSTANCE = new InitManager();

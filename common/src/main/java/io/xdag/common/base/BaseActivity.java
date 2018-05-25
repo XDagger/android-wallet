@@ -54,7 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         Objects.requireNonNull(fragmentManager);
         Objects.requireNonNull(fragment);
         fragmentManager.beginTransaction()
-                .add(frameId, fragment, tag)
-                .commit();
+            .add(frameId, fragment, tag)
+            .commit();
     }
 }

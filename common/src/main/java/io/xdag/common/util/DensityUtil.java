@@ -66,12 +66,12 @@ public class DensityUtil {
 
     public static boolean isScreenPortrait() {
         return Common.getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_PORTRAIT;
+            == Configuration.ORIENTATION_PORTRAIT;
     }
 
 
     public static boolean isScreenLand() {
         return Common.getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE;
+            == Configuration.ORIENTATION_LANDSCAPE;
     }
 }

@@ -23,7 +23,7 @@ import io.xdag.xdagwallet.fragment.SettingFragment;
  */
 
 public class MainActivity extends ToolbarActivity
-        implements BottomNavigationView.OnNavigationItemSelectedListener {
+    implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.navigation)
     BottomNavigationView mNavigationView;
@@ -33,6 +33,7 @@ public class MainActivity extends ToolbarActivity
     private SendFragment mSendFragment;
     private SettingFragment mSettingFragment;
     private Fragment mShowFragment;
+
 
     @Override
     protected int getLayoutResId() {
@@ -59,13 +60,13 @@ public class MainActivity extends ToolbarActivity
         mSettingFragment = SettingFragment.newInstance();
 
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
-                HomeFragment.class.getName());
+            HomeFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mReceiveFragment, R.id.container,
-                ReceiveFragment.class.getName());
+            ReceiveFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSendFragment, R.id.container,
-                SendFragment.class.getName());
+            SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
-                SettingFragment.class.getName());
+            SettingFragment.class.getName());
 
         showFragment(mHomeFragment);
     }
@@ -73,25 +74,25 @@ public class MainActivity extends ToolbarActivity
 
     private void recoverFragment() {
         mHomeFragment = (HomeFragment) mFragmentManager.findFragmentByTag(
-                HomeFragment.class.getName());
+            HomeFragment.class.getName());
         mReceiveFragment = (ReceiveFragment) mFragmentManager.findFragmentByTag(
-                ReceiveFragment.class.getName());
+            ReceiveFragment.class.getName());
         mSendFragment = (SendFragment) mFragmentManager.findFragmentByTag(
-                SendFragment.class.getName());
+            SendFragment.class.getName());
         mSettingFragment = (SettingFragment) mFragmentManager.findFragmentByTag(
-                SettingFragment.class.getName());
+            SettingFragment.class.getName());
     }
 
 
     private void showFragment(Fragment fragment) {
         if (mShowFragment != fragment) {
             mFragmentManager.beginTransaction()
-                    .hide(mHomeFragment)
-                    .hide(mReceiveFragment)
-                    .hide(mSendFragment)
-                    .hide(mSettingFragment)
-                    .show(fragment)
-                    .commit();
+                .hide(mHomeFragment)
+                .hide(mReceiveFragment)
+                .hide(mSendFragment)
+                .hide(mSettingFragment)
+                .show(fragment)
+                .commit();
             mShowFragment = fragment;
         }
     }

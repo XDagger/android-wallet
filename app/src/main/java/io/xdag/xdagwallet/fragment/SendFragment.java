@@ -17,20 +17,23 @@ public class SendFragment extends BaseFragment {
         return new SendFragment();
     }
 
+
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_send;
     }
+
 
     @Override
     protected void initView(View rootView) {
 
     }
 
+
     @Override public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if(!hidden) {
-            Toolbar toolbar = ((ToolbarActivity)mContext).mToolbar;
+        if (!hidden) {
+            Toolbar toolbar = ((ToolbarActivity) mContext).mToolbar;
             toolbar.setVisibility(View.VISIBLE);
             toolbar.setTitle(R.string.send_xdag);
 

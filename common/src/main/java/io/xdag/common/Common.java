@@ -31,6 +31,7 @@ public class Common {
         return getContext().getResources();
     }
 
+
     public static int getColor(@ColorRes int id) {
         return getResources().getColor(id);
     }

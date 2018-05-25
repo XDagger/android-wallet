@@ -17,20 +17,23 @@ public class ReceiveFragment extends BaseFragment {
         return new ReceiveFragment();
     }
 
+
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_receive;
     }
+
 
     @Override
     protected void initView(View rootView) {
 
     }
 
+
     @Override public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if(!hidden) {
-            Toolbar toolbar = ((ToolbarActivity)mContext).mToolbar;
+        if (!hidden) {
+            Toolbar toolbar = ((ToolbarActivity) mContext).mToolbar;
             toolbar.setVisibility(View.VISIBLE);
             toolbar.setTitle(R.string.receive_xdag);
 
