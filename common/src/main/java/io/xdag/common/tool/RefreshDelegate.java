@@ -10,16 +10,10 @@ import io.xdag.common.R;
 public class RefreshDelegate {
 
     private static final int REFRESH_TIME = 1800;
-
+    private final OnRefreshListener mOnRefreshListener;
     private View mRootView;
     private SwipeRefreshLayout mRefreshLayout;
     private FrameLayout mRefreshContent;
-    private final OnRefreshListener mOnRefreshListener;
-
-
-    public interface OnRefreshListener {
-        void onRefresh();
-    }
 
 
     public RefreshDelegate(Context context, OnRefreshListener listener) {
@@ -29,7 +23,6 @@ public class RefreshDelegate {
         mRefreshContent = mRootView.findViewById(R.id.refresh_content);
         initRefresh();
     }
-
 
     private void initRefresh() {
         if (mRefreshLayout != null) {
@@ -77,6 +70,10 @@ public class RefreshDelegate {
 
     public FrameLayout getContent() {
         return mRefreshContent;
+    }
+
+    public interface OnRefreshListener {
+        void onRefresh();
     }
 
 }

@@ -16,7 +16,7 @@ import io.xdag.common.tool.RefreshDelegate;
  * <p>
  * desc :
  */
-public abstract class BaseRefreshFragment extends BaseFragment
+public abstract class RefreshFragment extends BaseFragment
         implements RefreshDelegate.OnRefreshListener {
 
     private RefreshDelegate mRefreshDelegate;
@@ -39,7 +39,7 @@ public abstract class BaseRefreshFragment extends BaseFragment
         View contentView = View.inflate(mContext, getLayoutResId(), null);
         content.addView(contentView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
-        if (!(this instanceof BaseListFragment)) {
+        if (!(this instanceof ListFragment)) {
             mUnbinder = ButterKnife.bind(this, contentView);
         }
 

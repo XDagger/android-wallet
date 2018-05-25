@@ -49,7 +49,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void initView(View rootView) {
-        if(!(this instanceof BaseRefreshFragment)) {
+        if (!(this instanceof RefreshFragment)) {
             mUnbinder = ButterKnife.bind(this, rootView);
         }
     }

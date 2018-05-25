@@ -33,7 +33,7 @@ dependencies {
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanary_version}"
 
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    implementation('com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36', {
+    compileOnly('com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36', {
         exclude group: 'com.android.support'
     })
 

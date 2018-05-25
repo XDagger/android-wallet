@@ -17,7 +17,7 @@ import io.xdag.common.R;
  * <p>
  * desc :
  */
-public abstract class BaseListFragment<T> extends BaseRefreshFragment {
+public abstract class ListFragment<T> extends RefreshFragment {
 
     protected BaseQuickAdapter<T, BaseViewHolder> mAdapter;
     protected List<T> mDataList = new ArrayList<>();
@@ -44,7 +44,7 @@ public abstract class BaseListFragment<T> extends BaseRefreshFragment {
         return new BaseQuickAdapter<T, BaseViewHolder>(getItemLayout(), mDataList) {
             @Override
             protected void convert(BaseViewHolder helper, T item) {
-                BaseListFragment.this.convert(helper, item);
+                ListFragment.this.convert(helper, item);
             }
         };
     }

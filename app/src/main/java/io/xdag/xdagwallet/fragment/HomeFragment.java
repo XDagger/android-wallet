@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import butterknife.BindView;
-import io.xdag.common.base.BaseRefreshFragment;
+import io.xdag.common.base.RefreshFragment;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.util.ToastUtil;
 import io.xdag.xdagwallet.R;
@@ -15,17 +15,19 @@ import io.xdag.xdagwallet.adapter.TransactionAdapter;
  * <p>
  * desc :
  */
-public class HomeFragment extends BaseRefreshFragment {
+public class HomeFragment extends RefreshFragment {
 
     @BindView(R.id.home_rv)
     RecyclerView mRecyclerView;
 
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
 
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_home;
     }
-
 
     @Override
     protected void initView(View rootView) {
@@ -34,18 +36,12 @@ public class HomeFragment extends BaseRefreshFragment {
         mRecyclerView.setAdapter(new TransactionAdapter());
     }
 
-
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
             ((ToolbarActivity) mContext).mToolbar.setVisibility(View.GONE);
         }
-    }
-
-
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
     }
 
     @Override
