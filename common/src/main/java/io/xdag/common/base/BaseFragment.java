@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -35,8 +36,8 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(
-        @NonNull LayoutInflater inflater,
-        @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(getLayoutResId(), container, false);
     }
 
@@ -44,11 +45,14 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mUnbinder = ButterKnife.bind(this, view);
-        beforeInitView();
         initView(view);
     }
 
+    protected void initView(View rootView) {
+        if(!(this instanceof BaseRefreshFragment)) {
+            mUnbinder = ButterKnife.bind(this, rootView);
+        }
+    }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
@@ -72,15 +76,6 @@ public abstract class BaseFragment extends Fragment {
 
 
     protected abstract int getLayoutResId();
-
-
-    protected void beforeInitView() {
-    }
-
-
-    protected void initView(View rootView) {
-    }
-
 
     protected void initData() {
     }

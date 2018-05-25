@@ -21,6 +21,7 @@ def leakcanary_version = '1.5.4'
 dependencies {
     compileOnly "com.android.support:support-v4:${support_version}"
     compileOnly "com.android.support:appcompat-v7:${support_version}"
+    compileOnly "com.android.support:design:$support_version"
 
     // https://github.com/JakeWharton/butterknife
     implementation "com.jakewharton:butterknife:${butterknife_version}"
@@ -30,5 +31,10 @@ dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-android:${leakcanary_version}"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanary_version}"
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanary_version}"
+
+    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    implementation('com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36', {
+        exclude group: 'com.android.support'
+    })
 
 }

@@ -6,31 +6,54 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import io.xdag.common.R;
+import android.widget.FrameLayout;
+
+import butterknife.ButterKnife;
+import io.xdag.common.tool.RefreshDelegate;
 
 /**
  * created by lxm on 2018/5/25.
- *
+ * <p>
  * desc :
  */
-public abstract class BaseRefreshFragment extends BaseFragment {
+public abstract class BaseRefreshFragment extends BaseFragment
+        implements RefreshDelegate.OnRefreshListener {
 
-    @Override protected int getLayoutResId() {
-        return 0;
-    }
+    private RefreshDelegate mRefreshDelegate;
 
-
-    @Nullable @Override
+    @Nullable
+    @Override
     public View onCreateView(
-        @NonNull LayoutInflater inflater,
-        @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layout_refresh, container, false);
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mRefreshDelegate = new RefreshDelegate(mContext, this);
+        return mRefreshDelegate.getRootView();
 
     }
 
+    @Override
+    protected void initView(View rootView) {
+        super.initView(rootView);
+        mRefreshDelegate.setRefreshEnabled(isRefresh());
+        FrameLayout content = mRefreshDelegate.getContent();
+        View contentView = View.inflate(mContext, getLayoutResId(), null);
+        content.addView(contentView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        if (!(this instanceof BaseListFragment)) {
+            mUnbinder = ButterKnife.bind(this, contentView);
+        }
 
-    @Override protected void beforeInitView() {
-        super.beforeInitView();
+    }
 
+    protected void completeRefresh() {
+        mRefreshDelegate.completeRefresh();
+    }
+
+    protected boolean isRefresh() {
+        return true;
+    }
+
+    @Override
+    public void onRefresh() {
     }
 }
