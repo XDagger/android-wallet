@@ -15,7 +15,7 @@ import io.xdag.common.tool.ToolbarMode;
  */
 public abstract class ToolbarActivity extends BaseActivity {
 
-    protected Toolbar mToolbar;
+    public Toolbar mToolbar;
 
 
     @Override

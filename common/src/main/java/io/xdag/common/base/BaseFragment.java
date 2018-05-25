@@ -35,8 +35,8 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(
-            @NonNull LayoutInflater inflater,
-            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        @NonNull LayoutInflater inflater,
+        @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(getLayoutResId(), container, false);
     }
 
@@ -48,6 +48,8 @@ public abstract class BaseFragment extends Fragment {
         initView(view);
     }
 
+
+    @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         // for lazy init data
@@ -56,6 +58,7 @@ public abstract class BaseFragment extends Fragment {
             initData();
         }
     }
+
 
     @Override
     public void onDestroyView() {
@@ -70,6 +73,7 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayoutResId();
 
     protected abstract void initView(View rootView);
+
 
     protected void initData() {
     }

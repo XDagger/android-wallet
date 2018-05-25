@@ -2,6 +2,7 @@ package io.xdag.xdagwallet.fragment;
 
 import android.view.View;
 import io.xdag.common.base.BaseFragment;
+import io.xdag.common.base.ToolbarActivity;
 import io.xdag.xdagwallet.R;
 
 /**
@@ -23,5 +24,13 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initView(View rootView) {
 
+    }
+
+
+    @Override public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden) {
+            ((ToolbarActivity)mContext).mToolbar.setVisibility(View.GONE);
+        }
     }
 }

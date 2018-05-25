@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import butterknife.BindView;
 import io.xdag.common.base.ToolbarActivity;
+import io.xdag.common.tool.ToolbarMode;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
@@ -122,6 +123,11 @@ public class MainActivity extends ToolbarActivity
             default:
         }
         return true;
+    }
+
+
+    @Override protected int getToolbarMode() {
+        return ToolbarMode.MODE_NONE;
     }
 
 

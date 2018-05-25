@@ -4,4 +4,7 @@
     <string name="send">Send</string>
     <string name="receive">Receive</string>
     <string name="setting">Setting</string>
+
+    <string name="send_xdag">Send Xdag</string>
+    <string name="receive_xdag">Receive Xdag</string>
 </resources>
