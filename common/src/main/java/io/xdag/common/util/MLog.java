@@ -2,7 +2,6 @@ package io.xdag.common.util;
 
 import android.text.TextUtils;
 import android.util.Log;
-
 import java.util.Locale;
 
 public class MLog {

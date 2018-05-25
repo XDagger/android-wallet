@@ -1,7 +1,6 @@
 package io.xdag.common.util;
 
 import android.content.res.Configuration;
-
 import io.xdag.common.Common;
 
 public class DensityUtil {

@@ -1,7 +1,6 @@
 package io.xdag.common.base;
 
 import android.app.Application;
-
 import io.xdag.common.tool.InitManager;
 
 /**

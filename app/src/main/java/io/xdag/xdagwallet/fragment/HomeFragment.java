@@ -1,10 +1,7 @@
 package io.xdag.xdagwallet.fragment;
 
 import android.view.View;
-import android.widget.Toast;
-
 import io.xdag.common.base.BaseFragment;
-import io.xdag.common.util.ToastUtil;
 import io.xdag.xdagwallet.R;
 
 /**

@@ -8,13 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-
 import butterknife.BindView;
-import io.xdag.common.Common;
-import io.xdag.common.base.BaseActivity;
 import io.xdag.common.base.ToolbarActivity;
-import io.xdag.common.util.ToastUtil;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;

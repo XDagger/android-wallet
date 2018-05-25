@@ -9,10 +9,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
-import java.util.Objects;
-
 import butterknife.ButterKnife;
+import java.util.Objects;
 
 /**
  * created by ssyijiu  on 2018/5/22
