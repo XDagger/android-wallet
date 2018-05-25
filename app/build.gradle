@@ -31,4 +31,12 @@ dependencies {
     // https://github.com/JakeWharton/butterknife
     implementation "com.jakewharton:butterknife:${butterknife_version}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknife_version}"
+
+    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    implementation('com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36', {
+        exclude group: 'com.android.support'
+    })
+
+    // https://github.com/RuffianZhong/RWidgetHelper
+    implementation 'com.ruffian.library:RWidgetHelper:1.0.0'
 }
