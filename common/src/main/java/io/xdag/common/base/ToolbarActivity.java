@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import butterknife.ButterKnife;
+import io.xdag.common.Common;
 import io.xdag.common.R;
 import io.xdag.common.tool.ToolbarMode;
 
@@ -35,6 +36,7 @@ public abstract class ToolbarActivity extends BaseActivity {
 
     protected void initToolbar() {
         mToolbar.setTitle(getToolbarTitle());
+        mToolbar.setTitleTextColor(Common.getColor(R.color.WHITE));
         switch (getToolbarMode()) {
             case ToolbarMode.MODE_BACK:
                 mToolbar.setNavigationIcon(R.drawable.ic_back);

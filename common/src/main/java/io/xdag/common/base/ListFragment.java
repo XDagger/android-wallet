@@ -26,7 +26,7 @@ public abstract class ListFragment<T> extends RefreshFragment {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.layout_recyclerview;
+        return R.layout.layout_recycler;
     }
 
     @Override
