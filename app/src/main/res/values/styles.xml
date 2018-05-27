@@ -19,7 +19,7 @@
     <style name="DividerHorizontalThin">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0.5dp</item>
-        <item name="android:background">@color/GERY</item>
+        <item name="android:background">?android:attr/listDivider</item>
     </style>
     
     <style name="DividerVertical">

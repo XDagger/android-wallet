@@ -52,6 +52,7 @@ public abstract class ToolbarActivity extends BaseActivity {
                         onBackPressed();
                         break;
                     default:
+
                 }
             }
         });
