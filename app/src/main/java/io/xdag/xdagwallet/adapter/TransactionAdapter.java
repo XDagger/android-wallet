@@ -2,7 +2,6 @@ package io.xdag.xdagwallet.adapter;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.model.TransactionModel;
 
