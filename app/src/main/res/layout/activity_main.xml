@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="io.xdag.xdagwallet.MainActivity">
-    
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
-    
+        android:layout_weight="1"/>
+
+    <View
+        style="@style/DividerHorizontalThin"/>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
@@ -20,6 +24,6 @@
         android:elevation="@dimen/elevation"
         app:itemIconTint="@color/selector_navigation"
         app:itemTextColor="@color/selector_navigation"
-        app:menu="@menu/navigation_items" />
+        app:menu="@menu/navigation_items"/>
 
 </LinearLayout>
