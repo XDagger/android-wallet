@@ -23,11 +23,10 @@ public abstract class ToolbarActivity extends BaseActivity {
     @Override
     public void setContentView(View view) {
         LinearLayout rootLayout =
-                (LinearLayout) View.inflate(mContext, R.layout.layout_toolbar, null);
+            (LinearLayout) View.inflate(mContext, R.layout.layout_toolbar, null);
         super.setContentView(rootLayout);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        rootLayout.addView(view, params);
+        rootLayout.addView(view, ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT);
         ButterKnife.bind(this, view);
         mToolbar = rootLayout.findViewById(R.id.toolbar);
         initToolbar();

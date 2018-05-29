@@ -17,19 +17,21 @@ import io.xdag.common.tool.RefreshDelegate;
  * desc :
  */
 public abstract class RefreshFragment extends BaseFragment
-        implements RefreshDelegate.OnRefreshListener {
+    implements RefreshDelegate.OnRefreshListener {
 
     private RefreshDelegate mRefreshDelegate;
+
 
     @Nullable
     @Override
     public View onCreateView(
-            @NonNull LayoutInflater inflater,
-            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        @NonNull LayoutInflater inflater,
+        @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRefreshDelegate = new RefreshDelegate(mContext, this);
         return mRefreshDelegate.getRootView();
 
     }
+
 
     @Override
     protected void initView(View rootView) {
@@ -37,23 +39,22 @@ public abstract class RefreshFragment extends BaseFragment
         mRefreshDelegate.setRefreshEnabled(isRefresh());
         FrameLayout content = mRefreshDelegate.getContent();
         View contentView = View.inflate(mContext, getLayoutResId(), null);
-        content.addView(contentView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
+        content.addView(contentView, ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT);
         if (!(this instanceof ListFragment)) {
             mUnbinder = ButterKnife.bind(this, contentView);
         }
 
     }
 
-    protected void completeRefresh() {
-        mRefreshDelegate.completeRefresh();
-    }
 
     protected boolean isRefresh() {
         return true;
     }
 
+
     @Override
     public void onRefresh() {
     }
+
 }

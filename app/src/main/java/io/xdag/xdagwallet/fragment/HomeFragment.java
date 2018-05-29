@@ -5,11 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import butterknife.BindView;
-import io.xdag.common.Common;
-import io.xdag.common.base.BaseFragment;
 import io.xdag.common.base.RefreshFragment;
 import io.xdag.common.base.ToolbarActivity;
-import io.xdag.common.util.ToastUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
 
@@ -18,7 +15,7 @@ import io.xdag.xdagwallet.adapter.TransactionAdapter;
  * <p>
  * desc :
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends RefreshFragment {
 
     @BindView(R.id.home_rv)
     RecyclerView mRecyclerView;
@@ -54,5 +51,10 @@ public class HomeFragment extends BaseFragment {
         if (!hidden) {
             ((ToolbarActivity) mContext).mToolbar.setVisibility(View.GONE);
         }
+    }
+
+
+    @Override public void onRefresh() {
+        super.onRefresh();
     }
 }

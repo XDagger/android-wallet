@@ -24,17 +24,20 @@ public class RefreshDelegate {
         initRefresh();
     }
 
+
     private void initRefresh() {
         if (mRefreshLayout != null) {
             mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
                     mOnRefreshListener.onRefresh();
+                    setRefreshing(false);
                 }
             });
 
         }
     }
+
 
     private void setRefreshing(final boolean refreshing) {
         if (mRefreshLayout != null) {
@@ -54,9 +57,6 @@ public class RefreshDelegate {
 
     }
 
-    public void completeRefresh() {
-        setRefreshing(false);
-    }
 
     public void setRefreshEnabled(boolean refreshEnabled) {
         if (mRefreshLayout != null) {
@@ -64,13 +64,16 @@ public class RefreshDelegate {
         }
     }
 
+
     public View getRootView() {
         return mRootView;
     }
 
+
     public FrameLayout getContent() {
         return mRefreshContent;
     }
+
 
     public interface OnRefreshListener {
         void onRefresh();
