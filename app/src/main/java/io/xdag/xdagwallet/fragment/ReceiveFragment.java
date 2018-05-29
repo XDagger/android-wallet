@@ -35,7 +35,7 @@ public class ReceiveFragment extends BaseFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
-            Toolbar toolbar = ((ToolbarActivity) mContext).mToolbar;
+            Toolbar toolbar = ((ToolbarActivity) mContext).getToolbar();
             toolbar.setVisibility(View.VISIBLE);
             toolbar.setTitle(R.string.receive_xdag);
 

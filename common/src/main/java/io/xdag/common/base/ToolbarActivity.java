@@ -17,7 +17,7 @@ import io.xdag.common.tool.ToolbarMode;
  */
 public abstract class ToolbarActivity extends BaseActivity {
 
-    public Toolbar mToolbar;
+    private Toolbar mToolbar;
 
 
     @Override
@@ -65,5 +65,10 @@ public abstract class ToolbarActivity extends BaseActivity {
 
     protected int getToolbarTitle() {
         return R.string.empty;
+    }
+
+
+    public Toolbar getToolbar() {
+        return mToolbar;
     }
 }

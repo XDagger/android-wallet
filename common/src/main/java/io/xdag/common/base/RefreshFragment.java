@@ -57,4 +57,8 @@ public abstract class RefreshFragment extends BaseFragment
     public void onRefresh() {
     }
 
+
+    public RefreshDelegate getRefreshDelegate() {
+        return mRefreshDelegate;
+    }
 }

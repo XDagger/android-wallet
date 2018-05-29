@@ -1,5 +1,6 @@
 package io.xdag.xdagwallet.fragment;
 
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.View;
 import butterknife.BindView;
 import io.xdag.common.base.RefreshFragment;
 import io.xdag.common.base.ToolbarActivity;
+import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
 
@@ -19,6 +21,8 @@ public class HomeFragment extends RefreshFragment {
 
     @BindView(R.id.home_rv)
     RecyclerView mRecyclerView;
+    @BindView(R.id.appbar_layout)
+    AppBarLayout mAppBarLayout;
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
 
@@ -42,6 +46,18 @@ public class HomeFragment extends RefreshFragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(new TransactionAdapter());
         mCollapsingToolbarLayout.setTitle(String.format("%s XDAG", mBalance));
+        mAppBarLayout.addOnOffsetChangedListener(new AppBarStateChangedListener() {
+            @Override
+            public void onStateChanged(AppBarLayout appBarLayout, State state) {
+                switch (state) {
+                    case EXPANDED:
+                        getRefreshDelegate().setRefreshEnabled(true);
+                        break;
+                    default:
+                        getRefreshDelegate().setRefreshEnabled(false);
+                }
+            }
+        });
     }
 
 
@@ -49,7 +65,7 @@ public class HomeFragment extends RefreshFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
-            ((ToolbarActivity) mContext).mToolbar.setVisibility(View.GONE);
+            ((ToolbarActivity) mContext).getToolbar().setVisibility(View.GONE);
         }
     }
 
