@@ -35,7 +35,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_gravity="center"
-                    android:text="ewrXrSDbCmqH/fkLuQkEMiwed3709C2k"
                     android:textSize="@dimen/size_text"
                     android:textColor="@color/WHITE"/>
 
@@ -43,7 +42,7 @@
 
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/toolbar_height"
+                android:layout_height="?android:attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 />
 

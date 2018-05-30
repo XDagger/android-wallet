@@ -5,10 +5,12 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import android.widget.TextView;
 import butterknife.BindView;
 import io.xdag.common.base.RefreshFragment;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.AppBarStateChangedListener;
+import io.xdag.common.util.ToastUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
 
@@ -25,8 +27,11 @@ public class HomeFragment extends RefreshFragment {
     AppBarLayout mAppBarLayout;
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
+    @BindView(R.id.home_tv_address)
+    TextView mTvAddress;
 
     private double mBalance = 10792.7;
+    private String mAddress = "ewrXrSDbCmqH/fkLuQkEMiwed3709C2k";
 
 
     public static HomeFragment newInstance() {
@@ -43,6 +48,7 @@ public class HomeFragment extends RefreshFragment {
     @Override
     protected void initView(View rootView) {
         super.initView(rootView);
+        mTvAddress.setText(mAddress);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(new TransactionAdapter());
         mCollapsingToolbarLayout.setTitle(String.format("%s XDAG", mBalance));
@@ -72,5 +78,6 @@ public class HomeFragment extends RefreshFragment {
 
     @Override public void onRefresh() {
         super.onRefresh();
+        ToastUtil.show("refresh");
     }
 }

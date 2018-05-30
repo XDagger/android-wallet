@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="navigation_height">54dp</dimen>
-
-    <dimen name="size_tip">12sp</dimen>
-    <dimen name="size_title">18sp</dimen>
-    <dimen name="size_text">14sp</dimen>
-
-    <dimen name="space_small">4dp</dimen>
-    <dimen name="space_normal">8dp</dimen>
-    <dimen name="space_large">16dp</dimen>
-    <dimen name="appbar_height">180dp</dimen>
 </resources>

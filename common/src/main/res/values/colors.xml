@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <color name="colorPrimary">#2196F3</color>
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#FF4081</color>
-    
+
     <!-- 红色 -->
     <color name="RED">#F44336</color>
-    
+
     <!-- 粉色 -->
     <color name="PINK">#E91E63</color>
-    
+
     <!-- 紫色 -->
     <color name="PURPLE">#9C27B0</color>
-    
+
     <!-- 深紫色 -->
     <color name="DEEP_PURPLE">#673AB7</color>
-    
+
     <!-- 靛蓝色 -->
     <color name="INDIGO">#3F51B5</color>
-    
+
     <!-- 深蓝色 -->
     <color name="DEEP_BLUE">#1876d0</color>
-    
+
     <!-- 蓝色 -->
     <color name="BLUE">#1E8AE8</color>
-    
+
     <!-- 浅蓝色 -->
     <color name="LIGHT_BLUE">#03a9f4</color>
-    
+
     <!-- 青色 -->
     <color name="CYAN">#00BCD4</color>
-    
+
     <!-- 青绿色 -->
     <color name="TEAL">#009688</color>
-    
+
     <!-- 绿色 -->
     <color name="GREEN">#4CAF50</color>
-    
+
     <!-- 浅绿色 -->
     <color name="LIGHT_GREEN">#8BC34A</color>
-    
+
     <!-- 深绿色 -->
     <color name="DEEP_GREEN">#00796B</color>
-    
+
     <!-- 黄绿色 -->
     <color name="LIME">#CDDC39</color>
-    
+
     <!-- 黄色 -->
     <color name="YELLOW">#FFEB3B</color>
-    
+
     <!-- 琥珀色 -->
     <color name="AMBER">#FFC107</color>
-    
+
     <!-- 橙色 -->
     <color name="ORANGE">#FF9800</color>
-    
+
     <!-- 深橙色 -->
     <color name="DEEP_ORANGE">#FF5722</color>
-    
+
     <!-- 棕色 -->
     <color name="BROWN">#795548</color>
-    
+
     <!-- 灰色 -->
     <color name="GERY">#9E9E9E</color>
-    
+
     <!-- 深灰色 -->
     <color name="DEEP_GERY">#616161</color>
-    
+
     <!-- 浅灰 -->
     <color name="LIGHT_GERY">#E5E5E5</color>
-    
+
     <!-- 更浅的灰 -->
     <color name="MORE_LIGHT_GERY">#F0EFF5</color>
-    
+
     <!-- 蓝灰色 -->
     <color name="BLUE_GERY">#607D8B</color>
-    
+
     <!-- 白色 -->
     <color name="WHITE">#FFFFFF</color>
-    
+
     <!-- 黑色 -->
     <color name="BLACK">#212121</color>
-    
+
     <!-- 浅黑色 -->
     <color name="LIGHT_BLACK">#666666</color>
-    
+
     <color name="TRANSPARENT">@android:color/transparent</color>
 
 </resources>
