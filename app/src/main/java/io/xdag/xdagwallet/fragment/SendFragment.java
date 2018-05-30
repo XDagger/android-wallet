@@ -24,13 +24,6 @@ public class SendFragment extends BaseFragment {
         return R.layout.fragment_send;
     }
 
-
-    @Override
-    protected void initView(View rootView) {
-
-    }
-
-
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);

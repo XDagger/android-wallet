@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="navigation_height">54dp</dimen>
+    <dimen name="setting_item_space">32dp</dimen>
 </resources>

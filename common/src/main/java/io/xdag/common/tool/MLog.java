@@ -1,4 +1,4 @@
-package io.xdag.common.util;
+package io.xdag.common.tool;
 
 import android.text.TextUtils;
 import android.util.Log;

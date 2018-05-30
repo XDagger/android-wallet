@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/MORE_LIGHT_GERY"
+    android:orientation="vertical">
 
+    <io.xdag.xdagwallet.widget.SettingItemView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/WHITE"
+        android:layout_marginTop="@dimen/setting_item_space"
+        android:text="Messages"/>
 
-</android.support.constraint.ConstraintLayout>
+    <io.xdag.xdagwallet.widget.SettingItemView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/setting_item_space"
+        android:background="@color/WHITE"
+        android:text="Backup Wallet"/>
+
+    <View
+        style="@style/DividerHorizontalThin"/>
+
+    <io.xdag.xdagwallet.widget.SettingItemView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/WHITE"
+        android:text="Restore Wallet"/>
+
+    <io.xdag.xdagwallet.widget.SettingItemView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/setting_item_space"
+        android:background="@color/WHITE"
+        android:text="About XDAG"/>
+
+</LinearLayout>

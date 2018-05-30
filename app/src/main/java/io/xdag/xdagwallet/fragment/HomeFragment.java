@@ -7,12 +7,16 @@ import android.view.View;
 
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.OnClick;
 import io.xdag.common.base.RefreshFragment;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.AppBarStateChangedListener;
+import io.xdag.common.util.ClipBoardUtil;
 import io.xdag.common.util.ToastUtil;
+import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
+import io.xdag.xdagwallet.widget.AlertWrap;
 
 /**
  * created by lxm on 2018/5/24.
@@ -64,6 +68,11 @@ public class HomeFragment extends RefreshFragment {
                 }
             }
         });
+    }
+
+
+    @OnClick(R.id.home_tv_address) void copyAddress() {
+        ((MainActivity) mContext).copyAddress(mTvAddress.getText().toString());
     }
 
 
