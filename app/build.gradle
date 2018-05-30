@@ -38,8 +38,17 @@ dependencies {
     })
 
     // https://github.com/RuffianZhong/RWidgetHelper
-    implementation 'com.ruffian.library:RWidgetHelper:1.0.0'
+    // implementation 'com.ruffian.library:RWidgetHelper:1.0.0'
 
     // https://github.com/Tapadoo/Alerter
     implementation 'com.tapadoo.android:alerter:2.0.5'
+
+    // https://github.com/bertsir/zBarLibary
+    implementation 'cn.bertsir.zbarLibary:zbarlibary:1.1.2'
+
+    // https://github.com/permissions-dispatcher/PermissionsDispatcher
+    implementation("com.github.hotchemi:permissionsdispatcher:${permissions_dispatcher}") {
+        exclude module: "support-v13"
+    }
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:${permissions_dispatcher}"
 }

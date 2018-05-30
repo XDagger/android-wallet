@@ -8,6 +8,7 @@ buildscript {
     ext.min_version = 21
     ext.target_version = 27
     ext.butterknife_version = '9.0.0-SNAPSHOT'
+    ext.permissions_dispatcher = '3.2.0'
 
     repositories {
         google()
@@ -31,6 +32,7 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
     }
 
     apply plugin: 'com.jakewharton.butterknife'
