@@ -1,18 +1,15 @@
 package io.xdag.xdagwallet.fragment;
 
-import android.graphics.Color;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import cn.bertsir.zbar.QRConfig;
 import cn.bertsir.zbar.QRManager;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
-import io.xdag.common.Common;
 import io.xdag.common.base.BaseFragment;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.widget.AlertWrap;
+import io.xdag.xdagwallet.util.ZbarUtil;
 import java.util.List;
 
 /**
@@ -52,29 +49,15 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
                 })
                 .onGranted(new Action<List<String>>() {
                     @Override public void onAction(List<String> data) {
-                        QRConfig QRConfig = new QRConfig.Builder()
-                            .setShowDes(false)
-                            .setCornerColor(Common.getColor(R.color.colorPrimary))
-                            .setLineColor(Color.WHITE)
-                            .setPlaySound(true)
-                            .setTitleText("Scan QRCode")
-                            .setTitleBackgroudColor(Common.getColor(R.color.colorPrimary))
-                            .setTitleTextColor(Color.WHITE)
-                            .create();
+                        ZbarUtil.startScan(mContext, new QRManager.OnScanResultCallback() {
+                            @Override public void onScanSuccess(String result) {
 
-                        QRManager.getInstance()
-                            .init(QRConfig)
-                            .startScan(mContext, new QRManager.OnScanResultCallback() {
-                                @Override
-                                public void onScanSuccess(String result) {
-                                    AlertWrap.show(mContext, result);
-                                }
+                            }
 
+                            @Override public void onScanFailed() {
 
-                                @Override public void onScanFailed() {
-                                    AlertWrap.show(mContext, getString(R.string.cannot_identify_qr_code));
-                                }
-                            });
+                            }
+                        });
                     }
                 })
                 .start();

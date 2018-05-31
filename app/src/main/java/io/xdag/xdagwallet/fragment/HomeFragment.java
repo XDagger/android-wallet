@@ -13,7 +13,7 @@ import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
-import io.xdag.xdagwallet.widget.AlertWrap;
+import io.xdag.xdagwallet.util.AlertUtil;
 
 /**
  * created by lxm on 2018/5/24.
@@ -84,6 +84,6 @@ public class HomeFragment extends RefreshFragment {
 
     @Override public void onRefresh() {
         super.onRefresh();
-        AlertWrap.show(mContext, getString(R.string.refresh_success));
+        AlertUtil.show(mContext, getString(R.string.refresh_success));
     }
 }

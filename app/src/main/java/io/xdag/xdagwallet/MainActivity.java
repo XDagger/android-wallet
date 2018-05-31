@@ -17,7 +17,7 @@ import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.fragment.SettingFragment;
-import io.xdag.xdagwallet.widget.AlertWrap;
+import io.xdag.xdagwallet.util.AlertUtil;
 
 /**
  * created by ssyijiu  on 2018/5/22
@@ -170,6 +170,6 @@ public class MainActivity extends ToolbarActivity
 
     public void copyText(String text) {
         ClipBoardUtil.copyToClipBoard(text);
-        AlertWrap.show(mContext, getString(R.string.copy_success));
+        AlertUtil.show(mContext, getString(R.string.copy_success));
     }
 }
