@@ -84,6 +84,6 @@ public class HomeFragment extends RefreshFragment {
 
     @Override public void onRefresh() {
         super.onRefresh();
-        AlertWrap.show(mContext, "Refresh Success!");
+        AlertWrap.show(mContext, getString(R.string.refresh_success));
     }
 }

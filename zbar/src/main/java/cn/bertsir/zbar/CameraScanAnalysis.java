@@ -48,10 +48,10 @@ class CameraScanAnalysis implements Camera.PreviewCallback {
 
     CameraScanAnalysis() {
         mImageScanner = new ImageScanner();
-        if (Symbol.scanType == QrConfig.TYPE_QRCODE) {
+        if (Symbol.scanType == QRConfig.TYPE_QRCODE) {
             mImageScanner.setConfig(Symbol.NONE, Config.ENABLE, 0);
             mImageScanner.setConfig(Symbol.QRCODE, Config.ENABLE, 1);
-        } else if (Symbol.scanType == QrConfig.TYPE_BARCODE) {
+        } else if (Symbol.scanType == QRConfig.TYPE_BARCODE) {
             mImageScanner.setConfig(Symbol.NONE, Config.ENABLE, 0);
             mImageScanner.setConfig(Symbol.CODE128, Config.ENABLE, 1);
             mImageScanner.setConfig(Symbol.CODE39, Config.ENABLE, 1);
@@ -60,10 +60,10 @@ class CameraScanAnalysis implements Camera.PreviewCallback {
             mImageScanner.setConfig(Symbol.UPCA, Config.ENABLE, 1);
             mImageScanner.setConfig(Symbol.UPCE, Config.ENABLE, 1);
             mImageScanner.setConfig(Symbol.UPCE, Config.ENABLE, 1);
-        } else if (Symbol.scanType == QrConfig.TYPE_ALL) {
+        } else if (Symbol.scanType == QRConfig.TYPE_ALL) {
             mImageScanner.setConfig(Symbol.NONE, Config.X_DENSITY, 3);
             mImageScanner.setConfig(Symbol.NONE, Config.Y_DENSITY, 3);
-        } else if (Symbol.scanType == QrConfig.TYPE_CUSTOM) {
+        } else if (Symbol.scanType == QRConfig.TYPE_CUSTOM) {
             mImageScanner.setConfig(Symbol.NONE, Config.ENABLE, 0);
             mImageScanner.setConfig(Symbol.scanFormat, Config.ENABLE, 1);
         } else {

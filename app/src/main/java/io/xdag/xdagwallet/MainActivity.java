@@ -170,6 +170,6 @@ public class MainActivity extends ToolbarActivity
 
     public void copyText(String text) {
         ClipBoardUtil.copyToClipBoard(text);
-        AlertWrap.show(mContext, "Copy Success !");
+        AlertWrap.show(mContext, getString(R.string.copy_success));
     }
 }

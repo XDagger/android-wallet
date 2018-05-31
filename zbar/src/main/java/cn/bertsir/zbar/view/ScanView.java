@@ -5,7 +5,6 @@ import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -16,7 +15,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 
 import cn.bertsir.zbar.Qr.Symbol;
-import cn.bertsir.zbar.QrConfig;
+import cn.bertsir.zbar.QRConfig;
 import cn.bertsir.zbar.R;
 
 /**
@@ -113,10 +112,10 @@ public class ScanView extends FrameLayout {
     public void setType(int type) {
         CURRENT_TYEP = type;
         LinearLayout.LayoutParams fl_params = (LinearLayout.LayoutParams) fl_scan.getLayoutParams();
-        if (CURRENT_TYEP == QrConfig.SCANVIEW_TYPE_QRCODE) {
+        if (CURRENT_TYEP == QRConfig.SCANVIEW_TYPE_QRCODE) {
             fl_params.width = dip2px(200);
             fl_params.height = dip2px(200);
-        } else if (CURRENT_TYEP == QrConfig.SCANVIEW_TYPE_BARCODE) {
+        } else if (CURRENT_TYEP == QRConfig.SCANVIEW_TYPE_BARCODE) {
             fl_params.width = dip2px(300);
             fl_params.height = dip2px(100);
         }

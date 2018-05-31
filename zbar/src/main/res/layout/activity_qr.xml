@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <!-- 二维码识别界面 -->
     <cn.bertsir.zbar.CameraPreview
         android:id="@+id/cp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></cn.bertsir.zbar.CameraPreview>
+        android:layout_height="match_parent"/>
 
     <cn.bertsir.zbar.view.ScanView
         android:id="@+id/sv"
@@ -23,37 +20,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ff5f00"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:fitsSystemWindows="true"
         >
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom"
+            android:layout_height="52dp"
             >
 
             <ImageView
                 android:id="@+id/mo_scanner_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:padding="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="4dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/scanner_back_img"/>
+                android:src="@drawable/ic_scanner_back"/>
 
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:text="扫描二维码"
+                android:text="Scan QRCode"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 />
         </FrameLayout>
 

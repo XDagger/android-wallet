@@ -21,7 +21,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import cn.bertsir.zbar.Qr.Symbol;
 import cn.bertsir.zbar.view.ScanView;
@@ -39,7 +38,7 @@ public class QRActivity extends Activity implements View.OnClickListener {
     private TextView tv_title;
     private FrameLayout fl_title;
     private TextView tv_des;
-    private QrConfig options;
+    private QRConfig options;
 
 
     @Override
@@ -50,7 +49,7 @@ public class QRActivity extends Activity implements View.OnClickListener {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        options = (QrConfig) getIntent().getExtras().get(QrConfig.EXTRA_THIS_CONFIG);
+        options = (QRConfig) getIntent().getExtras().get(QRConfig.EXTRA_THIS_CONFIG);
 
         Symbol.scanType = options.getScan_type();
         Symbol.scanFormat = options.getCustombarcodeformat();
@@ -122,7 +121,7 @@ public class QRActivity extends Activity implements View.OnClickListener {
             if (cp != null) {
                 cp.setFlash(false);
             }
-            QrManager.getInstance().getResultCallback().onScanSuccess(result);
+            QRManager.getInstance().getResultCallback().onScanSuccess(result);
             finish();
         }
     };
@@ -188,21 +187,18 @@ public class QRActivity extends Activity implements View.OnClickListener {
                         Bitmap Qrbitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
                         final String qrcontent = QRUtils.getInstance().decodeQRcode(Qrbitmap);
                         Qrbitmap.recycle();
-                        Qrbitmap = null;
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                closeProgressDialog();
                                 if (!TextUtils.isEmpty(qrcontent)) {
-                                    closeProgressDialog();
-                                    QrManager.getInstance()
+                                    QRManager.getInstance()
                                         .getResultCallback()
                                         .onScanSuccess(qrcontent);
-                                    finish();
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "识别失败！",
-                                        Toast.LENGTH_SHORT).show();
-                                    closeProgressDialog();
+                                    QRManager.getInstance().getResultCallback().onScanFailed();
                                 }
+                                finish();
                             }
                         });
                     } catch (Exception e) {

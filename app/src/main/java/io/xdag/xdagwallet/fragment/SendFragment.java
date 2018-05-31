@@ -4,8 +4,8 @@ import android.graphics.Color;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import cn.bertsir.zbar.QrConfig;
-import cn.bertsir.zbar.QrManager;
+import cn.bertsir.zbar.QRConfig;
+import cn.bertsir.zbar.QRManager;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
@@ -52,7 +52,7 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
                 })
                 .onGranted(new Action<List<String>>() {
                     @Override public void onAction(List<String> data) {
-                        QrConfig qrConfig = new QrConfig.Builder()
+                        QRConfig QRConfig = new QRConfig.Builder()
                             .setShowDes(false)
                             .setCornerColor(Common.getColor(R.color.colorPrimary))
                             .setLineColor(Color.WHITE)
@@ -62,12 +62,17 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
                             .setTitleTextColor(Color.WHITE)
                             .create();
 
-                        QrManager.getInstance()
-                            .init(qrConfig)
-                            .startScan(mContext, new QrManager.OnScanResultCallback() {
+                        QRManager.getInstance()
+                            .init(QRConfig)
+                            .startScan(mContext, new QRManager.OnScanResultCallback() {
                                 @Override
                                 public void onScanSuccess(String result) {
                                     AlertWrap.show(mContext, result);
+                                }
+
+
+                                @Override public void onScanFailed() {
+                                    AlertWrap.show(mContext, getString(R.string.cannot_identify_qr_code));
                                 }
                             });
                     }
