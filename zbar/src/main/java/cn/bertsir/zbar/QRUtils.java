@@ -15,21 +15,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import cn.bertsir.zbar.Qr.Config;
+import cn.bertsir.zbar.Qr.Image;
+import cn.bertsir.zbar.Qr.ImageScanner;
+import cn.bertsir.zbar.Qr.Symbol;
+import cn.bertsir.zbar.Qr.SymbolSet;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-
 import java.util.Hashtable;
-
-import cn.bertsir.zbar.Qr.Config;
-import cn.bertsir.zbar.Qr.Image;
-import cn.bertsir.zbar.Qr.ImageScanner;
-import cn.bertsir.zbar.Qr.Symbol;
-import cn.bertsir.zbar.Qr.SymbolSet;
 
 /**
  * Created by Bert on 2017/9/20.

@@ -14,12 +14,15 @@ public class TransactionModel {
     public String amount;
     public String time;
     public Type type;
+
+
     public TransactionModel(String address, String amount, String time, Type type) {
         this.address = address;
         this.amount = amount;
         this.time = time;
         this.type = type;
     }
+
 
     public int getTypeImage() {
         if (Type.INPUT.equals(type)) {
@@ -29,6 +32,7 @@ public class TransactionModel {
         }
     }
 
+
     public String getAmount() {
         if (Type.INPUT.equals(type)) {
             return String.format("+%s", amount);
@@ -36,6 +40,7 @@ public class TransactionModel {
             return String.format("-%s", amount);
         }
     }
+
 
     public int getAmountColor() {
         if (Type.INPUT.equals(type)) {

@@ -11,12 +11,10 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-
-import java.util.ArrayList;
-
-import cn.bertsir.zbar.Qr.Symbol;
 import cn.bertsir.zbar.QRConfig;
+import cn.bertsir.zbar.Qr.Symbol;
 import cn.bertsir.zbar.R;
+import java.util.ArrayList;
 
 /**
  * Created by Bert on 2017/9/20.

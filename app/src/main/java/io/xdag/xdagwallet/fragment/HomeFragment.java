@@ -4,7 +4,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;

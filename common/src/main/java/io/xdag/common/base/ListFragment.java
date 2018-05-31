@@ -3,14 +3,11 @@ package io.xdag.common.base;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-
+import io.xdag.common.R;
 import java.util.ArrayList;
 import java.util.List;
-
-import io.xdag.common.R;
 
 /**
  * created by lxm on 2018/5/25.
@@ -28,6 +25,7 @@ public abstract class ListFragment<T> extends RefreshFragment {
     protected int getLayoutResId() {
         return R.layout.layout_recycler;
     }
+
 
     @Override
     protected void initView(View rootView) {
@@ -49,11 +47,14 @@ public abstract class ListFragment<T> extends RefreshFragment {
         };
     }
 
+
     protected abstract RecyclerView.LayoutManager getLayoutManger();
+
 
     protected int getItemLayout() {
         return 0;
     }
+
 
     protected void convert(BaseViewHolder helper, T item) {
     }

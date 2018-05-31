@@ -20,15 +20,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import cn.bertsir.zbar.Qr.Config;
 import cn.bertsir.zbar.Qr.Image;
 import cn.bertsir.zbar.Qr.ImageScanner;
 import cn.bertsir.zbar.Qr.Symbol;
 import cn.bertsir.zbar.Qr.SymbolSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by Yan Zhenjie on 2017/5/5.

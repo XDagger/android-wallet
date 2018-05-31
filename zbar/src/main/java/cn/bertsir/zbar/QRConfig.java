@@ -1,7 +1,6 @@
 package cn.bertsir.zbar;
 
 import android.graphics.Color;
-
 import java.io.Serializable;
 
 /**

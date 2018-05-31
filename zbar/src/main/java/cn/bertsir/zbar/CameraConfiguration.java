@@ -22,7 +22,6 @@ import android.os.Build;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

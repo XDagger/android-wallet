@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import butterknife.BindView;
 import cn.bertsir.zbar.QRManager;
-import com.tapadoo.alerter.Alert;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
@@ -32,40 +31,39 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
     }
 
 
-    @Override protected void initView(View rootView) {
+    @Override
+    protected void initView(View rootView) {
         super.initView(rootView);
         getToolbar().inflateMenu(R.menu.toolbar_scan);
         getToolbar().setOnMenuItemClickListener(this);
     }
 
 
-    @Override public boolean onMenuItemClick(MenuItem item) {
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
         if (item.getItemId() == R.id.action_scan) {
-
             AndPermission.with(mContext)
                 .runtime()
                 .permission(Permission.READ_EXTERNAL_STORAGE, Permission.CAMERA)
-                .onDenied(new Action<List<String>>() {
-                    @Override public void onAction(List<String> data) {
-                    }
-                })
                 .onGranted(new Action<List<String>>() {
-                    @Override public void onAction(List<String> data) {
+                    @Override
+                    public void onAction(List<String> data) {
+
                         ZbarUtil.startScan(mContext, new QRManager.OnScanResultCallback() {
-                            @Override public void onScanSuccess(String result) {
+                            @Override
+                            public void onScanSuccess(String result) {
                                 mEtAddress.setText(result);
                             }
 
 
-                            @Override public void onScanFailed() {
-                                AlertUtil.show(mContext,
-                                    getString(R.string.cannot_identify_qr_code));
+                            @Override
+                            public void onScanFailed() {
+                                AlertUtil.show(mContext, R.string.cannot_identify_qr_code);
                             }
                         });
                     }
                 })
                 .start();
-
         }
         return false;
     }

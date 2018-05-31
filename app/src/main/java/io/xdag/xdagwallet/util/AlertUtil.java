@@ -14,6 +14,11 @@ public class AlertUtil {
     private static final int ALERT_DURATION = 1500;
 
 
+    public static void show(Activity activity, int res) {
+        show(activity, activity.getString(res));
+    }
+
+
     public static void show(Activity activity, String message) {
         Alerter.create(activity)
             .setDuration(ALERT_DURATION)

@@ -18,7 +18,6 @@ package cn.bertsir.zbar;
 import android.content.Context;
 import android.hardware.Camera;
 import android.view.SurfaceHolder;
-
 import java.io.IOException;
 
 /**

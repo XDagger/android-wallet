@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.MenuItem;
 import android.view.View;
-
 import butterknife.BindView;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
@@ -139,17 +138,17 @@ public class MainActivity extends ToolbarActivity
             case R.id.navigation_receive:
                 getToolbar().setTitle(R.string.receive_xdag);
                 getToolbar().setVisibility(View.VISIBLE);
-                getToolbar().getMenu().setGroupVisible(0,false);
+                getToolbar().getMenu().setGroupVisible(0, false);
                 break;
             case R.id.navigation_send:
                 getToolbar().setTitle(R.string.send_xdag);
                 getToolbar().setVisibility(View.VISIBLE);
-                getToolbar().getMenu().setGroupVisible(0,true);
+                getToolbar().getMenu().setGroupVisible(0, true);
                 break;
             case R.id.navigation_setting:
                 getToolbar().setTitle(R.string.setting);
                 getToolbar().setVisibility(View.VISIBLE);
-                getToolbar().getMenu().setGroupVisible(0,false);
+                getToolbar().getMenu().setGroupVisible(0, false);
                 break;
             default:
         }
