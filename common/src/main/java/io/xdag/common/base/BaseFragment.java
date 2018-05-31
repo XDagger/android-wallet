@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +37,8 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(
-            @NonNull LayoutInflater inflater,
-            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        @NonNull LayoutInflater inflater,
+        @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(getLayoutResId(), container, false);
     }
 
@@ -48,11 +49,13 @@ public abstract class BaseFragment extends Fragment {
         initView(view);
     }
 
+
     protected void initView(View rootView) {
         if (!(this instanceof RefreshFragment)) {
             mUnbinder = ButterKnife.bind(this, rootView);
         }
     }
+
 
     @Override
     public void onHiddenChanged(boolean hidden) {
@@ -77,6 +80,15 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int getLayoutResId();
 
+
     protected void initData() {
+    }
+
+
+    protected Toolbar getToolbar() {
+        if (mContext instanceof ToolbarActivity) {
+            return ((ToolbarActivity) mContext).getToolbar();
+        }
+        throw new RuntimeException("The fragment must attach on ToolbarActivity");
     }
 }

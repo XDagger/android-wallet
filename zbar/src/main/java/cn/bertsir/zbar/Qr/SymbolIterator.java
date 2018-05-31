@@ -23,7 +23,7 @@
  *  http://sourceforge.net/projects/zbar
  *------------------------------------------------------------------------*/
 
-package cn.bertsir.zbar.qrcode;
+package cn.bertsir.zbar.Qr;
 
 /**
  * Iterator over a SymbolSet.

@@ -7,17 +7,17 @@ import android.content.Intent;
  * Created by Bert on 2017/9/22.
  */
 
-public class QRManager {
+public class QrManager {
 
-    private static QRManager instance;
-    private QRConfig options;
+    private static QrManager instance;
+    private QrConfig options;
 
     public OnScanResultCallback resultCallback;
 
 
-    public synchronized static QRManager getInstance() {
+    public synchronized static QrManager getInstance() {
         if (instance == null) {
-            instance = new QRManager();
+            instance = new QrManager();
         }
         return instance;
     }
@@ -28,7 +28,7 @@ public class QRManager {
     }
 
 
-    public QRManager init(QRConfig options) {
+    public QrManager init(QrConfig options) {
         this.options = options;
         return this;
     }
@@ -37,10 +37,10 @@ public class QRManager {
     public void startScan(Activity activity, OnScanResultCallback resultCall) {
 
         if (options == null) {
-            options = new QRConfig.Builder().create();
+            options = new QrConfig.Builder().create();
         }
         Intent intent = new Intent(activity, QRActivity.class);
-        intent.putExtra(QRConfig.EXTRA_THIS_CONFIG, options);
+        intent.putExtra(QrConfig.EXTRA_THIS_CONFIG, options);
         activity.startActivity(intent);
         // 绑定图片接口回调函数事件
         resultCallback = resultCall;

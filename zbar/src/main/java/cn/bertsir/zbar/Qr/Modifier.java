@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------
- *  Orientation
+ *  Modifier
  *
  *  Copyright 2010 (c) Jeff Brown <spadix@users.sourceforge.net>
  *
@@ -23,30 +23,22 @@
  *  http://sourceforge.net/projects/zbar
  *------------------------------------------------------------------------*/
 
-package cn.bertsir.zbar.qrcode;
+package cn.bertsir.zbar.Qr;
 
 /**
- * Decoded symbol coarse orientation.
+ * Decoder symbology modifiers.
  */
-public class Orientation {
+public class Modifier {
     /**
-     * Unable to determine orientation.
+     * barcode tagged as GS1 (EAN.UCC) reserved
+     * (eg, FNC1 before first data character).
+     * data may be parsed as a sequence of GS1 AIs
      */
-    public static final int UNKNOWN = -1;
+    public static final int GS1 = 0;
+
     /**
-     * Upright, read left to right.
+     * barcode tagged as AIM reserved
+     * (eg, FNC1 after first character or digit pair)
      */
-    public static final int UP = 0;
-    /**
-     * sideways, read top to bottom
-     */
-    public static final int RIGHT = 1;
-    /**
-     * upside-down, read right to left
-     */
-    public static final int DOWN = 2;
-    /**
-     * sideways, read bottom to top
-     */
-    public static final int LEFT = 3;
+    public static final int AIM = 1;
 }

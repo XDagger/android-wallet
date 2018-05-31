@@ -30,7 +30,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Camera config.
+ * <p>Camera config.</p>
  * Created by Yan Zhenjie on 2017/5/10.
  */
 public final class CameraConfiguration {

@@ -112,21 +112,47 @@ public class MainActivity extends ToolbarActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_home:
+            case R.id.navigation_home:
                 showFragment(mHomeFragment);
                 break;
-            case R.id.action_receive:
+            case R.id.navigation_receive:
                 showFragment(mReceiveFragment);
                 break;
-            case R.id.action_send:
+            case R.id.navigation_send:
                 showFragment(mSendFragment);
                 break;
-            case R.id.action_setting:
+            case R.id.navigation_setting:
                 showFragment(mSettingFragment);
                 break;
             default:
         }
+        setToolbar(item.getItemId());
         return true;
+    }
+
+
+    private void setToolbar(int itemId) {
+        switch (itemId) {
+            case R.id.navigation_home:
+                getToolbar().setVisibility(View.GONE);
+                break;
+            case R.id.navigation_receive:
+                getToolbar().setTitle(R.string.receive_xdag);
+                getToolbar().setVisibility(View.VISIBLE);
+                getToolbar().getMenu().setGroupVisible(0,false);
+                break;
+            case R.id.navigation_send:
+                getToolbar().setTitle(R.string.send_xdag);
+                getToolbar().setVisibility(View.VISIBLE);
+                getToolbar().getMenu().setGroupVisible(0,true);
+                break;
+            case R.id.navigation_setting:
+                getToolbar().setTitle(R.string.setting);
+                getToolbar().setVisibility(View.VISIBLE);
+                getToolbar().getMenu().setGroupVisible(0,false);
+                break;
+            default:
+        }
     }
 
 
@@ -142,8 +168,8 @@ public class MainActivity extends ToolbarActivity
     }
 
 
-    public void copyAddress(String address) {
-        ClipBoardUtil.copyToClipBoard(address);
+    public void copyText(String text) {
+        ClipBoardUtil.copyToClipBoard(text);
         AlertWrap.show(mContext, "Copy Success !");
     }
 }

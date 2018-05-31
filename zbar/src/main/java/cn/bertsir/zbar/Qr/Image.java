@@ -23,7 +23,7 @@
  *  http://sourceforge.net/projects/zbar
  *------------------------------------------------------------------------*/
 
-package cn.bertsir.zbar.qrcode;
+package cn.bertsir.zbar.Qr;
 
 /**
  * stores image data samples along with associated format and size

@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------
- *  ImageScanner
+ *  SymbolSet
  *
  *  Copyright 2007-2010 (c) Jeff Brown <spadix@users.sourceforge.net>
  *
@@ -23,15 +23,17 @@
  *  http://sourceforge.net/projects/zbar
  *------------------------------------------------------------------------*/
 
-package cn.bertsir.zbar.qrcode;
+package cn.bertsir.zbar.Qr;
 
 /**
- * Read barcodes from 2-D images.
+ * Immutable container for decoded result symbols associated with an image
+ * or a composite symbol.
  */
 @SuppressWarnings("JniMissingFunction")
-public class ImageScanner {
+public class SymbolSet
+    extends java.util.AbstractCollection<Symbol> {
     /**
-     * C pointer to a zbar_image_scanner_t.
+     * C pointer to a zbar_symbol_set_t.
      */
     private long peer;
 
@@ -45,15 +47,12 @@ public class ImageScanner {
     private static native void init();
 
 
-    public ImageScanner() {
-        peer = create();
-    }
-
-
     /**
-     * Create an associated peer instance.
+     * SymbolSets are only created by other package methods.
      */
-    private native long create();
+    SymbolSet(long peer) {
+        this.peer = peer;
+    }
 
 
     protected void finalize() {
@@ -73,52 +72,32 @@ public class ImageScanner {
 
 
     /**
-     * Destroy the associated peer instance.
+     * Release the associated peer instance.
      */
     private native void destroy(long peer);
 
 
     /**
-     * Set config for indicated symbology (0 for all) to specified value.
+     * Retrieve an iterator over the Symbol elements in this collection.
      */
-    public native void setConfig(int symbology, int config, int value)
-        throws IllegalArgumentException;
+    public java.util.Iterator<Symbol> iterator() {
+        long sym = firstSymbol(peer);
+        if (sym == 0) {
+            return (new SymbolIterator(null));
+        }
 
-
-    /**
-     * Parse configuration string and apply to image scanner.
-     */
-    public native void parseConfig(String config);
-
-
-    /**
-     * Enable or disable the inter-image result cache (default disabled).
-     * Mostly useful for scanning video frames, the cache filters duplicate
-     * results from consecutive images, while adding some consistency
-     * checking and hysteresis to the results.  Invoking this method also
-     * clears the cache.
-     */
-    public native void enableCache(boolean enable);
-
-
-    /**
-     * Retrieve decode results for last scanned image.
-     *
-     * @returns the SymbolSet result container
-     */
-    public SymbolSet getResults() {
-        return (new SymbolSet(getResults(peer)));
+        return (new SymbolIterator(new Symbol(sym)));
     }
 
 
-    private native long getResults(long peer);
+    /**
+     * Retrieve the number of elements in the collection.
+     */
+    public native int size();
 
 
     /**
-     * Scan for symbols in provided Image.
-     * The image format must currently be "Y800" or "GRAY".
-     *
-     * @returns the number of symbols successfully decoded from the image.
+     * Retrieve C pointer to first symbol in the set.
      */
-    public native int scanImage(Image image);
+    private native long firstSymbol(long peer);
 }

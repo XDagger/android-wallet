@@ -16,14 +16,16 @@
 package cn.bertsir.zbar;
 
 /**
- * Scan results callback.
+ * <p>Scan results callback.</p>
  * Created by Yan Zhenjie on 2017/5/5.
- * Add {@link #onScanFailed()} by ssyijiu on 2018/5/31
  */
 public interface ScanCallback {
 
-    void onScanSuccess(String content);
-
-    void onScanFailed();
+    /**
+     * Content is not empty when the callback.
+     *
+     * @param content qr code content, is not null.
+     */
+    void onScanResult(String content);
 
 }

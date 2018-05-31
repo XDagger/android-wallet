@@ -7,4 +7,6 @@
 
     <string name="send_xdag">Send Xdag</string>
     <string name="receive_xdag">Receive Xdag</string>
+
+    <string name="scan">Scan QRCode</string>
 </resources>

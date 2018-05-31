@@ -23,7 +23,7 @@
  *  http://sourceforge.net/projects/zbar
  *------------------------------------------------------------------------*/
 
-package cn.bertsir.zbar.qrcode;
+package cn.bertsir.zbar.Qr;
 
 /**
  * Immutable container for decoded result symbols associated with an image

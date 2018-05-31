@@ -25,7 +25,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 /**
- * QRCode Camera preview, include QRCode recognition.
+ * <p>QRCode Camera preview, include QRCode recognition.</p>
  */
 public class CameraPreview extends FrameLayout implements SurfaceHolder.Callback {
 

@@ -22,7 +22,7 @@ import android.view.SurfaceHolder;
 import java.io.IOException;
 
 /**
- * Camera manager.
+ * <p>Camera manager.</p>
  * Created by Yan Zhenjie on 2017/5/10.
  */
 public final class CameraManager {

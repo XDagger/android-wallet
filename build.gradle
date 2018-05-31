@@ -8,7 +8,6 @@ buildscript {
     ext.min_version = 21
     ext.target_version = 27
     ext.butterknife_version = '9.0.0-SNAPSHOT'
-    ext.permissions_dispatcher = '3.2.0'
 
     repositories {
         google()

@@ -11,6 +11,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
     }
     buildTypes {
         release {
@@ -27,28 +30,16 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-
     // https://github.com/JakeWharton/butterknife
     implementation "com.jakewharton:butterknife:${butterknife_version}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknife_version}"
-
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation('com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36', {
         exclude group: 'com.android.support'
     })
-
-    // https://github.com/RuffianZhong/RWidgetHelper
-    // implementation 'com.ruffian.library:RWidgetHelper:1.0.0'
-
     // https://github.com/Tapadoo/Alerter
     implementation 'com.tapadoo.android:alerter:2.0.5'
-
-    // https://github.com/bertsir/zBarLibary
-    implementation 'cn.bertsir.zbarLibary:zbarlibary:1.1.2'
-
-    // https://github.com/permissions-dispatcher/PermissionsDispatcher
-    implementation("com.github.hotchemi:permissionsdispatcher:${permissions_dispatcher}") {
-        exclude module: "support-v13"
-    }
-    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:${permissions_dispatcher}"
+    // https://github.com/yanzhenjie/AndPermission
+    implementation 'com.yanzhenjie:permission:2.0.0-rc6'
+    implementation project(':zbar')
 }

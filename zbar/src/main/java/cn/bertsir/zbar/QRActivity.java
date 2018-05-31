@@ -23,7 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.bertsir.zbar.qrcode.Symbol;
+import cn.bertsir.zbar.Qr.Symbol;
 import cn.bertsir.zbar.view.ScanView;
 
 public class QRActivity extends Activity implements View.OnClickListener {
@@ -39,7 +39,7 @@ public class QRActivity extends Activity implements View.OnClickListener {
     private TextView tv_title;
     private FrameLayout fl_title;
     private TextView tv_des;
-    private QRConfig options;
+    private QrConfig options;
 
 
     @Override
@@ -50,7 +50,7 @@ public class QRActivity extends Activity implements View.OnClickListener {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        options = (QRConfig) getIntent().getExtras().get(QRConfig.EXTRA_THIS_CONFIG);
+        options = (QrConfig) getIntent().getExtras().get(QrConfig.EXTRA_THIS_CONFIG);
 
         Symbol.scanType = options.getScan_type();
         Symbol.scanFormat = options.getCustombarcodeformat();
@@ -115,14 +115,14 @@ public class QRActivity extends Activity implements View.OnClickListener {
 
     private ScanCallback resultCallback = new ScanCallback() {
         @Override
-        public void onScanSuccess(String result) {
+        public void onScanResult(String result) {
             if (options.isPlay_sound()) {
                 soundPool.play(1, 1, 1, 0, 0, 1);
             }
             if (cp != null) {
                 cp.setFlash(false);
             }
-            QRManager.getInstance().getResultCallback().onScanSuccess(result);
+            QrManager.getInstance().getResultCallback().onScanSuccess(result);
             finish();
         }
     };
@@ -186,7 +186,7 @@ public class QRActivity extends Activity implements View.OnClickListener {
                 public void run() {
                     try {
                         Bitmap Qrbitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
-                        final String qrcontent = QRUtil.getInstance().decodeQRCode(Qrbitmap);
+                        final String qrcontent = QRUtils.getInstance().decodeQRcode(Qrbitmap);
                         Qrbitmap.recycle();
                         Qrbitmap = null;
                         runOnUiThread(new Runnable() {
@@ -194,7 +194,7 @@ public class QRActivity extends Activity implements View.OnClickListener {
                             public void run() {
                                 if (!TextUtils.isEmpty(qrcontent)) {
                                     closeProgressDialog();
-                                    QRManager.getInstance()
+                                    QrManager.getInstance()
                                         .getResultCallback()
                                         .onScanSuccess(qrcontent);
                                     finish();

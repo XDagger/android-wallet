@@ -9,10 +9,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.xdag.common.base.RefreshFragment;
-import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.AppBarStateChangedListener;
-import io.xdag.common.util.ClipBoardUtil;
-import io.xdag.common.util.ToastUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
@@ -72,7 +69,7 @@ public class HomeFragment extends RefreshFragment {
 
 
     @OnClick(R.id.home_tv_address) void copyAddress() {
-        ((MainActivity) mContext).copyAddress(mTvAddress.getText().toString());
+        ((MainActivity) mContext).copyText(mTvAddress.getText().toString());
     }
 
 
@@ -80,13 +77,13 @@ public class HomeFragment extends RefreshFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
-            ((ToolbarActivity) mContext).getToolbar().setVisibility(View.GONE);
+            getToolbar().setVisibility(View.GONE);
         }
     }
 
 
     @Override public void onRefresh() {
         super.onRefresh();
-        ToastUtil.show("refresh");
+        AlertWrap.show(mContext, "Refresh Success!");
     }
 }

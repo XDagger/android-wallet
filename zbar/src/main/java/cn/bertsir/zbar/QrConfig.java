@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by Bert on 2017/9/22.
  */
 
-public class QRConfig implements Serializable {
+public class QrConfig implements Serializable {
 
     public static final int LINE_FAST = 1000;
     public static final int LINE_MEDIUM = 3000;
@@ -202,11 +202,11 @@ public class QRConfig implements Serializable {
 
 
     public static class Builder {
-        private QRConfig watcher;
+        private QrConfig watcher;
 
 
         public Builder() {
-            watcher = new QRConfig();
+            watcher = new QrConfig();
         }
 
 
@@ -318,7 +318,7 @@ public class QRConfig implements Serializable {
         }
 
 
-        public QRConfig create() {
+        public QrConfig create() {
             return watcher;
         }
     }
