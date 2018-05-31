@@ -9,5 +9,5 @@
     <dimen name="space_small">4dp</dimen>
     <dimen name="space_normal">8dp</dimen>
     <dimen name="space_large">16dp</dimen>
-    <dimen name="appbar_height">180dp</dimen>
+
 </resources>

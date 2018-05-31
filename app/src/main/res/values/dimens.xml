@@ -2,4 +2,6 @@
 <resources>
     <dimen name="navigation_height">54dp</dimen>
     <dimen name="setting_item_space">32dp</dimen>
+
+    <dimen name="appbar_height">180dp</dimen>
 </resources>

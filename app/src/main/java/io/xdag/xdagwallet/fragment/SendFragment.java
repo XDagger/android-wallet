@@ -54,6 +54,7 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
 
                             }
 
+
                             @Override public void onScanFailed() {
 
                             }

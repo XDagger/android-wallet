@@ -1,3 +1,4 @@
 <resources>
     <string name="empty">""</string>
+    <string name="ban_chinese">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`¬!"£$%^*()~=#{}[];':,./?/*-_+|&#060;&#062;&#064;&#038;</string>
 </resources>

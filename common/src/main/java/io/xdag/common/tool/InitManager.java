@@ -20,6 +20,11 @@ public class InitManager {
     }
 
 
+    private static class Lazy {
+        private static final InitManager INSTANCE = new InitManager();
+    }
+
+
     public static InitManager getInstance() {
         return Lazy.INSTANCE;
     }
@@ -37,10 +42,5 @@ public class InitManager {
             return;
         }
         LeakCanary.install(mApplication);
-    }
-
-
-    private static class Lazy {
-        private static final InitManager INSTANCE = new InitManager();
     }
 }

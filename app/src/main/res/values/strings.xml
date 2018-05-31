@@ -1,15 +1,21 @@
 <resources>
-    <string name="app_name">XdagWallet</string>
+    <string name="app_name">XDAG</string>
+
     <string name="home">Home</string>
     <string name="send">Send</string>
     <string name="receive">Receive</string>
     <string name="setting">Setting</string>
 
-    <string name="send_xdag">Send Xdag</string>
+    <string name="send_xdag">Send XDAG</string>
     <string name="receive_xdag">Receive Xdag</string>
 
     <string name="scan">Scan QRCode</string>
     <string name="copy_success">Copy success</string>
     <string name="refresh_success">Refresh success</string>
+
     <string name="cannot_identify_qr_code">Cannot identify QR code</string>
+    <string name="to_address">To Address</string>
+    <string name="send_to_address">Send To Address</string>
+    <string name="amount_to_send">Amount to Send</string>
+    <string name="amount">Amount</string>
 </resources>
