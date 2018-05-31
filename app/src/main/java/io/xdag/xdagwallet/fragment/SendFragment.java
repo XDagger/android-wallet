@@ -3,12 +3,16 @@ package io.xdag.xdagwallet.fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import butterknife.BindView;
 import cn.bertsir.zbar.QRManager;
+import com.tapadoo.alerter.Alert;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 import io.xdag.common.base.BaseFragment;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ZbarUtil;
 import java.util.List;
 
@@ -19,9 +23,7 @@ import java.util.List;
  */
 public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClickListener {
 
-    public static SendFragment newInstance() {
-        return new SendFragment();
-    }
+    @BindView(R.id.send_et_address) EditText mEtAddress;
 
 
     @Override
@@ -51,12 +53,13 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
                     @Override public void onAction(List<String> data) {
                         ZbarUtil.startScan(mContext, new QRManager.OnScanResultCallback() {
                             @Override public void onScanSuccess(String result) {
-
+                                mEtAddress.setText(result);
                             }
 
 
                             @Override public void onScanFailed() {
-
+                                AlertUtil.show(mContext,
+                                    getString(R.string.cannot_identify_qr_code));
                             }
                         });
                     }
@@ -67,4 +70,8 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
         return false;
     }
 
+
+    public static SendFragment newInstance() {
+        return new SendFragment();
+    }
 }
