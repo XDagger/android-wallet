@@ -19,7 +19,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:textSize="@dimen/size_title"
         android:textColor="@color/BLACK"
-        android:text="ewrXrSDbCmqH/fkLuQkEMiwed3709C2k"/>
+        android:text="Not Ready"/>
 
     <ImageView
         android:id="@+id/receive_img_qrcode"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@id/receive_tv_address"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:src="@drawable/pic_qr_code"/>
+        android:src="@drawable/qrcode_loading"/>
 
     <TextView
         android:id="@+id/receive_tv_copy"

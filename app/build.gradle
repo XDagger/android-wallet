@@ -11,7 +11,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11 -frtti -fexceptions"
+            }
+        }
         ndk {
+            //abiFilters "armeabi-v7a","x86"
             abiFilters "armeabi-v7a"
         }
     }
@@ -19,6 +25,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
         }
     }
 }
@@ -42,4 +53,5 @@ dependencies {
     implementation 'com.tapadoo.android:alerter:2.0.5'
     // https://github.com/yanzhenjie/AndPermission
     implementation 'com.yanzhenjie:permission:2.0.0-rc6'
+    implementation 'org.greenrobot:eventbus:3.0.0'
 }

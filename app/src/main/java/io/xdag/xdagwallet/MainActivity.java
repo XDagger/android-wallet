@@ -1,13 +1,27 @@
 package io.xdag.xdagwallet;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
@@ -17,6 +31,7 @@ import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
+import io.xdag.xdagwallet.wrapper.XdagWrapper;
 
 /**
  * created by ssyijiu  on 2018/5/22
@@ -35,7 +50,15 @@ public class MainActivity extends ToolbarActivity
     private SendFragment mSendFragment;
     private SettingFragment mSettingFragment;
     private Fragment mShowFragment;
+    private HandlerThread xdagProcessThread;
+    private Handler mXdagMessageHandler;
 
+    private static final String TAG = "XdagWallet";
+    private static final int PERMISSION_REQUESTCODE = 1;
+
+    private static final int MSG_CONNECT_TO_POOL = 1;
+    private static final int MSG_DISCONNECT_FROM_POOL = 2;
+    private static final int MSG_XFER_XDAG_COIN = 3;
 
     @Override
     protected int getLayoutResId() {
@@ -52,8 +75,102 @@ public class MainActivity extends ToolbarActivity
             recoverFragment();
         }
         mNavigationView.setOnNavigationItemSelectedListener(this);
+        initXdagFiles();
+        initPermission();
+        initData();
     }
 
+    private void initXdagFiles() {
+        String xdagFolderPath = "/sdcard/xdag";
+        File file = new File(xdagFolderPath);
+        if(!file.exists()){
+            file.mkdirs();
+        }
+    }
+
+    private void initPermission() {
+        List<String> permissionLists = new ArrayList<>();
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            permissionLists.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            permissionLists.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED){
+            permissionLists.add(Manifest.permission.ACCESS_NETWORK_STATE);
+        }
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED){
+            permissionLists.add(Manifest.permission.ACCESS_WIFI_STATE);
+        }
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED){
+            permissionLists.add(Manifest.permission.INTERNET);
+        }
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            permissionLists.add(Manifest.permission.CAMERA);
+        }
+
+        if(!permissionLists.isEmpty()){//说明肯定有拒绝的权限
+            ActivityCompat.requestPermissions(this, permissionLists.toArray(new String[permissionLists.size()]), PERMISSION_REQUESTCODE);
+        }else{
+            Toast.makeText(this, "all permission is allowed", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void initData(){
+
+        xdagProcessThread = new HandlerThread("XdagProcessThread");
+        xdagProcessThread.start();
+        mXdagMessageHandler = new Handler(xdagProcessThread.getLooper()){
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.arg1){
+                    case MSG_CONNECT_TO_POOL:
+                    {
+                        Log.i(TAG,"receive msg connect to the pool thread id " + Thread.currentThread().getId());
+                        Bundle data = msg.getData();
+                        String poolAddr = data.getString("pool");
+                        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+                        xdagWrapper.XdagConnectToPool(poolAddr);
+                    }
+                    break;
+                    case MSG_DISCONNECT_FROM_POOL:
+                    {
+
+                    }
+                    break;
+                    case MSG_XFER_XDAG_COIN:
+                    {
+
+                    }
+                    break;
+                    default:
+                    {
+                        Log.e(TAG,"unkown command from ui");
+                    }
+                    break;
+                }
+            }
+        };
+        //connect to pool
+        String poolAddr = "xdagmine.com:13654";
+        Message msg = Message.obtain();
+        Bundle data = new Bundle();
+        data.putString("pool",poolAddr);
+        msg.arg1 = MSG_CONNECT_TO_POOL;
+        msg.setData(data);
+        mXdagMessageHandler.sendMessage(msg);
+
+        mHomeFragment.setMessagehandler(mXdagMessageHandler);
+        mReceiveFragment.setMessagehandler(mXdagMessageHandler);
+        mSendFragment.setMessagehandler(mXdagMessageHandler);
+        mSettingFragment.setMessagehandler(mXdagMessageHandler);
+    }
 
     private void addFragment() {
         mHomeFragment = HomeFragment.newInstance();

@@ -1,0 +1,614 @@
+cmake_minimum_required(VERSION 3.4.1)
+
+PROJECT(xdaglib)
+
+#crypto arm src files
+set(CRYPTO_ARM_SRC_FILES
+                src/main/cpp/openssl/crypto/aes/asm/aes-armv4.S
+                src/main/cpp/openssl/crypto/bn/asm/armv4-mont.S
+                src/main/cpp/openssl/crypto/sha/asm/sha1-armv4-large.S
+                src/main/cpp/openssl/crypto/sha/asm/sha256-armv4.S
+                src/main/cpp/openssl/crypto/sha/asm/sha512-armv4.S)
+
+#crypto no arm src files
+set(CRYPTO_NON_ARM_SRC_FILES
+                src/main/cpp/openssl/crypto/aes/aes_core.c)
+
+#crypto src files
+set(CRYPTO_COMMON_SRC_FILES
+                src/main/cpp/openssl/crypto/cryptlib.c
+                src/main/cpp/openssl/crypto/mem.c
+                src/main/cpp/openssl/crypto/mem_clr.c
+                src/main/cpp/openssl/crypto/mem_dbg.c
+                src/main/cpp/openssl/crypto/cversion.c
+                src/main/cpp/openssl/crypto/ex_data.c
+                src/main/cpp/openssl/crypto/cpt_err.c
+                src/main/cpp/openssl/crypto/ebcdic.c
+                src/main/cpp/openssl/crypto/uid.c
+                src/main/cpp/openssl/crypto/o_time.c
+                src/main/cpp/openssl/crypto/o_str.c
+                src/main/cpp/openssl/crypto/o_dir.c
+                src/main/cpp/openssl/crypto/aes/aes_cbc.c
+                src/main/cpp/openssl/crypto/aes/aes_cfb.c
+                src/main/cpp/openssl/crypto/aes/aes_ctr.c
+                src/main/cpp/openssl/crypto/aes/aes_ecb.c
+                src/main/cpp/openssl/crypto/aes/aes_misc.c
+                src/main/cpp/openssl/crypto/aes/aes_ofb.c
+                src/main/cpp/openssl/crypto/aes/aes_wrap.c
+                src/main/cpp/openssl/crypto/asn1/a_int.c
+                src/main/cpp/openssl/crypto/asn1/a_bitstr.c
+                src/main/cpp/openssl/crypto/asn1/a_bool.c
+                src/main/cpp/openssl/crypto/asn1/a_bytes.c
+                src/main/cpp/openssl/crypto/asn1/a_d2i_fp.c
+                src/main/cpp/openssl/crypto/asn1/a_digest.c
+                src/main/cpp/openssl/crypto/asn1/a_dup.c
+                src/main/cpp/openssl/crypto/asn1/a_enum.c
+                src/main/cpp/openssl/crypto/asn1/a_gentm.c
+                src/main/cpp/openssl/crypto/asn1/a_i2d_fp.c
+                src/main/cpp/openssl/crypto/asn1/a_mbstr.c
+                src/main/cpp/openssl/crypto/asn1/a_object.c
+                src/main/cpp/openssl/crypto/asn1/a_octet.c
+                src/main/cpp/openssl/crypto/asn1/a_print.c
+                src/main/cpp/openssl/crypto/asn1/a_set.c
+                src/main/cpp/openssl/crypto/asn1/a_sign.c
+                src/main/cpp/openssl/crypto/asn1/a_strex.c
+                src/main/cpp/openssl/crypto/asn1/a_strnid.c
+                src/main/cpp/openssl/crypto/asn1/a_time.c
+                src/main/cpp/openssl/crypto/asn1/a_type.c
+                src/main/cpp/openssl/crypto/asn1/a_utctm.c
+                src/main/cpp/openssl/crypto/asn1/a_utf8.c
+                src/main/cpp/openssl/crypto/asn1/a_verify.c
+                src/main/cpp/openssl/crypto/asn1/ameth_lib.c
+                src/main/cpp/openssl/crypto/asn1/asn1_err.c
+                src/main/cpp/openssl/crypto/asn1/asn1_gen.c
+                src/main/cpp/openssl/crypto/asn1/asn1_lib.c
+                src/main/cpp/openssl/crypto/asn1/asn1_par.c
+                src/main/cpp/openssl/crypto/asn1/asn_mime.c
+                src/main/cpp/openssl/crypto/asn1/asn_moid.c
+                src/main/cpp/openssl/crypto/asn1/asn_pack.c
+                src/main/cpp/openssl/crypto/asn1/bio_asn1.c
+                src/main/cpp/openssl/crypto/asn1/bio_ndef.c
+                src/main/cpp/openssl/crypto/asn1/d2i_pr.c
+                src/main/cpp/openssl/crypto/asn1/d2i_pu.c
+                src/main/cpp/openssl/crypto/asn1/evp_asn1.c
+                src/main/cpp/openssl/crypto/asn1/f_enum.c
+                src/main/cpp/openssl/crypto/asn1/f_int.c
+                src/main/cpp/openssl/crypto/asn1/f_string.c
+                src/main/cpp/openssl/crypto/asn1/i2d_pr.c
+                src/main/cpp/openssl/crypto/asn1/i2d_pu.c
+                src/main/cpp/openssl/crypto/asn1/n_pkey.c
+                src/main/cpp/openssl/crypto/asn1/nsseq.c
+                src/main/cpp/openssl/crypto/asn1/p5_pbe.c
+                src/main/cpp/openssl/crypto/asn1/p5_pbev2.c
+                src/main/cpp/openssl/crypto/asn1/p8_pkey.c
+                src/main/cpp/openssl/crypto/asn1/t_bitst.c
+                src/main/cpp/openssl/crypto/asn1/t_crl.c
+                src/main/cpp/openssl/crypto/asn1/t_pkey.c
+                src/main/cpp/openssl/crypto/asn1/t_req.c
+                src/main/cpp/openssl/crypto/asn1/t_spki.c
+                src/main/cpp/openssl/crypto/asn1/t_x509.c
+                src/main/cpp/openssl/crypto/asn1/t_x509a.c
+                src/main/cpp/openssl/crypto/asn1/tasn_dec.c
+                src/main/cpp/openssl/crypto/asn1/tasn_enc.c
+                src/main/cpp/openssl/crypto/asn1/tasn_fre.c
+                src/main/cpp/openssl/crypto/asn1/tasn_new.c
+                src/main/cpp/openssl/crypto/asn1/tasn_prn.c
+                src/main/cpp/openssl/crypto/asn1/tasn_typ.c
+                src/main/cpp/openssl/crypto/asn1/tasn_utl.c
+                src/main/cpp/openssl/crypto/asn1/x_algor.c
+                src/main/cpp/openssl/crypto/asn1/x_attrib.c
+                src/main/cpp/openssl/crypto/asn1/x_bignum.c
+                src/main/cpp/openssl/crypto/asn1/x_crl.c
+                src/main/cpp/openssl/crypto/asn1/x_exten.c
+                src/main/cpp/openssl/crypto/asn1/x_info.c
+                src/main/cpp/openssl/crypto/asn1/x_long.c
+                src/main/cpp/openssl/crypto/asn1/x_name.c
+                src/main/cpp/openssl/crypto/asn1/x_nx509.c
+                src/main/cpp/openssl/crypto/asn1/x_pkey.c
+                src/main/cpp/openssl/crypto/asn1/x_pubkey.c
+                src/main/cpp/openssl/crypto/asn1/x_req.c
+                src/main/cpp/openssl/crypto/asn1/x_sig.c
+                src/main/cpp/openssl/crypto/asn1/x_spki.c
+                src/main/cpp/openssl/crypto/asn1/x_val.c
+                src/main/cpp/openssl/crypto/asn1/x_x509.c
+                src/main/cpp/openssl/crypto/asn1/x_x509a.c
+                src/main/cpp/openssl/crypto/bf/bf_cfb64.c
+                src/main/cpp/openssl/crypto/bf/bf_ecb.c
+                src/main/cpp/openssl/crypto/bf/bf_enc.c
+                src/main/cpp/openssl/crypto/bf/bf_ofb64.c
+                src/main/cpp/openssl/crypto/bf/bf_skey.c
+                src/main/cpp/openssl/crypto/bio/b_dump.c
+                src/main/cpp/openssl/crypto/bio/b_print.c
+                src/main/cpp/openssl/crypto/bio/b_sock.c
+                src/main/cpp/openssl/crypto/bio/bf_buff.c
+                src/main/cpp/openssl/crypto/bio/bf_nbio.c
+                src/main/cpp/openssl/crypto/bio/bf_null.c
+                src/main/cpp/openssl/crypto/bio/bio_cb.c
+                src/main/cpp/openssl/crypto/bio/bio_err.c
+                src/main/cpp/openssl/crypto/bio/bio_lib.c
+                src/main/cpp/openssl/crypto/bio/bss_acpt.c
+                src/main/cpp/openssl/crypto/bio/bss_bio.c
+                src/main/cpp/openssl/crypto/bio/bss_conn.c
+                src/main/cpp/openssl/crypto/bio/bss_dgram.c
+                src/main/cpp/openssl/crypto/bio/bss_fd.c
+                src/main/cpp/openssl/crypto/bio/bss_file.c
+                src/main/cpp/openssl/crypto/bio/bss_log.c
+                src/main/cpp/openssl/crypto/bio/bss_mem.c
+                src/main/cpp/openssl/crypto/bio/bss_null.c
+                src/main/cpp/openssl/crypto/bio/bss_sock.c
+                src/main/cpp/openssl/crypto/bn/bn_add.c
+                src/main/cpp/openssl/crypto/bn/bn_asm.c
+                src/main/cpp/openssl/crypto/bn/bn_blind.c
+                src/main/cpp/openssl/crypto/bn/bn_ctx.c
+                src/main/cpp/openssl/crypto/bn/bn_div.c
+                src/main/cpp/openssl/crypto/bn/bn_err.c
+                src/main/cpp/openssl/crypto/bn/bn_exp.c
+                src/main/cpp/openssl/crypto/bn/bn_exp2.c
+                src/main/cpp/openssl/crypto/bn/bn_gcd.c
+                src/main/cpp/openssl/crypto/bn/bn_gf2m.c
+                src/main/cpp/openssl/crypto/bn/bn_kron.c
+                src/main/cpp/openssl/crypto/bn/bn_lib.c
+                src/main/cpp/openssl/crypto/bn/bn_mod.c
+                src/main/cpp/openssl/crypto/bn/bn_mont.c
+                src/main/cpp/openssl/crypto/bn/bn_mpi.c
+                src/main/cpp/openssl/crypto/bn/bn_mul.c
+                src/main/cpp/openssl/crypto/bn/bn_nist.c
+                src/main/cpp/openssl/crypto/bn/bn_prime.c
+                src/main/cpp/openssl/crypto/bn/bn_print.c
+                src/main/cpp/openssl/crypto/bn/bn_rand.c
+                src/main/cpp/openssl/crypto/bn/bn_recp.c
+                src/main/cpp/openssl/crypto/bn/bn_shift.c
+                src/main/cpp/openssl/crypto/bn/bn_sqr.c
+                src/main/cpp/openssl/crypto/bn/bn_sqrt.c
+                src/main/cpp/openssl/crypto/bn/bn_word.c
+                src/main/cpp/openssl/crypto/buffer/buf_err.c
+                src/main/cpp/openssl/crypto/buffer/buffer.c
+                src/main/cpp/openssl/crypto/comp/c_rle.c
+                src/main/cpp/openssl/crypto/comp/c_zlib.c
+                src/main/cpp/openssl/crypto/comp/comp_err.c
+                src/main/cpp/openssl/crypto/comp/comp_lib.c
+                src/main/cpp/openssl/crypto/conf/conf_api.c
+                src/main/cpp/openssl/crypto/conf/conf_def.c
+                src/main/cpp/openssl/crypto/conf/conf_err.c
+                src/main/cpp/openssl/crypto/conf/conf_lib.c
+                src/main/cpp/openssl/crypto/conf/conf_mall.c
+                src/main/cpp/openssl/crypto/conf/conf_mod.c
+                src/main/cpp/openssl/crypto/conf/conf_sap.c
+                src/main/cpp/openssl/crypto/des/cbc_cksm.c
+                src/main/cpp/openssl/crypto/des/cbc_enc.c
+                src/main/cpp/openssl/crypto/des/cfb64ede.c
+                src/main/cpp/openssl/crypto/des/cfb64enc.c
+                src/main/cpp/openssl/crypto/des/cfb_enc.c
+                src/main/cpp/openssl/crypto/des/des_enc.c
+                src/main/cpp/openssl/crypto/des/des_old.c
+                src/main/cpp/openssl/crypto/des/des_old2.c
+                src/main/cpp/openssl/crypto/des/ecb3_enc.c
+                src/main/cpp/openssl/crypto/des/ecb_enc.c
+                src/main/cpp/openssl/crypto/des/ede_cbcm_enc.c
+                src/main/cpp/openssl/crypto/des/enc_read.c
+                src/main/cpp/openssl/crypto/des/enc_writ.c
+                src/main/cpp/openssl/crypto/des/fcrypt.c
+                src/main/cpp/openssl/crypto/des/fcrypt_b.c
+                src/main/cpp/openssl/crypto/des/ofb64ede.c
+                src/main/cpp/openssl/crypto/des/ofb64enc.c
+                src/main/cpp/openssl/crypto/des/ofb_enc.c
+                src/main/cpp/openssl/crypto/des/pcbc_enc.c
+                src/main/cpp/openssl/crypto/des/qud_cksm.c
+                src/main/cpp/openssl/crypto/des/rand_key.c
+                src/main/cpp/openssl/crypto/des/read2pwd.c
+                src/main/cpp/openssl/crypto/des/rpc_enc.c
+                src/main/cpp/openssl/crypto/des/set_key.c
+                src/main/cpp/openssl/crypto/des/str2key.c
+                src/main/cpp/openssl/crypto/des/xcbc_enc.c
+                src/main/cpp/openssl/crypto/dh/dh_ameth.c
+                src/main/cpp/openssl/crypto/dh/dh_asn1.c
+                src/main/cpp/openssl/crypto/dh/dh_check.c
+                src/main/cpp/openssl/crypto/dh/dh_depr.c
+                src/main/cpp/openssl/crypto/dh/dh_err.c
+                src/main/cpp/openssl/crypto/dh/dh_gen.c
+                src/main/cpp/openssl/crypto/dh/dh_key.c
+                src/main/cpp/openssl/crypto/dh/dh_lib.c
+                src/main/cpp/openssl/crypto/dh/dh_pmeth.c
+                src/main/cpp/openssl/crypto/dsa/dsa_ameth.c
+                src/main/cpp/openssl/crypto/dsa/dsa_asn1.c
+                src/main/cpp/openssl/crypto/dsa/dsa_depr.c
+                src/main/cpp/openssl/crypto/dsa/dsa_err.c
+                src/main/cpp/openssl/crypto/dsa/dsa_gen.c
+                src/main/cpp/openssl/crypto/dsa/dsa_key.c
+                src/main/cpp/openssl/crypto/dsa/dsa_lib.c
+                src/main/cpp/openssl/crypto/dsa/dsa_ossl.c
+                src/main/cpp/openssl/crypto/dsa/dsa_pmeth.c
+                src/main/cpp/openssl/crypto/dsa/dsa_prn.c
+                src/main/cpp/openssl/crypto/dsa/dsa_sign.c
+                src/main/cpp/openssl/crypto/dsa/dsa_vrf.c
+                src/main/cpp/openssl/crypto/dso/dso_dl.c
+                src/main/cpp/openssl/crypto/dso/dso_dlfcn.c
+                src/main/cpp/openssl/crypto/dso/dso_err.c
+                src/main/cpp/openssl/crypto/dso/dso_lib.c
+                src/main/cpp/openssl/crypto/dso/dso_null.c
+                src/main/cpp/openssl/crypto/dso/dso_openssl.c
+                src/main/cpp/openssl/crypto/dso/dso_vms.c
+                src/main/cpp/openssl/crypto/dso/dso_win32.c
+                src/main/cpp/openssl/crypto/ec/ec2_mult.c
+                src/main/cpp/openssl/crypto/ec/ec2_smpl.c
+                src/main/cpp/openssl/crypto/ec/ec_ameth.c
+                src/main/cpp/openssl/crypto/ec/ec_asn1.c
+                src/main/cpp/openssl/crypto/ec/ec_check.c
+                src/main/cpp/openssl/crypto/ec/ec_curve.c
+                src/main/cpp/openssl/crypto/ec/ec_cvt.c
+                src/main/cpp/openssl/crypto/ec/ec_err.c
+                src/main/cpp/openssl/crypto/ec/ec_key.c
+                src/main/cpp/openssl/crypto/ec/ec_lib.c
+                src/main/cpp/openssl/crypto/ec/ec_mult.c
+                src/main/cpp/openssl/crypto/ec/ec_pmeth.c
+                src/main/cpp/openssl/crypto/ec/ec_print.c
+                src/main/cpp/openssl/crypto/ec/eck_prn.c
+                src/main/cpp/openssl/crypto/ec/ecp_mont.c
+                src/main/cpp/openssl/crypto/ec/ecp_nist.c
+                src/main/cpp/openssl/crypto/ec/ecp_smpl.c
+                src/main/cpp/openssl/crypto/ecdh/ech_err.c
+                src/main/cpp/openssl/crypto/ecdh/ech_key.c
+                src/main/cpp/openssl/crypto/ecdh/ech_lib.c
+                src/main/cpp/openssl/crypto/ecdh/ech_ossl.c
+                src/main/cpp/openssl/crypto/ecdsa/ecs_asn1.c
+                src/main/cpp/openssl/crypto/ecdsa/ecs_err.c
+                src/main/cpp/openssl/crypto/ecdsa/ecs_lib.c
+                src/main/cpp/openssl/crypto/ecdsa/ecs_ossl.c
+                src/main/cpp/openssl/crypto/ecdsa/ecs_sign.c
+                src/main/cpp/openssl/crypto/ecdsa/ecs_vrf.c
+                src/main/cpp/openssl/crypto/err/err.c
+                src/main/cpp/openssl/crypto/err/err_all.c
+                src/main/cpp/openssl/crypto/err/err_prn.c
+                src/main/cpp/openssl/crypto/evp/bio_b64.c
+                src/main/cpp/openssl/crypto/evp/bio_enc.c
+                src/main/cpp/openssl/crypto/evp/bio_md.c
+                src/main/cpp/openssl/crypto/evp/bio_ok.c
+                src/main/cpp/openssl/crypto/evp/c_all.c
+                src/main/cpp/openssl/crypto/evp/c_allc.c
+                src/main/cpp/openssl/crypto/evp/c_alld.c
+                src/main/cpp/openssl/crypto/evp/digest.c
+                src/main/cpp/openssl/crypto/evp/e_aes.c
+                src/main/cpp/openssl/crypto/evp/e_bf.c
+                src/main/cpp/openssl/crypto/evp/e_des.c
+                src/main/cpp/openssl/crypto/evp/e_des3.c
+                src/main/cpp/openssl/crypto/evp/e_null.c
+                src/main/cpp/openssl/crypto/evp/e_old.c
+                src/main/cpp/openssl/crypto/evp/e_rc2.c
+                src/main/cpp/openssl/crypto/evp/e_rc4.c
+                src/main/cpp/openssl/crypto/evp/e_rc5.c
+                src/main/cpp/openssl/crypto/evp/e_xcbc_d.c
+                src/main/cpp/openssl/crypto/evp/encode.c
+                src/main/cpp/openssl/crypto/evp/evp_acnf.c
+                src/main/cpp/openssl/crypto/evp/evp_enc.c
+                src/main/cpp/openssl/crypto/evp/evp_err.c
+                src/main/cpp/openssl/crypto/evp/evp_key.c
+                src/main/cpp/openssl/crypto/evp/evp_lib.c
+                src/main/cpp/openssl/crypto/evp/evp_pbe.c
+                src/main/cpp/openssl/crypto/evp/evp_pkey.c
+                src/main/cpp/openssl/crypto/evp/m_dss.c
+                src/main/cpp/openssl/crypto/evp/m_dss1.c
+                src/main/cpp/openssl/crypto/evp/m_ecdsa.c
+                src/main/cpp/openssl/crypto/evp/m_md4.c
+                src/main/cpp/openssl/crypto/evp/m_md5.c
+                src/main/cpp/openssl/crypto/evp/m_mdc2.c
+                src/main/cpp/openssl/crypto/evp/m_null.c
+                src/main/cpp/openssl/crypto/evp/m_ripemd.c
+                src/main/cpp/openssl/crypto/evp/m_sha1.c
+                src/main/cpp/openssl/crypto/evp/m_sigver.c
+                src/main/cpp/openssl/crypto/evp/m_wp.c
+                src/main/cpp/openssl/crypto/evp/names.c
+                src/main/cpp/openssl/crypto/evp/p5_crpt.c
+                src/main/cpp/openssl/crypto/evp/p5_crpt2.c
+                src/main/cpp/openssl/crypto/evp/p_dec.c
+                src/main/cpp/openssl/crypto/evp/p_enc.c
+                src/main/cpp/openssl/crypto/evp/p_lib.c
+                src/main/cpp/openssl/crypto/evp/p_open.c
+                src/main/cpp/openssl/crypto/evp/p_seal.c
+                src/main/cpp/openssl/crypto/evp/p_sign.c
+                src/main/cpp/openssl/crypto/evp/p_verify.c
+                src/main/cpp/openssl/crypto/evp/pmeth_fn.c
+                src/main/cpp/openssl/crypto/evp/pmeth_gn.c
+                src/main/cpp/openssl/crypto/evp/pmeth_lib.c
+                src/main/cpp/openssl/crypto/hmac/hm_ameth.c
+                src/main/cpp/openssl/crypto/hmac/hm_pmeth.c
+                src/main/cpp/openssl/crypto/hmac/hmac.c
+                src/main/cpp/openssl/crypto/krb5/krb5_asn.c
+                src/main/cpp/openssl/crypto/lhash/lh_stats.c
+                src/main/cpp/openssl/crypto/lhash/lhash.c
+                src/main/cpp/openssl/crypto/md4/md4_dgst.c
+                src/main/cpp/openssl/crypto/md4/md4_one.c
+                src/main/cpp/openssl/crypto/md5/md5_dgst.c
+                src/main/cpp/openssl/crypto/md5/md5_one.c
+                src/main/cpp/openssl/crypto/modes/cbc128.c
+                src/main/cpp/openssl/crypto/modes/cfb128.c
+                src/main/cpp/openssl/crypto/modes/ctr128.c
+                src/main/cpp/openssl/crypto/modes/ofb128.c
+                src/main/cpp/openssl/crypto/objects/o_names.c
+                src/main/cpp/openssl/crypto/objects/obj_dat.c
+                src/main/cpp/openssl/crypto/objects/obj_err.c
+                src/main/cpp/openssl/crypto/objects/obj_lib.c
+                src/main/cpp/openssl/crypto/objects/obj_xref.c
+                src/main/cpp/openssl/crypto/ocsp/ocsp_asn.c
+                src/main/cpp/openssl/crypto/ocsp/ocsp_cl.c
+                src/main/cpp/openssl/crypto/ocsp/ocsp_err.c
+                src/main/cpp/openssl/crypto/ocsp/ocsp_ext.c
+                src/main/cpp/openssl/crypto/ocsp/ocsp_ht.c
+                src/main/cpp/openssl/crypto/ocsp/ocsp_lib.c
+                src/main/cpp/openssl/crypto/ocsp/ocsp_prn.c
+                src/main/cpp/openssl/crypto/ocsp/ocsp_srv.c
+                src/main/cpp/openssl/crypto/ocsp/ocsp_vfy.c
+                src/main/cpp/openssl/crypto/pem/pem_all.c
+                src/main/cpp/openssl/crypto/pem/pem_err.c
+                src/main/cpp/openssl/crypto/pem/pem_info.c
+                src/main/cpp/openssl/crypto/pem/pem_lib.c
+                src/main/cpp/openssl/crypto/pem/pem_oth.c
+                src/main/cpp/openssl/crypto/pem/pem_pk8.c
+                src/main/cpp/openssl/crypto/pem/pem_pkey.c
+                src/main/cpp/openssl/crypto/pem/pem_seal.c
+                src/main/cpp/openssl/crypto/pem/pem_sign.c
+                src/main/cpp/openssl/crypto/pem/pem_x509.c
+                src/main/cpp/openssl/crypto/pem/pem_xaux.c
+                src/main/cpp/openssl/crypto/pem/pvkfmt.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_add.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_asn.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_attr.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_crpt.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_crt.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_decr.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_init.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_key.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_kiss.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_mutl.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_npas.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_p8d.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_p8e.c
+                src/main/cpp/openssl/crypto/pkcs12/p12_utl.c
+                src/main/cpp/openssl/crypto/pkcs12/pk12err.c
+                src/main/cpp/openssl/crypto/pkcs7/pk7_asn1.c
+                src/main/cpp/openssl/crypto/pkcs7/pk7_attr.c
+                src/main/cpp/openssl/crypto/pkcs7/pk7_doit.c
+                src/main/cpp/openssl/crypto/pkcs7/pk7_lib.c
+                src/main/cpp/openssl/crypto/pkcs7/pk7_mime.c
+                src/main/cpp/openssl/crypto/pkcs7/pk7_smime.c
+                src/main/cpp/openssl/crypto/pkcs7/pkcs7err.c
+                src/main/cpp/openssl/crypto/rand/md_rand.c
+                src/main/cpp/openssl/crypto/rand/rand_egd.c
+                src/main/cpp/openssl/crypto/rand/rand_err.c
+                src/main/cpp/openssl/crypto/rand/rand_lib.c
+                src/main/cpp/openssl/crypto/rand/rand_unix.c
+                src/main/cpp/openssl/crypto/rand/randfile.c
+                src/main/cpp/openssl/crypto/rc2/rc2_cbc.c
+                src/main/cpp/openssl/crypto/rc2/rc2_ecb.c
+                src/main/cpp/openssl/crypto/rc2/rc2_skey.c
+                src/main/cpp/openssl/crypto/rc2/rc2cfb64.c
+                src/main/cpp/openssl/crypto/rc2/rc2ofb64.c
+                src/main/cpp/openssl/crypto/rc4/rc4_enc.c
+                src/main/cpp/openssl/crypto/rc4/rc4_skey.c
+                src/main/cpp/openssl/crypto/ripemd/rmd_dgst.c
+                src/main/cpp/openssl/crypto/ripemd/rmd_one.c
+                src/main/cpp/openssl/crypto/rsa/rsa_ameth.c
+                src/main/cpp/openssl/crypto/rsa/rsa_asn1.c
+                src/main/cpp/openssl/crypto/rsa/rsa_chk.c
+                src/main/cpp/openssl/crypto/rsa/rsa_eay.c
+                src/main/cpp/openssl/crypto/rsa/rsa_err.c
+                src/main/cpp/openssl/crypto/rsa/rsa_gen.c
+                src/main/cpp/openssl/crypto/rsa/rsa_lib.c
+                src/main/cpp/openssl/crypto/rsa/rsa_none.c
+                src/main/cpp/openssl/crypto/rsa/rsa_null.c
+                src/main/cpp/openssl/crypto/rsa/rsa_oaep.c
+                src/main/cpp/openssl/crypto/rsa/rsa_pk1.c
+                src/main/cpp/openssl/crypto/rsa/rsa_pmeth.c
+                src/main/cpp/openssl/crypto/rsa/rsa_prn.c
+                src/main/cpp/openssl/crypto/rsa/rsa_pss.c
+                src/main/cpp/openssl/crypto/rsa/rsa_saos.c
+                src/main/cpp/openssl/crypto/rsa/rsa_sign.c
+                src/main/cpp/openssl/crypto/rsa/rsa_ssl.c
+                src/main/cpp/openssl/crypto/rsa/rsa_x931.c
+                src/main/cpp/openssl/crypto/sha/sha1_one.c
+                src/main/cpp/openssl/crypto/sha/sha1dgst.c
+                src/main/cpp/openssl/crypto/sha/sha256.c
+                src/main/cpp/openssl/crypto/sha/sha512.c
+                src/main/cpp/openssl/crypto/sha/sha_dgst.c
+                src/main/cpp/openssl/crypto/stack/stack.c
+                src/main/cpp/openssl/crypto/ts/ts_err.c
+                src/main/cpp/openssl/crypto/txt_db/txt_db.c
+                src/main/cpp/openssl/crypto/ui/ui_compat.c
+                src/main/cpp/openssl/crypto/ui/ui_err.c
+                src/main/cpp/openssl/crypto/ui/ui_lib.c
+                src/main/cpp/openssl/crypto/ui/ui_openssl.c
+                src/main/cpp/openssl/crypto/ui/ui_util.c
+                src/main/cpp/openssl/crypto/x509/by_dir.c
+                src/main/cpp/openssl/crypto/x509/by_file.c
+                src/main/cpp/openssl/crypto/x509/x509_att.c
+                src/main/cpp/openssl/crypto/x509/x509_cmp.c
+                src/main/cpp/openssl/crypto/x509/x509_d2.c
+                src/main/cpp/openssl/crypto/x509/x509_def.c
+                src/main/cpp/openssl/crypto/x509/x509_err.c
+                src/main/cpp/openssl/crypto/x509/x509_ext.c
+                src/main/cpp/openssl/crypto/x509/x509_lu.c
+                src/main/cpp/openssl/crypto/x509/x509_obj.c
+                src/main/cpp/openssl/crypto/x509/x509_r2x.c
+                src/main/cpp/openssl/crypto/x509/x509_req.c
+                src/main/cpp/openssl/crypto/x509/x509_set.c
+                src/main/cpp/openssl/crypto/x509/x509_trs.c
+                src/main/cpp/openssl/crypto/x509/x509_txt.c
+                src/main/cpp/openssl/crypto/x509/x509_v3.c
+                src/main/cpp/openssl/crypto/x509/x509_vfy.c
+                src/main/cpp/openssl/crypto/x509/x509_vpm.c
+                src/main/cpp/openssl/crypto/x509/x509cset.c
+                src/main/cpp/openssl/crypto/x509/x509name.c
+                src/main/cpp/openssl/crypto/x509/x509rset.c
+                src/main/cpp/openssl/crypto/x509/x509spki.c
+                src/main/cpp/openssl/crypto/x509/x509type.c
+                src/main/cpp/openssl/crypto/x509/x_all.c
+                src/main/cpp/openssl/crypto/x509v3/pcy_cache.c
+                src/main/cpp/openssl/crypto/x509v3/pcy_data.c
+                src/main/cpp/openssl/crypto/x509v3/pcy_lib.c
+                src/main/cpp/openssl/crypto/x509v3/pcy_map.c
+                src/main/cpp/openssl/crypto/x509v3/pcy_node.c
+                src/main/cpp/openssl/crypto/x509v3/pcy_tree.c
+                src/main/cpp/openssl/crypto/x509v3/v3_akey.c
+                src/main/cpp/openssl/crypto/x509v3/v3_akeya.c
+                src/main/cpp/openssl/crypto/x509v3/v3_alt.c
+                src/main/cpp/openssl/crypto/x509v3/v3_bcons.c
+                src/main/cpp/openssl/crypto/x509v3/v3_bitst.c
+                src/main/cpp/openssl/crypto/x509v3/v3_conf.c
+                src/main/cpp/openssl/crypto/x509v3/v3_cpols.c
+                src/main/cpp/openssl/crypto/x509v3/v3_crld.c
+                src/main/cpp/openssl/crypto/x509v3/v3_enum.c
+                src/main/cpp/openssl/crypto/x509v3/v3_extku.c
+                src/main/cpp/openssl/crypto/x509v3/v3_genn.c
+                src/main/cpp/openssl/crypto/x509v3/v3_ia5.c
+                src/main/cpp/openssl/crypto/x509v3/v3_info.c
+                src/main/cpp/openssl/crypto/x509v3/v3_int.c
+                src/main/cpp/openssl/crypto/x509v3/v3_lib.c
+                src/main/cpp/openssl/crypto/x509v3/v3_ncons.c
+                src/main/cpp/openssl/crypto/x509v3/v3_ocsp.c
+                src/main/cpp/openssl/crypto/x509v3/v3_pci.c
+                src/main/cpp/openssl/crypto/x509v3/v3_pcia.c
+                src/main/cpp/openssl/crypto/x509v3/v3_pcons.c
+                src/main/cpp/openssl/crypto/x509v3/v3_pku.c
+                src/main/cpp/openssl/crypto/x509v3/v3_pmaps.c
+                src/main/cpp/openssl/crypto/x509v3/v3_prn.c
+                src/main/cpp/openssl/crypto/x509v3/v3_purp.c
+                src/main/cpp/openssl/crypto/x509v3/v3_skey.c
+                src/main/cpp/openssl/crypto/x509v3/v3_sxnet.c
+                src/main/cpp/openssl/crypto/x509v3/v3_utl.c
+                src/main/cpp/openssl/crypto/x509v3/v3err.c
+                )
+
+#ssl common src files
+set(SSL_COMMON_SRC_FILES
+                src/main/cpp/openssl/ssl/s2_meth.c
+                src/main/cpp/openssl/ssl/s2_srvr.c
+                src/main/cpp/openssl/ssl/s2_clnt.c
+                src/main/cpp/openssl/ssl/s2_lib.c
+                src/main/cpp/openssl/ssl/s2_enc.c
+                src/main/cpp/openssl/ssl/s2_pkt.c
+                src/main/cpp/openssl/ssl/s3_meth.c
+                src/main/cpp/openssl/ssl/s3_srvr.c
+                src/main/cpp/openssl/ssl/s3_clnt.c
+                src/main/cpp/openssl/ssl/s3_lib.c
+                src/main/cpp/openssl/ssl/s3_enc.c
+                src/main/cpp/openssl/ssl/s3_pkt.c
+                src/main/cpp/openssl/ssl/s3_both.c
+                src/main/cpp/openssl/ssl/s23_meth.c
+                src/main/cpp/openssl/ssl/s23_srvr.c
+                src/main/cpp/openssl/ssl/s23_clnt.c
+                src/main/cpp/openssl/ssl/s23_lib.c
+                src/main/cpp/openssl/ssl/s23_pkt.c
+                src/main/cpp/openssl/ssl/t1_meth.c
+                src/main/cpp/openssl/ssl/t1_srvr.c
+                src/main/cpp/openssl/ssl/t1_clnt.c
+                src/main/cpp/openssl/ssl/t1_lib.c
+                src/main/cpp/openssl/ssl/t1_enc.c
+                src/main/cpp/openssl/ssl/t1_reneg.c
+                src/main/cpp/openssl/ssl/ssl_lib.c
+                src/main/cpp/openssl/ssl/ssl_err2.c
+                src/main/cpp/openssl/ssl/ssl_cert.c
+                src/main/cpp/openssl/ssl/ssl_sess.c
+                src/main/cpp/openssl/ssl/ssl_ciph.c
+                src/main/cpp/openssl/ssl/ssl_stat.c
+                src/main/cpp/openssl/ssl/ssl_rsa.c
+                src/main/cpp/openssl/ssl/ssl_asn1.c
+                src/main/cpp/openssl/ssl/ssl_txt.c
+                src/main/cpp/openssl/ssl/ssl_algs.c
+                src/main/cpp/openssl/ssl/bio_ssl.c
+                src/main/cpp/openssl/ssl/ssl_err.c
+                src/main/cpp/openssl/ssl/kssl.c
+    )
+
+#xdaglib
+set(XDAG_SRC_FILES
+                src/main/cpp/xdaglib/dus/crc_c.c
+                src/main/cpp/xdaglib/dus/dfslib_crypt.c
+                src/main/cpp/xdaglib/dus/dfslib_random.c
+                src/main/cpp/xdaglib/dus/dfslib_string.c
+                src/main/cpp/xdaglib/dus/dfsrsa.c
+                src/main/cpp/xdaglib/dnet/dnet_command.c
+                src/main/cpp/xdaglib/dnet/dnet_connection.c
+                src/main/cpp/xdaglib/dnet/dnet_crypt.c
+                src/main/cpp/xdaglib/dnet/dnet_database.c
+                src/main/cpp/xdaglib/dnet/dnet_files.c
+                src/main/cpp/xdaglib/dnet/dnet_log.c
+                src/main/cpp/xdaglib/dnet/dnet_main.c
+                src/main/cpp/xdaglib/dnet/dnet_packet.c
+                src/main/cpp/xdaglib/dnet/dnet_stream.c
+                src/main/cpp/xdaglib/dnet/dnet_threads.c
+                src/main/cpp/xdaglib/dnet/dnet_tap.c
+
+                src/main/cpp/xdaglib/client/address.c
+                src/main/cpp/xdaglib/client/block.c
+                src/main/cpp/xdaglib/client/crypt.c
+                src/main/cpp/xdaglib/client/hash.c
+                src/main/cpp/xdaglib/client/log.c
+                src/main/cpp/xdaglib/client/memory.c
+                src/main/cpp/xdaglib/client/netdb.c
+                src/main/cpp/xdaglib/client/pool.c
+                src/main/cpp/xdaglib/client/sha256.c
+                src/main/cpp/xdaglib/client/storage.c
+                src/main/cpp/xdaglib/client/sync.c
+                src/main/cpp/xdaglib/client/transport.c
+                src/main/cpp/xdaglib/client/wallet.c
+                src/main/cpp/xdaglib/client/xdagmain.c
+                src/main/cpp/xdaglib/wrapper/xdagwrapper.c
+
+                src/main/cpp/libxdag_jni.cpp
+                )
+
+#xdag flags
+set(XDAG_COMMON_FLAGS
+        -g -fstack-protector -O0 -DHAVE_STRUCT_TIMESPEC -D_TIMESPEC_DEFINED -DDFSTOOLS -DCHEATCOIN -DNDEBUG -D_CRT_SECURE_NO_WARNINGS -Wall)
+
+#ssl common flags
+set(SSL_COMMON_FLAGS
+        -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN
+        -DOPENSSL_NO_CAMELLIA -DOPENSSL_NO_CAPIENG -DOPENSSL_NO_CAST -DOPENSSL_NO_CMS -DOPENSSL_NO_GMP -DOPENSSL_NO_IDEA -DOPENSSL_NO_JPAKE -DOPENSSL_NO_MD2 -DOPENSSL_NO_MDC2 -DOPENSSL_NO_RC5 -DOPENSSL_NO_SHA0 -DOPENSSL_NO_RFC3779 -DOPENSSL_NO_SEED -DOPENSSL_NO_STORE -DOPENSSL_NO_WHIRLPOOL
+        -DOPENSSL_NO_HW -DOPENSSL_NO_ENGINE -DZLIB -DNO_WINDOWS_BRAINDEATH
+    )
+
+#crypto arm flags
+set(CRYPTO_ARM_FLAGS -DOPENSSL_BN_ASM_MONT -DAES_ASM -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM)
+
+#cypto include path
+set(CRYPTO_INCLUDE_PATH
+                src/main/cpp
+                src/main/cpp/openssl/crypto/asn1
+                src/main/cpp/openssl/crypto/evp
+                src/main/cpp/openssl/include
+                src/main/cpp/openssl/include/openssl)
+
+#include directories
+include_directories(${CRYPTO_INCLUDE_PATH})
+
+#cflags
+add_definitions(${SSL_COMMON_FLAGS})
+add_definitions(${XDAG_COMMON_FLAGS})
+
+#if target abi is arm
+if(${ANDROID_ABI} STREQUAL "armeabi-v7a")
+enable_language(ASM)
+add_definitions(${CRYPTO_ARM_FLAGS})
+set(CRYPTO_SRC_FILES ${CRYPTO_COMMON_SRC_FILES} ${CRYPTO_ARM_SRC_FILES})
+endif()
+
+#if target abi is x86
+if(${ANDROID_ABI} STREQUAL "x86")
+set(CRYPTO_SRC_FILES ${CRYPTO_COMMON_SRC_FILES} ${CRYPTO_NON_ARM_SRC_FILES})
+endif()
+
+#crypto
+add_library(crypto SHARED ${CRYPTO_SRC_FILES})
+
+#ssl
+set(SSL_SRC_FILES ${SSL_COMMON_SRC_FILES})
+add_library(ssl SHARED ${SSL_SRC_FILES})
+
+#xdag
+add_library(xdag SHARED ${XDAG_SRC_FILES})
+
+#generate libraries
+target_link_libraries(crypto -ldl -lz)
+target_link_libraries(ssl crypto)
+target_link_libraries(xdag ssl crypto -llog)
+
