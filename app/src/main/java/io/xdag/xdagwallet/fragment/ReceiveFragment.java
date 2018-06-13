@@ -17,13 +17,14 @@ import io.xdag.common.base.BaseFragment;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
+import io.xdag.xdagwallet.wrapper.XdagWrapper;
 
 /**
  * created by lxm on 2018/5/24.
  * <p>
  * desc :
  */
-public class ReceiveFragment extends BaseFragment {
+public class ReceiveFragment extends BaseFragment{
 
     private static final String TAG = "XdagWallet";
 
@@ -53,16 +54,12 @@ public class ReceiveFragment extends BaseFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
-        Log.i(TAG,"process msg in Thread " + Thread.currentThread().getId());
-        Log.i(TAG,"event event type is " + event.eventType);
-        Log.i(TAG,"event account is " + event.address);
-        Log.i(TAG,"event balace is " + event.balance);
-        Log.i(TAG,"event state is " + event.state);
+        Log.i(TAG,"receive fragment process msg in Thread " + Thread.currentThread().getId());
 
         switch (event.eventType){
+
             case XdagEvent.en_event_update_state:
             {
-                Log.i(TAG,"update xdag  ui ");
                 mTvAddress.setText(event.address);
                 if(event.addressLoadState == 1){
                     Bitmap qrCode = QRUtils.getInstance().createQRCode(event.address);
@@ -74,4 +71,5 @@ public class ReceiveFragment extends BaseFragment {
             break;
         }
     }
+
 }

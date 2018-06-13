@@ -21,13 +21,14 @@ import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
+import io.xdag.xdagwallet.wrapper.XdagWrapper;
 
 /**
  * created by lxm on 2018/5/24.
  * <p>
  * desc :
  */
-public class HomeFragment extends RefreshFragment {
+public class HomeFragment extends RefreshFragment{
 
     @BindView(R.id.home_rv)
     RecyclerView mRecyclerView;
@@ -43,7 +44,9 @@ public class HomeFragment extends RefreshFragment {
     private Handler mXdagMessageHandler;
 
     public static HomeFragment newInstance() {
-        return new HomeFragment();
+        HomeFragment homeFragment = new HomeFragment();
+        EventBus.getDefault().register(homeFragment);
+        return homeFragment;
     }
 
     public void setMessagehandler(Handler xdagMessageHandler){
@@ -75,8 +78,6 @@ public class HomeFragment extends RefreshFragment {
                 }
             }
         });
-
-        EventBus.getDefault().register(this);
     }
 
 
@@ -101,11 +102,8 @@ public class HomeFragment extends RefreshFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
-        Log.i(TAG,"process msg in Thread " + Thread.currentThread().getId());
+        Log.i(TAG,"home fragment process msg in Thread " + Thread.currentThread().getId());
         Log.i(TAG,"event event type is " + event.eventType);
-        Log.i(TAG,"event account is " + event.address);
-        Log.i(TAG,"event balace is " + event.balance);
-        Log.i(TAG,"event state is " + event.state);
 
         switch (event.eventType){
             case XdagEvent.en_event_type_pwd:
@@ -114,16 +112,16 @@ public class HomeFragment extends RefreshFragment {
             case XdagEvent.en_event_set_rdm:
             {
                 //show dialog and ask user to type in password
-                AuthDialogFragment authDialogFragment = new AuthDialogFragment();
-
-                authDialogFragment.setAuthHintInfo(GetAuthHintString(event.eventType));
-                authDialogFragment.show(getActivity().getFragmentManager(), "Auth Dialog");
+                if(isVisible()){
+                    Log.i(TAG,"home fragment show the auth dialog");
+                    AuthDialogFragment authDialogFragment = new AuthDialogFragment();
+                    authDialogFragment.setAuthHintInfo(GetAuthHintString(event.eventType));
+                    authDialogFragment.show(getActivity().getFragmentManager(), "Auth Dialog");
+                }
             }
             break;
-
             case XdagEvent.en_event_update_state:
             {
-                Log.i(TAG,"update xdag  ui ");
                 mCollapsingToolbarLayout.setTitle(event.balance);
                 mTvAddress.setText(event.address);
             }

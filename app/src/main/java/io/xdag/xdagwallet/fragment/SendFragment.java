@@ -2,6 +2,7 @@ package io.xdag.xdagwallet.fragment;
 
 import android.os.Handler;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,11 +15,17 @@ import cn.bertsir.zbar.QRManager;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import io.xdag.common.base.BaseFragment;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ZbarUtil;
+import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
 
 import java.util.List;
@@ -28,9 +35,10 @@ import java.util.List;
  * <p>
  * desc :
  */
-public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClickListener {
+public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClickListener,AuthDialogFragment.AuthInputListener {
 
     private Handler mXdagMessageHandler;
+    private static final String TAG = "XdagWallet";
 
     public void setMessagehandler(Handler xdagMessageHandler){
         this.mXdagMessageHandler = xdagMessageHandler;
@@ -91,6 +99,51 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
     }
 
     public static SendFragment newInstance() {
-        return new SendFragment();
+        SendFragment fragment = new SendFragment();
+        EventBus.getDefault().register(fragment);
+        return fragment;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void ProcessXdagEvent(XdagEvent event) {
+        Log.i(TAG,"send fragment process msg in Thread " + Thread.currentThread().getId());
+        Log.i(TAG,"send fragment event event type is " + event.eventType);
+
+        switch (event.eventType){
+            case XdagEvent.en_event_type_pwd:
+            {
+                //show dialog and ask user to type in password
+                if(isVisible()){
+                    Log.i(TAG,"send fragment show the auth dialog");
+                    AuthDialogFragment authDialogFragment = new AuthDialogFragment();
+                    authDialogFragment.setAuthHintInfo(GetAuthHintString(event.eventType));
+                    authDialogFragment.show(getActivity().getFragmentManager(), "Auth Dialog");
+                }
+            }
+            break;
+        }
+    }
+
+    private String GetAuthHintString(final int eventType){
+        switch (eventType){
+            case XdagEvent.en_event_set_pwd:
+                return "set password";
+            case XdagEvent.en_event_type_pwd:
+                return "input password";
+            case XdagEvent.en_event_retype_pwd:
+                return "retype password";
+            case XdagEvent.en_event_set_rdm:
+                return "set random keys";
+            default:
+                return "input password";
+        }
+    }
+
+    @Override
+    public void onAuthInputComplete(String authInfo) {
+        Log.i(TAG,"auth info is " + authInfo);
+        //notify native thread
+        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+        xdagWrapper.XdagNotifyMsg(authInfo);
     }
 }

@@ -85,8 +85,8 @@ JNIEXPORT jint JNICALL  JNI_OnLoad(JavaVM *ajvm, void *reserved)
     }
     gProcessNativeMethod = tmpMethodID;
 
-    pthread_cond_init(&gWaitUiCond,PTHREAD_COND_INITIALIZER);
-    pthread_mutex_init(&gWaitUiMutex,PTHREAD_MUTEX_INITIALIZER);
+    pthread_cond_init(&gWaitUiCond,NULL);
+    pthread_mutex_init(&gWaitUiMutex,NULL);
     gAuthInfoMap.clear();
 
     return JNI_VERSION_1_4;
