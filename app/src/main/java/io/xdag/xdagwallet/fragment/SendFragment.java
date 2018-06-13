@@ -19,6 +19,7 @@ import com.yanzhenjie.permission.Permission;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.w3c.dom.Text;
 
 import io.xdag.common.base.BaseFragment;
 import io.xdag.xdagwallet.MainActivity;
@@ -47,6 +48,7 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
     @BindView(R.id.send_et_amount) EditText mEtAmount;
     @BindView(R.id.send_et_address) EditText mEtAddress;
     @BindView(R.id.send_btn_xdag) Button mBtnSendXdag;
+    @BindView(R.id.send_tv_available)TextView mTvAvailable;
 
     @Override
     protected int getLayoutResId() {
@@ -118,6 +120,13 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
                     AuthDialogFragment authDialogFragment = new AuthDialogFragment();
                     authDialogFragment.setAuthHintInfo(GetAuthHintString(event.eventType));
                     authDialogFragment.show(getActivity().getFragmentManager(), "Auth Dialog");
+                }
+            }
+            break;
+            case XdagEvent.en_event_update_state:
+            {
+                if(event.balanceLoadState == 1){
+                    mTvAvailable.setText("Available "+event.balance+" XDAG");
                 }
             }
             break;

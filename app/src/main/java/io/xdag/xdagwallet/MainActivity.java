@@ -81,8 +81,8 @@ public class MainActivity extends ToolbarActivity
             recoverFragment();
         }
         mNavigationView.setOnNavigationItemSelectedListener(this);
-        initXdagFiles();
         initPermission();
+        initXdagFiles();
         initData();
     }
 
