@@ -41,17 +41,17 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
     // https://github.com/JakeWharton/butterknife
     implementation "com.jakewharton:butterknife:${butterknife_version}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknife_version}"
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    implementation('com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36', {
+    implementation("com.github.CymChad:BaseRecyclerViewAdapterHelper:${adapter_helper}", {
         exclude group: 'com.android.support'
     })
     // https://github.com/Tapadoo/Alerter
     implementation 'com.tapadoo.android:alerter:2.0.5'
     // https://github.com/yanzhenjie/AndPermission
     implementation 'com.yanzhenjie:permission:2.0.0-rc6'
-    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }
