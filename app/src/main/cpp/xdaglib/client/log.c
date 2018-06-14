@@ -148,6 +148,7 @@ void xdag_app_log(en_xdag_app_log_level level,const char* file,int line,const ch
     pthread_mutex_lock(&app_log_mutex);
 
     st_xdag_event event;
+	memset(&event,0,sizeof(st_xdag_event));
     event.event_type = en_event_xdag_log_print;
     event.log_level = level;
 

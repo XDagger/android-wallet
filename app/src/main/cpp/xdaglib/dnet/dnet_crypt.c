@@ -73,6 +73,7 @@ static int input_password(const char *prompt, char *buf, unsigned len) {
 
     //invoke ui callback
     st_xdag_event event;
+    memset(&event,0,sizeof(st_xdag_event));
     event.procedure_type = en_procedure_init_wallet;
 
     if(0 == strncmp(prompt,"Password",strlen("Password"))){
