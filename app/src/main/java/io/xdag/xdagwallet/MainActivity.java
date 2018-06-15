@@ -147,12 +147,18 @@ public class MainActivity extends ToolbarActivity
                     break;
                     case MSG_DISCONNECT_FROM_POOL:
                     {
-
+                        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+                        xdagWrapper.XdagDisConnectFromPool();
                     }
                     break;
                     case MSG_XFER_XDAG_COIN:
                     {
-
+                        Log.i(TAG,"receive msg xfer coin thread id " + Thread.currentThread().getId());
+                        Bundle data = msg.getData();
+                        String address = data.getString("address");
+                        String amount = data.getString("amount");
+                        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+                        xdagWrapper.XdagXferToAddress(address,amount);
                     }
                     break;
                     default:

@@ -1,6 +1,8 @@
 package io.xdag.xdagwallet.fragment;
 
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -96,8 +98,17 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
         String address = mEtAddress.getText().toString();
         String amount = mEtAmount.getText().toString();
 
-        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-        xdagWrapper.XdagXferToAddress(address,amount);
+        //XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+        //xdagWrapper.XdagXferToAddress(address,amount);
+        //connect to pool
+        String poolAddr = "xdagmine.com:13654";
+        Message msg = Message.obtain();
+        Bundle data = new Bundle();
+        data.putString("address",address);
+        data.putString("amount",amount);
+        msg.arg1 = 3;
+        msg.setData(data);
+        mXdagMessageHandler.sendMessage(msg);
     }
 
     public static SendFragment newInstance() {
