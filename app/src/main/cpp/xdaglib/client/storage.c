@@ -188,11 +188,9 @@ struct xdag_block *xdag_storage_load(xdag_hash_t hash, xdag_time_t time, uint64_
 
 	return buf;
 }
-#if defined(ANDROID) || defined(__ANDROID__)
+
 #define bufsize (1024)
-#else
-#define bufsize (0x100000 / sizeof(struct xdag_block))
-#endif
+
 static int sort_callback(const void *l, const void *r)
 {
 	struct xdag_block **L = (struct xdag_block **)l, **R = (struct xdag_block **)r;
