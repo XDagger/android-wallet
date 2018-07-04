@@ -158,7 +158,7 @@ extern void xdag_wrapper_init(const void* callback_object,
 
 extern void xdag_send_coin(const char* amount,const char* address);
 
-extern void report_ui_walletinit_event(en_xdag_event_type event_type,const char* err_msg);
+extern void report_ui_walletinit_event(en_xdag_event_type event_type,en_xdag_program_state program_state,const char* err_msg);
 extern void report_ui_xfer_event(en_xdag_event_type event_type,const char* err_msg);
 
 

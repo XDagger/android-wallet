@@ -1,4 +1,29 @@
 <resources>
     <string name="empty">""</string>
+    <string name="alert_dialog_ok">OK</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="s_loading">Loading……</string>
+    <string name="network_is_unavailable">network is unavailable</string>
+    <string name="settings">settings</string>
+
     <string name="ban_chinese">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`¬!"£$%^*()~=#{}[];':,./?/*-_+|&#060;&#062;&#064;&#038;</string>
+
+    <!-- custom xdag dialog -->
+    <style name="XdagDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <style name="XdagProgressDialog" parent="@style/XdagDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <string name="dialog_defalut_title">Notice</string>
+
 </resources>

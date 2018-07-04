@@ -24,6 +24,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import org.w3c.dom.Text;
 
 import io.xdag.common.base.BaseFragment;
+import io.xdag.common.util.DialogUtil;
+import io.xdag.xdagwallet.App;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.AlertUtil;
@@ -128,6 +130,9 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
                 //show dialog and ask user to type in password
                 if(isVisible()){
                     Log.i(TAG,"send fragment show the auth dialog");
+                    if(DialogUtil.isShow()){
+                        DialogUtil.dismissLoadingDialog();
+                    }
                     AuthDialogFragment authDialogFragment = new AuthDialogFragment();
                     authDialogFragment.setAuthHintInfo(GetAuthHintString(event.eventType));
                     authDialogFragment.show(getActivity().getFragmentManager(), "Auth Dialog");
@@ -138,6 +143,11 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
             {
                 if(event.balanceLoadState == 1){
                     mTvAvailable.setText("Available "+event.balance+" XDAG");
+                }
+                if(event.programState < XdagEvent.CONN){
+                    DialogUtil.showLoadingDialog(getContext(),"Loading......",false);
+                }else{
+                    DialogUtil.dismissLoadingDialog();
                 }
             }
             break;

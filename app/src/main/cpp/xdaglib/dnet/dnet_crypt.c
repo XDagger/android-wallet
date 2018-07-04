@@ -329,6 +329,8 @@ int dnet_crypt_init(const char *version) {
         return 2;
     }
 
+crypt_init_start:
+
     xdag_app_debug("dnet crypt init open dnet.dat start");
     f = fopen(KEYFILE, "rb");
     if (f) {
@@ -345,6 +347,7 @@ int dnet_crypt_init(const char *version) {
                     char pwd[256];
 
                     res = (*g_input_password)("Password", pwd, 256);
+                    report_ui_walletinit_event(en_event_update_state,INIT,NULL);
                     if(res == -1){
                         xdag_app_debug("dnet crypt user cancel password type in");
                         fclose(f);
@@ -371,10 +374,9 @@ int dnet_crypt_init(const char *version) {
         struct dfslib_string str, str1;
         xdag_app_debug("dnet crypt generate %s start !!!",KEYFILE);
         f = fopen(KEYFILE, "wb");
-
         if (!f) {
             xdag_app_debug("dnet crypt generate %s failed %s  !!!",KEYFILE,strerror(errno));
-            report_ui_walletinit_event(en_event_open_dnetfile_error,NULL);
+            report_ui_walletinit_event(en_event_open_dnetfile_error,INIT,NULL);
             return 3;
         }
 
@@ -382,7 +384,7 @@ int dnet_crypt_init(const char *version) {
         memset(buf, 0, 256);
 
         res = (*g_input_password)("Set password", pwd, 256);
-        xdag_app_info("dnet crypt set passwd %s",pwd);
+        report_ui_walletinit_event(en_event_update_state,INIT,NULL);
         if(res == -1){
             xdag_app_debug("dnet crypt set passwd user cancel password type in");
             fclose(f);
@@ -391,7 +393,7 @@ int dnet_crypt_init(const char *version) {
 
         dfslib_utf8_string(&str, pwd, strlen(pwd));
         res = (*g_input_password)("Re-type password", pwd1, 256);
-        xdag_app_info("dnet crypt re-type passwd %s",pwd1);
+        report_ui_walletinit_event(en_event_update_state,INIT,NULL);
         if(res == -1){
             fclose(f);
             xdag_app_debug("dnet crypt re-type passwd user cancel password re-type in");
@@ -400,23 +402,23 @@ int dnet_crypt_init(const char *version) {
         dfslib_utf8_string(&str1, pwd1, strlen(pwd1));
         if (str.len != str1.len || memcmp(str.utf8, str1.utf8, str.len)) {
             fclose(f);
-            report_ui_walletinit_event(en_event_pwd_not_same,NULL);
+            report_ui_walletinit_event(en_event_pwd_not_same,INIT,NULL);
             return 4;
         }
 
         if (str.len) set_user_crypt(&str);
         res = (*g_input_password)("Type random keys", buf, 256);
+        report_ui_walletinit_event(en_event_update_state,INIT,NULL);
         if(res == -1){
             fclose(f);
             xdag_app_debug("dnet crypt set random user cancel random type in");
             return -1;
         }
-
         dfslib_random_fill(keys->pub.key, DNET_KEYLEN * sizeof(dfsrsa_t), 0, dfslib_utf8_string(&str, buf, strlen(buf)));
-        xdag_app_debug("Generating host keys... \n");
-        g_keylen = DNET_KEYLEN;
 
-        //generate public key and private key
+        xdag_app_debug("Generating host keys... \n");
+        report_ui_walletinit_event(en_event_update_state,KEYS,NULL);
+        g_keylen = DNET_KEYLEN;
         dfsrsa_keygen(keys->priv.key, keys->pub.key, g_keylen);
         dnet_make_key(keys->priv.key, g_keylen);
         dnet_make_key(keys->pub.key, g_keylen);
@@ -431,7 +433,7 @@ int dnet_crypt_init(const char *version) {
         if (fwrite(keys, sizeof(struct dnet_keys), 1, f) != 1) {
             xdag_app_debug("dnet crypt generate dnet key start !!!");
             fclose(f);
-            report_ui_walletinit_event(en_event_write_dnet_file_error,NULL);
+            report_ui_walletinit_event(en_event_write_dnet_file_error,INIT,NULL);
             return 5;
         }
 
@@ -447,7 +449,7 @@ int dnet_crypt_init(const char *version) {
     //add trust hosts
     if (!(host = dnet_add_host(&g_dnet_keys->pub, 0, 127 << 24 | 1, 0, DNET_ROUTE_LOCAL))) {
         xdag_app_debug("dnet crypt add trust host failed !!!");
-        report_ui_walletinit_event(en_event_add_trust_host_error,NULL);
+        report_ui_walletinit_event(en_event_add_trust_host_error,INIT,NULL);
         return 6;
     }
 
@@ -459,7 +461,8 @@ int dnet_crypt_init(const char *version) {
     int res = -dnet_test_keys();
     if(res){
         xdag_app_debug("dnet crypt test keys failed !!!");
-        report_ui_walletinit_event(en_event_pwd_error,NULL);
+        report_ui_walletinit_event(en_event_pwd_error,INIT,NULL);
+        goto crypt_init_start;
     }
 
     return res;

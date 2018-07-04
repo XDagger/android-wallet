@@ -154,6 +154,19 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
         }
         return NULL;
 
+        case en_event_pwd_error:
+        {
+            LOGI("password error wait user confirm");
+            pthread_mutex_lock(&gWaitUiMutex);
+            invokeJavaCallBack(event);
+            pthread_cond_wait(&gWaitUiCond,&gWaitUiMutex);
+
+            LOGI("user confirm password error");
+
+            pthread_mutex_unlock(&gWaitUiMutex);
+        }
+        return NULL;
+
         case en_event_update_state:
         {
             LOGI("receive xdag event  en_event_update_state xdag program state %d",event->xdag_program_state);

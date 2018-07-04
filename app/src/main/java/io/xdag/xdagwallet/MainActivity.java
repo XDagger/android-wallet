@@ -121,7 +121,7 @@ public class MainActivity extends ToolbarActivity
             permissionLists.add(Manifest.permission.CAMERA);
         }
 
-        if(!permissionLists.isEmpty()){//说明肯定有拒绝的权限
+        if(!permissionLists.isEmpty()){//some permission request  is rejected
             ActivityCompat.requestPermissions(this, permissionLists.toArray(new String[permissionLists.size()]), PERMISSION_REQUESTCODE);
         }else{
             Toast.makeText(this, "all permission is allowed", Toast.LENGTH_SHORT).show();

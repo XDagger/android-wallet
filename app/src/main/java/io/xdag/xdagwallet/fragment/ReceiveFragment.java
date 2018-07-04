@@ -14,6 +14,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bertsir.zbar.QRUtils;
 import io.xdag.common.base.BaseFragment;
+import io.xdag.common.util.DialogUtil;
+import io.xdag.xdagwallet.App;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
@@ -66,6 +68,13 @@ public class ReceiveFragment extends BaseFragment{
                     mImgQrAddress.setImageBitmap(qrCode);
                 }else{
                     mImgQrAddress.setImageDrawable(getResources().getDrawable(R.drawable.qrcode_loading));
+                }
+                if(isVisible() && !DialogUtil.isShow()){
+                    if(event.programState < XdagEvent.CONN){
+                        DialogUtil.showLoadingDialog(getContext(),"Loading......",false);
+                    }else{
+                        DialogUtil.dismissLoadingDialog();
+                    }
                 }
             }
             break;

@@ -16,6 +16,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import io.xdag.common.base.RefreshFragment;
 import io.xdag.common.tool.AppBarStateChangedListener;
+import io.xdag.common.util.DialogUtil;
+import io.xdag.xdagwallet.App;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
@@ -114,16 +116,42 @@ public class HomeFragment extends RefreshFragment{
                 //show dialog and ask user to type in password
                 if(isVisible()){
                     Log.i(TAG,"home fragment show the auth dialog");
+                    if(DialogUtil.isShow()){
+                        DialogUtil.dismissLoadingDialog();
+                    }
                     AuthDialogFragment authDialogFragment = new AuthDialogFragment();
                     authDialogFragment.setAuthHintInfo(GetAuthHintString(event.eventType));
                     authDialogFragment.show(getActivity().getFragmentManager(), "Auth Dialog");
                 }
             }
             break;
+            case XdagEvent.en_event_pwd_error:
+            {
+                if(isVisible() && DialogUtil.isShow()){
+                    DialogUtil.dismissLoadingDialog();
+                }
+                //ask user to type password again
+                DialogUtil.showAlertDialog(getActivity(),null,"password error","OK",null);
+                DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
+                    @Override
+                    public void onClick() {
+                        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+                        xdagWrapper.XdagNotifyMsg("");
+                    }
+                });
+            }
+            break;
             case XdagEvent.en_event_update_state:
             {
                 mCollapsingToolbarLayout.setTitle(event.balance);
                 mTvAddress.setText(event.address);
+                if(isVisible() && !DialogUtil.isShow()){
+                    if(event.programState < XdagEvent.CONN){
+                        DialogUtil.showLoadingDialog(getContext(),"Loading......",false);
+                    }else{
+                        DialogUtil.dismissLoadingDialog();
+                    }
+                }
             }
             break;
         }

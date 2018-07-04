@@ -88,4 +88,9 @@
 
     <color name="TRANSPARENT">@android:color/transparent</color>
 
+    <!-- 菜单背景色 -->
+    <color name="head_bottomline_bg">#b2b2b2</color>
+
+    <color name="c_alert_btntxt">#007aff</color>
+
 </resources>
