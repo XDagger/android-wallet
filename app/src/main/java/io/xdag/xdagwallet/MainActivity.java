@@ -227,15 +227,6 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
         }
     }
 
-
-    @Override
-    public void onBackPressed() {
-        Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
-        launcherIntent.addCategory(Intent.CATEGORY_HOME);
-        startActivity(launcherIntent);
-    }
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
