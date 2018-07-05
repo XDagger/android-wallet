@@ -18,4 +18,10 @@
     <string name="send_to_address">Send To Address</string>
     <string name="amount_to_send">Amount to Send</string>
     <string name="amount">Amount</string>
+
+    <string name="please_set_password">please set password</string>
+    <string name="please_retype_password">please retype password</string>
+    <string name="please_input_password">please input password</string>
+    <string name="please_input_random">please input random</string>
+
 </resources>

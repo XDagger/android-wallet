@@ -1,9 +1,13 @@
 package io.xdag.xdagwallet.fragment;
 
+import android.app.Activity;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -17,7 +21,6 @@ import butterknife.OnClick;
 import io.xdag.common.base.RefreshFragment;
 import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.common.util.DialogUtil;
-import io.xdag.xdagwallet.App;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
@@ -41,6 +44,7 @@ public class HomeFragment extends RefreshFragment{
     @BindView(R.id.home_tv_address)
     TextView mTvAddress;
 
+    private Activity mActivity;
     private String mAddress = "ewrXrSDbCmqH/fkLuQkEMiwed3709C2k";
     private static final String TAG = "XdagWallet";
     private Handler mXdagMessageHandler;
@@ -64,6 +68,7 @@ public class HomeFragment extends RefreshFragment{
     @Override
     protected void initView(View rootView) {
         super.initView(rootView);
+        mActivity = getActivity();
         mTvAddress.setText("Not Ready");
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(new TransactionAdapter());
@@ -106,7 +111,7 @@ public class HomeFragment extends RefreshFragment{
     public void ProcessXdagEvent(XdagEvent event) {
         Log.i(TAG,"home fragment process msg in Thread " + Thread.currentThread().getId());
         Log.i(TAG,"event event type is " + event.eventType);
-
+        String titleMsg = "";
         switch (event.eventType){
             case XdagEvent.en_event_type_pwd:
             case XdagEvent.en_event_set_pwd:
@@ -119,9 +124,19 @@ public class HomeFragment extends RefreshFragment{
                     if(DialogUtil.isShow()){
                         DialogUtil.dismissLoadingDialog();
                     }
-                    AuthDialogFragment authDialogFragment = new AuthDialogFragment();
-                    authDialogFragment.setAuthHintInfo(GetAuthHintString(event.eventType));
-                    authDialogFragment.show(getActivity().getFragmentManager(), "Auth Dialog");
+
+                    DialogUtil.showAlertDialog(mActivity,GetAuthHintString(event.eventType),
+                            null,mActivity.getString(R.string.alert_dialog_ok),null);
+                    DialogUtil.getAlertDialog().setEditPwdMode(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    DialogUtil.getAlertDialog().setEditShow(true);
+                    DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
+                        @Override
+                        public void onClick() {
+                            String authInfo = DialogUtil.getAlertDialog().getEditMessage();
+                            XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+                            xdagWrapper.XdagNotifyMsg(authInfo);
+                        }
+                    });
                 }
             }
             break;
@@ -159,16 +174,16 @@ public class HomeFragment extends RefreshFragment{
 
     private String GetAuthHintString(final int eventType){
         switch (eventType){
-            case XdagEvent.en_event_set_pwd:
-                return "set password";
             case XdagEvent.en_event_type_pwd:
-                return "input password";
+                return mActivity.getString(R.string.please_input_password);
+            case XdagEvent.en_event_set_pwd:
+                return mActivity.getString(R.string.please_set_password);
             case XdagEvent.en_event_retype_pwd:
-                return "retype password";
+                return mActivity.getString(R.string.please_retype_password);
             case XdagEvent.en_event_set_rdm:
-                return "set random keys";
+                return mActivity.getString(R.string.please_input_random);
             default:
-                return "input password";
+                return mActivity.getString(R.string.please_input_password);
         }
     }
 }

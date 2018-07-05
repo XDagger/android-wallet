@@ -26,6 +26,10 @@ public class DialogUtil {
 
     private static XdagProgressDialog mXdagProgressDialog;
 
+    public static AlertDialog getAlertDialog(){
+        return mAlertDialog;
+    }
+
     public interface OnLeftListener {
         public void onClick();
     }

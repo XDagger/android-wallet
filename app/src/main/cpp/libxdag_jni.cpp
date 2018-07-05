@@ -99,8 +99,8 @@ JNIEXPORT jint JNICALL Java_io_xdag_xdagwallet_wrapper_XdagWrapper_XdagNotifyNat
         jstring jauthInfo){
     pthread_mutex_lock(&gWaitUiMutex);
     //put password into buffer
-    LOGI("signal message to native");
     std::string authInfo = env->GetStringUTFChars(jauthInfo,NULL);
+    LOGI("signal message to native receive autho info from ui is %s",authInfo.c_str());
     gAuthInfoMap.insert(std::pair<std::string, std::string>("set-password",authInfo));
 
     pthread_cond_signal(&gWaitUiCond);
@@ -162,7 +162,7 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             pthread_cond_wait(&gWaitUiCond,&gWaitUiMutex);
 
             LOGI("user confirm password error");
-
+            gAuthInfoMap.clear();
             pthread_mutex_unlock(&gWaitUiMutex);
         }
         return NULL;

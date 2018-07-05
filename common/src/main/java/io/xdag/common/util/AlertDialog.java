@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.text.Html;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -133,6 +134,10 @@ public class AlertDialog extends Dialog implements View.OnClickListener{
             editText.setVisibility(View.GONE);
             mContent.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void setEditPwdMode(int  type){
+        editText.setInputType(type);
     }
 
     /**

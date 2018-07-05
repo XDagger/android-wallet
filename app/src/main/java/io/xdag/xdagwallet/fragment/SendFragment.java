@@ -1,9 +1,11 @@
 package io.xdag.xdagwallet.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,9 +42,10 @@ import java.util.List;
  * <p>
  * desc :
  */
-public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClickListener,AuthDialogFragment.AuthInputListener {
+public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClickListener{
 
     private Handler mXdagMessageHandler;
+    private Activity mActivity;
     private static final String TAG = "XdagWallet";
 
     public void setMessagehandler(Handler xdagMessageHandler){
@@ -63,6 +66,7 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
     @Override
     protected void initView(View rootView) {
         super.initView(rootView);
+        mActivity = getActivity();
         getToolbar().inflateMenu(R.menu.toolbar_scan);
         getToolbar().setOnMenuItemClickListener(this);
     }
@@ -100,10 +104,6 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
         String address = mEtAddress.getText().toString();
         String amount = mEtAmount.getText().toString();
 
-        //XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-        //xdagWrapper.XdagXferToAddress(address,amount);
-        //connect to pool
-        String poolAddr = "xdagmine.com:13654";
         Message msg = Message.obtain();
         Bundle data = new Bundle();
         data.putString("address",address);
@@ -133,9 +133,19 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
                     if(DialogUtil.isShow()){
                         DialogUtil.dismissLoadingDialog();
                     }
-                    AuthDialogFragment authDialogFragment = new AuthDialogFragment();
-                    authDialogFragment.setAuthHintInfo(GetAuthHintString(event.eventType));
-                    authDialogFragment.show(getActivity().getFragmentManager(), "Auth Dialog");
+                    DialogUtil.showAlertDialog(mActivity,mActivity.getString(R.string.please_input_password),
+                                                null,mActivity.getString(R.string.alert_dialog_ok),null);
+
+                    DialogUtil.getAlertDialog().setEditPwdMode(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    DialogUtil.getAlertDialog().setEditShow(true);
+                    DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
+                        @Override
+                        public void onClick() {
+                            String authInfo = DialogUtil.getAlertDialog().getEditMessage();
+                            XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+                            xdagWrapper.XdagNotifyMsg(authInfo);
+                        }
+                    });
                 }
             }
             break;
@@ -152,28 +162,5 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
             }
             break;
         }
-    }
-
-    private String GetAuthHintString(final int eventType){
-        switch (eventType){
-            case XdagEvent.en_event_set_pwd:
-                return "set password";
-            case XdagEvent.en_event_type_pwd:
-                return "input password";
-            case XdagEvent.en_event_retype_pwd:
-                return "retype password";
-            case XdagEvent.en_event_set_rdm:
-                return "set random keys";
-            default:
-                return "input password";
-        }
-    }
-
-    @Override
-    public void onAuthInputComplete(String authInfo) {
-        Log.i(TAG,"auth info is " + authInfo);
-        //notify native thread
-        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-        xdagWrapper.XdagNotifyMsg(authInfo);
     }
 }

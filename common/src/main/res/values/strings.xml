@@ -5,7 +5,7 @@
     <string name="s_loading">Loading……</string>
     <string name="network_is_unavailable">network is unavailable</string>
     <string name="settings">settings</string>
-
+    <string name="dialog_defalut_title">Notice</string>
     <string name="ban_chinese">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`¬!"£$%^*()~=#{}[];':,./?/*-_+|&#060;&#062;&#064;&#038;</string>
 
     <!-- custom xdag dialog -->
@@ -24,6 +24,6 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
-    <string name="dialog_defalut_title">Notice</string>
+
 
 </resources>

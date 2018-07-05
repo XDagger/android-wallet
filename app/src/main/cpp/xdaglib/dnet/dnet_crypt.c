@@ -314,14 +314,19 @@ int dnet_crypt_init(const char *version) {
     FILE *f;
     struct dnet_keys *keys;
     struct dnet_host *host;
-    int i;
+    int i = 0;
+    int res = 0;
+    int len = 0;
+    struct dfslib_string str,str1;
+    char pwd[256],pwd1[256],buf[256];
+
     g_dnet_keys = malloc(sizeof(struct dnet_keys));
 	if (!g_dnet_keys) {
 		xdag_app_err(" malloc memory for g_dnet_keys failed \n ");
 		return 1;
 	}
-
     keys = g_dnet_keys;
+dnet_crypt_reinit:
     dfslib_random_init();
     xdag_app_debug("dnet crc init start");
     if (crc_init()) {
@@ -329,49 +334,50 @@ int dnet_crypt_init(const char *version) {
         return 2;
     }
 
-crypt_init_start:
-
     xdag_app_debug("dnet crypt init open dnet.dat start");
     f = fopen(KEYFILE, "rb");
     if (f) {
+        memset(pwd,0,sizeof(pwd));
+        memset(pwd1,0,sizeof(pwd1));
+        memset(buf,0,sizeof(buf));
+        memset(&str,0,sizeof(str));
+        memset(&str1,0,sizeof(str1));
+
         if (fread(keys, sizeof(struct dnet_keys), 1, f) != 1) {
-                xdag_app_debug("dnet crypt init open %s failed generate it !!!",KEYFILE);
-                fclose(f);
-                f = 0;
+            xdag_app_debug("dnet crypt init open %s failed generate it !!!",KEYFILE);
+            fclose(f);
+            f = 0;
         }
         else {
-                g_keylen = dnet_detect_keylen(keys->pub.key, DNET_KEYLEN);
-                if (dnet_test_keys()) {
-                    int res;
-                    struct dfslib_string str;
-                    char pwd[256];
+            g_keylen = dnet_detect_keylen(keys->pub.key, DNET_KEYLEN);
+            if (dnet_test_keys()) {
 
-                    res = (*g_input_password)("Password", pwd, 256);
-                    report_ui_walletinit_event(en_event_update_state,INIT,NULL);
-                    if(res == -1){
-                        xdag_app_debug("dnet crypt user cancel password type in");
-                        fclose(f);
-                        return -1;
-                    }
-
-                    dfslib_utf8_string(&str, pwd, strlen(pwd));
-                    set_user_crypt(&str);
-                    if (g_dnet_user_crypt) {
-                        for (i = 0; i < (sizeof(struct dnet_keys) >> 9); ++i)
-                                dfslib_uncrypt_sector(g_dnet_user_crypt, (uint32_t *)keys + 128 * i, ~(uint64_t)i);
-                    }
-                    g_keylen = 0;
-                    g_keylen = dnet_detect_keylen(keys->pub.key, DNET_KEYLEN);
+                res = (*g_input_password)("Password", pwd, 256);
+                xdag_app_debug("user typed password from ui is  %s",pwd);
+                report_ui_walletinit_event(en_event_update_state,INIT,NULL);
+                if(res == -1){
+                    xdag_app_debug("dnet crypt user cancel password type in");
+                    fclose(f);
+                    return -1;
                 }
+                xdag_app_debug("dfslib utf8 str ");
+                dfslib_utf8_string(&str, pwd, strlen(pwd));
+                set_user_crypt(&str);
+                if (g_dnet_user_crypt) {
+                    for (i = 0; i < (sizeof(struct dnet_keys) >> 9); ++i)
+                            dfslib_uncrypt_sector(g_dnet_user_crypt, (uint32_t *)keys + 128 * i, ~(uint64_t)i);
+                }
+                g_keylen = 0;
+                g_keylen = dnet_detect_keylen(keys->pub.key, DNET_KEYLEN);
+            }
         }
     }
     if (!f) {
-        int res;
-        int len;
-        char buf[256];
-        char pwd[256], pwd1[256];
-
-        struct dfslib_string str, str1;
+        memset(pwd,0,sizeof(pwd));
+        memset(pwd1,0,sizeof(pwd1));
+        memset(buf,0,sizeof(buf));
+        memset(&str,0,sizeof(str));
+        memset(&str1,0,sizeof(str1));
         xdag_app_debug("dnet crypt generate %s start !!!",KEYFILE);
         f = fopen(KEYFILE, "wb");
         if (!f) {
@@ -458,11 +464,14 @@ crypt_init_start:
         dnet_set_host_version(host, version + 1);
     }
 
-    int res = -dnet_test_keys();
+    //wait util user type the right password
+    res = -dnet_test_keys();
     if(res){
         xdag_app_debug("dnet crypt test keys failed !!!");
         report_ui_walletinit_event(en_event_pwd_error,INIT,NULL);
-        goto crypt_init_start;
+        crc_uninit();
+        memset(keys,0,sizeof(struct dnet_keys));
+        goto dnet_crypt_reinit;
     }
 
     return res;

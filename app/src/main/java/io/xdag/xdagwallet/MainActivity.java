@@ -45,8 +45,7 @@ import io.xdag.xdagwallet.wrapper.XdagWrapper;
  * desc : The home activity
  */
 
-public class MainActivity extends ToolbarActivity
-    implements BottomNavigationView.OnNavigationItemSelectedListener ,AuthDialogFragment.AuthInputListener{
+public class MainActivity extends ToolbarActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
     @BindView(R.id.navigation)
     BottomNavigationView mNavigationView;
@@ -299,13 +298,5 @@ public class MainActivity extends ToolbarActivity
     public void copyText(String text) {
         ClipBoardUtil.copyToClipBoard(text);
         AlertUtil.show(mContext, getString(R.string.copy_success));
-    }
-
-    @Override
-    public void onAuthInputComplete(String authInfo) {
-        Log.i(TAG,"auth info is " + authInfo);
-        //notify native thread
-        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-        xdagWrapper.XdagNotifyMsg(authInfo);
     }
 }

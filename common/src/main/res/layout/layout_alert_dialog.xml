@@ -47,7 +47,7 @@
                 android:layout_gravity="center"
                 android:visibility="gone"
                 android:inputType="text"
-                android:maxLength="8"
+                android:maxLength="16"
                 android:gravity="left|center_vertical"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="8dp"
