@@ -62,10 +62,10 @@ public class HomeFragment extends RefreshFragment{
     @Override
     protected void initView(View rootView) {
         super.initView(rootView);
-        mTvAddress.setText("Not Ready");
+        mTvAddress.setText(R.string.not_ready);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(new TransactionAdapter());
-        mCollapsingToolbarLayout.setTitle("Not Ready");
+        mCollapsingToolbarLayout.setTitle(getString(R.string.not_ready));
         mAppBarLayout.addOnOffsetChangedListener(new AppBarStateChangedListener() {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {

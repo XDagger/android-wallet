@@ -23,5 +23,6 @@
     <string name="please_retype_password">please retype password</string>
     <string name="please_input_password">please input password</string>
     <string name="please_input_random">please input random</string>
+    <string name="not_ready">Not Ready</string>
 
 </resources>

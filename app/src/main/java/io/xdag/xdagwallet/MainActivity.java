@@ -1,22 +1,20 @@
 package io.xdag.xdagwallet;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 import butterknife.BindView;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Permission;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.ClipBoardUtil;
@@ -27,7 +25,6 @@ import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,9 +68,7 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
             recoverFragment();
         }
         mNavigationView.setOnNavigationItemSelectedListener(this);
-        initPermission();
-        initXdagFiles();
-        initData();
+        initPermissions();
     }
 
     private void initXdagFiles() {
@@ -84,38 +79,24 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
         }
     }
 
-    private void initPermission() {
-        List<String> permissionLists = new ArrayList<>();
 
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            permissionLists.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        }
+    /**
+     * request permissions
+     */
+    private void initPermissions() {
 
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            permissionLists.add(Manifest.permission.READ_EXTERNAL_STORAGE);
-        }
+        AndPermission.with(mContext)
+            .runtime()
+            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+            .onGranted(new Action<List<String>>() {
+                @Override
+                public void onAction(List<String> data) {
 
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED){
-            permissionLists.add(Manifest.permission.ACCESS_NETWORK_STATE);
-        }
-
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED){
-            permissionLists.add(Manifest.permission.ACCESS_WIFI_STATE);
-        }
-
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED){
-            permissionLists.add(Manifest.permission.INTERNET);
-        }
-
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            permissionLists.add(Manifest.permission.CAMERA);
-        }
-
-        if(!permissionLists.isEmpty()){//some permission request  is rejected
-            ActivityCompat.requestPermissions(this, permissionLists.toArray(new String[permissionLists.size()]), PERMISSION_REQUESTCODE);
-        }else{
-            Toast.makeText(this, "all permission is allowed", Toast.LENGTH_SHORT).show();
-        }
+                    initXdagFiles();
+                    initData();
+                }
+            })
+            .start();
     }
 
     private void initData(){
