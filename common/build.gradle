@@ -46,9 +46,6 @@ dependencies {
 
     // https://github.com/square/okhttp
     api "com.squareup.okhttp3:okhttp:${okhttp_verison}"
-    api "com.squareup.okhttp3:logging-interceptor:${okhttp_verison}"
-    // https://github.com/franmontiel/PersistentCookieJar
-    api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     // https://github.com/jgilfelt/chuck
     api('com.readystatesoftware.chuck:library:1.1.0', {
         exclude group: 'com.android.support'

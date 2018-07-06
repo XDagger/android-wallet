@@ -49,7 +49,6 @@ public class MainActivity extends ToolbarActivity
     private Handler mXdagMessageHandler;
 
     private static final String TAG = "XdagWallet";
-    private static final int PERMISSION_REQUESTCODE = 1;
 
     private static final int MSG_CONNECT_TO_POOL = 1;
     private static final int MSG_DISCONNECT_FROM_POOL = 2;

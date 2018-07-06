@@ -20,7 +20,7 @@ public class RetrofitClient {
         builder = new Retrofit.Builder()
             // gson
             .addConverterFactory(GsonConverterFactory.create(new Gson()))
-            // rxjava2 adapter set request nei in io thread
+            // set request net in io thread
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()));
 
     }
