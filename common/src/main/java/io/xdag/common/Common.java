@@ -15,10 +15,12 @@ public class Common {
 
     @SuppressLint("StaticFieldLeak")
     private static Context sContext;
+    private static boolean sDebug;
 
 
-    public static void init(Context context) {
+    public static void init(Context context, boolean isDebug) {
         sContext = context;
+        sDebug = isDebug;
     }
 
 
@@ -26,6 +28,9 @@ public class Common {
         return sContext;
     }
 
+    public static boolean isDebug() {
+        return sDebug;
+    }
 
     public static Resources getResources() {
         return getContext().getResources();

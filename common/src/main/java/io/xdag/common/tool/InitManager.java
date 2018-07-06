@@ -2,6 +2,7 @@ package io.xdag.common.tool;
 
 import android.app.Application;
 import com.squareup.leakcanary.LeakCanary;
+import io.xdag.common.BuildConfig;
 import io.xdag.common.Common;
 
 /**
@@ -30,7 +31,7 @@ public class InitManager {
 
     public void init(Application application) {
         mApplication = application;
-        Common.init(mApplication);
+        Common.init(mApplication, true);
         initLeakCanary();
     }
 
