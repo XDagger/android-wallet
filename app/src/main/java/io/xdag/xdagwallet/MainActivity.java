@@ -23,6 +23,7 @@ import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
+import io.xdag.xdagwallet.util.ToolbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
 import java.io.File;
 import java.util.List;
@@ -33,7 +34,8 @@ import java.util.List;
  * desc : The home activity
  */
 
-public class MainActivity extends ToolbarActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends ToolbarActivity
+    implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.navigation)
     BottomNavigationView mNavigationView;
@@ -43,7 +45,7 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
     private SendFragment mSendFragment;
     private SettingFragment mSettingFragment;
     private Fragment mShowFragment;
-    private HandlerThread xdagProcessThread;
+    private HandlerThread mXdagProcessThread;
     private Handler mXdagMessageHandler;
 
     private static final String TAG = "XdagWallet";
@@ -52,6 +54,7 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
     private static final int MSG_CONNECT_TO_POOL = 1;
     private static final int MSG_DISCONNECT_FROM_POOL = 2;
     private static final int MSG_XFER_XDAG_COIN = 3;
+
 
     @Override
     protected int getLayoutResId() {
@@ -71,10 +74,11 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
         initPermissions();
     }
 
+
     private void initXdagFiles() {
         String xdagFolderPath = "/sdcard/xdag";
         File file = new File(xdagFolderPath);
-        if(!file.exists()){
+        if (!file.exists()) {
             file.mkdirs();
         }
     }
@@ -99,42 +103,41 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
             .start();
     }
 
-    private void initData(){
 
-        xdagProcessThread = new HandlerThread("XdagProcessThread");
-        xdagProcessThread.start();
-        mXdagMessageHandler = new Handler(xdagProcessThread.getLooper()){
+    private void initData() {
+
+        mXdagProcessThread = new HandlerThread("XdagProcessThread");
+        mXdagProcessThread.start();
+        mXdagMessageHandler = new Handler(mXdagProcessThread.getLooper()) {
             @Override
             public void handleMessage(Message msg) {
-                switch (msg.arg1){
-                    case MSG_CONNECT_TO_POOL:
-                    {
-                        Log.i(TAG,"receive msg connect to the pool thread id " + Thread.currentThread().getId());
+                switch (msg.arg1) {
+                    case MSG_CONNECT_TO_POOL: {
+                        Log.i(TAG, "receive msg connect to the pool thread id " +
+                            Thread.currentThread().getId());
                         Bundle data = msg.getData();
                         String poolAddr = data.getString("pool");
                         XdagWrapper xdagWrapper = XdagWrapper.getInstance();
                         xdagWrapper.XdagConnectToPool(poolAddr);
                     }
                     break;
-                    case MSG_DISCONNECT_FROM_POOL:
-                    {
+                    case MSG_DISCONNECT_FROM_POOL: {
                         XdagWrapper xdagWrapper = XdagWrapper.getInstance();
                         xdagWrapper.XdagDisConnectFromPool();
                     }
                     break;
-                    case MSG_XFER_XDAG_COIN:
-                    {
-                        Log.i(TAG,"receive msg xfer coin thread id " + Thread.currentThread().getId());
+                    case MSG_XFER_XDAG_COIN: {
+                        Log.i(TAG,
+                            "receive msg xfer coin thread id " + Thread.currentThread().getId());
                         Bundle data = msg.getData();
                         String address = data.getString("address");
                         String amount = data.getString("amount");
                         XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                        xdagWrapper.XdagXferToAddress(address,amount);
+                        xdagWrapper.XdagXferToAddress(address, amount);
                     }
                     break;
-                    default:
-                    {
-                        Log.e(TAG,"unkown command from ui");
+                    default: {
+                        Log.e(TAG, "unkown command from ui");
                     }
                     break;
                 }
@@ -144,7 +147,7 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
         String poolAddr = "xdagmine.com:13654";
         Message msg = Message.obtain();
         Bundle data = new Bundle();
-        data.putString("pool",poolAddr);
+        data.putString("pool", poolAddr);
         msg.arg1 = MSG_CONNECT_TO_POOL;
         msg.setData(data);
         mXdagMessageHandler.sendMessage(msg);
@@ -154,6 +157,7 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
         mSendFragment.setMessagehandler(mXdagMessageHandler);
         mSettingFragment.setMessagehandler(mXdagMessageHandler);
     }
+
 
     private void addFragment() {
         mHomeFragment = HomeFragment.newInstance();
@@ -199,6 +203,7 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
         }
     }
 
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -216,33 +221,8 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
                 break;
             default:
         }
-        setToolbar(item.getItemId());
+        ToolbarUtil.setToolbar(item.getItemId(), getToolbar());
         return true;
-    }
-
-
-    private void setToolbar(int itemId) {
-        switch (itemId) {
-            case R.id.navigation_home:
-                getToolbar().setVisibility(View.GONE);
-                break;
-            case R.id.navigation_receive:
-                getToolbar().setTitle(R.string.receive_xdag);
-                getToolbar().setVisibility(View.VISIBLE);
-                getToolbar().getMenu().setGroupVisible(0, false);
-                break;
-            case R.id.navigation_send:
-                getToolbar().setTitle(R.string.send_xdag);
-                getToolbar().setVisibility(View.VISIBLE);
-                getToolbar().getMenu().setGroupVisible(0, true);
-                break;
-            case R.id.navigation_setting:
-                getToolbar().setTitle(R.string.setting);
-                getToolbar().setVisibility(View.VISIBLE);
-                getToolbar().getMenu().setGroupVisible(0, false);
-                break;
-            default:
-        }
     }
 
 
@@ -255,11 +235,5 @@ public class MainActivity extends ToolbarActivity implements BottomNavigationVie
     @Override
     protected int getToolbarTitle() {
         return R.string.app_name;
-    }
-
-
-    public void copyText(String text) {
-        ClipBoardUtil.copyToClipBoard(text);
-        AlertUtil.show(mContext, getString(R.string.copy_success));
     }
 }

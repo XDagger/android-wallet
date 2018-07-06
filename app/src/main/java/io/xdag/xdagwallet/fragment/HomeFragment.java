@@ -17,6 +17,7 @@ import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
 import io.xdag.xdagwallet.util.AlertUtil;
+import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
 import org.greenrobot.eventbus.EventBus;
@@ -28,7 +29,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * <p>
  * desc :
  */
-public class HomeFragment extends RefreshFragment{
+public class HomeFragment extends RefreshFragment {
 
     @BindView(R.id.home_rv)
     RecyclerView mRecyclerView;
@@ -43,15 +44,18 @@ public class HomeFragment extends RefreshFragment{
     private static final String TAG = "XdagWallet";
     private Handler mXdagMessageHandler;
 
+
     public static HomeFragment newInstance() {
         HomeFragment homeFragment = new HomeFragment();
         EventBus.getDefault().register(homeFragment);
         return homeFragment;
     }
 
-    public void setMessagehandler(Handler xdagMessageHandler){
+
+    public void setMessagehandler(Handler xdagMessageHandler) {
         this.mXdagMessageHandler = xdagMessageHandler;
     }
+
 
     @Override
     protected int getLayoutResId() {
@@ -82,7 +86,7 @@ public class HomeFragment extends RefreshFragment{
 
 
     @OnClick(R.id.home_tv_address) void copyAddress() {
-        ((MainActivity) mContext).copyText(mTvAddress.getText().toString());
+        CopyUtil.copyAddress(mContext, mTvAddress.getText().toString());
     }
 
 
@@ -100,27 +104,29 @@ public class HomeFragment extends RefreshFragment{
         AlertUtil.show(mContext, getString(R.string.refresh_success));
     }
 
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
-        Log.i(TAG,"home fragment process msg in Thread " + Thread.currentThread().getId());
-        Log.i(TAG,"event event type is " + event.eventType);
+        Log.i(TAG, "home fragment process msg in Thread " + Thread.currentThread().getId());
+        Log.i(TAG, "event event type is " + event.eventType);
         String titleMsg = "";
-        switch (event.eventType){
+        switch (event.eventType) {
             case XdagEvent.en_event_type_pwd:
             case XdagEvent.en_event_set_pwd:
             case XdagEvent.en_event_retype_pwd:
-            case XdagEvent.en_event_set_rdm:
-            {
+            case XdagEvent.en_event_set_rdm: {
                 //show dialog and ask user to type in password
-                if(isVisible()){
-                    Log.i(TAG,"home fragment show the auth dialog");
-                    if(DialogUtil.isShow()){
+                if (isVisible()) {
+                    Log.i(TAG, "home fragment show the auth dialog");
+                    if (DialogUtil.isShow()) {
                         DialogUtil.dismissLoadingDialog();
                     }
 
-                    DialogUtil.showAlertDialog(mContext,GetAuthHintString(event.eventType),
-                            null,mContext.getString(R.string.alert_dialog_ok),null);
-                    DialogUtil.getAlertDialog().setEditPwdMode(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    DialogUtil.showAlertDialog(mContext, GetAuthHintString(event.eventType),
+                        null, mContext.getString(R.string.alert_dialog_ok), null);
+                    DialogUtil.getAlertDialog()
+                        .setEditPwdMode(
+                            InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     DialogUtil.getAlertDialog().setEditShow(true);
                     DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
                         @Override
@@ -133,13 +139,12 @@ public class HomeFragment extends RefreshFragment{
                 }
             }
             break;
-            case XdagEvent.en_event_pwd_error:
-            {
-                if(isVisible() && DialogUtil.isShow()){
+            case XdagEvent.en_event_pwd_error: {
+                if (isVisible() && DialogUtil.isShow()) {
                     DialogUtil.dismissLoadingDialog();
                 }
                 //ask user to type password again
-                DialogUtil.showAlertDialog(getActivity(),null,"password error","OK",null);
+                DialogUtil.showAlertDialog(getActivity(), null, "password error", "OK", null);
                 DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
                     @Override
                     public void onClick() {
@@ -149,14 +154,13 @@ public class HomeFragment extends RefreshFragment{
                 });
             }
             break;
-            case XdagEvent.en_event_update_state:
-            {
+            case XdagEvent.en_event_update_state: {
                 mCollapsingToolbarLayout.setTitle(event.balance);
                 mTvAddress.setText(event.address);
-                if(isVisible() && !DialogUtil.isShow()){
-                    if(event.programState < XdagEvent.CONN){
-                        DialogUtil.showLoadingDialog(getContext(),"Loading......",false);
-                    }else{
+                if (isVisible() && !DialogUtil.isShow()) {
+                    if (event.programState < XdagEvent.CONN) {
+                        DialogUtil.showLoadingDialog(getContext(), "Loading......", false);
+                    } else {
                         DialogUtil.dismissLoadingDialog();
                     }
                 }
@@ -165,8 +169,9 @@ public class HomeFragment extends RefreshFragment{
         }
     }
 
-    private String GetAuthHintString(final int eventType){
-        switch (eventType){
+
+    private String GetAuthHintString(final int eventType) {
+        switch (eventType) {
             case XdagEvent.en_event_type_pwd:
                 return getString(R.string.please_input_password);
             case XdagEvent.en_event_set_pwd:

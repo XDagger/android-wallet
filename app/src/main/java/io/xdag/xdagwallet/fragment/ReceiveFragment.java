@@ -12,6 +12,7 @@ import io.xdag.common.base.BaseFragment;
 import io.xdag.common.util.DialogUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -22,7 +23,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * <p>
  * desc :
  */
-public class ReceiveFragment extends BaseFragment{
+public class ReceiveFragment extends BaseFragment {
 
     private static final String TAG = "XdagWallet";
 
@@ -30,9 +31,11 @@ public class ReceiveFragment extends BaseFragment{
     @BindView(R.id.receive_img_qrcode) ImageView mImgQrAddress;
     private Handler mXdagMessageHandler;
 
-    public void setMessagehandler(Handler xdagMessageHandler){
+
+    public void setMessagehandler(Handler xdagMessageHandler) {
         this.mXdagMessageHandler = xdagMessageHandler;
     }
+
 
     @Override
     protected int getLayoutResId() {
@@ -41,8 +44,9 @@ public class ReceiveFragment extends BaseFragment{
 
 
     @OnClick({ R.id.receive_tv_copy, R.id.receive_tv_address }) void copyAddress() {
-        ((MainActivity) mContext).copyText(mTvAddress.getText().toString());
+        CopyUtil.copyAddress(mContext, mTvAddress.getText().toString());
     }
+
 
     public static ReceiveFragment newInstance() {
         ReceiveFragment fragment = new ReceiveFragment();
@@ -50,25 +54,26 @@ public class ReceiveFragment extends BaseFragment{
         return fragment;
     }
 
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
-        Log.i(TAG,"receive fragment process msg in Thread " + Thread.currentThread().getId());
+        Log.i(TAG, "receive fragment process msg in Thread " + Thread.currentThread().getId());
 
-        switch (event.eventType){
+        switch (event.eventType) {
 
-            case XdagEvent.en_event_update_state:
-            {
+            case XdagEvent.en_event_update_state: {
                 mTvAddress.setText(event.address);
-                if(event.addressLoadState == 1){
+                if (event.addressLoadState == 1) {
                     Bitmap qrCode = QRUtils.getInstance().createQRCode(event.address);
                     mImgQrAddress.setImageBitmap(qrCode);
-                }else{
-                    mImgQrAddress.setImageDrawable(getResources().getDrawable(R.drawable.qrcode_loading));
+                } else {
+                    mImgQrAddress.setImageDrawable(
+                        getResources().getDrawable(R.drawable.qrcode_loading));
                 }
-                if(isVisible() && !DialogUtil.isShow()){
-                    if(event.programState < XdagEvent.CONN){
-                        DialogUtil.showLoadingDialog(getContext(),"Loading......",false);
-                    }else{
+                if (isVisible() && !DialogUtil.isShow()) {
+                    if (event.programState < XdagEvent.CONN) {
+                        DialogUtil.showLoadingDialog(getContext(), "Loading......", false);
+                    } else {
                         DialogUtil.dismissLoadingDialog();
                     }
                 }
