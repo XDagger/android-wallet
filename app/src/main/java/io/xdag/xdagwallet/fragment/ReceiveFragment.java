@@ -5,21 +5,17 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bertsir.zbar.QRUtils;
 import io.xdag.common.base.BaseFragment;
 import io.xdag.common.util.DialogUtil;
-import io.xdag.xdagwallet.App;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
-import io.xdag.xdagwallet.wrapper.XdagWrapper;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * created by lxm on 2018/5/24.

@@ -1,10 +1,7 @@
 package io.xdag.xdagwallet.wrapper;
 
 import android.util.Log;
-
 import org.greenrobot.eventbus.EventBus;
-
-import io.xdag.xdagwallet.App;
 
 public class XdagWrapper {
     static {

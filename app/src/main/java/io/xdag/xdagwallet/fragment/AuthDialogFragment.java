@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-
 import io.xdag.xdagwallet.R;
 
 public class AuthDialogFragment extends DialogFragment {

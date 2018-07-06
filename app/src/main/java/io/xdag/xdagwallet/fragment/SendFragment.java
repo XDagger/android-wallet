@@ -1,6 +1,5 @@
 package io.xdag.xdagwallet.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,30 +11,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bertsir.zbar.QRManager;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-import org.w3c.dom.Text;
-
 import io.xdag.common.base.BaseFragment;
 import io.xdag.common.util.DialogUtil;
-import io.xdag.xdagwallet.App;
-import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ZbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
-
 import java.util.List;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * created by lxm on 2018/5/24.

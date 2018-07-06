@@ -1,7 +1,6 @@
 package io.xdag.xdagwallet;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,27 +16,19 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.ClipBoardUtil;
-import io.xdag.xdagwallet.fragment.AuthDialogFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
-import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * created by ssyijiu  on 2018/5/22
