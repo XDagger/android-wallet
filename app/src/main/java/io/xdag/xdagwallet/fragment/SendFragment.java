@@ -45,7 +45,6 @@ import java.util.List;
 public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClickListener{
 
     private Handler mXdagMessageHandler;
-    private Activity mActivity;
     private static final String TAG = "XdagWallet";
 
     public void setMessagehandler(Handler xdagMessageHandler){
@@ -66,7 +65,6 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
     @Override
     protected void initView(View rootView) {
         super.initView(rootView);
-        mActivity = getActivity();
         getToolbar().inflateMenu(R.menu.toolbar_scan);
         getToolbar().setOnMenuItemClickListener(this);
     }
@@ -133,8 +131,8 @@ public class SendFragment extends BaseFragment implements Toolbar.OnMenuItemClic
                     if(DialogUtil.isShow()){
                         DialogUtil.dismissLoadingDialog();
                     }
-                    DialogUtil.showAlertDialog(mActivity,mActivity.getString(R.string.please_input_password),
-                                                null,mActivity.getString(R.string.alert_dialog_ok),null);
+                    DialogUtil.showAlertDialog(mContext,getString(R.string.please_input_password),
+                                                null,getString(R.string.alert_dialog_ok),null);
 
                     DialogUtil.getAlertDialog().setEditPwdMode(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     DialogUtil.getAlertDialog().setEditShow(true);

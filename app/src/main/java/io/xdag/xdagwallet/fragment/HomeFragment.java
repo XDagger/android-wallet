@@ -44,7 +44,6 @@ public class HomeFragment extends RefreshFragment{
     @BindView(R.id.home_tv_address)
     TextView mTvAddress;
 
-    private Activity mActivity;
     private String mAddress = "ewrXrSDbCmqH/fkLuQkEMiwed3709C2k";
     private static final String TAG = "XdagWallet";
     private Handler mXdagMessageHandler;
@@ -68,7 +67,6 @@ public class HomeFragment extends RefreshFragment{
     @Override
     protected void initView(View rootView) {
         super.initView(rootView);
-        mActivity = getActivity();
         mTvAddress.setText("Not Ready");
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(new TransactionAdapter());
@@ -125,8 +123,8 @@ public class HomeFragment extends RefreshFragment{
                         DialogUtil.dismissLoadingDialog();
                     }
 
-                    DialogUtil.showAlertDialog(mActivity,GetAuthHintString(event.eventType),
-                            null,mActivity.getString(R.string.alert_dialog_ok),null);
+                    DialogUtil.showAlertDialog(mContext,GetAuthHintString(event.eventType),
+                            null,mContext.getString(R.string.alert_dialog_ok),null);
                     DialogUtil.getAlertDialog().setEditPwdMode(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     DialogUtil.getAlertDialog().setEditShow(true);
                     DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
@@ -175,15 +173,15 @@ public class HomeFragment extends RefreshFragment{
     private String GetAuthHintString(final int eventType){
         switch (eventType){
             case XdagEvent.en_event_type_pwd:
-                return mActivity.getString(R.string.please_input_password);
+                return getString(R.string.please_input_password);
             case XdagEvent.en_event_set_pwd:
-                return mActivity.getString(R.string.please_set_password);
+                return getString(R.string.please_set_password);
             case XdagEvent.en_event_retype_pwd:
-                return mActivity.getString(R.string.please_retype_password);
+                return getString(R.string.please_retype_password);
             case XdagEvent.en_event_set_rdm:
-                return mActivity.getString(R.string.please_input_random);
+                return getString(R.string.please_input_random);
             default:
-                return mActivity.getString(R.string.please_input_password);
+                return getString(R.string.please_input_password);
         }
     }
 }
