@@ -43,7 +43,6 @@ public abstract class RefreshFragment extends BaseFragment
         if (!(this instanceof ListFragment)) {
             mUnbinder = ButterKnife.bind(this, contentView);
         }
-
     }
 
 

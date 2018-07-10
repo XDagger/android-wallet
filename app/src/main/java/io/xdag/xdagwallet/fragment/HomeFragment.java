@@ -10,12 +10,18 @@ import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.xdag.common.base.RefreshFragment;
 import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.common.util.DialogUtil;
-import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
+import io.xdag.xdagwallet.api.XdagScanServer;
+import io.xdag.xdagwallet.api.response.XdagScanBlockDetail;
+import io.xdag.xdagwallet.api.response.XdagScanResp;
+import io.xdag.xdagwallet.model.TransactionModel;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
@@ -23,6 +29,9 @@ import io.xdag.xdagwallet.wrapper.XdagWrapper;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * created by lxm on 2018/5/24.
@@ -40,10 +49,13 @@ public class HomeFragment extends RefreshFragment {
     @BindView(R.id.home_tv_address)
     TextView mTvAddress;
 
+
+    private int mLastAddressState = XdagEvent.en_address_not_ready;
+    private int mLastBalancState = XdagEvent.en_balance_not_ready;
     private String mAddress = "ewrXrSDbCmqH/fkLuQkEMiwed3709C2k";
     private static final String TAG = "XdagWallet";
     private Handler mXdagMessageHandler;
-
+    private TransactionAdapter mTransactionAdapter = new TransactionAdapter();
 
     public static HomeFragment newInstance() {
         HomeFragment homeFragment = new HomeFragment();
@@ -62,6 +74,61 @@ public class HomeFragment extends RefreshFragment {
         return R.layout.fragment_home;
     }
 
+    @Override
+    protected void initData() {
+        super.initData();
+        mRecyclerView.setAdapter(mTransactionAdapter);
+    }
+
+    private void loadHistory(){
+        Log.i(TAG,"xdag server init  data start.....");
+        XdagScanServer.getApi().getBlockDetail(mTvAddress.getText().toString(),0,20)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<XdagScanResp<XdagScanBlockDetail>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.i(TAG,"xdag server scan onSubscribe");
+                    }
+
+                    @Override
+                    public void onNext(XdagScanResp<XdagScanBlockDetail> xdagScanBlockDetailXdagScanResp) {
+                        Log.i(TAG,"xdag server scan onNext");
+                        List<XdagScanBlockDetail.AddressList> addressList;
+                        addressList = xdagScanBlockDetailXdagScanResp.data.address_list;
+
+                        if(addressList == null || addressList.size() <= 0){
+                            return;
+                        }
+
+                        List<TransactionModel> transactionModelList = new ArrayList<>();
+                        for(int i = 0; i < addressList.size();i ++){
+                            XdagScanBlockDetail.AddressList address = addressList.get(i);
+                            TransactionModel model = new TransactionModel(address.address,address.amount,address.time,getDirecttoinType(address.direction));
+                            transactionModelList.add(model);
+                        }
+                        mTransactionAdapter.setNewData(transactionModelList);
+                        mTransactionAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.i(TAG,"xdag server scan onError");
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.i(TAG,"xdag server scan onComplete");
+                    }
+                });
+    }
+
+    private TransactionModel.Type getDirecttoinType(String direction){
+        if(direction.equals("input")){
+            return TransactionModel.Type.INPUT;
+        }
+        return TransactionModel.Type.OUTPUT;
+    }
 
     @Override
     protected void initView(View rootView) {
@@ -164,9 +231,18 @@ public class HomeFragment extends RefreshFragment {
                         DialogUtil.dismissLoadingDialog();
                     }
                 }
+
+                if(mLastAddressState == XdagEvent.en_address_not_ready &&
+                        event.addressLoadState == XdagEvent.en_address_ready){
+                    this.loadHistory();
+                }
             }
             break;
         }
+
+        //update  address load state and balance  load state
+        this.mLastAddressState = event.addressLoadState;
+        this.mLastBalancState = event.balanceLoadState;
     }
 
 
