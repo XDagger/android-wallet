@@ -1,3 +1,9 @@
 <resources>
+    
+    <style name="AlertTextStyle">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
