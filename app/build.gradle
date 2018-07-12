@@ -42,10 +42,6 @@ dependencies {
     // https://github.com/JakeWharton/butterknife
     implementation "com.jakewharton:butterknife:${butterknife_version}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknife_version}"
-    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    implementation("com.github.CymChad:BaseRecyclerViewAdapterHelper:${adapter_helper}", {
-        exclude group: 'com.android.support'
-    })
     // https://github.com/Tapadoo/Alerter
     implementation 'com.tapadoo.android:alerter:2.0.5'
     // https://github.com/yanzhenjie/AndPermission

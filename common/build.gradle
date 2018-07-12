@@ -19,9 +19,9 @@ android {
 dependencies {
 
     // support
-    compileOnly "com.android.support:support-v4:${support_version}"
-    compileOnly "com.android.support:appcompat-v7:${support_version}"
-    compileOnly "com.android.support:design:$support_version"
+    implementation "com.android.support:support-v4:${support_version}"
+    implementation "com.android.support:appcompat-v7:${support_version}"
+    implementation "com.android.support:design:$support_version"
 
     // https://github.com/JakeWharton/butterknife
     implementation "com.jakewharton:butterknife:${butterknife_version}"
@@ -33,21 +33,20 @@ dependencies {
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanary_version}"
 
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    compileOnly("com.github.CymChad:BaseRecyclerViewAdapterHelper:${adapter_helper}", {
+    api("com.github.CymChad:BaseRecyclerViewAdapterHelper:${adapter_helper}", {
         exclude group: 'com.android.support'
     })
 
     /** Retrofit & Okhttp */
-
     // https://github.com/square/retrofit
     api "com.squareup.retrofit2:retrofit:${retrofit_version}"
-    api "com.squareup.retrofit2:converter-gson:${retrofit_version}"
-    api "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofit_version}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
 
     // https://github.com/square/okhttp
     api "com.squareup.okhttp3:okhttp:${okhttp_verison}"
     // https://github.com/jgilfelt/chuck
-    api('com.readystatesoftware.chuck:library:1.1.0', {
+    implementation('com.readystatesoftware.chuck:library:1.1.0', {
         exclude group: 'com.android.support'
     })
 
