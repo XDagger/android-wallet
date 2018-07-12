@@ -24,5 +24,9 @@
     <string name="please_input_password">please input password</string>
     <string name="please_input_random">please input random</string>
     <string name="not_ready">Not Ready</string>
+    
+    <!-- error tips -->
+    <string name="error_file_make_fail">The xdag file make fail</string>
+    <string name="error_sdcard_not_available">SDCard is not available</string>
 
 </resources>

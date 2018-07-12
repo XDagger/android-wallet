@@ -11,13 +11,18 @@ import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import butterknife.BindView;
+
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
+
+import java.io.File;
+import java.util.List;
+
+import butterknife.BindView;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
-import io.xdag.common.util.ClipBoardUtil;
+import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
@@ -25,8 +30,6 @@ import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ToolbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
-import java.io.File;
-import java.util.List;
 
 /**
  * created by ssyijiu  on 2018/5/22
@@ -37,6 +40,7 @@ import java.util.List;
 public class MainActivity extends ToolbarActivity
     implements BottomNavigationView.OnNavigationItemSelectedListener {
 
+    private static final String XDAG_FILE = "xdag";
     @BindView(R.id.navigation)
     BottomNavigationView mNavigationView;
     private FragmentManager mFragmentManager;
@@ -74,15 +78,6 @@ public class MainActivity extends ToolbarActivity
     }
 
 
-    private void initXdagFiles() {
-        String xdagFolderPath = "/sdcard/xdag";
-        File file = new File(xdagFolderPath);
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-    }
-
-
     /**
      * request permissions
      */
@@ -94,14 +89,29 @@ public class MainActivity extends ToolbarActivity
             .onGranted(new Action<List<String>>() {
                 @Override
                 public void onAction(List<String> data) {
-
-                    initXdagFiles();
+                    initXdagFile();
                     initData();
                 }
             })
             .start();
     }
 
+    /**
+     * create xdag file: sdcard/xdag/
+     */
+    private void initXdagFile() {
+        if (SDCardUtil.isAvailable()) {
+            File file = new File(SDCardUtil.getSDCardPath(), XDAG_FILE);
+            if (!file.exists()) {
+                if (!file.mkdirs()) {
+                    AlertUtil.show(mContext, R.string.error_file_make_fail);
+                }
+            }
+        } else {
+            AlertUtil.show(mContext, R.string.error_sdcard_not_available);
+        }
+
+    }
 
     private void initData() {
 
