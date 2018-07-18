@@ -8,9 +8,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bertsir.zbar.QRUtils;
-import io.xdag.common.base.BaseFragment;
 import io.xdag.common.util.DialogUtil;
-import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
@@ -23,18 +21,12 @@ import org.greenrobot.eventbus.ThreadMode;
  * <p>
  * desc :
  */
-public class ReceiveFragment extends BaseFragment {
+public class ReceiveFragment extends BaseMainFragment {
 
     private static final String TAG = "XdagWallet";
 
     @BindView(R.id.receive_tv_address) TextView mTvAddress;
     @BindView(R.id.receive_img_qrcode) ImageView mImgQrAddress;
-    private Handler mXdagMessageHandler;
-
-
-    public void setMessagehandler(Handler xdagMessageHandler) {
-        this.mXdagMessageHandler = xdagMessageHandler;
-    }
 
 
     @Override
@@ -72,7 +64,7 @@ public class ReceiveFragment extends BaseFragment {
                 }
                 if (isVisible() && !DialogUtil.isShow()) {
                     if (event.programState < XdagEvent.CONN) {
-                        DialogUtil.showLoadingDialog(getContext(), "Loading......", false);
+                        DialogUtil.showLoadingDialog(getMainActivity(), "Loading......", false);
                     } else {
                         DialogUtil.dismissLoadingDialog();
                     }

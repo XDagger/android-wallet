@@ -1,9 +1,6 @@
 package io.xdag.xdagwallet;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -15,7 +12,6 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 import io.xdag.common.base.ToolbarActivity;
-import io.xdag.common.tool.MLog;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.fragment.HomeFragment;
@@ -24,7 +20,7 @@ import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ToolbarUtil;
-import io.xdag.xdagwallet.wrapper.XdagWrapper;
+import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 import java.io.File;
 import java.util.List;
 
@@ -46,12 +42,8 @@ public class MainActivity extends ToolbarActivity
     private SendFragment mSendFragment;
     private SettingFragment mSettingFragment;
     private Fragment mShowFragment;
-    private HandlerThread mXdagProcessThread;
-    private Handler mXdagMessageHandler;
 
-    private static final int MSG_CONNECT_TO_POOL = 1;
-    private static final int MSG_DISCONNECT_FROM_POOL = 2;
-    private static final int MSG_XFER_XDAG_COIN = 3;
+    private XdagHandlerWrapper mHandlerWrapper;
 
 
     @Override
@@ -72,6 +64,11 @@ public class MainActivity extends ToolbarActivity
     }
 
 
+    /**
+     * 1、{@link #initPermissions()}
+     * 2、{@link #initXdagFile()}
+     * 3、{@link #getHandlerWrapper()} and connectToPool
+     */
     @Override
     protected void initData() {
         initPermissions();
@@ -80,7 +77,7 @@ public class MainActivity extends ToolbarActivity
 
     /**
      * request permissions,
-     * if permissions granted call {@link #initXdagFile()} {@link #initXdagHandler()}
+     * if permissions granted call {@link #initXdagFile()}
      */
     private void initPermissions() {
 
@@ -91,7 +88,6 @@ public class MainActivity extends ToolbarActivity
                 @Override
                 public void onAction(List<String> data) {
                     initXdagFile();
-                    initXdagHandler();
                 }
             })
             .start();
@@ -100,72 +96,20 @@ public class MainActivity extends ToolbarActivity
 
     /**
      * create xdag file: sdcard/xdag/
+     * if success connectToPool
      */
     private void initXdagFile() {
         if (SDCardUtil.isAvailable()) {
             File file = new File(SDCardUtil.getSDCardPath(), XDAG_FILE);
-            if (!file.exists()) {
-                if (!file.mkdirs()) {
-                    AlertUtil.show(mContext, R.string.error_file_make_fail);
-                }
+            if (!file.exists() && !file.mkdirs()) {
+                AlertUtil.show(mContext, R.string.error_file_make_fail);
+            } else {
+                getHandlerWrapper().connectToPool(Config.POLL_ADDRESS);
             }
         } else {
             AlertUtil.show(mContext, R.string.error_sdcard_not_available);
         }
 
-    }
-
-
-    private void initXdagHandler() {
-        mXdagProcessThread = new HandlerThread("XdagProcessThread");
-        mXdagProcessThread.start();
-        mXdagMessageHandler = new Handler(mXdagProcessThread.getLooper()) {
-            @Override
-            public void handleMessage(Message msg) {
-                switch (msg.arg1) {
-                    case MSG_CONNECT_TO_POOL: {
-                        MLog.i("receive msg connect to the pool thread id " +
-                            Thread.currentThread().getId());
-                        Bundle data = msg.getData();
-                        String poolAddr = data.getString("pool");
-                        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                        xdagWrapper.XdagConnectToPool(poolAddr);
-                    }
-                    break;
-                    case MSG_DISCONNECT_FROM_POOL: {
-                        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                        xdagWrapper.XdagDisConnectFromPool();
-                    }
-                    break;
-                    case MSG_XFER_XDAG_COIN: {
-                        MLog.i("receive msg xfer coin thread id " + Thread.currentThread().getId());
-                        Bundle data = msg.getData();
-                        String address = data.getString("address");
-                        String amount = data.getString("amount");
-                        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                        xdagWrapper.XdagXferToAddress(address, amount);
-                    }
-                    break;
-                    default: {
-                        MLog.e("unknow command from ui");
-                    }
-                    break;
-                }
-            }
-        };
-
-        // connect to pool
-        String poolAddr = "xdagmine.com:13654";
-        Message msg = Message.obtain();
-        Bundle data = new Bundle();
-        data.putString("pool", poolAddr);
-        msg.arg1 = MSG_CONNECT_TO_POOL;
-        msg.setData(data);
-        mXdagMessageHandler.sendMessage(msg);
-
-        mHomeFragment.setMessagehandler(mXdagMessageHandler);
-        mReceiveFragment.setMessagehandler(mXdagMessageHandler);
-        mSendFragment.setMessagehandler(mXdagMessageHandler);
     }
 
 
@@ -245,5 +189,13 @@ public class MainActivity extends ToolbarActivity
     @Override
     protected int getToolbarTitle() {
         return R.string.app_name;
+    }
+
+
+    public XdagHandlerWrapper getHandlerWrapper() {
+        if (mHandlerWrapper == null) {
+            mHandlerWrapper = new XdagHandlerWrapper(MainActivity.this);
+        }
+        return mHandlerWrapper;
     }
 }

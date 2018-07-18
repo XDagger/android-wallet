@@ -1,6 +1,5 @@
 package io.xdag.xdagwallet.fragment;
 
-import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +12,6 @@ import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.xdag.common.base.RefreshFragment;
 import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.common.util.DialogUtil;
 import io.xdag.xdagwallet.R;
@@ -26,19 +24,18 @@ import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
+import java.util.ArrayList;
+import java.util.List;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * created by lxm on 2018/5/24.
  * <p>
  * desc :
  */
-public class HomeFragment extends RefreshFragment {
+public class HomeFragment extends BaseMainFragment {
 
     @BindView(R.id.home_rv)
     RecyclerView mRecyclerView;
@@ -54,7 +51,6 @@ public class HomeFragment extends RefreshFragment {
     private int mLastBalancState = XdagEvent.en_balance_not_ready;
     private String mAddress = "ewrXrSDbCmqH/fkLuQkEMiwed3709C2k";
     private static final String TAG = "XdagWallet";
-    private Handler mXdagMessageHandler;
     private TransactionAdapter mTransactionAdapter = new TransactionAdapter();
 
     public static HomeFragment newInstance() {
@@ -62,12 +58,6 @@ public class HomeFragment extends RefreshFragment {
         EventBus.getDefault().register(homeFragment);
         return homeFragment;
     }
-
-
-    public void setMessagehandler(Handler xdagMessageHandler) {
-        this.mXdagMessageHandler = xdagMessageHandler;
-    }
-
 
     @Override
     protected int getLayoutResId() {
@@ -226,7 +216,7 @@ public class HomeFragment extends RefreshFragment {
                 mTvAddress.setText(event.address);
                 if (isVisible() && !DialogUtil.isShow()) {
                     if (event.programState < XdagEvent.CONN) {
-                        DialogUtil.showLoadingDialog(getContext(), "Loading......", false);
+                        DialogUtil.showLoadingDialog(getMainActivity(), "Loading......", false);
                     } else {
                         DialogUtil.dismissLoadingDialog();
                     }

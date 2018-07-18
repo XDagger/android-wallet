@@ -1,6 +1,7 @@
 package io.xdag.common.tool;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import java.lang.ref.WeakReference;
 
@@ -12,7 +13,8 @@ public abstract class NoLeakHandler<T> extends Handler {
     private final WeakReference<T> mTargetRef;
 
 
-    public NoLeakHandler(T target) {
+    public NoLeakHandler(T target, Looper looper) {
+        super(looper);
         mTargetRef = new WeakReference<>(target);
     }
 

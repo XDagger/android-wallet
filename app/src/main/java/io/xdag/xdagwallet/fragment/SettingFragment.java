@@ -1,6 +1,5 @@
 package io.xdag.xdagwallet.fragment;
 
-import io.xdag.common.base.BaseFragment;
 import io.xdag.xdagwallet.R;
 
 /**
@@ -8,7 +7,7 @@ import io.xdag.xdagwallet.R;
  * <p>
  * desc :
  */
-public class SettingFragment extends BaseFragment {
+public class SettingFragment extends BaseMainFragment {
 
     public static SettingFragment newInstance() {
         return new SettingFragment();
