@@ -31,12 +31,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         View rootView = View.inflate(mContext, getLayoutResId(), null);
         setContentView(rootView);
         initView(rootView, savedInstanceState);
+        initData();
     }
 
 
     protected abstract int getLayoutResId();
 
     protected abstract void initView(View rootView, Bundle savedInstanceState);
+
+    protected void initData() {
+    }
 
 
     @Override

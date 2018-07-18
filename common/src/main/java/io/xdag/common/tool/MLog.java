@@ -9,7 +9,7 @@ public class MLog {
     /**
      * 日志的TAG
      */
-    public static String sTag = "";
+    public static String sTag = "XdagWallet";
 
     /**
      * 日志级别，默认为 V

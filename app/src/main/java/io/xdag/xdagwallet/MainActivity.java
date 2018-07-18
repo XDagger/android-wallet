@@ -8,19 +8,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-
+import butterknife.BindView;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
-
-import java.io.File;
-import java.util.List;
-
-import butterknife.BindView;
 import io.xdag.common.base.ToolbarActivity;
+import io.xdag.common.tool.MLog;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.fragment.HomeFragment;
@@ -30,6 +25,8 @@ import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ToolbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
+import java.io.File;
+import java.util.List;
 
 /**
  * created by ssyijiu  on 2018/5/22
@@ -52,8 +49,6 @@ public class MainActivity extends ToolbarActivity
     private HandlerThread mXdagProcessThread;
     private Handler mXdagMessageHandler;
 
-    private static final String TAG = "XdagWallet";
-
     private static final int MSG_CONNECT_TO_POOL = 1;
     private static final int MSG_DISCONNECT_FROM_POOL = 2;
     private static final int MSG_XFER_XDAG_COIN = 3;
@@ -74,6 +69,11 @@ public class MainActivity extends ToolbarActivity
             recoverFragment();
         }
         mNavigationView.setOnNavigationItemSelectedListener(this);
+    }
+
+
+    @Override
+    protected void initData() {
         initPermissions();
     }
 
@@ -90,11 +90,12 @@ public class MainActivity extends ToolbarActivity
                 @Override
                 public void onAction(List<String> data) {
                     initXdagFile();
-                    initData();
+                    initXdagHandler();
                 }
             })
             .start();
     }
+
 
     /**
      * create xdag file: sdcard/xdag/
@@ -113,8 +114,8 @@ public class MainActivity extends ToolbarActivity
 
     }
 
-    private void initData() {
 
+    private void initXdagHandler() {
         mXdagProcessThread = new HandlerThread("XdagProcessThread");
         mXdagProcessThread.start();
         mXdagMessageHandler = new Handler(mXdagProcessThread.getLooper()) {
@@ -122,7 +123,7 @@ public class MainActivity extends ToolbarActivity
             public void handleMessage(Message msg) {
                 switch (msg.arg1) {
                     case MSG_CONNECT_TO_POOL: {
-                        Log.i(TAG, "receive msg connect to the pool thread id " +
+                        MLog.i("receive msg connect to the pool thread id " +
                             Thread.currentThread().getId());
                         Bundle data = msg.getData();
                         String poolAddr = data.getString("pool");
@@ -136,8 +137,7 @@ public class MainActivity extends ToolbarActivity
                     }
                     break;
                     case MSG_XFER_XDAG_COIN: {
-                        Log.i(TAG,
-                            "receive msg xfer coin thread id " + Thread.currentThread().getId());
+                        MLog.i("receive msg xfer coin thread id " + Thread.currentThread().getId());
                         Bundle data = msg.getData();
                         String address = data.getString("address");
                         String amount = data.getString("amount");
@@ -146,7 +146,7 @@ public class MainActivity extends ToolbarActivity
                     }
                     break;
                     default: {
-                        Log.e(TAG, "unkown command from ui");
+                        MLog.e("unknow command from ui");
                     }
                     break;
                 }
