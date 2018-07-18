@@ -79,7 +79,8 @@ public class MainActivity extends ToolbarActivity
 
 
     /**
-     * request permissions
+     * request permissions,
+     * if permissions granted call {@link #initXdagFile()} {@link #initXdagHandler()}
      */
     private void initPermissions() {
 
@@ -152,7 +153,8 @@ public class MainActivity extends ToolbarActivity
                 }
             }
         };
-        //connect to pool
+
+        // connect to pool
         String poolAddr = "xdagmine.com:13654";
         Message msg = Message.obtain();
         Bundle data = new Bundle();
@@ -164,7 +166,6 @@ public class MainActivity extends ToolbarActivity
         mHomeFragment.setMessagehandler(mXdagMessageHandler);
         mReceiveFragment.setMessagehandler(mXdagMessageHandler);
         mSendFragment.setMessagehandler(mXdagMessageHandler);
-        mSettingFragment.setMessagehandler(mXdagMessageHandler);
     }
 
 
