@@ -87,7 +87,7 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
     @OnClick({ R.id.send_btn_xdag, R.id.send_et_address, R.id.send_et_amount }) void sendXdag() {
         String address = mEtAddress.getText().toString();
         String amount = mEtAmount.getText().toString();
-        getHandlerWrapper().xferXdagCoin(address, amount);
+        getXdagHandler().xferXdagCoin(address, amount);
     }
 
 

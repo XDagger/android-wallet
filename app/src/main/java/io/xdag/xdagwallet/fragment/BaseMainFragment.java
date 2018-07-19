@@ -22,8 +22,8 @@ public abstract class BaseMainFragment extends RefreshFragment {
     }
 
 
-    public XdagHandlerWrapper getHandlerWrapper() {
-        return Objects.requireNonNull(getMainActivity()).getHandlerWrapper();
+    public XdagHandlerWrapper getXdagHandler() {
+        return Objects.requireNonNull(getMainActivity()).getXdagHandler();
     }
 
 

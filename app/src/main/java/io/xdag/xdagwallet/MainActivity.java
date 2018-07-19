@@ -67,7 +67,7 @@ public class MainActivity extends ToolbarActivity
     /**
      * 1、{@link #initPermissions()}
      * 2、{@link #initXdagFile()}
-     * 3、{@link #getHandlerWrapper()} and connectToPool
+     * 3、{@link #getXdagHandler()} and connectToPool
      */
     @Override
     protected void initData() {
@@ -104,7 +104,7 @@ public class MainActivity extends ToolbarActivity
             if (!file.exists() && !file.mkdirs()) {
                 AlertUtil.show(mContext, R.string.error_file_make_fail);
             } else {
-                getHandlerWrapper().connectToPool(Config.POLL_ADDRESS);
+                getXdagHandler().connectToPool(Config.POLL_ADDRESS);
             }
         } else {
             AlertUtil.show(mContext, R.string.error_sdcard_not_available);
@@ -192,7 +192,7 @@ public class MainActivity extends ToolbarActivity
     }
 
 
-    public XdagHandlerWrapper getHandlerWrapper() {
+    public XdagHandlerWrapper getXdagHandler() {
         if (mHandlerWrapper == null) {
             mHandlerWrapper = new XdagHandlerWrapper(MainActivity.this);
         }

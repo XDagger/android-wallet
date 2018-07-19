@@ -9,7 +9,7 @@ import io.xdag.common.http.ApiFactory;
  */
 public class XdagScanServer {
 
-    private static final String BASE_URL = "http://139.99.120.77:8888/";
+    private static final String BASE_URL = "http://139.199.112.97:8888/";
     static final String BLOCK_DETAIL = "api/blocks/detail";
 
 

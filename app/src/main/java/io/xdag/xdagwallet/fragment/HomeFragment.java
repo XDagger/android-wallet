@@ -162,6 +162,10 @@ public class HomeFragment extends BaseMainFragment {
     }
 
 
+    /**
+     * the event from c
+     * @param event
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
         Log.i(TAG, "home fragment process msg in Thread " + Thread.currentThread().getId());
