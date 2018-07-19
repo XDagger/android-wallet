@@ -11,26 +11,26 @@ import io.xdag.xdagwallet.R;
  */
 public class ToolbarUtil {
 
-    public static void setToolbar(int itemId, Toolbar toolbar) {
+    public static void setToolbar(int pos, Toolbar toolbar) {
         if (toolbar == null) {
             return;
         }
 
-        switch (itemId) {
-            case R.id.navigation_home:
+        switch (pos) {
+            case 0:
                 toolbar.setVisibility(View.GONE);
                 break;
-            case R.id.navigation_receive:
+            case 1:
                 toolbar.setTitle(R.string.receive_xdag);
                 toolbar.setVisibility(View.VISIBLE);
                 toolbar.getMenu().setGroupVisible(0, false);
                 break;
-            case R.id.navigation_send:
+            case 2:
                 toolbar.setTitle(R.string.send_xdag);
                 toolbar.setVisibility(View.VISIBLE);
                 toolbar.getMenu().setGroupVisible(0, true);
                 break;
-            case R.id.navigation_setting:
+            case 3:
                 toolbar.setTitle(R.string.setting);
                 toolbar.setVisibility(View.VISIBLE);
                 toolbar.getMenu().setGroupVisible(0, false);

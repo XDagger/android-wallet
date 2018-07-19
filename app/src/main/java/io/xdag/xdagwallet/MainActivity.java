@@ -8,9 +8,12 @@ import android.support.v4.app.FragmentManager;
 import android.view.MenuItem;
 import android.view.View;
 import butterknife.BindView;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
+import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.SDCardUtil;
@@ -30,12 +33,11 @@ import java.util.List;
  * desc : The home activity
  */
 
-public class MainActivity extends ToolbarActivity
-    implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends ToolbarActivity {
 
     private static final String XDAG_FILE = "xdag";
-    @BindView(R.id.navigation)
-    BottomNavigationView mNavigationView;
+    @BindView(R.id.bottom_navigation)
+    AHBottomNavigation mNavigationView;
     private FragmentManager mFragmentManager;
     private HomeFragment mHomeFragment;
     private ReceiveFragment mReceiveFragment;
@@ -60,7 +62,7 @@ public class MainActivity extends ToolbarActivity
         } else {
             recoverFragment();
         }
-        mNavigationView.setOnNavigationItemSelectedListener(this);
+        initNavigationView();
     }
 
 
@@ -113,6 +115,53 @@ public class MainActivity extends ToolbarActivity
     }
 
 
+    private void initNavigationView() {
+        // create items
+        AHBottomNavigationItem home =
+            new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_home);
+        AHBottomNavigationItem receive =
+            new AHBottomNavigationItem(getString(R.string.receive), R.drawable.ic_receive);
+        AHBottomNavigationItem send =
+            new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
+        AHBottomNavigationItem setting =
+            new AHBottomNavigationItem(getString(R.string.setting), R.drawable.ic_setting);
+        // add items
+        mNavigationView.addItem(home);
+        mNavigationView.addItem(receive);
+        mNavigationView.addItem(send);
+        mNavigationView.addItem(setting);
+        // the selected item color
+        mNavigationView.setAccentColor(Common.getColor(R.color.colorPrimary));
+        // the unselected item color
+        mNavigationView.setInactiveColor(Common.getColor(R.color.GERY));
+        // set titles
+        mNavigationView.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
+        // set current item selected
+        mNavigationView.setCurrentItem(0);
+        // set listeners
+        mNavigationView.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override public boolean onTabSelected(int position, boolean wasSelected) {
+                switch (position) {
+                    case 0:
+                        showFragment(mHomeFragment);
+                        break;
+                    case 1:
+                        showFragment(mReceiveFragment);
+                        break;
+                    case 2:
+                        showFragment(mSendFragment);
+                        break;
+                    case 3:
+                        showFragment(mSettingFragment);
+                        break;
+                }
+                ToolbarUtil.setToolbar(position, getToolbar());
+                return true;
+            }
+        });
+    }
+
+
     private void addFragment() {
         mHomeFragment = HomeFragment.newInstance();
         mReceiveFragment = ReceiveFragment.newInstance();
@@ -155,28 +204,6 @@ public class MainActivity extends ToolbarActivity
                 .commit();
             mShowFragment = fragment;
         }
-    }
-
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.navigation_home:
-                showFragment(mHomeFragment);
-                break;
-            case R.id.navigation_receive:
-                showFragment(mReceiveFragment);
-                break;
-            case R.id.navigation_send:
-                showFragment(mSendFragment);
-                break;
-            case R.id.navigation_setting:
-                showFragment(mSettingFragment);
-                break;
-            default:
-        }
-        ToolbarUtil.setToolbar(item.getItemId(), getToolbar());
-        return true;
     }
 
 

@@ -47,4 +47,6 @@ dependencies {
     // https://github.com/yanzhenjie/AndPermission
     implementation 'com.yanzhenjie:permission:2.0.0-rc6'
     implementation 'org.greenrobot:eventbus:3.1.1'
+    // https://github.com/aurelhubert/ahbottomnavigation
+    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
 }
