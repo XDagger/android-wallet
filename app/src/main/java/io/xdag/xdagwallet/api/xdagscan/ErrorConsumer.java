@@ -20,7 +20,7 @@ public class ErrorConsumer implements Consumer<Throwable> {
     }
 
 
-    @Override public void accept(Throwable throwable) throws Exception {
+    @Override public void accept(Throwable throwable) {
         MLog.i(throwable.getMessage());
         AlertUtil.show(activity, throwable.getMessage());
     }

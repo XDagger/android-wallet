@@ -1,11 +1,8 @@
 package io.xdag.xdagwallet;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.MenuItem;
 import android.view.View;
 import butterknife.BindView;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
