@@ -23,8 +23,11 @@
     <string name="please_retype_password">please retype password</string>
     <string name="please_input_password">please input password</string>
     <string name="please_input_random">please input random</string>
+
     <string name="not_ready">Not Ready</string>
-    
+    <string name="loading_address">Loading Address</string>
+    <string name="loading_balance">Loading Balance</string>
+
     <!-- error tips -->
     <string name="error_file_make_fail">The xdag file make fail</string>
     <string name="error_sdcard_not_available">SDCard is not available</string>

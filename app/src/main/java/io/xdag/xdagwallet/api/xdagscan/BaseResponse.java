@@ -1,4 +1,4 @@
-package io.xdag.xdagwallet.api.response;
+package io.xdag.xdagwallet.api.xdagscan;
 
 import android.text.TextUtils;
 
@@ -7,14 +7,14 @@ import android.text.TextUtils;
  *
  * desc :
  */
-public class XdagScanResp<T> {
+public class BaseResponse<T> {
 
     public String errno;
     public String message;
     public T data;
 
 
-    public boolean success() {
+    public boolean isSuccess() {
         return TextUtils.equals(errno, "0");
     }
 }

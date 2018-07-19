@@ -1,23 +1,28 @@
 package io.xdag.xdagwallet.adapter;
 
+import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.model.TransactionModel;
+import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
+import java.util.List;
 
 /**
  * created by lxm on 2018/5/25.
  * <p>
  * desc :
  */
-public class TransactionAdapter extends BaseQuickAdapter<TransactionModel, BaseViewHolder> {
-    public TransactionAdapter() {
-        super(R.layout.item_transaction, null);
+public class TransactionAdapter
+    extends BaseQuickAdapter<BlockDetailModel.AddressList, BaseViewHolder> {
+
+    public TransactionAdapter(@Nullable
+                                  List<BlockDetailModel.AddressList> data) {
+        super(R.layout.item_transaction, data);
     }
 
 
     @Override
-    protected void convert(BaseViewHolder helper, TransactionModel item) {
+    protected void convert(BaseViewHolder helper, BlockDetailModel.AddressList item) {
         helper.setText(R.id.item_transaction_tv_address, item.address);
         helper.setText(R.id.item_transaction_tv_amount, item.getAmount());
         helper.setTextColor(R.id.item_transaction_tv_amount, item.getAmountColor());
