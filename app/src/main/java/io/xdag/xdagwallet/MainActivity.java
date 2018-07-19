@@ -138,6 +138,7 @@ public class MainActivity extends ToolbarActivity {
         mNavigationView.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
         // set current item selected
         mNavigationView.setCurrentItem(0);
+        ToolbarUtil.setToolbar(0, getToolbar());
         // set listeners
         mNavigationView.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override public boolean onTabSelected(int position, boolean wasSelected) {

@@ -66,13 +66,8 @@ public class HomeFragment extends BaseMainFragment {
         mAppBarLayout.addOnOffsetChangedListener(new AppBarStateChangedListener() {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {
-                switch (state) {
-                    case EXPANDED:
-                        getRefreshDelegate().setRefreshEnabled(true);
-                        break;
-                    default:
-                        getRefreshDelegate().setRefreshEnabled(false);
-                }
+                getRefreshDelegate().setRefreshEnabled(
+                    state.equals(AppBarStateChangedListener.State.EXPANDED));
             }
         });
     }
@@ -99,15 +94,6 @@ public class HomeFragment extends BaseMainFragment {
 
     @OnClick(R.id.home_tv_address) void copyAddress() {
         CopyUtil.copyAddress(mContext, mTvAddress.getText().toString());
-    }
-
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            getToolbar().setVisibility(View.GONE);
-        }
     }
 
 

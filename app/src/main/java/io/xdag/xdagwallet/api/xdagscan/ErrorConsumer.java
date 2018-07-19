@@ -7,6 +7,8 @@ import io.xdag.xdagwallet.util.AlertUtil;
 
 /**
  * created by lxm on 2018/7/19.
+ *
+ * handle exception
  */
 public class ErrorConsumer implements Consumer<Throwable> {
 
