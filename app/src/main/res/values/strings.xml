@@ -31,5 +31,6 @@
     <!-- error tips -->
     <string name="error_file_make_fail">The xdag file make fail</string>
     <string name="error_sdcard_not_available">SDCard is not available</string>
+    <string name="error_copy_xdag_files">Xdag files copy fail</string>
 
 </resources>

@@ -10,9 +10,11 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
+import io.reactivex.annotations.Nullable;
 import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
+import io.xdag.common.util.FileUtil;
 import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
@@ -65,7 +67,7 @@ public class MainActivity extends ToolbarActivity {
 
     /**
      * 1、{@link #initPermissions()}
-     * 2、{@link #initXdagFile()}
+     * 2、{@link #createSdcardFile()}
      * 3、{@link #getXdagHandler()} and connectToPool
      */
     @Override
@@ -76,7 +78,7 @@ public class MainActivity extends ToolbarActivity {
 
     /**
      * request permissions,
-     * if permissions granted call {@link #initXdagFile()}
+     * if permissions granted call {@link #createSdcardFile()}
      */
     private void initPermissions() {
 
@@ -86,7 +88,17 @@ public class MainActivity extends ToolbarActivity {
             .onGranted(new Action<List<String>>() {
                 @Override
                 public void onAction(List<String> data) {
-                    initXdagFile();
+                    File sdcardFile = createSdcardFile();
+                    File privateFile = createPrivateFile();
+
+                    if (sdcardFile != null && privateFile != null) {
+                        if (FileUtil.moveDir(sdcardFile, privateFile)) {
+                            getXdagHandler().connectToPool(Config.POLL_ADDRESS);
+                        } else {
+                            AlertUtil.show(mContext, R.string.error_copy_xdag_files);
+                        }
+                    }
+
                 }
             })
             .start();
@@ -94,21 +106,38 @@ public class MainActivity extends ToolbarActivity {
 
 
     /**
-     * create xdag file: sdcard/xdag/
-     * if success connectToPool
+     * create file: sdcard/xdag/
      */
-    private void initXdagFile() {
+    @Nullable
+    private File createSdcardFile() {
         if (SDCardUtil.isAvailable()) {
             File file = new File(SDCardUtil.getSDCardPath(), XDAG_FILE);
             if (!file.exists() && !file.mkdirs()) {
                 AlertUtil.show(mContext, R.string.error_file_make_fail);
             } else {
-                getXdagHandler().connectToPool(Config.POLL_ADDRESS);
+                return file;
             }
         } else {
             AlertUtil.show(mContext, R.string.error_sdcard_not_available);
         }
+        return null;
 
+    }
+
+
+    /**
+     * create file: /data/data/io.xdag.xdagwallet/files/xdag/
+     */
+    @Nullable
+    private File createPrivateFile() {
+
+        File file = new File(getFilesDir(), XDAG_FILE);
+        if (!file.exists() && !file.mkdirs()) {
+            AlertUtil.show(mContext, R.string.error_file_make_fail);
+        } else {
+            return file;
+        }
+        return null;
     }
 
 

@@ -19,7 +19,7 @@
 #include "../wrapper/xdagwrapper.h"
 
 #if defined(ANDROID) || defined(__ANDROID__)
-#define KEYFILE	    "/sdcard/xdag/dnet_key.dat"
+#define KEYFILE	    "/data/data/io.xdag.xdagwallet/files/xdag/dnet_key.dat"
 #else
 #define KEYFILE	    "dnet_key.dat"
 #endif

@@ -19,7 +19,7 @@
 #endif
 
 #if defined(ANDROID) || defined(__ANDROID__)
-#define STORAGE_DIR0            "/sdcard/xdag/storage%s"
+#define STORAGE_DIR0            "/data/data/io.xdag.xdagwallet/files/xdag/storage%s"
 #else
 #define STORAGE_DIR0            "storage%s"
 #endif

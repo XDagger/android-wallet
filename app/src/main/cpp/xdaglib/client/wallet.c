@@ -11,7 +11,7 @@
 #include "transport.h"
 
 #if defined(ANDROID) || defined(__ANDROID__)
-#define WALLET_FILE "/sdcard/xdag/wallet.dat"
+#define WALLET_FILE "/data/data/io.xdag.xdagwallet/files/xdag/wallet.dat"
 #else
 #define WALLET_FILE "wallet.dat"
 #endif
