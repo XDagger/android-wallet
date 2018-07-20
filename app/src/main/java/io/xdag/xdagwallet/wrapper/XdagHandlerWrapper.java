@@ -129,7 +129,7 @@ public class XdagHandlerWrapper {
     /**
      * create file: /data/data/io.xdag.xdagwallet/files/xdag/
      */
-    @Nullable public File createXdagFile() {
+    @Nullable private File createXdagFile() {
 
         File file = new File(mActivity.getFilesDir(), XDAG_FILE);
         if (!file.exists() && !file.mkdirs()) {
@@ -141,11 +141,26 @@ public class XdagHandlerWrapper {
     }
 
 
-    public boolean recoverXdagFile() {
+    public boolean createWallet() {
+        return createXdagFile() != null;
+    }
+
+
+    public boolean restoreWallet() {
 
         File tempFile = createTempFile();
         File xdagFile = createXdagFile();
 
         return tempFile != null && xdagFile != null && FileUtil.moveDir(tempFile, xdagFile);
+    }
+
+
+    public boolean backupWallet() {
+
+        File tempFile = createTempFile();
+        File xdagFile = createXdagFile();
+
+        return tempFile != null && xdagFile != null && FileUtil.copyDir(xdagFile, tempFile);
+
     }
 }

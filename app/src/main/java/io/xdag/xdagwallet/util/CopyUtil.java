@@ -13,6 +13,6 @@ public class CopyUtil {
 
     public static void copyAddress(Activity activity, String address) {
         ClipBoardUtil.copyToClipBoard(address);
-        AlertUtil.show(activity, activity.getString(R.string.copy_address_success));
+        AlertUtil.show(activity, activity.getString(R.string.success_copy_address));
     }
 }

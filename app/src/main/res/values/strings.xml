@@ -1,36 +1,44 @@
 <resources>
     <string name="app_name">XDAG</string>
 
+    <!-- common -->
     <string name="home">Home</string>
     <string name="send">Send</string>
     <string name="receive">Receive</string>
     <string name="setting">Setting</string>
-
     <string name="send_xdag">Send Xdag</string>
     <string name="receive_xdag">Receive Xdag</string>
-
     <string name="scan">Scan QRCode</string>
-    <string name="copy_address_success">Copy address success</string>
-    <string name="refresh_success">Refresh success</string>
-
-    <string name="cannot_identify_qr_code">Cannot identify QR code</string>
     <string name="to_address">To Address</string>
     <string name="send_to_address">Send To Address</string>
     <string name="amount_to_send">Amount to Send</string>
     <string name="amount">Amount</string>
+    <string name="not_ready">Not Ready</string>
+    <string name="loading_address">Loading Address</string>
+    <string name="loading_balance">Loading Balance</string>
 
+    <!-- please -->
     <string name="please_set_password">please set password</string>
     <string name="please_retype_password">please retype password</string>
     <string name="please_input_password">please input password</string>
     <string name="please_input_random">please input random</string>
 
-    <string name="not_ready">Not Ready</string>
-    <string name="loading_address">Loading Address</string>
-    <string name="loading_balance">Loading Balance</string>
-
     <!-- error tips -->
+    <string name="error_cannot_identify_qr_code">Cannot identify QR code</string>
     <string name="error_file_make_fail">The xdag file make fail</string>
     <string name="error_sdcard_not_available">SDCard is not available</string>
-    <string name="error_copy_xdag_files">Xdag files copy fail</string>
+    <string name="error_restore_xdag_wallet">Xdag wallet restore fail</string>
+    <string name="error_backup_xdag_wallet">Xdag wallet backup fail</string>
+
+    <!-- success -->
+    <string name="success_refresh">Refresh success</string>
+    <string name="success_copy_address">Copy address success</string>
+    <string name="success_backup_xdag_wallet">Xdag wallet backup success</string>
+
+    <!-- setting item-->
+    <string name="setting_messages">Messages</string>
+    <string name="setting_backup_wallet">Backup Wallet</string>
+    <string name="setting_restore_wallet">Restore Wallet</string>
+    <string name="setting_about_xdag">About XDAG</string>
 
 </resources>

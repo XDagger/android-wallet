@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/MORE_LIGHT_GERY"
-    android:orientation="vertical">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MORE_LIGHT_GERY"
+        android:orientation="vertical">
 
     <io.xdag.xdagwallet.widget.SettingItemView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/WHITE"
-        android:layout_marginTop="@dimen/setting_item_space"
-        android:text="Messages"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/WHITE"
+            android:layout_marginTop="@dimen/setting_item_space"
+            android:text="@string/setting_messages"/>
 
     <io.xdag.xdagwallet.widget.SettingItemView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/setting_item_space"
-        android:background="@color/WHITE"
-        android:text="Backup Wallet"/>
+            android:id="@+id/setting_backup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/setting_item_space"
+            android:background="@color/WHITE"
+            android:text="@string/setting_backup_wallet"/>
 
     <View
-        style="@style/DividerHorizontalThin"/>
+            style="@style/DividerHorizontalThin"/>
 
     <io.xdag.xdagwallet.widget.SettingItemView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/WHITE"
-        android:text="Restore Wallet"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/WHITE"
+            android:text="@string/setting_restore_wallet"/>
 
     <io.xdag.xdagwallet.widget.SettingItemView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/setting_item_space"
-        android:background="@color/WHITE"
-        android:text="About XDAG"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/setting_item_space"
+            android:background="@color/WHITE"
+            android:text="@string/setting_about_xdag"/>
 
 </LinearLayout>

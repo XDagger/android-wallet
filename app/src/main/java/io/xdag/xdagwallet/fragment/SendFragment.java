@@ -73,7 +73,7 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
 
                             @Override
                             public void onScanFailed() {
-                                AlertUtil.show(mContext, R.string.cannot_identify_qr_code);
+                                AlertUtil.show(mContext, R.string.error_cannot_identify_qr_code);
                             }
                         });
                     }

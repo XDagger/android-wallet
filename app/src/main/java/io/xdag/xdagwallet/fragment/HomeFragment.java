@@ -86,7 +86,7 @@ public class HomeFragment extends BaseMainFragment {
                     } else {
                         mAdapter.setNewData(blockDetailModel.address_list);
                     }
-                    AlertUtil.show(mContext, getString(R.string.refresh_success));
+                    AlertUtil.show(mContext, getString(R.string.success_refresh));
                 }
             }, new ErrorConsumer(getMainActivity()));
     }

@@ -69,10 +69,10 @@ public class MainActivity extends ToolbarActivity {
             .onGranted(new Action<List<String>>() {
                 @Override
                 public void onAction(List<String> data) {
-                    if (getXdagHandler().createXdagFile() != null) {
+                    if (getXdagHandler().createWallet()) {
                         getXdagHandler().connectToPool(Config.POLL_ADDRESS);
                     } else {
-                        AlertUtil.show(mContext, R.string.error_copy_xdag_files);
+                        AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
                     }
                 }
             })
