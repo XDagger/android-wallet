@@ -1,14 +1,21 @@
 package io.xdag.xdagwallet.wrapper;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import io.reactivex.annotations.Nullable;
 import io.xdag.common.tool.MLog;
 import io.xdag.common.tool.NoLeakHandler;
+import io.xdag.common.util.FileUtil;
+import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.MainActivity;
+import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.util.AlertUtil;
+import java.io.File;
 
 /**
  * created by lxm on 2018/7/18.
@@ -16,6 +23,8 @@ import io.xdag.xdagwallet.MainActivity;
  * desc :
  */
 public class XdagHandlerWrapper {
+
+    private static final String XDAG_FILE = "xdag";
 
     private static final int MSG_CONNECT_TO_POOL = 1;
     private static final int MSG_DISCONNECT_FROM_POOL = 2;
@@ -25,10 +34,12 @@ public class XdagHandlerWrapper {
     private static final String KEY_ADDRESS = "key_address";
     private static final String KEY_AMOUNT = "key_amount";
 
+    private Activity mActivity;
     private Handler mXdagHandler;
 
 
     public XdagHandlerWrapper(MainActivity activity) {
+        mActivity = activity;
         HandlerThread handlerThread = new HandlerThread("XdagProcessThread");
         handlerThread.start();
         mXdagHandler = new XdagHandler(activity, handlerThread.getLooper());
@@ -95,4 +106,46 @@ public class XdagHandlerWrapper {
         }
     }
 
+
+    /**
+     * create file: sdcard/xdag/
+     */
+    @Nullable private File createTempFile() {
+        if (SDCardUtil.isAvailable()) {
+            File file = new File(SDCardUtil.getSDCardPath(), XDAG_FILE);
+            if (!file.exists() && !file.mkdirs()) {
+                AlertUtil.show(mActivity, R.string.error_file_make_fail);
+            } else {
+                return file;
+            }
+        } else {
+            AlertUtil.show(mActivity, R.string.error_sdcard_not_available);
+        }
+        return null;
+
+    }
+
+
+    /**
+     * create file: /data/data/io.xdag.xdagwallet/files/xdag/
+     */
+    @Nullable public File createXdagFile() {
+
+        File file = new File(mActivity.getFilesDir(), XDAG_FILE);
+        if (!file.exists() && !file.mkdirs()) {
+            AlertUtil.show(mActivity, R.string.error_file_make_fail);
+        } else {
+            return file;
+        }
+        return null;
+    }
+
+
+    public boolean recoverXdagFile() {
+
+        File tempFile = createTempFile();
+        File xdagFile = createXdagFile();
+
+        return tempFile != null && xdagFile != null && FileUtil.moveDir(tempFile, xdagFile);
+    }
 }
