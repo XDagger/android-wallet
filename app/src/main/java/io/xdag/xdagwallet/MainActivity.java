@@ -1,5 +1,7 @@
 package io.xdag.xdagwallet;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +15,7 @@ import com.yanzhenjie.permission.Permission;
 import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
+import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
@@ -69,11 +72,21 @@ public class MainActivity extends ToolbarActivity {
             .onGranted(new Action<List<String>>() {
                 @Override
                 public void onAction(List<String> data) {
-                    if (getXdagHandler().createWallet()) {
-                        getXdagHandler().connectToPool(Config.POLL_ADDRESS);
+                    if (Config.isRestore()) {
+                        if (getXdagHandler().restoreWallet()) {
+                            getXdagHandler().connectToPool(Config.POLL_ADDRESS);
+                        } else {
+                            AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
+                        }
+
                     } else {
-                        AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
+                        if (getXdagHandler().createWallet()) {
+                            getXdagHandler().connectToPool(Config.POLL_ADDRESS);
+                        } else {
+                            AlertUtil.show(mContext, R.string.error_create_xdag_wallet);
+                        }
                     }
+
                 }
             })
             .start();
@@ -190,5 +203,11 @@ public class MainActivity extends ToolbarActivity {
             mHandlerWrapper = new XdagHandlerWrapper(MainActivity.this);
         }
         return mHandlerWrapper;
+    }
+
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
     }
 }

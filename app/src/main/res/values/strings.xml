@@ -16,6 +16,8 @@
     <string name="not_ready">Not Ready</string>
     <string name="loading_address">Loading Address</string>
     <string name="loading_balance">Loading Balance</string>
+    <string name="create_wallet">Create Wallet</string>
+    <string name="restore_wallet">Restore Wallet</string>
 
     <!-- please -->
     <string name="please_set_password">please set password</string>
@@ -27,6 +29,7 @@
     <string name="error_cannot_identify_qr_code">Cannot identify QR code</string>
     <string name="error_file_make_fail">The xdag file make fail</string>
     <string name="error_sdcard_not_available">SDCard is not available</string>
+    <string name="error_create_xdag_wallet">Xdag wallet create fail</string>
     <string name="error_restore_xdag_wallet">Xdag wallet restore fail</string>
     <string name="error_backup_xdag_wallet">Xdag wallet backup fail</string>
 
