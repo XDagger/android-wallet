@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">XdagWallet</string>
-    
+
     <!-- common -->
     <string name="home">Home</string>
     <string name="send">Send</string>
@@ -16,15 +16,15 @@
     <string name="not_ready">Not Ready</string>
     <string name="loading_address">Loading Address</string>
     <string name="loading_balance">Loading Balance</string>
-    <string name="create_wallet">创建钱包</string>
-    <string name="restore_wallet">恢复钱包</string>
-    
+    <string name="create_wallet">Create Wallet</string>
+    <string name="restore_wallet">Restore Wallet</string>
+
     <!-- please -->
     <string name="please_set_password">please set password</string>
     <string name="please_retype_password">please retype password</string>
     <string name="please_input_password">please input password</string>
     <string name="please_input_random">please input random</string>
-    
+
     <!-- error tips -->
     <string name="error_cannot_identify_qr_code">Cannot identify QR code</string>
     <string name="error_file_make_fail">The xdag file make fail</string>
@@ -32,18 +32,16 @@
     <string name="error_create_xdag_wallet">Xdag wallet create fail</string>
     <string name="error_restore_xdag_wallet">Xdag wallet restore fail</string>
     <string name="error_backup_xdag_wallet">Xdag wallet backup fail</string>
-    
+
     <!-- success -->
     <string name="success_refresh">Refresh success</string>
     <string name="success_copy_address">Copy address success</string>
     <string name="success_backup_xdag_wallet">Xdag wallet backup success</string>
-    
+
     <!-- setting item-->
     <string name="setting_messages">Messages</string>
     <string name="setting_backup_wallet">Backup Wallet</string>
     <string name="setting_restore_wallet">Restore Wallet</string>
     <string name="setting_about_xdag">About XDAG</string>
-    
-    <string name="use_explain">使用说明</string>
 
 </resources>

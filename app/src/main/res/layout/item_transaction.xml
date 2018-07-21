@@ -9,7 +9,7 @@
     android:clickable="true"
     android:elevation="@dimen/elevation"
     android:focusable="true"
-    android:padding="@dimen/space_large">
+    android:padding="@dimen/space_16">
 
     <ImageView
         android:id="@+id/item_transaction_tv_type"
@@ -25,8 +25,8 @@
         android:id="@+id/item_transaction_tv_address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space_normal"
-        android:layout_marginRight="@dimen/space_normal"
+        android:layout_marginLeft="@dimen/space_8"
+        android:layout_marginRight="@dimen/space_8"
         android:ellipsize="middle"
         android:singleLine="true"
         android:textColor="@color/LIGHT_BLACK"
@@ -50,7 +50,7 @@
         android:id="@+id/item_transaction_tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_small"
+        android:layout_marginTop="@dimen/space_4"
         android:textColor="@color/GERY"
         android:textSize="@dimen/size_tip"
         app:layout_constraintLeft_toLeftOf="@id/item_transaction_tv_address"
