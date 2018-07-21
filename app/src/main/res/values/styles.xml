@@ -5,5 +5,9 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+    
+    <style name="AppSplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash_window</item>
+    </style>
 
 </resources>
