@@ -45,5 +45,10 @@
     <string name="setting_about_xdag">About XDAG</string>
     
     <string name="use_explain">使用说明</string>
+    <string name="function_explain">功能说明</string>
+    <string name="backup_explain">我已备份好钱包文件。</string>
+    <string name="start_use">开始使用</string>
+    <string name="not_show_explain">不再显示本页面</string>
+    <string name="please_backup_your_xdag_wallet_first">请先备份您的钱包文件</string>
 
 </resources>

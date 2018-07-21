@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_background">
+    
+    
+    <TextView
+        android:id="@+id/explain_tv_explain_text"
+        style="@style/Xdag.Item.Explain.Text"
+        android:lineSpacingExtra="@dimen/space_8"
+        tools:text="说明文字" />
+    
+    
+    <Button
+        android:id="@+id/explain_btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_32"
+        android:layout_marginRight="@dimen/space_32"
+        android:layout_marginTop="@dimen/space_16"
+        android:background="@color/colorPrimary"
+        android:text="@string/start_use"
+        android:textColor="@color/WHITE"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/explain_cb_backup"
+        app:layout_constraintTop_toBottomOf="@id/explain_tv_explain_text"
+        app:layout_constraintVertical_chainStyle="packed" />
+    
+    
+    <CheckBox
+        android:id="@+id/explain_cb_backup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_16"
+        android:text="@string/backup_explain"
+        android:textSize="@dimen/size_text"
+        app:layout_constraintBottom_toTopOf="@id/explain_cb_no_show"
+        app:layout_constraintLeft_toLeftOf="@id/explain_btn_start"
+        app:layout_constraintTop_toBottomOf="@id/explain_btn_start" />
+    
+    <CheckBox
+        android:id="@+id/explain_cb_no_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        android:text="@string/not_show_explain"
+        android:textSize="@dimen/size_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/explain_btn_start"
+        app:layout_constraintTop_toBottomOf="@id/explain_cb_backup" />
+
+
+</android.support.constraint.ConstraintLayout>

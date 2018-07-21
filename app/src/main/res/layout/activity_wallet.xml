@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/page_background">
     
-    <TextView
-        android:id="@+id/wallet_tv_explain"
-        style="@style/Xdag.Item.Explain"
-        android:text="@string/use_explain" />
     
     <TextView
-        android:id="@+id/wallet_tv_explain_text"
+        android:id="@+id/wallet_tv_function"
+        style="@style/Xdag.Item.Explain"
+        android:text="@string/function_explain" />
+    
+    <TextView
+        android:id="@+id/wallet_tv_function_text"
         style="@style/Xdag.Item.Explain.Text"
         android:lineSpacingExtra="@dimen/space_8"
-        app:layout_constraintTop_toBottomOf="@id/wallet_tv_explain"
+        app:layout_constraintTop_toBottomOf="@id/wallet_tv_function"
         tools:text="说明文字" />
     
     <Button
