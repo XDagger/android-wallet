@@ -16,15 +16,9 @@
     
     <Button
         android:id="@+id/explain_btn_start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space_32"
-        android:layout_marginRight="@dimen/space_32"
+        style="@style/Xdag.Button"
         android:layout_marginTop="@dimen/space_16"
-        android:background="@color/colorPrimary"
         android:text="@string/start_use"
-        android:textColor="@color/WHITE"
-        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/explain_cb_backup"
         app:layout_constraintTop_toBottomOf="@id/explain_tv_explain_text"
         app:layout_constraintVertical_chainStyle="packed" />
