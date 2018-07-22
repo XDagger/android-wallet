@@ -13,7 +13,7 @@ import io.xdag.xdagwallet.R;
  */
 public class AlertUtil {
 
-    private static final int ALERT_DURATION = 2000;
+    private static final int ALERT_DURATION = 3000;
 
 
     public static void show(Activity activity, int res) {

@@ -60,7 +60,7 @@ public class UseExplainActivity extends ToolbarActivity implements CompoundButto
         mCbNoShow.setChecked(Config.isNotShowExplain());
 
         if (Config.isUserBackup() && Config.isNotShowExplain()) {
-            WalletActivity.start(mContext);
+            WalletActivity.start(mContext, true);
         }
     }
 
@@ -70,7 +70,7 @@ public class UseExplainActivity extends ToolbarActivity implements CompoundButto
             AlertUtil.show(mContext, getString(R.string.please_backup_your_xdag_wallet_first));
             return;
         }
-        WalletActivity.start(mContext);
+        WalletActivity.start(mContext, Config.isRestore() && Config.isNotShowExplain());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package io.xdag.xdagwallet.wrapper;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +8,9 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
+
+import java.io.File;
+
 import io.reactivex.annotations.Nullable;
 import io.xdag.common.tool.MLog;
 import io.xdag.common.tool.NoLeakHandler;
@@ -15,16 +19,15 @@ import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.AlertUtil;
-import java.io.File;
 
 /**
  * created by lxm on 2018/7/18.
- *
+ * <p>
  * desc :
  */
 public class XdagHandlerWrapper {
 
-    private static final String XDAG_FILE = "xdag";
+    public static final String XDAG_FILE = "xdag";
 
     private static final int MSG_CONNECT_TO_POOL = 1;
     private static final int MSG_DISCONNECT_FROM_POOL = 2;
@@ -37,12 +40,26 @@ public class XdagHandlerWrapper {
     private Activity mActivity;
     private Handler mXdagHandler;
 
+    @SuppressLint("StaticFieldLeak")
+    private static XdagHandlerWrapper sInstance = null;
 
-    public XdagHandlerWrapper(MainActivity activity) {
+    public static XdagHandlerWrapper getInstance(MainActivity activity) {
+        synchronized (XdagHandlerWrapper.class) {
+            if (sInstance == null) {
+                synchronized (XdagHandlerWrapper.class) {
+                    sInstance = new XdagHandlerWrapper(activity);
+                }
+            }
+        }
+
+        return sInstance;
+    }
+
+    private XdagHandlerWrapper(MainActivity activity) {
         mActivity = activity;
         HandlerThread handlerThread = new HandlerThread("XdagProcessThread");
         handlerThread.start();
-        mXdagHandler = new XdagHandler(activity, handlerThread.getLooper());
+        mXdagHandler = new XdagHandler(mActivity, handlerThread.getLooper());
     }
 
 
@@ -67,18 +84,19 @@ public class XdagHandlerWrapper {
     }
 
 
-    static class XdagHandler extends NoLeakHandler<MainActivity> {
+    static class XdagHandler extends NoLeakHandler<Activity> {
 
-        XdagHandler(MainActivity target, Looper looper) {
+        XdagHandler(Activity target, Looper looper) {
             super(target, looper);
         }
 
 
-        @Override protected void onMessageExecute(MainActivity target, Message msg) {
+        @Override
+        protected void onMessageExecute(Activity target, Message msg) {
             switch (msg.arg1) {
                 case MSG_CONNECT_TO_POOL: {
                     MLog.i("receive msg connect to the pool thread id " +
-                        Thread.currentThread().getId());
+                            Thread.currentThread().getId());
                     Bundle data = msg.getData();
                     String poolAddr = data.getString(KEY_POOL);
                     XdagWrapper xdagWrapper = XdagWrapper.getInstance();
@@ -110,16 +128,17 @@ public class XdagHandlerWrapper {
     /**
      * create file: sdcard/xdag/
      */
-    @Nullable private File createTempFile() {
+    @Nullable
+    public static File createSDCardFile(Activity activity) {
         if (SDCardUtil.isAvailable()) {
             File file = new File(SDCardUtil.getSDCardPath(), XDAG_FILE);
             if (!file.exists() && !file.mkdirs()) {
-                AlertUtil.show(mActivity, R.string.error_file_make_fail);
+                AlertUtil.show(activity, R.string.error_file_make_fail);
             } else {
                 return file;
             }
         } else {
-            AlertUtil.show(mActivity, R.string.error_sdcard_not_available);
+            AlertUtil.show(activity, R.string.error_sdcard_not_available);
         }
         return null;
 
@@ -129,7 +148,8 @@ public class XdagHandlerWrapper {
     /**
      * create file: /data/data/io.xdag.xdagwallet/files/xdag/
      */
-    @Nullable private File createXdagFile() {
+    @Nullable
+    private File createXdagFile() {
 
         File file = new File(mActivity.getFilesDir(), XDAG_FILE);
         if (!file.exists() && !file.mkdirs()) {
@@ -148,7 +168,7 @@ public class XdagHandlerWrapper {
 
     public boolean restoreWallet() {
 
-        File tempFile = createTempFile();
+        File tempFile = createSDCardFile(mActivity);
         File xdagFile = createXdagFile();
 
         return tempFile != null && xdagFile != null && FileUtil.moveDir(tempFile, xdagFile);
@@ -157,7 +177,7 @@ public class XdagHandlerWrapper {
 
     public boolean backupWallet() {
 
-        File tempFile = createTempFile();
+        File tempFile = createSDCardFile(mActivity);
         File xdagFile = createXdagFile();
 
         return tempFile != null && xdagFile != null && FileUtil.copyDir(xdagFile, tempFile);

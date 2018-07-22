@@ -21,14 +21,13 @@
         app:layout_constraintBottom_toTopOf="@id/wallet_btn_restore"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wallet_tv_function_text"
         app:layout_constraintVertical_chainStyle="packed" />
     
     <Button
         android:id="@+id/wallet_btn_restore"
         style="@style/Xdag.Button"
         android:layout_marginTop="@dimen/space_32"
-        android:padding="@dimen/space_16"
         android:text="@string/restore_wallet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
