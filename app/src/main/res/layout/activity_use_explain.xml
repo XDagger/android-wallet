@@ -31,12 +31,12 @@
         android:layout_marginTop="@dimen/space_16"
         android:text="@string/backup_explain"
         android:textSize="@dimen/size_text"
-        app:layout_constraintBottom_toTopOf="@id/explain_cb_no_show"
+        app:layout_constraintBottom_toTopOf="@id/explain_cb_not_show"
         app:layout_constraintLeft_toLeftOf="@id/explain_btn_start"
         app:layout_constraintTop_toBottomOf="@id/explain_btn_start" />
     
     <CheckBox
-        android:id="@+id/explain_cb_no_show"
+        android:id="@+id/explain_cb_not_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_4"

@@ -46,11 +46,11 @@
     
     <string name="use_explain">使用说明</string>
     <string name="function_explain">功能说明</string>
-    <string name="backup_explain">我已备份好钱包文件。</string>
+    <string name="backup_explain">已仔细阅读上述内容，\n并已备份好钱包文件。</string>
     <string name="start_use">开始使用</string>
     <string name="not_show_explain">不再显示本页面</string>
-    <string name="please_backup_your_xdag_wallet_first">请先备份您的钱包文件</string>
+    <string name="please_backup_your_xdag_wallet_first">请仔细阅读本页内容，并备份好您的钱包文件</string>
     <string name="restore_read">已仔细阅读上述内容，\n并将钱包文件拷贝到了存储卡的 xdag 文件夹。</string>
-    <string name="please_restore_read">请已仔细阅读本页内容，并将钱包文件拷贝到存储卡的 xdag 文件夹。</string>
+    <string name="please_restore_read">请仔细阅读本页内容，并将钱包文件拷贝到存储卡的 xdag 文件夹。</string>
 
 </resources>

@@ -26,7 +26,7 @@ public class UseExplainActivity extends ToolbarActivity implements CompoundButto
     TextView mTvExplain;
     @BindView(R.id.explain_cb_backup)
     CheckBox mCbBackup;
-    @BindView(R.id.explain_cb_no_show)
+    @BindView(R.id.explain_cb_not_show)
     CheckBox mCbNoShow;
 
     @Override
@@ -89,7 +89,7 @@ public class UseExplainActivity extends ToolbarActivity implements CompoundButto
             case R.id.explain_cb_backup:
                 Config.setUserBackup(isChecked);
                 break;
-            case R.id.explain_cb_no_show:
+            case R.id.explain_cb_not_show:
                 Config.setNotShowExplain(isChecked);
                 break;
             default:
