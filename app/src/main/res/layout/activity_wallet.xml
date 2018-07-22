@@ -8,26 +8,15 @@
     
     
     <TextView
-        android:id="@+id/wallet_tv_function"
-        style="@style/Xdag.Item.Explain"
-        android:text="@string/function_explain" />
-    
-    <TextView
         android:id="@+id/wallet_tv_function_text"
         style="@style/Xdag.Item.Explain.Text"
         android:lineSpacingExtra="@dimen/space_8"
-        app:layout_constraintTop_toBottomOf="@id/wallet_tv_function"
         tools:text="说明文字" />
     
     <Button
         android:id="@+id/wallet_btn_create"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/space_32"
-        android:background="@color/colorPrimary"
-        android:padding="@dimen/space_16"
+        style="@style/Xdag.Button"
         android:text="@string/create_wallet"
-        android:textColor="@color/WHITE"
         android:textSize="@dimen/size_title"
         app:layout_constraintBottom_toTopOf="@id/wallet_btn_restore"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -37,14 +26,10 @@
     
     <Button
         android:id="@+id/wallet_btn_restore"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/space_32"
-        android:background="@color/colorPrimary"
+        style="@style/Xdag.Button"
+        android:layout_marginTop="@dimen/space_32"
         android:padding="@dimen/space_16"
         android:text="@string/restore_wallet"
-        android:textColor="@color/WHITE"
-        android:textSize="@dimen/size_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
