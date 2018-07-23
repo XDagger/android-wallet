@@ -17,9 +17,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import io.xdag.common.Common;
+import io.xdag.common.base.BaseFragment;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.xdagwallet.config.Config;
+import io.xdag.xdagwallet.fragment.BaseMainFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
@@ -39,11 +41,11 @@ public class MainActivity extends ToolbarActivity {
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation mNavigationView;
     private FragmentManager mFragmentManager;
-    private HomeFragment mHomeFragment;
-    private ReceiveFragment mReceiveFragment;
-    private SendFragment mSendFragment;
-    private SettingFragment mSettingFragment;
-    private Fragment mShowFragment;
+    private BaseMainFragment mHomeFragment;
+    private BaseMainFragment mReceiveFragment;
+    private BaseMainFragment mSendFragment;
+    private BaseMainFragment mSettingFragment;
+    private BaseMainFragment mShowFragment;
 
     @Override
     protected int getLayoutResId() {
@@ -72,26 +74,37 @@ public class MainActivity extends ToolbarActivity {
                 .onGranted(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> data) {
-                        if (Config.isRestore()) {
-                            if (getXdagHandler().restoreWallet()) {
-                                getXdagHandler().connectToPool(Config.POLL_ADDRESS);
-                            } else {
-                                AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
-                            }
-
-                        } else {
-                            if (getXdagHandler().createWallet()) {
-                                getXdagHandler().connectToPool(Config.POLL_ADDRESS);
-                            } else {
-                                AlertUtil.show(mContext, R.string.error_create_xdag_wallet);
-                            }
-                        }
+                        connectToPool();
 
                     }
                 })
                 .start();
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        showFragment(mHomeFragment);
+        connectToPool();
+
+    }
+
+    private void connectToPool() {
+        if (Config.isRestore()) {
+            if (getXdagHandler().restoreWallet()) {
+                getXdagHandler().connectToPool(Config.POLL_ADDRESS);
+            } else {
+                AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
+            }
+
+        } else {
+            if (getXdagHandler().createWallet()) {
+                getXdagHandler().connectToPool(Config.POLL_ADDRESS);
+            } else {
+                AlertUtil.show(mContext, R.string.error_create_xdag_wallet);
+            }
+        }
+    }
 
     private void initNavigationView() {
         // create items
@@ -135,7 +148,6 @@ public class MainActivity extends ToolbarActivity {
                         showFragment(mSettingFragment);
                         break;
                 }
-                ToolbarUtil.setToolbar(position, getToolbar());
                 return true;
             }
         });
@@ -173,7 +185,7 @@ public class MainActivity extends ToolbarActivity {
     }
 
 
-    private void showFragment(Fragment fragment) {
+    private void showFragment(BaseMainFragment fragment) {
         if (mShowFragment != fragment) {
             mFragmentManager.beginTransaction()
                     .hide(mHomeFragment)
@@ -183,6 +195,7 @@ public class MainActivity extends ToolbarActivity {
                     .show(fragment)
                     .commit();
             mShowFragment = fragment;
+            ToolbarUtil.setToolbar(mShowFragment.getPosition(), getToolbar());
         }
     }
 

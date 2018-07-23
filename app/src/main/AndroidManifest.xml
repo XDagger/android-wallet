@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.WalletActivity"
             android:launchMode="singleTop" />

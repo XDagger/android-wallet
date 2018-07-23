@@ -33,4 +33,6 @@ public abstract class BaseMainFragment extends RefreshFragment {
     @Override protected boolean isRefresh() {
         return this instanceof HomeFragment;
     }
+
+    public abstract int getPosition();
 }

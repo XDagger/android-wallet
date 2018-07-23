@@ -74,4 +74,8 @@ public class ReceiveFragment extends BaseMainFragment {
         }
     }
 
+    @Override
+    public int getPosition() {
+        return 1;
+    }
 }

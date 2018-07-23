@@ -142,4 +142,9 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
             break;
         }
     }
+
+    @Override
+    public int getPosition() {
+        return 2;
+    }
 }

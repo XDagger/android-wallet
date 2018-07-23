@@ -208,4 +208,9 @@ public class HomeFragment extends BaseMainFragment {
         EventBus.getDefault().register(homeFragment);
         return homeFragment;
     }
+
+    @Override
+    public int getPosition() {
+        return 0;
+    }
 }
