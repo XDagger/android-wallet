@@ -25,9 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".activity.WalletActivity" />
-        <activity android:name=".activity.RestoreActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.WalletActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.RestoreActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>
