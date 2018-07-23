@@ -87,6 +87,14 @@ public class XdagHandlerWrapper {
         mXdagHandler.sendMessage(msg);
     }
 
+    public void disconnectPool() {
+        Message msg = Message.obtain();
+        Bundle data = new Bundle();
+        msg.arg1 = MSG_DISCONNECT_FROM_POOL;
+        msg.setData(data);
+        mXdagHandler.sendMessage(msg);
+    }
+
 
     static class XdagHandler extends NoLeakHandler<Activity> {
 
