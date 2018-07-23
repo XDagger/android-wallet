@@ -27,8 +27,6 @@ import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 
 public class WalletActivity extends ToolbarActivity {
 
-    List<String> mWalletList = Arrays.asList("dnet_key.dat", "wallet.dat", "storage");
-
     @BindView(R.id.wallet_tv_function_text)
     TextView mTvFunction;
 
@@ -70,7 +68,7 @@ public class WalletActivity extends ToolbarActivity {
      */
     private boolean isWalletExists() {
         File file = new File(mContext.getFilesDir(), XdagHandlerWrapper.XDAG_FILE);
-        return file.exists() && Arrays.asList(file.list()).containsAll(mWalletList);
+        return file.exists() && Arrays.asList(file.list()).containsAll(XdagHandlerWrapper.WALLET_LIST);
     }
 
 

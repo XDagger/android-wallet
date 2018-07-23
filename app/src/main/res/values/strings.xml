@@ -2,13 +2,13 @@
     <string name="app_name">XdagWallet</string>
     
     <!-- common -->
-    <string name="home">Home</string>
-    <string name="send">Send</string>
-    <string name="receive">Receive</string>
-    <string name="setting">Setting</string>
-    <string name="send_xdag">Send Xdag</string>
-    <string name="receive_xdag">Receive Xdag</string>
-    <string name="scan">Scan QRCode</string>
+    <string name="home">首页</string>
+    <string name="send">发送</string>
+    <string name="receive">接收</string>
+    <string name="setting">设置</string>
+    <string name="send_xdag">发送 Xdag</string>
+    <string name="receive_xdag">接收 Xdag</string>
+    <string name="scan">扫一扫</string>
     <string name="to_address">To Address</string>
     <string name="send_to_address">Send To Address</string>
     <string name="amount_to_send">Amount to Send</string>
@@ -26,7 +26,7 @@
     <string name="please_input_random">please input random</string>
     
     <!-- error tips -->
-    <string name="error_cannot_identify_qr_code">Cannot identify QR code</string>
+    <string name="error_cannot_identify_qr_code">不能识别二维码</string>
     <string name="error_file_make_fail">The xdag file make fail</string>
     <string name="error_sdcard_not_available">SDCard is not available</string>
     <string name="error_create_xdag_wallet">Xdag wallet create fail</string>
@@ -34,23 +34,23 @@
     <string name="error_backup_xdag_wallet">Xdag wallet backup fail</string>
     
     <!-- success -->
-    <string name="success_refresh">Refresh success</string>
-    <string name="success_copy_address">Copy address success</string>
-    <string name="success_backup_xdag_wallet">Xdag wallet backup success</string>
+    <string name="success_refresh">刷新成功</string>
+    <string name="success_copy_address">地址复制成功</string>
+    <string name="success_backup_xdag_wallet">您的钱包已备份至 /sdcard/xdag 目录</string>
     
     <!-- setting item-->
-    <string name="setting_messages">Messages</string>
-    <string name="setting_backup_wallet">Backup Wallet</string>
-    <string name="setting_restore_wallet">Restore Wallet</string>
-    <string name="setting_about_xdag">About XDAG</string>
+    <string name="setting_messages">消息</string>
+    <string name="setting_backup_wallet">备份钱包</string>
+    <string name="setting_restore_wallet">恢复钱包</string>
+    <string name="setting_about_xdag">关于 XDAG</string>
     
     <string name="use_explain">使用说明</string>
     <string name="function_explain">功能说明</string>
-    <string name="backup_explain">已仔细阅读上述内容，\n并已备份好钱包文件。</string>
+    <string name="backup_explain">我已经仔细阅读上述内容</string>
     <string name="start_use">开始使用</string>
     <string name="not_show_explain">不再显示本页面</string>
-    <string name="please_backup_your_xdag_wallet_first">请仔细阅读本页内容，并备份好您的钱包文件</string>
-    <string name="restore_read">已仔细阅读上述内容，\n并将钱包文件拷贝到了存储卡的 xdag 文件夹。</string>
+    <string name="please_backup_your_xdag_wallet_first">请仔细阅读本页内容，并备份好您的钱包文件。</string>
+    <string name="restore_read">已仔细阅读上述内容，并将钱包文件拷贝到了存储卡的 xdag 文件夹。</string>
     <string name="please_restore_read">请仔细阅读本页内容，并将钱包文件拷贝到存储卡的 xdag 文件夹。</string>
 
 </resources>

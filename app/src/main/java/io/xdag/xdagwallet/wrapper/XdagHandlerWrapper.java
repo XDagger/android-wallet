@@ -10,6 +10,8 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 import io.reactivex.annotations.Nullable;
 import io.xdag.common.tool.MLog;
@@ -36,6 +38,8 @@ public class XdagHandlerWrapper {
     private static final String KEY_POOL = "key_pool";
     private static final String KEY_ADDRESS = "key_address";
     private static final String KEY_AMOUNT = "key_amount";
+
+    public static List<String> WALLET_LIST = Arrays.asList("dnet_key.dat", "wallet.dat", "storage");
 
     private Activity mActivity;
     private Handler mXdagHandler;

@@ -27,13 +27,15 @@
         
         <CheckBox
             android:id="@+id/restore_cb_read"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_32"
             android:layout_marginTop="@dimen/space_16"
             android:text="@string/restore_read"
             android:textSize="@dimen/size_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/restore_btn_restore"
+            app:layout_constraintRight_toRightOf="@id/restore_btn_restore"
             app:layout_constraintTop_toBottomOf="@id/restore_btn_restore" />
     
     </android.support.constraint.ConstraintLayout>
