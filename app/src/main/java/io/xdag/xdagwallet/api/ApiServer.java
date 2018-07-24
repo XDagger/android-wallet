@@ -10,7 +10,7 @@ import io.xdag.xdagwallet.api.xdagscan.XdagScanApi;
  */
 public class ApiServer {
 
-    private static final String BASE_URL_XDAGSCAN = "http://139.99.124.100:8888/";
+    private static final String BASE_URL_XDAGSCAN = "http://xdagscan.com/";
 
 
     public static XdagScanApi getApi() {

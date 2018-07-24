@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/appbar_height"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:id="@+id/appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/appbar_height"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            app:scrimAnimationDuration="200"
-            android:id="@+id/collapsing_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:expandedTitleMarginBottom="50dp"
-            app:expandedTitleGravity="center_horizontal"
-            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
-            app:contentScrim="@color/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <FrameLayout
+                android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_collapseMode="parallax">
+                app:scrimAnimationDuration="200"
+                app:expandedTitleMarginBottom="50dp"
+                app:expandedTitleGravity="center_horizontal"
+                app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
+                app:contentScrim="@color/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_collapseMode="parallax">
 
                 <TextView
-                    android:id="@+id/home_tv_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center"
-                    android:textSize="@dimen/size_text"
-                    android:textColor="@color/WHITE"/>
+                        android:id="@+id/home_tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/size_text"
+                        android:textColor="@color/WHITE"/>
 
             </FrameLayout>
 
             <android.support.v7.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                />
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/home_rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_transaction"
-        android:descendantFocusability="blocksDescendants"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:id="@+id/home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_transaction"
+            android:descendantFocusability="blocksDescendants"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>
 

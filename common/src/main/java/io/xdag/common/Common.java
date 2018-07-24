@@ -28,9 +28,11 @@ public class Common {
         return sContext;
     }
 
+
     public static boolean isDebug() {
         return sDebug;
     }
+
 
     public static Resources getResources() {
         return getContext().getResources();
@@ -39,5 +41,10 @@ public class Common {
 
     public static int getColor(@ColorRes int id) {
         return getResources().getColor(id);
+    }
+
+
+    public static String getString(int id) {
+        return getResources().getString(id);
     }
 }

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">XdagWallet</string>
-    
+
     <!-- common -->
     <string name="home">首页</string>
     <string name="send">发送</string>
@@ -18,13 +18,13 @@
     <string name="loading_balance">Loading Balance</string>
     <string name="create_wallet">创建钱包</string>
     <string name="restore_wallet">恢复钱包</string>
-    
+
     <!-- please -->
     <string name="please_set_password">please set password</string>
     <string name="please_retype_password">please retype password</string>
     <string name="please_input_password">please input password</string>
     <string name="please_input_random">please input random</string>
-    
+
     <!-- error tips -->
     <string name="error_cannot_identify_qr_code">不能识别二维码</string>
     <string name="error_file_make_fail">The xdag file make fail</string>
@@ -32,18 +32,19 @@
     <string name="error_create_xdag_wallet">Xdag wallet create fail</string>
     <string name="error_restore_xdag_wallet">Xdag wallet restore fail</string>
     <string name="error_backup_xdag_wallet">Xdag wallet backup fail</string>
-    
+
     <!-- success -->
     <string name="success_refresh">刷新成功</string>
+    <string name="no_transaction">没有交易记录</string>
     <string name="success_copy_address">地址复制成功</string>
     <string name="success_backup_xdag_wallet">您的钱包已备份至 /sdcard/xdag 目录</string>
-    
+
     <!-- setting item-->
     <string name="setting_messages">消息</string>
     <string name="setting_backup_wallet">备份钱包</string>
     <string name="setting_restore_wallet">恢复钱包</string>
     <string name="setting_about_xdag">关于 XDAG</string>
-    
+
     <string name="use_explain">使用说明</string>
     <string name="function_explain">功能说明</string>
     <string name="backup_explain">我已经仔细阅读上述内容</string>

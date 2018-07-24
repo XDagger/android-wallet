@@ -19,12 +19,14 @@ import io.xdag.xdagwallet.adapter.TransactionAdapter;
 import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
-import io.xdag.xdagwallet.api.xdagscan.Response2Model;
+import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
+import io.xdag.xdagwallet.widget.EmptyView;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
+import java.util.List;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -48,6 +50,7 @@ public class HomeFragment extends BaseMainFragment {
     private int mLastAddressState = XdagEvent.en_address_not_ready;
     private int mLastBalancState = XdagEvent.en_balance_not_ready;
     private TransactionAdapter mAdapter;
+    private View mEmptyView;
     private Disposable mDisposable;
 
 
@@ -70,23 +73,35 @@ public class HomeFragment extends BaseMainFragment {
                     state.equals(AppBarStateChangedListener.State.EXPANDED));
             }
         });
+
+        if (mEmptyView == null) {
+            mEmptyView = new EmptyView(mContext);
+            mEmptyView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    requestTransaction();
+                }
+            });
+        }
+
+        if (mAdapter == null) {
+            mAdapter = new TransactionAdapter(null);
+            mAdapter.setEmptyView(mEmptyView);
+        }
+
+        mRecyclerView.setAdapter(mAdapter);
     }
 
 
     private void requestTransaction() {
 
-        mDisposable = ApiServer.getApi().getBlockDetail(mTvAddress.getText().toString(), 1, 20)
+        mDisposable = ApiServer.getApi().getBlockDetail(mTvAddress.getText().toString())
             .observeOn(AndroidSchedulers.mainThread())
-            .map(new Response2Model<BlockDetailModel>())
-            .subscribe(new Consumer<BlockDetailModel>() {
-                @Override public void accept(BlockDetailModel blockDetailModel) throws Exception {
-                    if (mAdapter == null) {
-                        mAdapter = new TransactionAdapter(blockDetailModel.address_list);
-                        mRecyclerView.setAdapter(mAdapter);
-                    } else {
-                        mAdapter.setNewData(blockDetailModel.address_list);
-                    }
-                    AlertUtil.show(mContext, getString(R.string.success_refresh));
+            .map(new Detail2AddressListFunction())
+            .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
+                @Override
+                public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
+                    mAdapter.setNewData(blockAsAddresses);
+                    AlertUtil.show(mContext,R.string.success_refresh);
                 }
             }, new ErrorConsumer(getMainActivity()));
     }
@@ -208,6 +223,7 @@ public class HomeFragment extends BaseMainFragment {
         EventBus.getDefault().register(homeFragment);
         return homeFragment;
     }
+
 
     @Override
     public int getPosition() {

@@ -13,16 +13,16 @@ import java.util.List;
  * desc :
  */
 public class TransactionAdapter
-    extends BaseQuickAdapter<BlockDetailModel.AddressList, BaseViewHolder> {
+    extends BaseQuickAdapter<BlockDetailModel.BlockAsAddress, BaseViewHolder> {
 
     public TransactionAdapter(@Nullable
-                                  List<BlockDetailModel.AddressList> data) {
+                                  List<BlockDetailModel.BlockAsAddress> data) {
         super(R.layout.item_transaction, data);
     }
 
 
     @Override
-    protected void convert(BaseViewHolder helper, BlockDetailModel.AddressList item) {
+    protected void convert(BaseViewHolder helper, BlockDetailModel.BlockAsAddress item) {
         helper.setText(R.id.item_transaction_tv_address, item.address);
         helper.setText(R.id.item_transaction_tv_amount, item.getAmount());
         helper.setTextColor(R.id.item_transaction_tv_amount, item.getAmountColor());

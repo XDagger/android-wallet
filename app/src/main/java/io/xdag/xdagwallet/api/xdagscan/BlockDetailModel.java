@@ -6,26 +6,30 @@ import io.xdag.xdagwallet.R;
 import java.util.List;
 
 /**
- * created by lxm on 2018/7/6.
- *
- * desc :
+ * created by lxm on 2018/7/24.
  */
 public class BlockDetailModel {
 
+    public String block;
     public String time;
     public String timestamp;
     public String flags;
+    public String state;
     public String file_pos;
     public String hash;
     public String difficulty;
+    public String balance_address;
     public String balance;
-    public String transaction_total;
-    public String address_total;
-    public List<Transaction> transaction;
-    public List<AddressList> address_list;
+    public List<BlockAsTransaction> block_as_transaction;
+    public List<BlockAsAddress> block_as_address;
 
 
-    public static class Transaction {
+    public static class BlockAsTransaction {
+        /**
+         * direction : fee
+         * address : 6LN4oKM6n3oEn/rvKSqLLcZnqiNpa4aa
+         * amount : 0.000000000
+         */
 
         public String direction;
         public String address;
@@ -33,7 +37,13 @@ public class BlockDetailModel {
     }
 
 
-    public static class AddressList {
+    public static class BlockAsAddress {
+        /**
+         * direction : input
+         * address : BFitL37q0R9NQecLP+NZfvJNxS7hFxyR
+         * amount : 0.001000000
+         * time : 2018-07-18 09:16:01.255
+         */
 
         public String direction;
         public String address;
