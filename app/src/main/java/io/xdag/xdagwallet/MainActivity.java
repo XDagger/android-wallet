@@ -75,7 +75,6 @@ public class MainActivity extends ToolbarActivity {
                     @Override
                     public void onAction(List<String> data) {
                         connectToPool();
-
                     }
                 })
                 .start();

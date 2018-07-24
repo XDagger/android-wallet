@@ -20,7 +20,8 @@ import io.xdag.xdagwallet.util.AlertUtil;
  * created by ssyijiu  on 2018/7/22
  */
 
-public class UseExplainActivity extends ToolbarActivity implements CompoundButton.OnCheckedChangeListener {
+public class UseExplainActivity extends ToolbarActivity
+    implements CompoundButton.OnCheckedChangeListener {
 
     @BindView(R.id.explain_tv_explain_text)
     TextView mTvExplain;
@@ -29,29 +30,33 @@ public class UseExplainActivity extends ToolbarActivity implements CompoundButto
     @BindView(R.id.explain_cb_not_show)
     CheckBox mCbNoShow;
 
+
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_use_explain;
     }
 
+
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
 
         mTvExplain.setText(
-                new TextStyleUtil()
-                        .append("XDAG Android 钱包目前还处于内测版本\n")
-                        .append("使用请注意：\n")
-                        .append("请务必在其他位置备份好您的钱包文件，以防止因本钱包的 bug 造成您的资产损失。\n")
-                        .setForegroundColor(Common.getColor(R.color.RED))
-                        .append("任何卸载、删除数据的行为，都将造成钱包文件丢失，且无法找回。\n")
-                        .append("出现任何资产损失，作者概不负责。\n")
-                        .setForegroundColor(Common.getColor(R.color.RED))
-                        .create()
+            new TextStyleUtil()
+                .append("XDAG Android 钱包目前还处于内测版本\n")
+                .append("使用请注意：\n")
+                .append("请务必在其他位置备份好您的钱包文件，以防止因本钱包的 bug 造成您的资产损失。\n")
+                .append("出现任何资产损失，作者概不负责。\n")
+                .setForegroundColor(Common.getColor(R.color.RED))
+                .appendLine()
+                .append("任何卸载、删除数据的行为，都将造成钱包文件丢失，且无法找回。\n")
+                .setForegroundColor(Common.getColor(R.color.RED))
+                .create()
         );
 
         mCbBackup.setOnCheckedChangeListener(this);
         mCbNoShow.setOnCheckedChangeListener(this);
     }
+
 
     @Override
     protected void onStart() {
@@ -64,6 +69,7 @@ public class UseExplainActivity extends ToolbarActivity implements CompoundButto
         }
     }
 
+
     @OnClick(R.id.explain_btn_start)
     void explain_btn_start() {
         if (!Config.isUserBackup()) {
@@ -73,15 +79,18 @@ public class UseExplainActivity extends ToolbarActivity implements CompoundButto
         WalletActivity.start(mContext, Config.isRestore() && Config.isNotShowExplain());
     }
 
+
     @Override
     protected int getToolbarTitle() {
         return R.string.use_explain;
     }
 
+
     @Override
     protected int getToolbarMode() {
         return ToolbarMode.MODE_NONE;
     }
+
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
