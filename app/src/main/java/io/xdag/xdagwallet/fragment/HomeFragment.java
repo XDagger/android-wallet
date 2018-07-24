@@ -181,16 +181,20 @@ public class HomeFragment extends BaseMainFragment {
             case XdagEvent.en_event_retype_pwd:
             case XdagEvent.en_event_set_rdm: {
                 MLog.i("Event: set password and random");
-                mLoadingDialog.dismiss();
-                mInputDialog.setMessage(getAuthHintString(event.eventType));
-                mInputDialog.show();
+                if (isVisible()) {
+                    mLoadingDialog.dismiss();
+                    mInputDialog.setMessage(getAuthHintString(event.eventType));
+                    mInputDialog.show();
+                }
             }
             break;
             case XdagEvent.en_event_pwd_error: {
                 MLog.i("Event: password error");
-                mLoadingDialog.dismiss();
-                mTipDialog.setMessage(getString(R.string.error_password));
-                mTipDialog.show();
+                if (isVisible()) {
+                    mLoadingDialog.dismiss();
+                    mTipDialog.setMessage(getString(R.string.error_password));
+                    mTipDialog.show();
+                }
 
             }
             break;
@@ -202,13 +206,15 @@ public class HomeFragment extends BaseMainFragment {
                         event.addressLoadState == XdagEvent.en_address_ready) {
                     requestTransaction();
                 }
-                if (getXdagHandler().isNotConnectedToPool(event)) {
-                    if (!mInputDialog.isShowing()) {
-                        mLoadingBuilder.setMessage(getString(R.string.please_wait_connecting_pool));
-                        mLoadingDialog.show();
+                if (isVisible()) {
+                    if (getXdagHandler().isNotConnectedToPool(event)) {
+                        if (!mInputDialog.isShowing()) {
+                            mLoadingBuilder.setMessage(getString(R.string.please_wait_connecting_pool));
+                            mLoadingDialog.show();
+                        }
+                    } else {
+                        mLoadingDialog.dismiss();
                     }
-                } else {
-                    mLoadingDialog.dismiss();
                 }
             }
             break;
