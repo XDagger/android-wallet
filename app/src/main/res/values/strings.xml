@@ -54,5 +54,7 @@
     <string name="restore_read">已仔细阅读上述内容，并将钱包文件拷贝到了存储卡的 xdag 文件夹。</string>
     <string name="please_restore_read">请仔细阅读本页内容，并将钱包文件拷贝到存储卡的 xdag 文件夹。</string>
     <string name="loading_please_wait">正在加载，请稍后</string>
+    <string name="please_wait_connecting_pool">正在连接矿池，请稍后</string>
+    <string name="ensure">确定</string>
 
 </resources>

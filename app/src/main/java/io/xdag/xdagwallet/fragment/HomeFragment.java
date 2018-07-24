@@ -2,6 +2,7 @@ package io.xdag.xdagwallet.fragment;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.view.View;
@@ -26,8 +27,8 @@ import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
-import io.xdag.xdagwallet.dialog.InputDialog;
-import io.xdag.xdagwallet.dialog.LoadingDialog;
+import io.xdag.xdagwallet.dialog.InputBuilder;
+import io.xdag.xdagwallet.dialog.LoadingBuilder;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
@@ -56,8 +57,8 @@ public class HomeFragment extends BaseMainFragment {
     private TransactionAdapter mAdapter;
     private View mEmptyView;
     private Disposable mDisposable;
-    private LoadingDialog mLoadingDialog;
-    private InputDialog mInputDialog;
+    private AlertDialog mLoadingDialog;
+    private InputBuilder mInputDialog;
 
 
     @Override
@@ -96,7 +97,8 @@ public class HomeFragment extends BaseMainFragment {
         }
 
         mRecyclerView.setAdapter(mAdapter);
-        mLoadingDialog = LoadingDialog.newInstance("正在连接矿池，请稍后", true);
+        mLoadingDialog = new LoadingBuilder(mContext)
+                .setMessage(R.string.please_wait_connecting_pool).create();
     }
 
 
@@ -194,7 +196,7 @@ public class HomeFragment extends BaseMainFragment {
                 }
                 if (isVisible()) {
                     if (getXdagHandler().isNotConnectedToPool(event)) {
-                        mLoadingDialog.show(getFragmentManager());
+                        mLoadingDialog.show();
                     } else {
                         mLoadingDialog.dismiss();
                     }

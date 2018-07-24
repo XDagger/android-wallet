@@ -19,8 +19,6 @@ import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.xdagwallet.config.Config;
-import io.xdag.xdagwallet.dialog.InputDialog;
-import io.xdag.xdagwallet.dialog.LoadingDialog;
 import io.xdag.xdagwallet.fragment.BaseMainFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
