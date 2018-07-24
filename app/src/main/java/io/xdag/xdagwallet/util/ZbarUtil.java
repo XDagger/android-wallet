@@ -1,9 +1,11 @@
 package io.xdag.xdagwallet.util;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import cn.bertsir.zbar.QRConfig;
 import cn.bertsir.zbar.QRManager;
+import cn.bertsir.zbar.QRUtils;
 import io.xdag.common.Common;
 import io.xdag.xdagwallet.R;
 
@@ -31,5 +33,10 @@ public class ZbarUtil {
 
     public static void startScan(final Activity activity, QRManager.OnScanResultCallback callback) {
         QRManager.getInstance().startScan(activity, callback);
+    }
+
+
+    public static Bitmap createQRCode(String content) {
+        return QRUtils.getInstance().createQRCode(content);
     }
 }

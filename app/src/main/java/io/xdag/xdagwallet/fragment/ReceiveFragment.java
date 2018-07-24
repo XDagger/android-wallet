@@ -1,18 +1,15 @@
 package io.xdag.xdagwallet.fragment;
 
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
-import cn.bertsir.zbar.QRUtils;
+import io.xdag.common.tool.MLog;
 import io.xdag.common.util.DialogUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.CopyUtil;
+import io.xdag.xdagwallet.util.ZbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -22,8 +19,6 @@ import org.greenrobot.eventbus.ThreadMode;
  * desc :
  */
 public class ReceiveFragment extends BaseMainFragment {
-
-    private static final String TAG = "XdagWallet";
 
     @BindView(R.id.receive_tv_address) TextView mTvAddress;
     @BindView(R.id.receive_img_qrcode) ImageView mImgQrAddress;
@@ -35,43 +30,44 @@ public class ReceiveFragment extends BaseMainFragment {
     }
 
 
-    @OnClick({ R.id.receive_tv_copy, R.id.receive_tv_address }) void copyAddress() {
-        CopyUtil.copyAddress(mContext, mTvAddress.getText().toString());
-    }
-
-
     public static ReceiveFragment newInstance() {
-        ReceiveFragment fragment = new ReceiveFragment();
-        return fragment;
+        return new ReceiveFragment();
     }
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
-        Log.i(TAG, "receive fragment process msg in Thread " + Thread.currentThread().getId());
-
+        MLog.i("receive fragment process msg in Thread " + Thread.currentThread().getId());
         switch (event.eventType) {
-
             case XdagEvent.en_event_update_state: {
+
                 mTvAddress.setText(event.address);
-                if (event.addressLoadState == 1) {
-                    Bitmap qrCode = QRUtils.getInstance().createQRCode(event.address);
-                    mImgQrAddress.setImageBitmap(qrCode);
+                if (event.addressLoadState == XdagEvent.en_address_ready) {
+                    mImgQrAddress.setImageBitmap(ZbarUtil.createQRCode(event.address));
                 } else {
                     mImgQrAddress.setImageDrawable(
-                        getResources().getDrawable(R.drawable.qrcode_loading));
+                        getResources().getDrawable(R.drawable.pic_loading));
                 }
                 if (isVisible() && !DialogUtil.isShow()) {
+
+                    // cannot connect to pool
                     if (event.programState < XdagEvent.CONN) {
-                        DialogUtil.showLoadingDialog(getMainActivity(), "Loading......", false);
+                        DialogUtil.showLoadingDialog(getMainActivity(), "Loading...", false);
                     } else {
                         DialogUtil.dismissLoadingDialog();
                     }
                 }
             }
             break;
+            default:
         }
     }
+
+
+    @OnClick({ R.id.receive_tv_copy, R.id.receive_tv_address }) void copyAddress() {
+        CopyUtil.copyAddress(mContext, mTvAddress.getText().toString());
+    }
+
 
     @Override
     public int getPosition() {

@@ -47,6 +47,7 @@ public class XdagHandlerWrapper {
     @SuppressLint("StaticFieldLeak")
     private static XdagHandlerWrapper sInstance = null;
 
+
     public static XdagHandlerWrapper getInstance(MainActivity activity) {
         synchronized (XdagHandlerWrapper.class) {
             if (sInstance == null) {
@@ -58,6 +59,7 @@ public class XdagHandlerWrapper {
 
         return sInstance;
     }
+
 
     private XdagHandlerWrapper(MainActivity activity) {
         mActivity = activity;
@@ -87,6 +89,7 @@ public class XdagHandlerWrapper {
         mXdagHandler.sendMessage(msg);
     }
 
+
     public void disconnectPool() {
         Message msg = Message.obtain();
         Bundle data = new Bundle();
@@ -108,7 +111,7 @@ public class XdagHandlerWrapper {
             switch (msg.arg1) {
                 case MSG_CONNECT_TO_POOL: {
                     MLog.i("receive msg connect to the pool thread id " +
-                            Thread.currentThread().getId());
+                        Thread.currentThread().getId());
                     Bundle data = msg.getData();
                     String poolAddr = data.getString(KEY_POOL);
                     XdagWrapper xdagWrapper = XdagWrapper.getInstance();

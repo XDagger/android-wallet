@@ -4,65 +4,65 @@ public class XdagEvent {
 
     /**
      * xdag procedure type start
-     * */
-    public static int en_procedure_init_wallet    = 0;
-    public static int en_procedure_xfer_coin      = 1;
-    public static int en_procedure_work_thread    = 2;
-    public static int en_procedure_pool_thread    = 3;
+     */
+    public static int en_procedure_init_wallet = 0;
+    public static int en_procedure_xfer_coin = 1;
+    public static int en_procedure_work_thread = 2;
+    public static int en_procedure_pool_thread = 3;
     /**
      * xdag procedure type end
      * */
 
     /**
      * xdag event type start
-     * */
-    public static final int en_event_type_pwd               = 0x1000;
-    public static final int en_event_set_pwd                = 0x1001;
-    public static final int en_event_retype_pwd             = 0x1002;
-    public static final int en_event_set_rdm                = 0x1003;
-    public static final int en_event_pwd_not_same           = 0x1004;
-    public static final int en_event_pwd_error              = 0x1005;
-    public static final int en_event_pwd_format_error       = 0x1006;
+     */
+    public static final int en_event_type_pwd = 0x1000;
+    public static final int en_event_set_pwd = 0x1001;
+    public static final int en_event_retype_pwd = 0x1002;
+    public static final int en_event_set_rdm = 0x1003;
+    public static final int en_event_pwd_not_same = 0x1004;
+    public static final int en_event_pwd_error = 0x1005;
+    public static final int en_event_pwd_format_error = 0x1006;
     //dnet wallet storage error
-    public static final int en_event_open_dnetfile_error    = 0x2000;
-    public static final int en_event_open_walletfile_error  = 0x2001;
-    public static final int en_event_load_storage_error     = 0x2002;
-    public static final int en_event_write_dnet_file_error  = 0x2003;
-    public static final int en_event_add_trust_host_error   = 0x2004;
+    public static final int en_event_open_dnetfile_error = 0x2000;
+    public static final int en_event_open_walletfile_error = 0x2001;
+    public static final int en_event_load_storage_error = 0x2002;
+    public static final int en_event_write_dnet_file_error = 0x2003;
+    public static final int en_event_add_trust_host_error = 0x2004;
     //xfer error
-    public static final int en_event_nothing_transfer       = 0x3000;
-    public static final int en_event_balance_too_small      = 0x3001;
-    public static final int en_event_invalid_recv_address   = 0x3002;
-    public static final int en_event_xdag_transfered        = 0x3003;
+    public static final int en_event_nothing_transfer = 0x3000;
+    public static final int en_event_balance_too_small = 0x3001;
+    public static final int en_event_invalid_recv_address = 0x3002;
+    public static final int en_event_xdag_transfered = 0x3003;
     //miner net thread error
-    public static final int en_event_connect_pool_timeout   = 0x4000;
-    public static final int en_event_make_block_error       = 0x4001;
+    public static final int en_event_connect_pool_timeout = 0x4000;
+    public static final int en_event_make_block_error = 0x4001;
     //invoke print log or update ui
-    public static final int en_event_xdag_log_print         = 0x5000;
-    public static final int en_event_update_progress        = 0x5001;
-    public static final int en_event_update_state           = 0x5002;
+    public static final int en_event_xdag_log_print = 0x5000;
+    public static final int en_event_update_progress = 0x5001;
+    public static final int en_event_update_state = 0x5002;
     //block thread error(work_thread)
-    public static final int en_event_cannot_create_block    = 0x7000;
-    public static final int en_event_cannot_find_block      = 0x7001;
-    public static final int en_event_cannot_load_block      = 0x7002;
-    public static final int en_event_cannot_create_socket   = 0x7003;
-    public static final int en_event_host_is_not_given      = 0x7004;
-    public static final int en_event_cannot_reslove_host    = 0x7005;
-    public static final int en_event_port_is_not_given      = 0x7006;
+    public static final int en_event_cannot_create_block = 0x7000;
+    public static final int en_event_cannot_find_block = 0x7001;
+    public static final int en_event_cannot_load_block = 0x7002;
+    public static final int en_event_cannot_create_socket = 0x7003;
+    public static final int en_event_host_is_not_given = 0x7004;
+    public static final int en_event_cannot_reslove_host = 0x7005;
+    public static final int en_event_port_is_not_given = 0x7006;
     public static final int en_event_cannot_connect_to_pool = 0x7007;
-    public static final int en_event_socket_isclosed        = 0x7008;
-    public static final int en_event_socket_hangup          = 0x7009;
-    public static final int en_event_socket_error           = 0x700a;
-    public static final int en_event_read_socket_error      = 0x700b;
-    public static final int en_event_write_socket_error     = 0x700c;
-    public static final int en_event_unkown                 = 0xf000;
+    public static final int en_event_socket_isclosed = 0x7008;
+    public static final int en_event_socket_hangup = 0x7009;
+    public static final int en_event_socket_error = 0x700a;
+    public static final int en_event_read_socket_error = 0x700b;
+    public static final int en_event_write_socket_error = 0x700c;
+    public static final int en_event_unkown = 0xf000;
     /**
      * xdag event type end
      * */
 
     /**
      * xdag log level start
-     * */
+     */
     public static final int en_xdag_no_error = 1;
     public static final int en_xdag_fatal = 2;
     public static final int en_xdag_critical = 3;
@@ -79,7 +79,7 @@ public class XdagEvent {
 
     /**
      * xdag address load state start
-     * */
+     */
     public static final int en_address_not_ready = 0;
     public static final int en_address_ready = 1;
     /**
@@ -88,7 +88,7 @@ public class XdagEvent {
 
     /**
      * xdag balance load state start
-     * */
+     */
     public static final int en_balance_not_ready = 0;
     public static final int en_balance_ready = 1;
     /**
@@ -97,7 +97,7 @@ public class XdagEvent {
 
     /**
      * xdag program state start
-     * */
+     */
     public static final int NINT = 0;
     public static final int INIT = 1;
     public static final int KEYS = 2;
@@ -119,7 +119,7 @@ public class XdagEvent {
     public static final int SYNC = 18;
     /**
      * xdag program state end
-     * */
+     */
 
     public int procedureType;
     public int eventType;
@@ -132,6 +132,7 @@ public class XdagEvent {
     public String balance;
     public String errorMsg;
     public String appLogMsg;
+
 
     public XdagEvent(int procedureType,
                      int eventType,
