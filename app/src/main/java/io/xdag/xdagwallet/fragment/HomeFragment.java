@@ -6,6 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.view.View;
 import android.widget.TextView;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -20,6 +26,7 @@ import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
+import io.xdag.xdagwallet.dialog.InputDialog;
 import io.xdag.xdagwallet.dialog.LoadingDialog;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
@@ -27,9 +34,6 @@ import io.xdag.xdagwallet.util.RxUtil;
 import io.xdag.xdagwallet.widget.EmptyView;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
-import java.util.List;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * created by lxm on 2018/5/24.
@@ -53,6 +57,7 @@ public class HomeFragment extends BaseMainFragment {
     private View mEmptyView;
     private Disposable mDisposable;
     private LoadingDialog mLoadingDialog;
+    private InputDialog mInputDialog;
 
 
     @Override
@@ -71,14 +76,15 @@ public class HomeFragment extends BaseMainFragment {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {
                 getRefreshDelegate().setRefreshEnabled(
-                    state.equals(AppBarStateChangedListener.State.EXPANDED));
+                        state.equals(AppBarStateChangedListener.State.EXPANDED));
             }
         });
 
         if (mEmptyView == null) {
             mEmptyView = new EmptyView(mContext);
             mEmptyView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
                     requestTransaction();
                 }
             });
@@ -91,37 +97,39 @@ public class HomeFragment extends BaseMainFragment {
 
         mRecyclerView.setAdapter(mAdapter);
         mLoadingDialog = LoadingDialog.newInstance("正在连接矿池，请稍后", true);
-
     }
 
 
     private void requestTransaction() {
 
         mDisposable = ApiServer.getApi().getBlockDetail(mTvAddress.getText().toString())
-            .observeOn(AndroidSchedulers.mainThread())
-            .map(new Detail2AddressListFunction())
-            .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
-                @Override
-                public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
-                    mAdapter.setNewData(blockAsAddresses);
-                    AlertUtil.show(mContext, R.string.success_refresh);
-                }
-            }, new ErrorConsumer(getMainActivity()));
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Detail2AddressListFunction())
+                .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
+                    @Override
+                    public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
+                        mAdapter.setNewData(blockAsAddresses);
+                        AlertUtil.show(mContext, R.string.success_refresh);
+                    }
+                }, new ErrorConsumer(getMainActivity()));
     }
 
 
-    @OnClick(R.id.home_tv_address) void copyAddress() {
+    @OnClick(R.id.home_tv_address)
+    void copyAddress() {
         CopyUtil.copyAddress(mContext, mTvAddress.getText().toString());
     }
 
 
-    @Override public void onDestroy() {
+    @Override
+    public void onDestroy() {
         super.onDestroy();
         RxUtil.dispose(mDisposable);
     }
 
 
-    @Override public void onRefresh() {
+    @Override
+    public void onRefresh() {
         super.onRefresh();
         requestTransaction();
     }
@@ -139,19 +147,15 @@ public class HomeFragment extends BaseMainFragment {
             case XdagEvent.en_event_retype_pwd:
             case XdagEvent.en_event_set_rdm: {
                 MLog.i("Event: set password and random");
-                // show dialog and ask user to type in password
                 if (isVisible()) {
                     MLog.i("home fragment show the auth dialog");
-                    // if (DialogUtil.isShow()) {
-                    //     DialogUtil.dismissLoadingDialog();
-                    // }
                     mLoadingDialog.dismiss();
 
-                    DialogUtil.showAlertDialog(mContext, GetAuthHintString(event.eventType),
-                        null, mContext.getString(R.string.alert_dialog_ok), null);
+                    DialogUtil.showAlertDialog(mContext, getAuthHintString(event.eventType),
+                            null, mContext.getString(R.string.alert_dialog_ok), null);
                     DialogUtil.getAlertDialog()
-                        .setEditPwdMode(
-                            InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            .setEditPwdMode(
+                                    InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     DialogUtil.getAlertDialog().setEditShow(true);
                     DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
                         @Override
@@ -167,44 +171,33 @@ public class HomeFragment extends BaseMainFragment {
             case XdagEvent.en_event_pwd_error: {
                 MLog.i("Event: password error");
                 if (isVisible()) {
-                    // DialogUtil.dismissLoadingDialog();
                     mLoadingDialog.dismiss();
+                    DialogUtil.showAlertDialog(getActivity(), null, "password error", "OK", null);
+                    DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
+                        @Override
+                        public void onClick() {
+                            XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+                            xdagWrapper.XdagNotifyMsg("");
+                        }
+                    });
                 }
-                //ask user to type password again
-                DialogUtil.showAlertDialog(getActivity(), null, "password error", "OK", null);
-                DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
-                    @Override
-                    public void onClick() {
-                        XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                        xdagWrapper.XdagNotifyMsg("");
-                    }
-                });
+
             }
             break;
             case XdagEvent.en_event_update_state: {
                 MLog.i("Event: state update");
                 mTvAddress.setText(event.address);
                 mCollapsingToolbarLayout.setTitle(event.balance);
-
+                if (mLastAddressState == XdagEvent.en_address_not_ready &&
+                        event.addressLoadState == XdagEvent.en_address_ready) {
+                    requestTransaction();
+                }
                 if (isVisible()) {
                     if (getXdagHandler().isNotConnectedToPool(event)) {
                         mLoadingDialog.show(getFragmentManager());
                     } else {
                         mLoadingDialog.dismiss();
                     }
-                }
-
-                // if (isVisible() && !DialogUtil.isShow()) {
-                //     if (event.programState < XdagEvent.CONN) {
-                //         DialogUtil.showLoadingDialog(getMainActivity(), "Loading......", false);
-                //     } else {
-                //         DialogUtil.dismissLoadingDialog();
-                //     }
-                // }
-
-                if (mLastAddressState == XdagEvent.en_address_not_ready &&
-                    event.addressLoadState == XdagEvent.en_address_ready) {
-                    requestTransaction();
                 }
             }
             break;
@@ -217,7 +210,7 @@ public class HomeFragment extends BaseMainFragment {
     }
 
 
-    private String GetAuthHintString(int eventType) {
+    private String getAuthHintString(int eventType) {
         switch (eventType) {
             case XdagEvent.en_event_type_pwd:
                 return getString(R.string.please_input_password);

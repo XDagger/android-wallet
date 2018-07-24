@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="elevation">6dp</dimen>
-
+    
     <dimen name="size_tip">12sp</dimen>
     <dimen name="size_text">14sp</dimen>
     <dimen name="size_title">18sp</dimen>
-
+    
     <dimen name="space_4">4dp</dimen>
     <dimen name="space_8">8dp</dimen>
     <dimen name="space_12">12dp</dimen>
     <dimen name="space_16">16dp</dimen>
+    <dimen name="space_24">24dp</dimen>
     <dimen name="space_32">32dp</dimen>
 
 </resources>
