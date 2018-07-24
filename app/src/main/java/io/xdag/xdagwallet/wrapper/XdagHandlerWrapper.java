@@ -198,4 +198,9 @@ public class XdagHandlerWrapper {
         return tempFile != null && xdagFile != null && FileUtil.copyDir(xdagFile, tempFile);
 
     }
+
+
+    public boolean isNotConnectedToPool(XdagEvent event) {
+        return event.programState < XdagEvent.CONN;
+    }
 }

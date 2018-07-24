@@ -20,6 +20,7 @@ import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
+import io.xdag.xdagwallet.dialog.LoadingDialog;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
@@ -51,6 +52,7 @@ public class HomeFragment extends BaseMainFragment {
     private TransactionAdapter mAdapter;
     private View mEmptyView;
     private Disposable mDisposable;
+    private LoadingDialog mLoadingDialog;
 
 
     @Override
@@ -88,6 +90,8 @@ public class HomeFragment extends BaseMainFragment {
         }
 
         mRecyclerView.setAdapter(mAdapter);
+        mLoadingDialog = LoadingDialog.newInstance("正在连接矿池，请稍后", true);
+
     }
 
 
@@ -128,19 +132,20 @@ public class HomeFragment extends BaseMainFragment {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
-        MLog.i("home fragment process msg in Thread " + Thread.currentThread().getId());
-        MLog.i("event event type is " + event.eventType);
+
         switch (event.eventType) {
             case XdagEvent.en_event_type_pwd:
             case XdagEvent.en_event_set_pwd:
             case XdagEvent.en_event_retype_pwd:
             case XdagEvent.en_event_set_rdm: {
+                MLog.i("Event: set password and random");
                 // show dialog and ask user to type in password
                 if (isVisible()) {
                     MLog.i("home fragment show the auth dialog");
-                    if (DialogUtil.isShow()) {
-                        DialogUtil.dismissLoadingDialog();
-                    }
+                    // if (DialogUtil.isShow()) {
+                    //     DialogUtil.dismissLoadingDialog();
+                    // }
+                    mLoadingDialog.dismiss();
 
                     DialogUtil.showAlertDialog(mContext, GetAuthHintString(event.eventType),
                         null, mContext.getString(R.string.alert_dialog_ok), null);
@@ -160,8 +165,10 @@ public class HomeFragment extends BaseMainFragment {
             }
             break;
             case XdagEvent.en_event_pwd_error: {
-                if (isVisible() && DialogUtil.isShow()) {
-                    DialogUtil.dismissLoadingDialog();
+                MLog.i("Event: password error");
+                if (isVisible()) {
+                    // DialogUtil.dismissLoadingDialog();
+                    mLoadingDialog.dismiss();
                 }
                 //ask user to type password again
                 DialogUtil.showAlertDialog(getActivity(), null, "password error", "OK", null);
@@ -175,15 +182,25 @@ public class HomeFragment extends BaseMainFragment {
             }
             break;
             case XdagEvent.en_event_update_state: {
+                MLog.i("Event: state update");
                 mTvAddress.setText(event.address);
                 mCollapsingToolbarLayout.setTitle(event.balance);
-                if (isVisible() && !DialogUtil.isShow()) {
-                    if (event.programState < XdagEvent.CONN) {
-                        DialogUtil.showLoadingDialog(getMainActivity(), "Loading......", false);
+
+                if (isVisible()) {
+                    if (getXdagHandler().isNotConnectedToPool(event)) {
+                        mLoadingDialog.show(getFragmentManager());
                     } else {
-                        DialogUtil.dismissLoadingDialog();
+                        mLoadingDialog.dismiss();
                     }
                 }
+
+                // if (isVisible() && !DialogUtil.isShow()) {
+                //     if (event.programState < XdagEvent.CONN) {
+                //         DialogUtil.showLoadingDialog(getMainActivity(), "Loading......", false);
+                //     } else {
+                //         DialogUtil.dismissLoadingDialog();
+                //     }
+                // }
 
                 if (mLastAddressState == XdagEvent.en_address_not_ready &&
                     event.addressLoadState == XdagEvent.en_address_ready) {

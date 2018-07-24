@@ -21,8 +21,6 @@ public class DialogUtil {
     private static OnCancelListener cancelListener = null;
     private static AlertDialog mAlertDialog;
 
-    //the loading dialog
-    private static XdagLoadingDialog mXdagLoadingDialog;
 
     private static XdagProgressDialog mXdagProgressDialog;
 

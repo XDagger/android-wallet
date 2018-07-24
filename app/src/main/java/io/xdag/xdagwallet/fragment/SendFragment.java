@@ -131,11 +131,16 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
                 if (event.balanceLoadState == 1) {
                     mTvAvailable.setText("Available " + event.balance + " XDAG");
                 }
-                if (event.programState < XdagEvent.CONN) {
-                    DialogUtil.showLoadingDialog(getMainActivity(), "Loading......", false);
-                } else {
-                    DialogUtil.dismissLoadingDialog();
+
+                if(isVisible()) {
+
+                    if (event.programState < XdagEvent.CONN) {
+                        DialogUtil.showLoadingDialog(getMainActivity(), "Loading......", false);
+                    } else {
+                        DialogUtil.dismissLoadingDialog();
+                    }
                 }
+
             }
             break;
         }
