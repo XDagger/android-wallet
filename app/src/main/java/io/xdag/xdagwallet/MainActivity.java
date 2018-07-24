@@ -13,6 +13,7 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
+import io.xdag.xdagwallet.dialog.LoadingDialog;
 import java.util.List;
 
 import butterknife.BindView;

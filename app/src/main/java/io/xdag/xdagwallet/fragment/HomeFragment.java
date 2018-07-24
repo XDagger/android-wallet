@@ -62,8 +62,8 @@ public class HomeFragment extends BaseMainFragment {
     @Override
     protected void initView(View rootView) {
         super.initView(rootView);
-        mTvAddress.setText(R.string.loading_address);
-        mCollapsingToolbarLayout.setTitle(getString(R.string.loading_balance));
+        mTvAddress.setText(R.string.not_ready);
+        mCollapsingToolbarLayout.setTitle(getString(R.string.not_ready));
         mRecyclerView.setHasFixedSize(true);
         mAppBarLayout.addOnOffsetChangedListener(new AppBarStateChangedListener() {
             @Override
@@ -194,9 +194,9 @@ public class HomeFragment extends BaseMainFragment {
             default:
         }
 
-        //update  address load state and balance  load state
-        this.mLastAddressState = event.addressLoadState;
-        this.mLastBalancState = event.balanceLoadState;
+        // update  address load state and balance  load state
+        mLastAddressState = event.addressLoadState;
+        mLastBalancState = event.balanceLoadState;
     }
 
 

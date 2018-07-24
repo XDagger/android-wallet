@@ -14,8 +14,6 @@
     <string name="amount_to_send">Amount to Send</string>
     <string name="amount">Amount</string>
     <string name="not_ready">Not Ready</string>
-    <string name="loading_address">Loading Address</string>
-    <string name="loading_balance">Loading Balance</string>
     <string name="create_wallet">创建钱包</string>
     <string name="restore_wallet">恢复钱包</string>
     <string name="no_transaction">没有交易记录</string>
@@ -55,5 +53,6 @@
     <string name="please_backup_your_xdag_wallet_first">请仔细阅读本页内容，并备份好您的钱包文件。</string>
     <string name="restore_read">已仔细阅读上述内容，并将钱包文件拷贝到了存储卡的 xdag 文件夹。</string>
     <string name="please_restore_read">请仔细阅读本页内容，并将钱包文件拷贝到存储卡的 xdag 文件夹。</string>
+    <string name="loading_please_wait">正在加载，请稍后</string>
 
 </resources>
