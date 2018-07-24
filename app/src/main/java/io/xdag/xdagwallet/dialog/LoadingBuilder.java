@@ -2,7 +2,6 @@ package io.xdag.xdagwallet.dialog;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,7 +29,7 @@ public class LoadingBuilder extends AlertBuilder {
     }
 
     @Override
-    public AlertDialog.Builder setMessage(int messageId) {
+    public LoadingBuilder setMessage(int messageId) {
         mTvMessage.setText(messageId);
         return this;
     }
