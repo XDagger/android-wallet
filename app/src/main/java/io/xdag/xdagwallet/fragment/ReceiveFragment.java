@@ -42,7 +42,6 @@ public class ReceiveFragment extends BaseMainFragment {
 
     public static ReceiveFragment newInstance() {
         ReceiveFragment fragment = new ReceiveFragment();
-        EventBus.getDefault().register(fragment);
         return fragment;
     }
 

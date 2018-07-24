@@ -93,7 +93,6 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
 
     public static SendFragment newInstance() {
         SendFragment fragment = new SendFragment();
-        EventBus.getDefault().register(fragment);
         return fragment;
     }
 

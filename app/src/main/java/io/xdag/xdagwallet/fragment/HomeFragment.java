@@ -220,7 +220,6 @@ public class HomeFragment extends BaseMainFragment {
 
     public static HomeFragment newInstance() {
         HomeFragment homeFragment = new HomeFragment();
-        EventBus.getDefault().register(homeFragment);
         return homeFragment;
     }
 

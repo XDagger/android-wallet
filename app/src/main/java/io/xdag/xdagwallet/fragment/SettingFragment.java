@@ -25,9 +25,15 @@ public class SettingFragment extends BaseMainFragment {
 
     AlertDialog.Builder mBuilder;
 
+
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_setting;
+    }
+
+
+    @Override protected boolean enableEventBus() {
+        return false;
     }
 
 
@@ -36,20 +42,20 @@ public class SettingFragment extends BaseMainFragment {
         super.initView(rootView);
 
         mBuilder = new AlertDialog.Builder(mContext)
-                .setTitle("警告")
-                .setMessage("检测到 /sdcard/xdag 已经存在一个钱包，继续备份将覆盖这个钱包（钱包被覆盖意味着钱包的资产丢失且无法找回）。")
-                .setPositiveButton("覆盖", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        backupWallet();
-                    }
-                })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+            .setTitle("警告")
+            .setMessage("检测到 /sdcard/xdag 已经存在一个钱包，继续备份将覆盖这个钱包（钱包被覆盖意味着钱包的资产丢失且无法找回）。")
+            .setPositiveButton("覆盖", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    backupWallet();
+                }
+            })
+            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
     }
 
 
@@ -63,10 +69,12 @@ public class SettingFragment extends BaseMainFragment {
         }
     }
 
+
     @OnClick(R.id.setting_restore)
     void setting_restore() {
         RestoreActivity.start(mContext);
     }
+
 
     @OnClick(R.id.setting_about)
     void setting_about() {
@@ -77,6 +85,7 @@ public class SettingFragment extends BaseMainFragment {
         startActivity(intent);
     }
 
+
     private void backupWallet() {
         if (getXdagHandler().backupWallet()) {
             AlertUtil.show(mContext, R.string.success_backup_xdag_wallet);
@@ -85,10 +94,12 @@ public class SettingFragment extends BaseMainFragment {
         }
     }
 
+
     private boolean isSDCardWalletExists() {
         if (SDCardUtil.isAvailable()) {
             File file = new File(SDCardUtil.getSDCardPath(), XdagHandlerWrapper.XDAG_FILE);
-            return file.exists() && Arrays.asList(file.list()).containsAll(XdagHandlerWrapper.WALLET_LIST);
+            return file.exists() &&
+                Arrays.asList(file.list()).containsAll(XdagHandlerWrapper.WALLET_LIST);
         }
         return false;
     }
@@ -97,6 +108,7 @@ public class SettingFragment extends BaseMainFragment {
     public static SettingFragment newInstance() {
         return new SettingFragment();
     }
+
 
     @Override
     public int getPosition() {
