@@ -18,8 +18,8 @@ import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
 import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
-import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
 import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
+import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
@@ -27,7 +27,6 @@ import io.xdag.xdagwallet.widget.EmptyView;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
 import java.util.List;
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -101,7 +100,7 @@ public class HomeFragment extends BaseMainFragment {
                 @Override
                 public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
                     mAdapter.setNewData(blockAsAddresses);
-                    AlertUtil.show(mContext,R.string.success_refresh);
+                    AlertUtil.show(mContext, R.string.success_refresh);
                 }
             }, new ErrorConsumer(getMainActivity()));
     }
@@ -131,7 +130,6 @@ public class HomeFragment extends BaseMainFragment {
     public void ProcessXdagEvent(XdagEvent event) {
         MLog.i("home fragment process msg in Thread " + Thread.currentThread().getId());
         MLog.i("event event type is " + event.eventType);
-        String titleMsg = "";
         switch (event.eventType) {
             case XdagEvent.en_event_type_pwd:
             case XdagEvent.en_event_set_pwd:
@@ -202,7 +200,7 @@ public class HomeFragment extends BaseMainFragment {
     }
 
 
-    private String GetAuthHintString(final int eventType) {
+    private String GetAuthHintString(int eventType) {
         switch (eventType) {
             case XdagEvent.en_event_type_pwd:
                 return getString(R.string.please_input_password);
@@ -219,8 +217,7 @@ public class HomeFragment extends BaseMainFragment {
 
 
     public static HomeFragment newInstance() {
-        HomeFragment homeFragment = new HomeFragment();
-        return homeFragment;
+        return new HomeFragment();
     }
 
 

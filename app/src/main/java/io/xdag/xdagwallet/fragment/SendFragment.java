@@ -21,7 +21,6 @@ import io.xdag.xdagwallet.util.ZbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagWrapper;
 import java.util.List;
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -141,6 +140,7 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
             break;
         }
     }
+
 
     @Override
     public int getPosition() {

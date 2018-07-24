@@ -2,7 +2,6 @@ package io.xdag.xdagwallet.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.TextView;
 import io.xdag.common.base.RefreshFragment;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;

@@ -5,16 +5,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
-
-import java.io.File;
-import java.util.Arrays;
-
 import butterknife.OnClick;
 import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.activity.RestoreActivity;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
+import java.io.File;
+import java.util.Arrays;
 
 /**
  * created by lxm on 2018/5/24.
