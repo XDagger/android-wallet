@@ -79,7 +79,7 @@ public class HomeFragment extends BaseMainFragment {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {
                 getRefreshDelegate().setRefreshEnabled(
-                        state.equals(AppBarStateChangedListener.State.EXPANDED));
+                    state.equals(AppBarStateChangedListener.State.EXPANDED));
             }
         });
 
@@ -103,33 +103,34 @@ public class HomeFragment extends BaseMainFragment {
 
     }
 
+
     private void initDialog() {
         mLoadingBuilder = new LoadingBuilder(mContext)
-                .setMessage(R.string.please_wait_read_wallet);
+            .setMessage(R.string.please_wait_read_wallet);
         mLoadingDialog = mLoadingBuilder.create();
 
         mTipDialog = new TipBuilder(mContext)
-                .setPositiveListener(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        XdagWrapper.getInstance().XdagNotifyMsg("");
-                        dialog.dismiss();
-                        mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
-                        mLoadingDialog.show();
+            .setPositiveListener(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    XdagWrapper.getInstance().XdagNotifyMsg("");
+                    dialog.dismiss();
+                    mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
+                    mLoadingDialog.show();
 
-                    }
-                }).create();
+                }
+            }).create();
 
         mInputDialog = new InputBuilder(mContext)
-                .setPositiveListener(new InputBuilder.OnPositiveClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, String input) {
-                        XdagWrapper.getInstance().XdagNotifyMsg(input);
-                        dialog.dismiss();
-                        mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
-                        mLoadingDialog.show();
-                    }
-                }).create();
+            .setPositiveListener(new InputBuilder.OnPositiveClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, String input) {
+                    XdagWrapper.getInstance().XdagNotifyMsg(input);
+                    dialog.dismiss();
+                    mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
+                    mLoadingDialog.show();
+                }
+            }).create();
 
         mLoadingDialog.show();
     }
@@ -138,15 +139,15 @@ public class HomeFragment extends BaseMainFragment {
     private void requestTransaction() {
 
         mDisposable = ApiServer.getApi().getBlockDetail(mTvAddress.getText().toString())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map(new Detail2AddressListFunction())
-                .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
-                    @Override
-                    public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
-                        mAdapter.setNewData(blockAsAddresses);
-                        AlertUtil.show(mContext, R.string.success_refresh);
-                    }
-                }, new ErrorConsumer(getMainActivity()));
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(new Detail2AddressListFunction())
+            .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
+                @Override
+                public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
+                    mAdapter.setNewData(blockAsAddresses);
+                    AlertUtil.show(mContext, R.string.success_refresh);
+                }
+            }, new ErrorConsumer(getMainActivity()));
     }
 
 
@@ -201,15 +202,17 @@ public class HomeFragment extends BaseMainFragment {
             case XdagEvent.en_event_update_state: {
                 MLog.i("Event: state update");
                 mTvAddress.setText(event.address);
-                mCollapsingToolbarLayout.setTitle(event.balance);
-                if (mLastAddressState == XdagEvent.en_address_not_ready &&
-                        event.addressLoadState == XdagEvent.en_address_ready) {
-                    requestTransaction();
-                }
                 if (isVisible()) {
+                    mCollapsingToolbarLayout.setTitle(event.balance);
+                    if (mLastAddressState == XdagEvent.en_address_not_ready &&
+                        event.addressLoadState == XdagEvent.en_address_ready) {
+                        requestTransaction();
+                    }
+
                     if (getXdagHandler().isNotConnectedToPool(event)) {
                         if (!mInputDialog.isShowing()) {
-                            mLoadingBuilder.setMessage(getString(R.string.please_wait_connecting_pool));
+                            mLoadingBuilder.setMessage(
+                                getString(R.string.please_wait_connecting_pool));
                             mLoadingDialog.show();
                         }
                     } else {

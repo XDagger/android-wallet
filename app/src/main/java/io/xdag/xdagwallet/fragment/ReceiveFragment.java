@@ -41,8 +41,9 @@ public class ReceiveFragment extends BaseMainFragment {
     protected void initView(View rootView) {
         super.initView(rootView);
         mLoadingDialog = new LoadingBuilder(mContext)
-                .setMessage(R.string.please_wait_read_wallet).create();
+            .setMessage(R.string.please_wait_read_wallet).create();
     }
+
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
@@ -53,10 +54,9 @@ public class ReceiveFragment extends BaseMainFragment {
                     mImgQrAddress.setImageBitmap(ZbarUtil.createQRCode(event.address));
                 } else {
                     mImgQrAddress.setImageDrawable(
-                            getResources().getDrawable(R.drawable.pic_loading));
+                        getResources().getDrawable(R.drawable.pic_loading));
                 }
                 if (isVisible()) {
-                    // cannot connect to pool
                     if (getXdagHandler().isNotConnectedToPool(event)) {
                         mLoadingDialog.show();
                     } else {
@@ -70,7 +70,7 @@ public class ReceiveFragment extends BaseMainFragment {
     }
 
 
-    @OnClick({R.id.receive_tv_copy, R.id.receive_tv_address})
+    @OnClick({ R.id.receive_tv_copy, R.id.receive_tv_address })
     void copyAddress() {
         CopyUtil.copyAddress(mContext, mTvAddress.getText().toString());
     }

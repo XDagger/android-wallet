@@ -1,8 +1,9 @@
 package io.xdag.xdagwallet.fragment;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,8 @@ import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 import io.xdag.common.util.DialogUtil;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.dialog.InputBuilder;
+import io.xdag.xdagwallet.dialog.LoadingBuilder;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ZbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
@@ -38,6 +41,9 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
     @BindView(R.id.send_btn_xdag) Button mBtnSendXdag;
     @BindView(R.id.send_tv_available) TextView mTvAvailable;
 
+    private AlertDialog mLoadingDialog;
+    private AlertDialog mInputDialog;
+
 
     @Override
     protected int getLayoutResId() {
@@ -50,6 +56,21 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
         super.initView(rootView);
         getToolbar().inflateMenu(R.menu.toolbar_scan);
         getToolbar().setOnMenuItemClickListener(this);
+
+        mLoadingDialog = new LoadingBuilder(mContext)
+            .setMessage(R.string.please_wait_connecting_pool).create();
+
+        mInputDialog = new InputBuilder(mContext)
+            .setPositiveListener(new InputBuilder.OnPositiveClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, String input) {
+                    XdagWrapper.getInstance().XdagNotifyMsg(input);
+                    dialog.dismiss();
+                    mLoadingDialog.show();
+                }
+            })
+            .setMessage(R.string.please_input_password)
+            .create();
     }
 
 
@@ -90,60 +111,36 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
     }
 
 
-    public static SendFragment newInstance() {
-        SendFragment fragment = new SendFragment();
-        return fragment;
-    }
-
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
-        Log.i(TAG, "send fragment process msg in Thread " + Thread.currentThread().getId());
-        Log.i(TAG, "send fragment event event type is " + event.eventType);
-
         switch (event.eventType) {
             case XdagEvent.en_event_type_pwd: {
-                //show dialog and ask user to type in password
                 if (isVisible()) {
-                    Log.i(TAG, "send fragment show the auth dialog");
-                    if (DialogUtil.isShow()) {
-                        DialogUtil.dismissLoadingDialog();
-                    }
-                    DialogUtil.showAlertDialog(mContext, getString(R.string.please_input_password),
-                        null, getString(R.string.alert_dialog_ok), null);
-
-                    DialogUtil.getAlertDialog()
-                        .setEditPwdMode(
-                            InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    DialogUtil.getAlertDialog().setEditShow(true);
-                    DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
-                        @Override
-                        public void onClick() {
-                            String authInfo = DialogUtil.getAlertDialog().getEditMessage();
-                            XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                            xdagWrapper.XdagNotifyMsg(authInfo);
-                        }
-                    });
+                    mLoadingDialog.dismiss();
+                    mInputDialog.show();
                 }
             }
             break;
             case XdagEvent.en_event_update_state: {
-                if (event.balanceLoadState == 1) {
-                    mTvAvailable.setText("Available " + event.balance + " XDAG");
+                if (event.balanceLoadState == XdagEvent.en_balance_ready) {
+                    mTvAvailable.setText(getString(R.string.available_xdag, event.balance));
                 }
-
-                if(isVisible()) {
-
-                    if (event.programState < XdagEvent.CONN) {
-                        DialogUtil.showLoadingDialog(getMainActivity(), "Loading......", false);
+                if (isVisible()) {
+                    if (getXdagHandler().isNotConnectedToPool(event)) {
+                        mLoadingDialog.show();
                     } else {
-                        DialogUtil.dismissLoadingDialog();
+                        mLoadingDialog.dismiss();
                     }
                 }
 
             }
             break;
         }
+    }
+
+
+    public static SendFragment newInstance() {
+        return new SendFragment();
     }
 
 

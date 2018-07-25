@@ -18,9 +18,11 @@ public class InputBuilder extends AlertBuilder {
     private OnPositiveClickListener mOnPositiveClickListener;
     private EditText mEtInput;
 
+
     public InputBuilder(@NonNull Context context) {
         super(context);
     }
+
 
     @Override
     protected void init() {
@@ -40,10 +42,12 @@ public class InputBuilder extends AlertBuilder {
         });
     }
 
+
     public AlertDialog.Builder setPositiveListener(OnPositiveClickListener listener) {
         mOnPositiveClickListener = listener;
         return this;
     }
+
 
     public interface OnPositiveClickListener {
         void onClick(DialogInterface dialog, String input);
