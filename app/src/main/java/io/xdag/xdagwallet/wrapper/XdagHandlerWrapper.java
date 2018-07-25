@@ -73,7 +73,7 @@ public class XdagHandlerWrapper {
         Message msg = Message.obtain();
         Bundle data = new Bundle();
         data.putString(KEY_POOL, poolAddress);
-        msg.arg1 = MSG_CONNECT_TO_POOL;
+        msg.what = MSG_CONNECT_TO_POOL;
         msg.setData(data);
         mXdagHandler.sendMessage(msg);
     }
@@ -84,7 +84,7 @@ public class XdagHandlerWrapper {
         Bundle data = new Bundle();
         data.putString(KEY_ADDRESS, address);
         data.putString(KEY_AMOUNT, amount);
-        msg.arg1 = MSG_XFER_XDAG_COIN;
+        msg.what = MSG_XFER_XDAG_COIN;
         msg.setData(data);
         mXdagHandler.sendMessage(msg);
     }
@@ -93,7 +93,7 @@ public class XdagHandlerWrapper {
     public void disconnectPool() {
         Message msg = Message.obtain();
         Bundle data = new Bundle();
-        msg.arg1 = MSG_DISCONNECT_FROM_POOL;
+        msg.what = MSG_DISCONNECT_FROM_POOL;
         msg.setData(data);
         mXdagHandler.sendMessage(msg);
     }
@@ -108,7 +108,7 @@ public class XdagHandlerWrapper {
 
         @Override
         protected void onMessageExecute(Activity target, Message msg) {
-            switch (msg.arg1) {
+            switch (msg.what) {
                 case MSG_CONNECT_TO_POOL: {
                     MLog.i("receive msg connect to the pool thread id " +
                         Thread.currentThread().getId());

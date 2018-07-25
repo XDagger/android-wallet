@@ -72,7 +72,7 @@
         android:textSize="@dimen/size_text"
         app:layout_constraintBottom_toBottomOf="@id/send_et_amount"
         app:layout_constraintTop_toTopOf="@id/send_et_amount"
-        android:text="@string/app_name"/>
+        android:text="@string/XDAG"/>
 
     <TextView
         android:id="@+id/send_tv_available"

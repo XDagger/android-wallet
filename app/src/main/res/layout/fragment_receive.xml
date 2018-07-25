@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
     <TextView
-            android:id="@+id/receive_tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/space_16"
-            android:ellipsize="middle"
-            android:singleLine="true"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintBottom_toTopOf="@id/receive_img_qrcode"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:textSize="@dimen/size_title"
-            android:textColor="@color/BLACK"
-            android:text="@string/not_ready"/>
-
+        android:id="@+id/receive_tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:padding="@dimen/space_16"
+        android:singleLine="true"
+        android:text="@string/not_ready"
+        android:textColor="@color/BLACK"
+        android:textSize="@dimen/size_title"
+        app:layout_constraintBottom_toTopOf="@id/receive_img_qrcode"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+    
     <ImageView
-            android:id="@+id/receive_img_qrcode"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:scaleType="center"
-            app:layout_constraintBottom_toTopOf="@id/receive_tv_copy"
-            app:layout_constraintTop_toBottomOf="@id/receive_tv_address"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:src="@drawable/pic_loading"/>
-
+        android:id="@+id/receive_img_qrcode"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/space_24"
+        android:scaleType="center"
+        android:src="@drawable/pic_loading"
+        app:layout_constraintBottom_toTopOf="@id/receive_tv_copy"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/receive_tv_address" />
+    
     <Button
-            style="@style/Xdag.Button"
-            android:id="@+id/receive_tv_copy"
-            android:layout_width="0dp"
-            android:enabled="false"
-            android:text="@string/copy_address"
-            app:layout_constraintTop_toBottomOf="@id/receive_img_qrcode"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="@id/receive_img_qrcode"
-            app:layout_constraintLeft_toLeftOf="@id/receive_img_qrcode"/>
+        android:id="@+id/receive_tv_copy"
+        style="@style/Xdag.Button"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/space_32"
+        android:text="@string/copy_address"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/receive_img_qrcode"
+        app:layout_constraintRight_toRightOf="@id/receive_img_qrcode"
+        app:layout_constraintTop_toBottomOf="@id/receive_img_qrcode" />
 
 </android.support.constraint.ConstraintLayout>

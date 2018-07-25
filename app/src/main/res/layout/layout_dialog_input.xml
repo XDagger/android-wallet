@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    
-    <EditText
-        android:id="@+id/dialog_input_et"
-        style="@style/TextAppearance.AppCompat.Subhead"
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space_24"
-        android:layout_marginRight="@dimen/space_24"
-        android:inputType="textPassword">
-    
+        android:layout_height="wrap_content">
+
+    <EditText
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:id="@+id/dialog_input_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="12"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginRight="@dimen/space_24"
+            android:inputType="textPassword">
+
     </EditText>
 
 </FrameLayout>

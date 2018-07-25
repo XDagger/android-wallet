@@ -1,10 +1,10 @@
 package io.xdag.xdagwallet.fragment;
 
+import android.content.DialogInterface;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.text.InputType;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,7 +20,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.common.tool.MLog;
-import io.xdag.common.util.DialogUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
 import io.xdag.xdagwallet.api.ApiServer;
@@ -29,6 +28,7 @@ import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
 import io.xdag.xdagwallet.dialog.InputBuilder;
 import io.xdag.xdagwallet.dialog.LoadingBuilder;
+import io.xdag.xdagwallet.dialog.TipBuilder;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
@@ -57,8 +57,10 @@ public class HomeFragment extends BaseMainFragment {
     private TransactionAdapter mAdapter;
     private View mEmptyView;
     private Disposable mDisposable;
+    private LoadingBuilder mLoadingBuilder;
     private AlertDialog mLoadingDialog;
-    private InputBuilder mInputDialog;
+    private AlertDialog mTipDialog;
+    private AlertDialog mInputDialog;
 
 
     @Override
@@ -77,7 +79,7 @@ public class HomeFragment extends BaseMainFragment {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {
                 getRefreshDelegate().setRefreshEnabled(
-                        state.equals(AppBarStateChangedListener.State.EXPANDED));
+                    state.equals(AppBarStateChangedListener.State.EXPANDED));
             }
         });
 
@@ -97,23 +99,55 @@ public class HomeFragment extends BaseMainFragment {
         }
 
         mRecyclerView.setAdapter(mAdapter);
-        mLoadingDialog = new LoadingBuilder(mContext)
-                .setMessage(R.string.please_wait_connecting_pool).create();
+        initDialog();
+
+    }
+
+
+    private void initDialog() {
+        mLoadingBuilder = new LoadingBuilder(mContext)
+            .setMessage(R.string.please_wait_read_wallet);
+        mLoadingDialog = mLoadingBuilder.create();
+
+        mTipDialog = new TipBuilder(mContext)
+            .setPositiveListener(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    XdagWrapper.getInstance().XdagNotifyMsg("");
+                    dialog.dismiss();
+                    mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
+                    mLoadingDialog.show();
+
+                }
+            }).create();
+
+        mInputDialog = new InputBuilder(mContext)
+            .setPositiveListener(new InputBuilder.OnPositiveClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, String input) {
+                    XdagWrapper.getInstance().XdagNotifyMsg(input);
+                    dialog.dismiss();
+                    mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
+                    mLoadingDialog.show();
+                }
+            }).create();
+
+        mLoadingDialog.show();
     }
 
 
     private void requestTransaction() {
 
         mDisposable = ApiServer.getApi().getBlockDetail(mTvAddress.getText().toString())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map(new Detail2AddressListFunction())
-                .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
-                    @Override
-                    public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
-                        mAdapter.setNewData(blockAsAddresses);
-                        AlertUtil.show(mContext, R.string.success_refresh);
-                    }
-                }, new ErrorConsumer(getMainActivity()));
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(new Detail2AddressListFunction())
+            .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
+                @Override
+                public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
+                    mAdapter.setNewData(blockAsAddresses);
+                    AlertUtil.show(mContext, R.string.success_refresh);
+                }
+            }, new ErrorConsumer(getMainActivity()));
     }
 
 
@@ -142,7 +176,6 @@ public class HomeFragment extends BaseMainFragment {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
-
         switch (event.eventType) {
             case XdagEvent.en_event_type_pwd:
             case XdagEvent.en_event_set_pwd:
@@ -150,23 +183,9 @@ public class HomeFragment extends BaseMainFragment {
             case XdagEvent.en_event_set_rdm: {
                 MLog.i("Event: set password and random");
                 if (isVisible()) {
-                    MLog.i("home fragment show the auth dialog");
                     mLoadingDialog.dismiss();
-
-                    DialogUtil.showAlertDialog(mContext, getAuthHintString(event.eventType),
-                            null, mContext.getString(R.string.alert_dialog_ok), null);
-                    DialogUtil.getAlertDialog()
-                            .setEditPwdMode(
-                                    InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    DialogUtil.getAlertDialog().setEditShow(true);
-                    DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
-                        @Override
-                        public void onClick() {
-                            String authInfo = DialogUtil.getAlertDialog().getEditMessage();
-                            XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                            xdagWrapper.XdagNotifyMsg(authInfo);
-                        }
-                    });
+                    mInputDialog.setMessage(getAuthHintString(event.eventType));
+                    mInputDialog.show();
                 }
             }
             break;
@@ -175,14 +194,8 @@ public class HomeFragment extends BaseMainFragment {
                 MLog.i("Event: password not same");
                 if (isVisible()) {
                     mLoadingDialog.dismiss();
-                    DialogUtil.showAlertDialog(getActivity(), null, getString(R.string.password_not_same), getString(R.string.alert_dialog_ok), null);
-                    DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
-                        @Override
-                        public void onClick() {
-                            XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                            xdagWrapper.XdagNotifyMsg("");
-                        }
-                    });
+                    mTipDialog.setMessage(getString(R.string.password_not_same));
+                    mTipDialog.show();
                 }
             }
             break;
@@ -190,28 +203,27 @@ public class HomeFragment extends BaseMainFragment {
                 MLog.i("Event: password error");
                 if (isVisible()) {
                     mLoadingDialog.dismiss();
-                    DialogUtil.showAlertDialog(getActivity(), null, getString(R.string.password_error), getString(R.string.alert_dialog_ok), null);
-                    DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
-                        @Override
-                        public void onClick() {
-                            XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                            xdagWrapper.XdagNotifyMsg("");
-                        }
-                    });
+                    mTipDialog.setMessage(getString(R.string.error_password));
+                    mTipDialog.show();
                 }
             }
             break;
             case XdagEvent.en_event_update_state: {
                 MLog.i("Event: state update");
                 mTvAddress.setText(event.address);
-                mCollapsingToolbarLayout.setTitle(event.balance);
-                if (mLastAddressState == XdagEvent.en_address_not_ready &&
-                        event.addressLoadState == XdagEvent.en_address_ready) {
-                    requestTransaction();
-                }
                 if (isVisible()) {
+                    mCollapsingToolbarLayout.setTitle(event.balance);
+                    if (mLastAddressState == XdagEvent.en_address_not_ready &&
+                        event.addressLoadState == XdagEvent.en_address_ready) {
+                        requestTransaction();
+                    }
+
                     if (getXdagHandler().isNotConnectedToPool(event)) {
-                        mLoadingDialog.show();
+                        if (!mInputDialog.isShowing()) {
+                            mLoadingBuilder.setMessage(
+                                getString(R.string.please_wait_connecting_pool));
+                            mLoadingDialog.show();
+                        }
                     } else {
                         mLoadingDialog.dismiss();
                     }
