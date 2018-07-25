@@ -166,7 +166,18 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             pthread_mutex_unlock(&gWaitUiMutex);
         }
         return NULL;
+        case en_event_pwd_not_same:
+        {
+            LOGI("password not same wait user confirm");
+            pthread_mutex_lock(&gWaitUiMutex);
+            invokeJavaCallBack(event);
+            pthread_cond_wait(&gWaitUiCond,&gWaitUiMutex);
 
+            LOGI("user confirm password not same");
+            gAuthInfoMap.clear();
+            pthread_mutex_unlock(&gWaitUiMutex);
+        }
+        return NULL;
         case en_event_update_state:
         {
             LOGI("receive xdag event  en_event_update_state xdag program state %d",event->xdag_program_state);

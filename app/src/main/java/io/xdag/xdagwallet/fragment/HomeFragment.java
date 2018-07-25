@@ -170,11 +170,12 @@ public class HomeFragment extends BaseMainFragment {
                 }
             }
             break;
-            case XdagEvent.en_event_pwd_error: {
-                MLog.i("Event: password error");
+            case XdagEvent.en_event_pwd_not_same:
+            {
+                MLog.i("Event: password not same");
                 if (isVisible()) {
                     mLoadingDialog.dismiss();
-                    DialogUtil.showAlertDialog(getActivity(), null, "password error", "OK", null);
+                    DialogUtil.showAlertDialog(getActivity(), null, getString(R.string.password_not_same), getString(R.string.alert_dialog_ok), null);
                     DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
                         @Override
                         public void onClick() {
@@ -183,7 +184,21 @@ public class HomeFragment extends BaseMainFragment {
                         }
                     });
                 }
-
+            }
+            break;
+            case XdagEvent.en_event_pwd_error: {
+                MLog.i("Event: password error");
+                if (isVisible()) {
+                    mLoadingDialog.dismiss();
+                    DialogUtil.showAlertDialog(getActivity(), null, getString(R.string.password_error), getString(R.string.alert_dialog_ok), null);
+                    DialogUtil.setLeftListener(new DialogUtil.OnLeftListener() {
+                        @Override
+                        public void onClick() {
+                            XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+                            xdagWrapper.XdagNotifyMsg("");
+                        }
+                    });
+                }
             }
             break;
             case XdagEvent.en_event_update_state: {

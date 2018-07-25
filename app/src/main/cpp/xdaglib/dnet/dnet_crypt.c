@@ -409,7 +409,10 @@ dnet_crypt_reinit:
         if (str.len != str1.len || memcmp(str.utf8, str1.utf8, str.len)) {
             fclose(f);
             report_ui_walletinit_event(en_event_pwd_not_same,INIT,NULL);
-            return 4;
+            //ask user to set password again
+            crc_uninit();
+            memset(keys,0,sizeof(struct dnet_keys));
+            goto dnet_crypt_reinit;
         }
 
         if (str.len) set_user_crypt(&str);

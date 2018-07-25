@@ -32,6 +32,8 @@
     <string name="error_create_xdag_wallet">Xdag wallet create fail</string>
     <string name="error_restore_xdag_wallet">Xdag wallet restore fail</string>
     <string name="error_backup_xdag_wallet">Xdag wallet backup fail</string>
+    <string name="password_error">password error</string>
+    <string name="password_not_same">password not same</string>
 
     <!-- success -->
     <string name="success_refresh">Refresh success</string>
