@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import butterknife.OnClick;
+import io.xdag.common.util.IntentUtil;
 import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.activity.RestoreActivity;
@@ -48,7 +49,7 @@ public class SettingFragment extends BaseMainFragment {
                     backupWallet();
                 }
             })
-            .setNegativeButton("取消", null);
+            .setNegativeButton(R.string.cancel, null);
     }
 
 
@@ -65,16 +66,28 @@ public class SettingFragment extends BaseMainFragment {
 
     @OnClick(R.id.setting_switch)
     void setting_switch() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
+            .setMessage("这个功能我们正在开发中，请稍后。")
+            .setPositiveButton(R.string.ensure, null);
+        builder.create().show();
+    }
+
+
+    @OnClick(R.id.setting_suggest)
+    void setting_suggest() {
+        IntentUtil.openBrowser(mContext, "http://cn.mikecrm.com/im90MMt");
+    }
+
+
+    @OnClick(R.id.setting_open_source)
+    void setting_open_source() {
+        IntentUtil.openBrowser(mContext, "https://github.com/ssyijiu/xdagwallet");
     }
 
 
     @OnClick(R.id.setting_about)
     void setting_about() {
-        Intent intent = new Intent();
-        intent.setAction("android.intent.action.VIEW");
-        Uri content_url = Uri.parse("https://xdag.io/");
-        intent.setData(content_url);
-        startActivity(intent);
+        IntentUtil.openBrowser(mContext, "https://xdag.io/");
     }
 
 
