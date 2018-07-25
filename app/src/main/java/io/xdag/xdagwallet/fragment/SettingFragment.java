@@ -48,12 +48,7 @@ public class SettingFragment extends BaseMainFragment {
                     backupWallet();
                 }
             })
-            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
+            .setNegativeButton("取消", null);
     }
 
 
@@ -69,7 +64,7 @@ public class SettingFragment extends BaseMainFragment {
 
 
     @OnClick(R.id.setting_switch)
-    void setting_restore() {
+    void setting_switch() {
     }
 
 
