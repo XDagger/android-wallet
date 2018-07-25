@@ -68,9 +68,8 @@ public class SettingFragment extends BaseMainFragment {
     }
 
 
-    @OnClick(R.id.setting_restore)
+    @OnClick(R.id.setting_switch)
     void setting_restore() {
-        RestoreActivity.start(mContext);
     }
 
 

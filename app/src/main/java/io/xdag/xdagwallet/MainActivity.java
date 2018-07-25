@@ -68,24 +68,15 @@ public class MainActivity extends ToolbarActivity {
     protected void initData() {
         // request permissions
         AndPermission.with(mContext)
-                .runtime()
-                .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-                .onGranted(new Action<List<String>>() {
-                    @Override
-                    public void onAction(List<String> data) {
-                        connectToPool();
-                    }
-                })
-                .start();
-    }
-
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        showFragment(mHomeFragment);
-        connectToPool();
-
+            .runtime()
+            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+            .onGranted(new Action<List<String>>() {
+                @Override
+                public void onAction(List<String> data) {
+                    connectToPool();
+                }
+            })
+            .start();
     }
 
 
@@ -110,13 +101,13 @@ public class MainActivity extends ToolbarActivity {
     private void initNavigationView() {
         // create items
         AHBottomNavigationItem home =
-                new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_home);
+            new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_home);
         AHBottomNavigationItem receive =
-                new AHBottomNavigationItem(getString(R.string.receive), R.drawable.ic_receive);
+            new AHBottomNavigationItem(getString(R.string.receive), R.drawable.ic_receive);
         AHBottomNavigationItem send =
-                new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
+            new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
         AHBottomNavigationItem setting =
-                new AHBottomNavigationItem(getString(R.string.setting), R.drawable.ic_setting);
+            new AHBottomNavigationItem(getString(R.string.setting), R.drawable.ic_setting);
         // add items
         mNavigationView.addItem(home);
         mNavigationView.addItem(receive);
@@ -162,13 +153,13 @@ public class MainActivity extends ToolbarActivity {
         mSettingFragment = SettingFragment.newInstance();
 
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
-                HomeFragment.class.getName());
+            HomeFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mReceiveFragment, R.id.container,
-                ReceiveFragment.class.getName());
+            ReceiveFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSendFragment, R.id.container,
-                SendFragment.class.getName());
+            SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
-                SettingFragment.class.getName());
+            SettingFragment.class.getName());
 
         showFragment(mHomeFragment);
     }
@@ -176,25 +167,25 @@ public class MainActivity extends ToolbarActivity {
 
     private void recoverFragment() {
         mHomeFragment = (HomeFragment) mFragmentManager.findFragmentByTag(
-                HomeFragment.class.getName());
+            HomeFragment.class.getName());
         mReceiveFragment = (ReceiveFragment) mFragmentManager.findFragmentByTag(
-                ReceiveFragment.class.getName());
+            ReceiveFragment.class.getName());
         mSendFragment = (SendFragment) mFragmentManager.findFragmentByTag(
-                SendFragment.class.getName());
+            SendFragment.class.getName());
         mSettingFragment = (SettingFragment) mFragmentManager.findFragmentByTag(
-                SettingFragment.class.getName());
+            SettingFragment.class.getName());
     }
 
 
     private void showFragment(BaseMainFragment fragment) {
         if (mShowFragment != fragment) {
             mFragmentManager.beginTransaction()
-                    .hide(mHomeFragment)
-                    .hide(mReceiveFragment)
-                    .hide(mSendFragment)
-                    .hide(mSettingFragment)
-                    .show(fragment)
-                    .commit();
+                .hide(mHomeFragment)
+                .hide(mReceiveFragment)
+                .hide(mSendFragment)
+                .hide(mSettingFragment)
+                .show(fragment)
+                .commit();
             mShowFragment = fragment;
             ToolbarUtil.setToolbar(mShowFragment.getPosition(), getToolbar());
         }

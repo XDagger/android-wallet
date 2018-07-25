@@ -16,11 +16,11 @@
     <View style="@style/DividerHorizontalThin" />
     
     <io.xdag.xdagwallet.widget.SettingItemView
-        android:id="@+id/setting_restore"
+        android:id="@+id/setting_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/WHITE"
-        android:text="@string/setting_restore_wallet" />
+        android:text="@string/setting_switch_wallet" />
     
     <io.xdag.xdagwallet.widget.SettingItemView
         android:id="@+id/setting_about"

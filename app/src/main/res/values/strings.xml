@@ -42,7 +42,7 @@
     <!-- setting item-->
     <string name="setting_messages">消息</string>
     <string name="setting_backup_wallet">备份钱包</string>
-    <string name="setting_restore_wallet">恢复钱包</string>
+    <string name="setting_switch_wallet">切换钱包</string>
     <string name="setting_about_xdag">关于 XDAG</string>
 
     <string name="use_explain">使用说明</string>
