@@ -45,13 +45,13 @@ public class UseExplainActivity extends ToolbarActivity
                 .append("XDAG Android 钱包目前还处于测试版本\n")
                 .append("使用请注意：\n")
                 .append("请务必在其他位置备份好您的钱包文件，以防止因本钱包的 bug 造成您的资产损失。\n")
-                .append("出现任何资产损失，作者概不负责。\n")
                 .setForegroundColor(Common.getColor(R.color.RED))
-                .appendLine()
+                .append("出现任何资产损失，作者不承担这个责任。\n")
                 .append("任何卸载、删除数据的行为，都将造成钱包文件丢失，且无法找回。\n")
-                .appendLine()
-                .append("为保证钱包事物的连续性，目前的版本应用内的所有弹框都不可取消，请您见谅。我们在后续版本中将改善这个问题。\n")
                 .setForegroundColor(Common.getColor(R.color.RED))
+                .appendLine()
+                .append("为保证钱包事物的连续性，目前的版本应用内的很多弹框都不可取消，请您见谅。\n")
+                .append("我们在后续版本中将改善这个问题。")
                 .create()
         );
 

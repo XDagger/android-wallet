@@ -1,6 +1,7 @@
 package io.xdag.xdagwallet.fragment;
 
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AlertDialog;
@@ -125,10 +126,19 @@ public class HomeFragment extends BaseMainFragment {
             .setPositiveListener(new InputBuilder.OnPositiveClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, String input) {
-                    XdagWrapper.getInstance().XdagNotifyMsg(input);
-                    dialog.dismiss();
-                    mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
-                    mLoadingDialog.show();
+                    if (input.length() < 6) {
+                        AlertUtil.show(mContext, R.string.error_password_format);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override public void run() {
+                                mInputDialog.show();
+                            }
+                        }, 500);
+                    } else {
+                        XdagWrapper.getInstance().XdagNotifyMsg(input);
+                        dialog.dismiss();
+                        mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
+                        mLoadingDialog.show();
+                    }
                 }
             }).create();
 
@@ -189,8 +199,7 @@ public class HomeFragment extends BaseMainFragment {
                 }
             }
             break;
-            case XdagEvent.en_event_pwd_not_same:
-            {
+            case XdagEvent.en_event_pwd_not_same: {
                 MLog.i("Event: password not same");
                 if (isVisible()) {
                     mLoadingDialog.dismiss();
