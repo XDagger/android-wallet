@@ -85,7 +85,12 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
                         mLoadingDialog.show();
                     }
                 }
-            })
+            }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        XdagWrapper.getInstance().XdagNotifyMsg("");
+                    }
+                })
             .setMessage(R.string.please_input_password)
             .create();
 
@@ -97,7 +102,6 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
                         dialog.dismiss();
                         mLoadingBuilder.setMessage(R.string.please_wait_transfer);
                         mLoadingDialog.show();
-
                     }
                 }).create();
     }

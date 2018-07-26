@@ -131,18 +131,26 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             st_xdag_app_msg* msg = NULL;
             std::map<std::string,std::string>::iterator it = gAuthInfoMap.find("set-password");
             if(it != gAuthInfoMap.end()){
+
+                if(it->second.c_str() == NULL || strlen(it->second.c_str()) == 0){
+                    LOGI("user cancel password type in");
+                    gAuthInfoMap.clear();
+                    pthread_mutex_unlock(&gWaitUiMutex);
+                    return NULL;
+                }
                 msg = (st_xdag_app_msg*)malloc(sizeof(st_xdag_app_msg));
 
+                char* authinfo = strdup(it->second.c_str());
                 if(event->event_type == en_event_set_pwd || event->event_type == en_event_type_pwd){
-                    msg->xdag_pwd = strdup(it->second.c_str());
+                    msg->xdag_pwd = authinfo;
                     LOGI("user typed password  %s",msg->xdag_pwd);
                 }
                 else if(event->event_type == en_event_retype_pwd ){
-                    msg->xdag_retype_pwd = strdup(it->second.c_str());
+                    msg->xdag_retype_pwd = authinfo;
                     LOGI("user re-typed password  info %s",msg->xdag_retype_pwd);
                 }
                 else if(event->event_type == en_event_set_rdm ){
-                    msg->xdag_rdm = strdup(it->second.c_str());
+                    msg->xdag_rdm = authinfo;
                     LOGI("user typed random keys %s",msg->xdag_rdm);
                 }
 
