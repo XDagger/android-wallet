@@ -11,6 +11,7 @@ import io.xdag.xdagwallet.BuildConfig;
 import io.xdag.xdagwallet.R;
 import me.drakeet.multitype.Items;
 import me.drakeet.support.about.AbsAboutActivity;
+import me.drakeet.support.about.Card;
 import me.drakeet.support.about.Category;
 import me.drakeet.support.about.License;
 
@@ -37,11 +38,8 @@ public class AboutActivity extends AbsAboutActivity {
 
     @Override protected void onItemsCreated(@NonNull Items items) {
 
-        // about XDAG
-        items.add(new Category("About XDAG"));
-        items.add(new License("GitHub", "xdagger", "", "https://github.com/xdagger"));
-        items.add(new License("Community site", "xdag.io", "", "https://xdag.io/"));
-        items.add(new License("Block explorer", "xdagscan", "", "http://xdagscan.com/"));
+        items.add(new Category("很高兴见到您"));
+        items.add(new Card(getString(R.string.about_explain)));
 
         // Source code
         items.add(new Category("Source code"));

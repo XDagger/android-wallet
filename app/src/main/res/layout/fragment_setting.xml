@@ -34,18 +34,28 @@
     <View style="@style/DividerHorizontalThin"/>
 
     <io.xdag.xdagwallet.widget.SettingItemView
-            android:id="@+id/setting_open_source"
+            android:id="@+id/setting_about"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/WHITE"
-            android:text="@string/setting_switch_open_source"/>
+            android:text="@string/about"/>
 
     <io.xdag.xdagwallet.widget.SettingItemView
-            android:id="@+id/setting_about"
+            android:id="@+id/setting_github"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/setting_item_space"
             android:background="@color/WHITE"
-            android:text="@string/about"/>
+            android:text="@string/setting_github"/>
+
+    <View style="@style/DividerHorizontalThin"/>
+
+    <io.xdag.xdagwallet.widget.SettingItemView
+            android:id="@+id/setting_xdagio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/WHITE"
+            android:text="@string/setting_xdag_io"/>
+
 
 </LinearLayout>

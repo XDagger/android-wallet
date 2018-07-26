@@ -80,15 +80,19 @@ public class SettingFragment extends BaseMainFragment {
     }
 
 
-    @OnClick(R.id.setting_open_source)
-    void setting_open_source() {
-        IntentUtil.openBrowser(mContext, "https://github.com/ssyijiu/xdagwallet");
-    }
-
-
     @OnClick(R.id.setting_about)
     void setting_about() {
         AboutActivity.start(mContext);
+    }
+
+    @OnClick(R.id.setting_github)
+    void setting_github() {
+        IntentUtil.openBrowser(mContext, "https://github.com/XDagger");
+    }
+
+    @OnClick(R.id.setting_xdagio)
+    void setting_xdagio() {
+        IntentUtil.openBrowser(mContext, "https://xdag.io");
     }
 
 
