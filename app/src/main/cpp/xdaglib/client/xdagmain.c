@@ -294,8 +294,11 @@ int xdag_xfer_coin(const char* amount,const char* address){
     }
 
     /* ask user type in password */
-    if (xdag_user_crypt_action(0, 0, 0, 3)) {
-        //sleep(3);
+    int res = xdag_user_crypt_action(0, 0, 0, 3);
+    if (res == 1) {
+        xdag_app_debug("user cancel xfer coin");
+        return 1;
+    }else if(res){
         report_ui_xfer_event(en_event_pwd_error,"password error");
         return 1;
     }

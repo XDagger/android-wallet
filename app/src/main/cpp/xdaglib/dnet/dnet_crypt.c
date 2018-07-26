@@ -266,9 +266,10 @@ int dnet_user_crypt_action(unsigned *data, unsigned long long data_id, unsigned 
 				memset(pwd, 0, 256);
 				memset(&str, 0, sizeof(struct dfslib_string));
 
+                //return -1 : user cancel paasword type in
                 res = (*g_input_password)("Password", pwd, 256);
                 if(res == -1){
-                    return -1;
+                    return 1;
                 }
 				dfslib_utf8_string(&str, pwd, strlen(pwd));
 				memset(crypt->pwd, 0, sizeof(crypt->pwd));

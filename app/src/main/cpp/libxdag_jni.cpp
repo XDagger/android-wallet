@@ -131,18 +131,26 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             st_xdag_app_msg* msg = NULL;
             std::map<std::string,std::string>::iterator it = gAuthInfoMap.find("set-password");
             if(it != gAuthInfoMap.end()){
+
+                if(it->second.c_str() == NULL || strlen(it->second.c_str()) == 0){
+                    LOGI("user cancel password type in");
+                    gAuthInfoMap.clear();
+                    pthread_mutex_unlock(&gWaitUiMutex);
+                    return NULL;
+                }
                 msg = (st_xdag_app_msg*)malloc(sizeof(st_xdag_app_msg));
 
+                char* authinfo = strdup(it->second.c_str());
                 if(event->event_type == en_event_set_pwd || event->event_type == en_event_type_pwd){
-                    msg->xdag_pwd = strdup(it->second.c_str());
+                    msg->xdag_pwd = authinfo;
                     LOGI("user typed password  %s",msg->xdag_pwd);
                 }
                 else if(event->event_type == en_event_retype_pwd ){
-                    msg->xdag_retype_pwd = strdup(it->second.c_str());
+                    msg->xdag_retype_pwd = authinfo;
                     LOGI("user re-typed password  info %s",msg->xdag_retype_pwd);
                 }
                 else if(event->event_type == en_event_set_rdm ){
-                    msg->xdag_rdm = strdup(it->second.c_str());
+                    msg->xdag_rdm = authinfo;
                     LOGI("user typed random keys %s",msg->xdag_rdm);
                 }
 
@@ -153,27 +161,18 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             return msg;
         }
         return NULL;
-
         case en_event_pwd_error:
+        case en_event_pwd_not_same:
+        case en_event_nothing_transfer:
+        case en_event_balance_too_small:
+        case en_event_invalid_recv_address:
         {
-            LOGI("password error wait user confirm");
+            LOGI("password error or not same wait user confirm");
             pthread_mutex_lock(&gWaitUiMutex);
             invokeJavaCallBack(event);
             pthread_cond_wait(&gWaitUiCond,&gWaitUiMutex);
 
             LOGI("user confirm password error");
-            gAuthInfoMap.clear();
-            pthread_mutex_unlock(&gWaitUiMutex);
-        }
-        return NULL;
-        case en_event_pwd_not_same:
-        {
-            LOGI("password not same wait user confirm");
-            pthread_mutex_lock(&gWaitUiMutex);
-            invokeJavaCallBack(event);
-            pthread_cond_wait(&gWaitUiCond,&gWaitUiMutex);
-
-            LOGI("user confirm password not same");
             gAuthInfoMap.clear();
             pthread_mutex_unlock(&gWaitUiMutex);
         }
@@ -185,7 +184,6 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             invokeJavaCallBack(event);
         }
         return NULL;
-
         default:
             break;
     }

@@ -63,7 +63,6 @@ public class HomeFragment extends BaseMainFragment {
     private AlertDialog mTipDialog;
     private AlertDialog mInputDialog;
 
-
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_home;
@@ -203,7 +202,7 @@ public class HomeFragment extends BaseMainFragment {
                 MLog.i("Event: password not same");
                 if (isVisible()) {
                     mLoadingDialog.dismiss();
-                    mTipDialog.setMessage(getString(R.string.password_not_same));
+                    mTipDialog.setMessage(getString(R.string.error_password_not_same));
                     mTipDialog.show();
                 }
             }

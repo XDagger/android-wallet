@@ -16,10 +16,13 @@ import cn.bertsir.zbar.QRManager;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
+
+import io.xdag.common.tool.MLog;
 import io.xdag.common.util.DialogUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.dialog.InputBuilder;
 import io.xdag.xdagwallet.dialog.LoadingBuilder;
+import io.xdag.xdagwallet.dialog.TipBuilder;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ZbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
@@ -35,8 +38,6 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItemClickListener {
 
-    private static final String TAG = "XdagWallet";
-
     @BindView(R.id.send_et_amount) EditText mEtAmount;
     @BindView(R.id.send_et_address) EditText mEtAddress;
     @BindView(R.id.send_btn_xdag) Button mBtnSendXdag;
@@ -44,6 +45,8 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
 
     private AlertDialog mLoadingDialog;
     private AlertDialog mInputDialog;
+    private AlertDialog mTipDialog;
+    private LoadingBuilder mLoadingBuilder;
 
 
     @Override
@@ -57,6 +60,8 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
         super.initView(rootView);
         getToolbar().inflateMenu(R.menu.toolbar_scan);
         getToolbar().setOnMenuItemClickListener(this);
+        mLoadingBuilder = new LoadingBuilder(mContext);
+        mLoadingDialog = mLoadingBuilder.create();
 
         mLoadingDialog = new LoadingBuilder(mContext)
             .setMessage(R.string.please_wait_connecting_pool).create();
@@ -78,14 +83,26 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
                         mLoadingDialog.show();
                     }
                 }
-            })
-            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                @Override public void onClick(DialogInterface dialog, int which) {
 
+            }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    XdagWrapper.getInstance().XdagNotifyMsg("");
                 }
             })
             .setMessage(R.string.please_input_password)
             .create();
+
+        mTipDialog = new TipBuilder(mContext)
+            .setPositiveListener(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    XdagWrapper.getInstance().XdagNotifyMsg("");
+                    dialog.dismiss();
+                    mLoadingBuilder.setMessage(R.string.please_wait_transfer);
+                    mLoadingDialog.show();
+                }
+            }).create();
     }
 
 
@@ -119,7 +136,7 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
     }
 
 
-    @OnClick({ R.id.send_btn_xdag, R.id.send_et_address, R.id.send_et_amount }) void sendXdag() {
+    @OnClick({ R.id.send_btn_xdag }) void sendXdag() {
         String address = mEtAddress.getText().toString();
         String amount = mEtAmount.getText().toString();
         getXdagHandler().xferXdagCoin(address, amount);
@@ -148,6 +165,28 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
                     }
                 }
 
+            }
+            break;
+            case XdagEvent.en_event_pwd_error:
+            case XdagEvent.en_event_nothing_transfer:
+            case XdagEvent.en_event_balance_too_small:
+            case XdagEvent.en_event_invalid_recv_address: {
+                MLog.i("Event: password error");
+                if (isVisible()) {
+                    mLoadingDialog.dismiss();
+                    String message = "";
+                    if (event.eventType == XdagEvent.en_event_pwd_error) {
+                        message = getString(R.string.error_password);
+                    } else if (event.eventType == XdagEvent.en_event_nothing_transfer) {
+                        message = getString(R.string.error_noting_to_transfer);
+                    } else if (event.eventType == XdagEvent.en_event_balance_too_small) {
+                        message = getString(R.string.error_balance_too_small);
+                    } else if (event.eventType == XdagEvent.en_event_invalid_recv_address) {
+                        message = getString(R.string.error_invalid_recv_address);
+                    }
+                    mTipDialog.setMessage(message);
+                    mTipDialog.show();
+                }
             }
             break;
         }
