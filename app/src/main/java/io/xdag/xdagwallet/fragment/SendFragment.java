@@ -1,6 +1,7 @@
 package io.xdag.xdagwallet.fragment;
 
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
@@ -71,9 +72,18 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
             .setPositiveListener(new InputBuilder.OnPositiveClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, String input) {
-                    XdagWrapper.getInstance().XdagNotifyMsg(input);
-                    dialog.dismiss();
-                    mLoadingDialog.show();
+                    if (input.length() < 6) {
+                        AlertUtil.show(mContext, R.string.error_password_format);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override public void run() {
+                                mInputDialog.show();
+                            }
+                        }, 500);
+                    } else {
+                        XdagWrapper.getInstance().XdagNotifyMsg(input);
+                        dialog.dismiss();
+                        mLoadingDialog.show();
+                    }
                 }
             })
             .setMessage(R.string.please_input_password)

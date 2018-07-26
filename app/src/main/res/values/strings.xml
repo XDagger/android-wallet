@@ -19,14 +19,13 @@
     <string name="restore_wallet">恢复钱包</string>
     <string name="no_transaction">没有交易记录</string>
     <string name="copy_address">复制地址</string>
-    
-    
+
     <!-- please -->
     <string name="please_set_password">请设置您的钱包密码</string>
     <string name="please_retype_password">请再次确认密码</string>
     <string name="please_input_password">请输入钱包密码</string>
     <string name="please_input_random">请输入随机数</string>
-    
+
     <!-- error tips -->
     <string name="error_cannot_identify_qr_code">不能识别二维码</string>
     <string name="error_file_make_fail">The xdag file make fail</string>
@@ -44,13 +43,13 @@
     <string name="success_refresh">刷新成功</string>
     <string name="success_copy_address">地址复制成功</string>
     <string name="success_backup_xdag_wallet">您的钱包已备份至 /sdcard/xdag 目录</string>
-    
+
     <!-- setting item-->
     <string name="setting_messages">消息</string>
     <string name="setting_backup_wallet">备份钱包</string>
     <string name="setting_restore_wallet">恢复钱包</string>
     <string name="setting_about_xdag">关于 XDAG</string>
-    
+
     <string name="use_explain">使用说明</string>
     <string name="function_explain">功能说明</string>
     <string name="backup_explain">我已经仔细阅读上述内容</string>
@@ -66,5 +65,7 @@
     <string name="please_wait_transfer">正在转账，请稍后</string>
     <string name="available_xdag">Available %1$s XDAG</string>
     <string name="cancel">取消</string>
+    <string name="password_format">0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="error_password_format">请输入 6–18 位的字母或数字</string>
 
 </resources>
