@@ -131,7 +131,7 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             st_xdag_app_msg* msg = NULL;
             std::map<std::string,std::string>::iterator it = gAuthInfoMap.find("set-password");
             if(it != gAuthInfoMap.end()){
-
+                //user cancel password type in while transfer coin
                 if(it->second.c_str() == NULL || strlen(it->second.c_str()) == 0){
                     LOGI("user cancel password type in");
                     gAuthInfoMap.clear();

@@ -71,7 +71,7 @@ int g_xdag_state = XDAG_STATE_NINT;
 int g_xdag_testnet = 0;
 int g_is_miner = 0;
 static int g_is_pool = 0;
-time_t g_xdag_xfer_last = 0;
+xdag_time_t g_xdag_xfer_last = 0;
 pthread_mutex_t g_update_ui_mutext =  PTHREAD_MUTEX_INITIALIZER;
 
 struct xdag_stats g_xdag_stats;
@@ -269,7 +269,13 @@ static const char *get_state(void)
 
 	return states[g_xdag_state];
 }
-
+static uint64_t get_timestamp(void)
+{
+    struct timeval tp;
+    gettimeofday(&tp, 0);
+    uint64_t result = (uint64_t)(unsigned long)tp.tv_sec << 10 | ((tp.tv_usec << 10) / 1000000);
+    return result;
+}
 int xdag_xfer_coin(const char* amount,const char* address){
 
     uint32_t pwd[4];
@@ -279,17 +285,17 @@ int xdag_xfer_coin(const char* amount,const char* address){
     xfer.remains = cheatcoins2amount(amount);
 
     if (!xfer.remains) {
-        report_ui_xfer_event(en_event_nothing_transfer,"nothing to transfer");
+        report_ui_xfer_event(en_event_nothing_transfer,POOL,"nothing to transfer");
         return 1;
     }
 
     if (xfer.remains > xdag_get_balance(0)) {
-        report_ui_xfer_event(en_event_balance_too_small,"balance too small");
+        report_ui_xfer_event(en_event_balance_too_small,POOL,"balance too small");
         return 1;
     }
 
     if (xdag_address2hash(address, xfer.fields[XFER_MAX_IN].hash)) {
-        report_ui_xfer_event(en_event_invalid_recv_address,"incorrect address");
+        report_ui_xfer_event(en_event_invalid_recv_address,POOL,"incorrect address");
         return 1;
     }
 
@@ -299,21 +305,21 @@ int xdag_xfer_coin(const char* amount,const char* address){
         xdag_app_debug("user cancel xfer coin");
         return 1;
     }else if(res){
-        report_ui_xfer_event(en_event_pwd_error,"password error");
+        report_ui_xfer_event(en_event_pwd_error,POOL,"password error");
         return 1;
     }
 
     xdag_wallet_default_key(&xfer.keys[XFER_MAX_IN]);
     xfer.outsig = 1;
     g_xdag_state = XDAG_STATE_XFER;
-    g_xdag_xfer_last = time(0);
+    g_xdag_xfer_last = (xdag_time_t)time(0);
     xdag_traverse_our_blocks(&xfer, &xfer_coin_callback);
 
     char err_msg[MAX_XDAG_ERR_MSG_LEN] = {0};
     sprintf(err_msg, "transferred : %.9Lf %s to the address: %s",
         amount2cheatcoins(xfer.done), coinname, xdag_hash2address(xfer.fields[XFER_MAX_IN].hash));
 
-    report_ui_xfer_event(en_event_xdag_transfered,err_msg);
+    report_ui_xfer_event(en_event_xdag_transfered,POOL,err_msg);
 
     return 0;
 }

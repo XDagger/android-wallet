@@ -55,6 +55,8 @@ public class HomeFragment extends BaseMainFragment {
 
     private int mLastAddressState = XdagEvent.en_address_not_ready;
     private int mLastBalancState = XdagEvent.en_balance_not_ready;
+    private int mLastProgramState = XdagEvent.NINT;
+
     private TransactionAdapter mAdapter;
     private View mEmptyView;
     private Disposable mDisposable;
@@ -236,6 +238,11 @@ public class HomeFragment extends BaseMainFragment {
                         mLoadingDialog.dismiss();
                     }
                 }
+                MLog.i("last  program state is " + mLastProgramState);
+                MLog.i("event program state is " + event.programState);
+                if(event.programState == XdagEvent.POOL && mLastProgramState == XdagEvent.XFER){
+                    requestTransaction();
+                }
             }
             break;
             default:
@@ -244,6 +251,8 @@ public class HomeFragment extends BaseMainFragment {
         // update  address load state and balance  load state
         mLastAddressState = event.addressLoadState;
         mLastBalancState = event.balanceLoadState;
+        // update program state
+        mLastProgramState = event.programState;
     }
 
 

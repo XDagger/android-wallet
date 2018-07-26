@@ -53,7 +53,7 @@ extern int g_xdag_testnet;
 extern const char *g_coinname, *g_progname;
 
 /* time of last transfer */
-extern time_t g_xdag_xfer_last;
+extern xdag_time_t g_xdag_xfer_last;
 
 extern void xdag_global_init();
 

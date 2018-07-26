@@ -154,6 +154,7 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
             }
             break;
             case XdagEvent.en_event_update_state: {
+
                 if (event.balanceLoadState == XdagEvent.en_balance_ready) {
                     mTvAvailable.setText(getString(R.string.available_xdag, event.balance));
                 }
@@ -164,7 +165,6 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
                         mLoadingDialog.dismiss();
                     }
                 }
-
             }
             break;
             case XdagEvent.en_event_pwd_error:

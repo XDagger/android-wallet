@@ -1074,8 +1074,13 @@ begin:
 				&& !memcmp(&g_xdag_stats.difficulty, &g_xdag_stats.max_difficulty, sizeof(xdag_diff_t))) {
 				sync_time = t;
 			}
-			
+
+			xdag_app_debug("xfer time t is %llu  g_xdag_xfer_last << 10 is %llu \n",t,(g_xdag_xfer_last << 10));
+            xdag_app_debug("xfer time t - (g_xdag_xfer_last << 10) is  %llu \n",(t - (g_xdag_xfer_last << 10)));
+			xdag_app_debug("xfer time  2 * MAIN_CHAIN_PERIOD + 4 is %llu \n",2 * MAIN_CHAIN_PERIOD + 4);
+
 			if (t - (g_xdag_xfer_last << 10) <= 2 * MAIN_CHAIN_PERIOD + 4) {
+                xdag_app_debug("xfer time set g_xdag_state to XDAG_STATE_XFER");
 				g_xdag_state = XDAG_STATE_XFER;
 			} else if (g_light_mode) {
 				g_xdag_state = (g_xdag_mining_threads > 0 ?

@@ -88,11 +88,12 @@ void report_ui_walletinit_event(en_xdag_event_type event_type,en_xdag_program_st
     g_app_callback_func(g_callback_object,&event);
 }
 
-void report_ui_xfer_event(en_xdag_event_type event_type,const char* err_msg){
+void report_ui_xfer_event(en_xdag_event_type event_type,en_xdag_program_state program_state,const char* err_msg){
 
     st_xdag_event event;
     memset(&event,0,sizeof(st_xdag_event));
     event.event_type = event_type;
+    event.xdag_program_state = program_state;
     event.procedure_type = en_procedure_xfer_coin;
 
     if(err_msg)
