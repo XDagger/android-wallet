@@ -31,6 +31,7 @@
         <activity android:name=".activity.WalletActivity"/>
         <activity android:name=".activity.RestoreActivity"/>
         <activity android:name=".activity.AboutActivity"/>
+        <activity android:name=".activity.TranDetailActivity"/>
     </application>
 
 </manifest>

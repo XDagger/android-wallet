@@ -1,6 +1,7 @@
 package io.xdag.common.base;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +32,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         View rootView = View.inflate(mContext, getLayoutResId(), null);
         setContentView(rootView);
         initView(rootView, savedInstanceState);
+        if (getIntent() != null) {
+            parseIntent(getIntent());
+        }
         initData();
     }
 
@@ -39,8 +43,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initView(View rootView, Bundle savedInstanceState);
 
-    protected void initData() {
-    }
+
+    protected void parseIntent(Intent intent) {}
+
+
+    protected void initData() { }
 
 
     @Override
