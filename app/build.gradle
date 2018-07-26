@@ -49,4 +49,7 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.1.1'
     // https://github.com/aurelhubert/ahbottomnavigation
     implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
+    // https://github.com/PureWriter/about-page
+    implementation 'me.drakeet.support:about:2.1.1'
+    implementation 'me.drakeet.multitype:multitype:3.4.4'
 }

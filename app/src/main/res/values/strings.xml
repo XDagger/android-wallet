@@ -45,7 +45,7 @@
     <string name="setting_suggest">问题与建议</string>
     <string name="setting_switch_wallet">切换钱包</string>
     <string name="setting_switch_open_source">开源地址</string>
-    <string name="setting_about_xdag">关于 XDAG</string>
+    <string name="about">关于我们</string>
 
     <string name="use_explain">使用说明</string>
     <string name="function_explain">功能说明</string>
@@ -65,5 +65,6 @@
     <string name="cancel">取消</string>
     <string name="password_format">0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="error_password_format">请输入 6–18 位的字母或数字</string>
+    <string name="slogan">流畅、稳定、安全的 XDAG 钱包</string>
 
 </resources>

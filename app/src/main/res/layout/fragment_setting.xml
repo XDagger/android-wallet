@@ -46,6 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/setting_item_space"
             android:background="@color/WHITE"
-            android:text="@string/setting_about_xdag"/>
+            android:text="@string/about"/>
 
 </LinearLayout>

@@ -9,6 +9,7 @@ import butterknife.OnClick;
 import io.xdag.common.util.IntentUtil;
 import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.activity.AboutActivity;
 import io.xdag.xdagwallet.activity.RestoreActivity;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
@@ -87,7 +88,7 @@ public class SettingFragment extends BaseMainFragment {
 
     @OnClick(R.id.setting_about)
     void setting_about() {
-        IntentUtil.openBrowser(mContext, "https://xdag.io/");
+        AboutActivity.start(mContext);
     }
 
 

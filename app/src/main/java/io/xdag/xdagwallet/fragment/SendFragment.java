@@ -79,6 +79,11 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
                     }
                 }
             })
+            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override public void onClick(DialogInterface dialog, int which) {
+
+                }
+            })
             .setMessage(R.string.please_input_password)
             .create();
     }
