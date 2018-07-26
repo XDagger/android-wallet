@@ -6,8 +6,8 @@ android {
         applicationId "io.xdag.xdagwallet"
         minSdkVersion min_version
         targetSdkVersion target_version
-        versionCode 1
-        versionName "1.0"
+        versionCode 10
+        versionName "0.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -19,12 +19,31 @@ android {
             abiFilters "armeabi-v7a"
         }
     }
+
+    signingConfigs {
+        release {
+            keyAlias 'xdagwalltkey'
+            keyPassword 'xdagtothemoon'
+            storeFile file('/Users/lxm/xdagwallt.jks')
+            storePassword 'xdagtothemoon'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"

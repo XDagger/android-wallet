@@ -31,7 +31,7 @@ public class InitManager {
 
     public void init(Application application) {
         mApplication = application;
-        Common.init(mApplication, true);
+        Common.init(mApplication, BuildConfig.DEBUG);
         initLeakCanary();
     }
 
