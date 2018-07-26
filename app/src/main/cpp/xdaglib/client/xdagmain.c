@@ -295,7 +295,6 @@ int xdag_xfer_coin(const char* amount,const char* address){
 
     /* ask user type in password */
     if (xdag_user_crypt_action(0, 0, 0, 3)) {
-        //sleep(3);
         report_ui_xfer_event(en_event_pwd_error,"password error");
         return 1;
     }

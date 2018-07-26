@@ -34,6 +34,11 @@
     <string name="error_create_xdag_wallet">XDAG wallet create fail</string>
     <string name="error_restore_xdag_wallet">XDAG wallet restore fail</string>
     <string name="error_backup_xdag_wallet">XDAG wallet backup fail</string>
+    <string name="error_password">密码错误</string>
+    <string name="error_password_not_same">密码不一致</string>
+    <string name="error_noting_to_transfer">发送金额必须大于0</string>
+    <string name="error_balance_too_small">余额不足</string>
+    <string name="error_invalid_recv_address">非法的接收地址</string>
 
     <!-- success -->
     <string name="success_refresh">刷新成功</string>
@@ -57,9 +62,8 @@
     <string name="loading_please_wait">正在加载，请稍后</string>
     <string name="please_wait_connecting_pool">正在连接主网，请稍后</string>
     <string name="ensure">确定</string>
-    <string name="error_password">密码错误</string>
-    <string name="password_not_same">密码不一致</string>
     <string name="please_wait_read_wallet">正在读取钱包，请稍后</string>
+    <string name="please_wait_transfer">正在转账，请稍后</string>
     <string name="available_xdag">Available %1$s XDAG</string>
     <string name="cancel">取消</string>
 

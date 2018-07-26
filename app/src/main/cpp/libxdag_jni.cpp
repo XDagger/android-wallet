@@ -153,27 +153,18 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             return msg;
         }
         return NULL;
-
         case en_event_pwd_error:
+        case en_event_pwd_not_same:
+        case en_event_nothing_transfer:
+        case en_event_balance_too_small:
+        case en_event_invalid_recv_address:
         {
-            LOGI("password error wait user confirm");
+            LOGI("password error or not same wait user confirm");
             pthread_mutex_lock(&gWaitUiMutex);
             invokeJavaCallBack(event);
             pthread_cond_wait(&gWaitUiCond,&gWaitUiMutex);
 
             LOGI("user confirm password error");
-            gAuthInfoMap.clear();
-            pthread_mutex_unlock(&gWaitUiMutex);
-        }
-        return NULL;
-        case en_event_pwd_not_same:
-        {
-            LOGI("password not same wait user confirm");
-            pthread_mutex_lock(&gWaitUiMutex);
-            invokeJavaCallBack(event);
-            pthread_cond_wait(&gWaitUiCond,&gWaitUiMutex);
-
-            LOGI("user confirm password not same");
             gAuthInfoMap.clear();
             pthread_mutex_unlock(&gWaitUiMutex);
         }
@@ -185,7 +176,6 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             invokeJavaCallBack(event);
         }
         return NULL;
-
         default:
             break;
     }
