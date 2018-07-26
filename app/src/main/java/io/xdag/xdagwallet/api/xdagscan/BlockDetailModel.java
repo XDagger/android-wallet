@@ -1,5 +1,6 @@
 package io.xdag.xdagwallet.api.xdagscan;
 
+import android.support.annotation.Keep;
 import android.text.TextUtils;
 import io.xdag.common.Common;
 import io.xdag.xdagwallet.R;
@@ -8,6 +9,8 @@ import java.util.List;
 /**
  * created by lxm on 2018/7/24.
  */
+
+@Keep
 public class BlockDetailModel {
 
     public String block;

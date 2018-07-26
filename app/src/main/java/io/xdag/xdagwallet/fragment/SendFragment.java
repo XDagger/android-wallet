@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,9 +15,7 @@ import cn.bertsir.zbar.QRManager;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
-
 import io.xdag.common.tool.MLog;
-import io.xdag.common.util.DialogUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.dialog.InputBuilder;
 import io.xdag.xdagwallet.dialog.LoadingBuilder;
