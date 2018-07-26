@@ -24,14 +24,15 @@ android {
         release {
             keyAlias 'xdagwalltkey'
             keyPassword 'xdagtothemoon'
-            storeFile file('/Users/lxm/xdagwallt.jks')
+            storeFile file('xdagwallt.jks')
             storePassword 'xdagtothemoon'
         }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
