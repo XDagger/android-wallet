@@ -86,7 +86,7 @@ public class UseExplainActivity extends ToolbarActivity
     }
 
 
-    private boolean isNotShow() {
+    public static boolean isNotShow() {
         return Config.isUserBackup() && Config.isNotShowExplain();
     }
 
