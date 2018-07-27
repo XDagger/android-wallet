@@ -36,6 +36,7 @@ import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 
 public class MainActivity extends ToolbarActivity {
 
+    private static final String EXTRA_RESTORE = "extra_restore";
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation mNavigationView;
     private FragmentManager mFragmentManager;
@@ -44,6 +45,8 @@ public class MainActivity extends ToolbarActivity {
     private BaseMainFragment mSendFragment;
     private BaseMainFragment mSettingFragment;
     private BaseMainFragment mShowFragment;
+
+    private boolean mRestore;
 
 
     @Override
@@ -64,6 +67,12 @@ public class MainActivity extends ToolbarActivity {
     }
 
 
+    @Override protected void parseIntent(Intent intent) {
+        super.parseIntent(intent);
+        mRestore = intent.getBooleanExtra(EXTRA_RESTORE, false);
+    }
+
+
     @Override
     protected void initData() {
         // request permissions
@@ -81,7 +90,7 @@ public class MainActivity extends ToolbarActivity {
 
 
     private void connectToPool() {
-        if (Config.isRestore()) {
+        if (mRestore) {
             if (getXdagHandler().restoreWallet()) {
                 getXdagHandler().connectToPool(Config.POLL_ADDRESS);
             } else {
@@ -210,8 +219,8 @@ public class MainActivity extends ToolbarActivity {
 
 
     public static void start(Activity context, boolean restore) {
-        Config.setRestore(restore);
         Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(EXTRA_RESTORE, restore);
         context.startActivity(intent);
         context.finish();
     }

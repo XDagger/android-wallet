@@ -1,5 +1,6 @@
 package io.xdag.xdagwallet.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -80,7 +81,7 @@ public class RestoreActivity extends ToolbarActivity {
         return R.string.restore_wallet;
     }
 
-    public static void start(Context context) {
+    public static void start(Activity context) {
         Intent intent = new Intent(context, RestoreActivity.class);
         context.startActivity(intent);
     }
