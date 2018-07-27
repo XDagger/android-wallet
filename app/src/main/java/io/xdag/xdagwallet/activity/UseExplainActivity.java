@@ -66,8 +66,9 @@ public class UseExplainActivity extends ToolbarActivity
         mCbBackup.setChecked(Config.isUserBackup());
         mCbNoShow.setChecked(Config.isNotShowExplain());
 
-        if (Config.isUserBackup() && Config.isNotShowExplain()) {
-            WalletActivity.start(mContext, true);
+        if (isNotShow()) {
+            WalletActivity.start(mContext);
+            finish();
         }
     }
 
@@ -78,7 +79,15 @@ public class UseExplainActivity extends ToolbarActivity
             AlertUtil.show(mContext, getString(R.string.please_backup_your_xdag_wallet_first));
             return;
         }
-        WalletActivity.start(mContext, Config.isRestore() && Config.isNotShowExplain());
+        WalletActivity.start(mContext);
+        if (isNotShow()) {
+            finish();
+        }
+    }
+
+
+    private boolean isNotShow() {
+        return Config.isUserBackup() && Config.isNotShowExplain();
     }
 
 

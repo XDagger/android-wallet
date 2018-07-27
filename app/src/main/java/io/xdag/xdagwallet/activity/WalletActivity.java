@@ -88,6 +88,7 @@ public class WalletActivity extends ToolbarActivity {
                     public void onAction(List<String> data) {
                         if (XdagHandlerWrapper.createSDCardFile(mContext) != null) {
                             RestoreActivity.start(mContext);
+                            finish();
                         }
                     }
                 })
@@ -95,12 +96,9 @@ public class WalletActivity extends ToolbarActivity {
     }
 
 
-    public static void start(Activity context, boolean finish) {
+    public static void start(Activity context) {
         Intent intent = new Intent(context, WalletActivity.class);
         context.startActivity(intent);
-        if (finish) {
-            context.finish();
-        }
     }
 
     @Override
