@@ -43,7 +43,7 @@ public class AboutActivity extends AbsAboutActivity {
 
         // Source code
         items.add(new Category("Source code"));
-        items.add(new License("GitHub", "xdagwallet", "", "https://github.com/ssyijiu/xdagwallet"));
+        items.add(new License("GitHub", "xdagwallet", "", "https://github.com/XDagger/android-wallet"));
 
         // Developers
         items.add(new Category("Developers"));
