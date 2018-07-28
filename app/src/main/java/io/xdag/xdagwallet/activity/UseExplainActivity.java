@@ -70,7 +70,7 @@ public class UseExplainActivity extends ToolbarActivity
         RootBeer rootBeer = new RootBeer(mContext);
 
         // root
-        if (!rootBeer.isRootedWithoutBusyBoxCheck()) {
+        if (rootBeer.isRootedWithoutBusyBoxCheck()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
                     .setCancelable(false)
                     .setTitle(R.string.warning)
