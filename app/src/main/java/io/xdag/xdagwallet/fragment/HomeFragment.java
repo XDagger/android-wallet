@@ -6,9 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import java.util.List;
 
 import butterknife.BindView;
@@ -49,13 +46,11 @@ public class HomeFragment extends BaseMainFragment {
     private TransactionAdapter mAdapter;
     private View mEmptyView;
     private Disposable mDisposable;
-    private XdagEventManager mXdagEventManager;
 
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_home;
     }
-
 
     @Override
     protected void initView(View rootView) {
@@ -87,9 +82,7 @@ public class HomeFragment extends BaseMainFragment {
         }
 
         mRecyclerView.setAdapter(mAdapter);
-        mXdagEventManager = XdagEventManager.getInstance(getMainActivity());
-        mXdagEventManager.initDialog();
-        mXdagEventManager.addOnEventUpdateCallback(new XdagEventManager.OnEventUpdateCallback() {
+        XdagEventManager.getInstance(getMainActivity()).addOnEventUpdateCallback(new XdagEventManager.OnEventUpdateCallback() {
             @Override
             public void onAddressReady(XdagEvent event) {
                 requestTransaction();
@@ -143,16 +136,6 @@ public class HomeFragment extends BaseMainFragment {
         super.onRefresh();
         requestTransaction();
     }
-
-
-    /**
-     * the event from c
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void ProcessXdagEvent(XdagEvent event) {
-        mXdagEventManager.manageEvent(event);
-    }
-
 
     public static HomeFragment newInstance() {
         return new HomeFragment();

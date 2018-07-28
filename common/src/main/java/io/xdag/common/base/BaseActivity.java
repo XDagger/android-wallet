@@ -10,8 +10,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import butterknife.ButterKnife;
+
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.Objects;
+
+import butterknife.ButterKnife;
 
 /**
  * created by ssyijiu  on 2018/5/22
@@ -35,6 +39,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (getIntent() != null) {
             parseIntent(getIntent());
         }
+        if (enableEventBus()) {
+            if (!EventBus.getDefault().isRegistered(this)) {
+                EventBus.getDefault().register(this);
+            }
+        }
         initData();
     }
 
@@ -44,10 +53,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void initView(View rootView, Bundle savedInstanceState);
 
 
-    protected void parseIntent(Intent intent) {}
+    protected void parseIntent(Intent intent) {
+    }
 
 
-    protected void initData() { }
+    protected void initData() {
+    }
 
 
     @Override
@@ -65,7 +76,24 @@ public abstract class BaseActivity extends AppCompatActivity {
         Objects.requireNonNull(fragmentManager);
         Objects.requireNonNull(fragment);
         fragmentManager.beginTransaction()
-            .add(frameId, fragment, tag)
-            .commit();
+                .add(frameId, fragment, tag)
+                .commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (enableEventBus()) {
+            if (EventBus.getDefault().isRegistered(this)) {
+                EventBus.getDefault().unregister(this);
+            }
+        }
+        super.onDestroy();
+    }
+
+    /**
+     * default enable EventBus
+     */
+    protected boolean enableEventBus() {
+        return false;
     }
 }
