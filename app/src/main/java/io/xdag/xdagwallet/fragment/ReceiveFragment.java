@@ -1,20 +1,16 @@
 package io.xdag.xdagwallet.fragment;
 
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.dialog.LoadingBuilder;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.ZbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
+import io.xdag.xdagwallet.wrapper.XdagEventManager;
 
 /**
  * created by lxm on 2018/5/24.
@@ -28,9 +24,6 @@ public class ReceiveFragment extends BaseMainFragment {
     @BindView(R.id.receive_img_qrcode)
     ImageView mImgQrAddress;
 
-    private AlertDialog mLoadingDialog;
-
-
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_receive;
@@ -40,37 +33,29 @@ public class ReceiveFragment extends BaseMainFragment {
     @Override
     protected void initView(View rootView) {
         super.initView(rootView);
-        mLoadingDialog = new LoadingBuilder(mContext)
-            .setMessage(R.string.please_wait_read_wallet).create();
-    }
+        XdagEventManager.getInstance(getMainActivity()).addOnEventUpdateCallback(new XdagEventManager.OnEventUpdateCallback() {
+            @Override
+            public void onAddressReady(XdagEvent event) {
+            }
 
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void ProcessXdagEvent(XdagEvent event) {
-        switch (event.eventType) {
-            case XdagEvent.en_event_update_state: {
+            @Override
+            public void onEventUpdate(XdagEvent event) {
                 mTvAddress.setText(event.address);
                 if (event.addressLoadState == XdagEvent.en_address_ready) {
                     mImgQrAddress.setImageBitmap(ZbarUtil.createQRCode(event.address));
                 } else {
                     mImgQrAddress.setImageDrawable(
-                        getResources().getDrawable(R.drawable.pic_loading));
-                }
-                if (isVisible()) {
-                    if (getXdagHandler().isNotConnectedToPool(event)) {
-                        mLoadingDialog.show();
-                    } else {
-                        mLoadingDialog.dismiss();
-                    }
+                            getResources().getDrawable(R.drawable.pic_loading));
                 }
             }
-            break;
-            default:
-        }
+
+            @Override
+            public void onEventXfer(XdagEvent event) {
+            }
+        });
     }
 
-
-    @OnClick({ R.id.receive_tv_copy, R.id.receive_tv_address })
+    @OnClick({R.id.receive_tv_copy, R.id.receive_tv_address})
     void copyAddress() {
         CopyUtil.copyAddress(mContext, mTvAddress.getText().toString());
     }
