@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">XdagWallet</string>
     <string name="XDAG">XDAG</string>
-
+    
     <!-- common -->
     <string name="home">首页</string>
     <string name="send">发送</string>
@@ -19,13 +19,13 @@
     <string name="restore_wallet">恢复钱包</string>
     <string name="no_transaction">没有交易记录</string>
     <string name="copy_address">复制地址</string>
-
+    
     <!-- please -->
     <string name="please_set_password">请设置您的钱包密码</string>
     <string name="please_retype_password">请再次确认密码</string>
     <string name="please_input_password">请输入钱包密码</string>
     <string name="please_input_random">请输入随机数</string>
-
+    
     <!-- error tips -->
     <string name="error_cannot_identify_qr_code">不能识别二维码</string>
     <string name="error_file_make_fail">The xdag file make fail</string>
@@ -38,12 +38,12 @@
     <string name="error_noting_to_transfer">发送金额必须大于0</string>
     <string name="error_balance_too_small">余额不足</string>
     <string name="error_invalid_recv_address">非法的接收地址</string>
-
+    
     <!-- success -->
     <string name="success_refresh">刷新成功</string>
     <string name="success_copy_address">地址复制成功</string>
     <string name="success_backup_xdag_wallet">您的钱包已备份至 /sdcard/xdag 目录</string>
-
+    
     <!-- setting item-->
     <string name="setting_messages">消息</string>
     <string name="setting_backup_wallet">备份钱包</string>
@@ -52,7 +52,7 @@
     <string name="setting_xdag_io">Community Site - xdag.io</string>
     <string name="setting_github">GitHub - XDagger</string>
     <string name="about">关于我们</string>
-
+    
     <string name="use_explain">使用说明</string>
     <string name="function_explain">功能说明</string>
     <string name="backup_explain">我已经仔细阅读上述内容</string>
@@ -74,5 +74,9 @@
     <string name="about_explain">我们致力于做一款流畅、稳定的 XDAG 钱包，在使用过程中您有什么问题和建议，可以通过上一页面的问题与建议反馈给我们。 \n\n为了让您放心使用，我们的钱包代码已经在 GitHub 上开源，地址在下方，欢迎您随时检查，也欢迎各位 Coder 贡献代码。 \n\n最后提醒您：\n\n使本钱包之前，请务必在其他地方备份好您的钱包文件。\n\n您的钱包文件我们保存在了 Android 系统中的私有目录。\n但是备份和恢复钱包都是在存储卡进行的(sdcard/xdag/)，在 Android 系统中存储卡并不是一个安全的位置，请您在备份恢复钱包后立即转移您的钱包文件到其他设备上。\n\n出现任何资产损失，作者不会承担这个责任。
     </string>
     <string name="tran_detail">交易详情</string>
+    <string name="warning">警告</string>
+    <string name="check_root_explain">检测到您的手机已经 Root，继续使用有资产被盗的风险。</string>
+    <string name="continue_use">继续使用</string>
+    <string name="exit">退出</string>
 
 </resources>

@@ -72,4 +72,8 @@ dependencies {
     // https://github.com/PureWriter/about-page
     implementation 'me.drakeet.support:about:2.1.1'
     implementation 'me.drakeet.multitype:multitype:3.4.4'
+    // https://github.com/scottyab/rootbeer
+    compile('com.scottyab:rootbeer-lib:0.0.6', {
+        exclude group: 'com.android.support'
+    })
 }
