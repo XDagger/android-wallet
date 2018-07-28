@@ -42,7 +42,7 @@ public class SettingFragment extends BaseMainFragment {
         super.initView(rootView);
 
         mBuilder = new AlertDialog.Builder(mContext)
-            .setTitle("警告")
+            .setTitle(R.string.warning)
             .setMessage("检测到 /sdcard/xdag 已经存在一个钱包，继续备份将覆盖这个钱包（钱包被覆盖意味着钱包的资产丢失且无法找回）。")
             .setPositiveButton("覆盖", new DialogInterface.OnClickListener() {
                 @Override

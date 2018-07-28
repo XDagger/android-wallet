@@ -43,7 +43,7 @@ public class AboutActivity extends AbsAboutActivity {
 
         // Source code
         items.add(new Category("Source code"));
-        items.add(new License("GitHub", "xdagwallet", "", "https://github.com/XDagger/android-wallet"));
+        items.add(new License("GitHub", "android-wallet", "", "https://github.com/XDagger/android-wallet"));
 
         // Developers
         items.add(new Category("Developers"));
@@ -81,6 +81,8 @@ public class AboutActivity extends AbsAboutActivity {
             "https://github.com/aurelhubert/ahbottomnavigation"));
         items.add(new License("about-page", "PureWriter", License.APACHE_2,
             "https://github.com/PureWriter/about-page"));
+        items.add(new License("rootbeer", "scottyab", License.APACHE_2,
+            "https://github.com/scottyab/rootbeer"));
     }
 
 
