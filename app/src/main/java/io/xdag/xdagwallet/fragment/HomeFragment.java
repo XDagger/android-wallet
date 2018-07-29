@@ -4,8 +4,10 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -20,9 +22,11 @@ import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
+import io.xdag.xdagwallet.model.UpdateModel;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
+import io.xdag.xdagwallet.util.UpdateUtil;
 import io.xdag.xdagwallet.widget.EmptyView;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagEventManager;
@@ -43,9 +47,19 @@ public class HomeFragment extends BaseMainFragment {
     @BindView(R.id.home_tv_address)
     TextView mTvAddress;
 
+    // update
+    @BindView(R.id.version_layout)
+    LinearLayout mVersionLayout;
+    @BindView(R.id.version_desc)
+    TextView mTvVersionDesc;
+    @BindView(R.id.version_update)
+    TextView mTvVersionUpdate;
+    @BindView(R.id.version_close)
+    TextView mTvVersionClose;
+
     private TransactionAdapter mAdapter;
     private View mEmptyView;
-    private Disposable mDisposable;
+    private List<Disposable> mDisposables = new ArrayList<>();
 
     @Override
     protected int getLayoutResId() {
@@ -102,10 +116,22 @@ public class HomeFragment extends BaseMainFragment {
 
     }
 
+    @Override
+    protected void initData() {
+        super.initData();
+        mDisposables.add(ApiServer.updateApi().getVersionInfo()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<UpdateModel>() {
+                    @Override
+                    public void accept(UpdateModel updateModel) {
+                        UpdateUtil.update(updateModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
+                    }
+                }, new ErrorConsumer(mContext)));
+    }
 
     private void requestTransaction() {
 
-        mDisposable = ApiServer.getApi().getBlockDetail(mTvAddress.getText().toString())
+        mDisposables.add(ApiServer.getApi().getBlockDetail(mTvAddress.getText().toString())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Detail2AddressListFunction())
                 .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
@@ -114,7 +140,7 @@ public class HomeFragment extends BaseMainFragment {
                         mAdapter.setNewData(blockAsAddresses);
                         AlertUtil.show(mContext, R.string.success_refresh);
                     }
-                }, new ErrorConsumer(getMainActivity()));
+                }, new ErrorConsumer(getMainActivity())));
     }
 
 
@@ -133,7 +159,7 @@ public class HomeFragment extends BaseMainFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RxUtil.dispose(mDisposable);
+        RxUtil.dispose(mDisposables);
     }
 
 

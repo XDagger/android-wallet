@@ -2,11 +2,14 @@ package io.xdag.xdagwallet.util;
 
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
+
+import io.xdag.xdagwallet.BuildConfig;
 import io.xdag.xdagwallet.R;
 
 /**
  * created by lxm on 2018/7/6.
- *
+ * <p>
  * desc : to set toolbar show status
  */
 public class ToolbarUtil {

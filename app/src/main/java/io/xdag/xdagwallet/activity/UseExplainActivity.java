@@ -12,22 +12,13 @@ import com.scottyab.rootbeer.RootBeer;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
-import io.xdag.common.tool.MLog;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.TextStyleUtil;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.api.ApiServer;
-import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
 import io.xdag.xdagwallet.config.Config;
-import io.xdag.xdagwallet.model.UpdateModel;
 import io.xdag.xdagwallet.util.AlertUtil;
-import io.xdag.xdagwallet.util.RxUtil;
 
 /**
  * created by ssyijiu  on 2018/7/22
@@ -35,8 +26,6 @@ import io.xdag.xdagwallet.util.RxUtil;
 
 public class UseExplainActivity extends ToolbarActivity
         implements CompoundButton.OnCheckedChangeListener {
-
-    private Disposable mDisposable;
 
     @BindView(R.id.explain_tv_explain_text)
     TextView mTvExplain;
@@ -72,18 +61,6 @@ public class UseExplainActivity extends ToolbarActivity
         mCbNoShow.setOnCheckedChangeListener(this);
     }
 
-    @Override
-    protected void initData() {
-        super.initData();
-        mDisposable = ApiServer.updateApi().getVersionInfo()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<UpdateModel>() {
-                    @Override
-                    public void accept(UpdateModel updateModel) throws Exception {
-
-                    }
-                },new ErrorConsumer(mContext));
-    }
 
     @Override
     protected void onStart() {
@@ -119,12 +96,6 @@ public class UseExplainActivity extends ToolbarActivity
             finish();
         }
 
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        RxUtil.dispose(mDisposable);
     }
 
     @OnClick(R.id.explain_btn_start)

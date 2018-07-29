@@ -45,6 +45,7 @@ public class MainActivity extends ToolbarActivity {
     private static final String EXTRA_SWITCH_POOL = "extra_switch_pool";
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation mNavigationView;
+
     private FragmentManager mFragmentManager;
     private HomeFragment mHomeFragment;
     private ReceiveFragment mReceiveFragment;
@@ -99,7 +100,7 @@ public class MainActivity extends ToolbarActivity {
                 .onGranted(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> data) {
-                        connectToPool();
+//                        connectToPool();
                     }
                 })
                 .start();

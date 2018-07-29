@@ -80,5 +80,8 @@
     <string name="continue_use">继续使用</string>
     <string name="exit">退出</string>
     <string name="switch_pool_to">是否切换到矿池到\n%1$s</string>
+    <string name="update">更新</string>
+    <string name="close">关闭</string>
+    <string name="new_version_available">有新版本的 XDAG 钱包可用：%1$s</string>
 
 </resources>
