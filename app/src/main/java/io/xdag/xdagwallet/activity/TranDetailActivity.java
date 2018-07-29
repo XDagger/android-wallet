@@ -2,81 +2,106 @@ package io.xdag.xdagwallet.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import butterknife.BindView;
+import android.widget.TextView;
+
+import com.chad.library.adapter.base.BaseViewHolder;
+
+import java.util.List;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.xdag.common.base.ToolbarActivity;
+import io.xdag.common.base.ListActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.adapter.TransactionAdapter;
 import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.Detail2TranListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
+import io.xdag.xdagwallet.util.AlertUtil;
+import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
-import java.util.List;
 
 /**
  * created by lxm on 2018/7/26.
  */
-public class TranDetailActivity extends ToolbarActivity {
+public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAddress> {
 
     private static final String EXTRA_ADDRESS = "extra_address";
-    private TransactionAdapter mAdapter;
     private Disposable mDisposable;
     private String mAddress;
 
-    @BindView(R.id.tran_detail_rv) RecyclerView mRecyclerView;
-
-
-    @Override protected int getLayoutResId() {
-        return R.layout.activity_tran_detail;
-    }
-
-
-    @Override protected void initView(View rootView, Bundle savedInstanceState) {
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        // View headerView = new TranDetailHeaderView(mContext);
-        // mAdapter.addHeaderView(headerView);
-    }
-
-
-    @Override protected void parseIntent(Intent intent) {
+    @Override
+    protected void parseIntent(Intent intent) {
         super.parseIntent(intent);
         mAddress = intent.getStringExtra(EXTRA_ADDRESS);
     }
 
-
-    @Override protected void initData() {
-        super.initData();
-        requestTranDetail();
+    @Override
+    protected int getItemLayout() {
+        return R.layout.item_transaction;
     }
 
+    @Override
+    protected void initData() {
+        super.initData();
+        requestTranDetail(false);
+    }
 
-    private void requestTranDetail() {
+    @Override
+    public void onRefresh() {
+        super.onRefresh();
+        requestTranDetail(true);
+    }
+
+    private void requestTranDetail(final boolean alert) {
 
         mDisposable = ApiServer.getApi().getBlockDetail(mAddress)
-            .observeOn(AndroidSchedulers.mainThread())
-            .map(new Detail2TranListFunction())
-            .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
-                @Override
-                public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
-                    if (mAdapter == null) {
-                        mAdapter = new TransactionAdapter(blockAsAddresses);
-                        mRecyclerView.setAdapter(mAdapter);
-                    } else {
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Detail2TranListFunction())
+                .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
+                    @Override
+                    public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
                         mAdapter.setNewData(blockAsAddresses);
+                        if (alert) {
+                            AlertUtil.show(mContext, R.string.success_refresh);
+                        }
                     }
-                }
-            }, new ErrorConsumer(mContext));
+                }, new ErrorConsumer(mContext));
     }
 
+    @Override
+    protected void convert(BaseViewHolder helper, final BlockDetailModel.BlockAsAddress item) {
+        super.convert(helper, item);
+        helper.setText(R.id.item_transaction_tv_address, item.address);
+        helper.setText(R.id.item_transaction_tv_amount, item.getAmount());
+        helper.setTextColor(R.id.item_transaction_tv_amount, item.getAmountColor());
+        helper.setImageResource(R.id.item_transaction_img_type, item.getTypeImage());
+
+        TextView tvTime = helper.getView(R.id.item_transaction_tv_time);
+        tvTime.setVisibility(item.getTimeVisible());
+        tvTime.setText(item.time);
+
+        helper.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TranDetailActivity.start(mContext, item.address);
+            }
+        });
+
+        helper.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (mContext != null) {
+                    CopyUtil.copyAddress(mContext, item.address);
+                } else {
+                    CopyUtil.copyAddress(item.address);
+                }
+                return true;
+            }
+        });
+    }
 
     @Override
     public void onDestroy() {
@@ -92,12 +117,14 @@ public class TranDetailActivity extends ToolbarActivity {
     }
 
 
-    @Override protected int getToolbarTitle() {
+    @Override
+    protected int getToolbarTitle() {
         return R.string.tran_detail;
     }
 
 
-    @Override protected int getToolbarMode() {
+    @Override
+    protected int getToolbarMode() {
         return ToolbarMode.MODE_BACK;
     }
 }

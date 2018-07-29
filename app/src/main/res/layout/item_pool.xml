@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:elevation="@dimen/elevation"
+    android:focusable="true"
+    android:padding="@dimen/space_16">
+    
+    <TextView
+        android:id="@+id/item_pool_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/BLACK"
+        android:textSize="@dimen/size_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="xdagmine.com:13654" />
+    
+    <ImageView
+        android:id="@+id/item_pool_img"
+        tools:src="@drawable/ic_pool_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/space_16"
+        app:layout_constraintBottom_toBottomOf="@id/item_pool_tv"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_pool_tv" />
+
+</android.support.constraint.ConstraintLayout>

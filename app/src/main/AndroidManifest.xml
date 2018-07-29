@@ -32,6 +32,7 @@
         <activity android:name=".activity.RestoreActivity"/>
         <activity android:name=".activity.AboutActivity"/>
         <activity android:name=".activity.TranDetailActivity"/>
+        <activity android:name=".activity.PoolListActivity" />
     </application>
 
 </manifest>

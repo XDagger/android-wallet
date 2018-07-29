@@ -46,7 +46,7 @@
     <!-- setting item-->
     <string name="setting_messages">Messages</string>
     <string name="setting_backup_wallet">Backup Wallet</string>
-    <string name="setting_switch_wallet">Switch Wallet</string>
+    <string name="switch_wallet">Switch Wallet</string>
     <string name="about">About XDAG</string>
 
 </resources>
