@@ -106,14 +106,14 @@ public class MainActivity extends ToolbarActivity {
     private void connectToPool() {
         if (mRestore) {
             if (getXdagHandler().restoreWallet()) {
-                getXdagHandler().connectToPool(Config.POLL_ADDRESS);
+                getXdagHandler().connectToPool(Config.getPoolAddress());
             } else {
                 AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
             }
 
         } else {
             if (getXdagHandler().createWallet()) {
-                getXdagHandler().connectToPool(Config.POLL_ADDRESS);
+                getXdagHandler().connectToPool(Config.getPoolAddress());
             } else {
                 AlertUtil.show(mContext, R.string.error_create_xdag_wallet);
             }
@@ -144,13 +144,13 @@ public class MainActivity extends ToolbarActivity {
         mNavigationView.addItem(receive);
         mNavigationView.addItem(send);
         mNavigationView.addItem(setting);
-        // the selected item color
+        // the selectedImage item color
         mNavigationView.setAccentColor(Common.getColor(R.color.colorPrimary));
         // the unselected item color
         mNavigationView.setInactiveColor(Common.getColor(R.color.GERY));
         // set titles
         mNavigationView.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
-        // set current item selected
+        // set current item selectedImage
         mNavigationView.setCurrentItem(0);
         ToolbarUtil.setToolbar(0, getToolbar());
         // set listeners

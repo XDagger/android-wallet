@@ -48,7 +48,8 @@
     <string name="setting_messages">消息</string>
     <string name="setting_backup_wallet">备份钱包</string>
     <string name="setting_suggest">问题与建议</string>
-    <string name="setting_switch_wallet">切换钱包</string>
+    <string name="switch_wallet">切换钱包</string>
+    <string name="switch_pool">切换矿池</string>
     <string name="setting_xdag_io">Community Site - xdag.io</string>
     <string name="setting_github">GitHub - XDagger</string>
     <string name="about">关于我们</string>
@@ -78,5 +79,6 @@
     <string name="check_root_explain">检测到您的手机已经 Root，继续使用有资产被盗的风险。</string>
     <string name="continue_use">继续使用</string>
     <string name="exit">退出</string>
+    <string name="switch_pool_to">是否切换到矿池到\n%1$s</string>
 
 </resources>

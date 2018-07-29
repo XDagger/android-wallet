@@ -4,6 +4,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
 import butterknife.ButterKnife;
 import io.xdag.common.Common;
 import io.xdag.common.R;
@@ -22,11 +23,13 @@ public abstract class ToolbarActivity extends BaseActivity {
     @Override
     public void setContentView(View view) {
         LinearLayout rootLayout =
-            (LinearLayout) View.inflate(mContext, R.layout.layout_toolbar, null);
+                (LinearLayout) View.inflate(mContext, R.layout.layout_toolbar, null);
         super.setContentView(rootLayout);
         rootLayout.addView(view, ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT);
-        ButterKnife.bind(this, view);
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        if (!(this instanceof RefreshActivity)) {
+            ButterKnife.bind(this);
+        }
         mToolbar = rootLayout.findViewById(R.id.toolbar);
         initToolbar();
     }

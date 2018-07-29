@@ -1,8 +1,6 @@
 package io.xdag.xdagwallet.fragment;
 
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import butterknife.OnClick;
@@ -10,7 +8,7 @@ import io.xdag.common.util.IntentUtil;
 import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.activity.AboutActivity;
-import io.xdag.xdagwallet.activity.RestoreActivity;
+import io.xdag.xdagwallet.activity.PoolListActivity;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 import java.io.File;
@@ -65,12 +63,17 @@ public class SettingFragment extends BaseMainFragment {
     }
 
 
-    @OnClick(R.id.setting_switch)
+    @OnClick(R.id.setting_switch_wallet)
     void setting_switch() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
             .setMessage("这个功能我们正在开发中，请稍后。")
             .setPositiveButton(R.string.ensure, null);
         builder.create().show();
+    }
+
+    @OnClick(R.id.setting_switch_pool)
+    void setting_switch_pool() {
+        PoolListActivity.start(mContext);
     }
 
 
