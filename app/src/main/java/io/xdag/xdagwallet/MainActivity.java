@@ -1,7 +1,6 @@
 package io.xdag.xdagwallet;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -43,6 +42,7 @@ import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 public class MainActivity extends ToolbarActivity {
 
     private static final String EXTRA_RESTORE = "extra_restore";
+    private static final String EXTRA_SWITCH_POOL = "extra_switch_pool";
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation mNavigationView;
     private FragmentManager mFragmentManager;
@@ -53,6 +53,7 @@ public class MainActivity extends ToolbarActivity {
     public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
+    private boolean mSwitchPool;
     private XdagEventManager mXdagEventManager;
 
 
@@ -82,6 +83,7 @@ public class MainActivity extends ToolbarActivity {
     protected void parseIntent(Intent intent) {
         super.parseIntent(intent);
         mRestore = intent.getBooleanExtra(EXTRA_RESTORE, false);
+        mSwitchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
     }
 
 
@@ -124,10 +126,12 @@ public class MainActivity extends ToolbarActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        XdagHandlerWrapper.getInstance(this).disconnectPool();
-        mHomeFragment.showNotReady();
-        showFragment(mHomeFragment);
-        mNavigationView.setCurrentItem(mHomeFragment.getPosition());
+        if (mSwitchPool) {
+            XdagHandlerWrapper.getInstance(this).disconnectPool();
+            mHomeFragment.showNotReady();
+            showFragment(mHomeFragment);
+            mNavigationView.setCurrentItem(mHomeFragment.getPosition());
+        }
     }
 
     /**
@@ -252,6 +256,13 @@ public class MainActivity extends ToolbarActivity {
     public static void start(Activity context, boolean restore) {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(EXTRA_RESTORE, restore);
+        context.startActivity(intent);
+        context.finish();
+    }
+
+    public static void switchPool(Activity context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(EXTRA_SWITCH_POOL, true);
         context.startActivity(intent);
         context.finish();
     }

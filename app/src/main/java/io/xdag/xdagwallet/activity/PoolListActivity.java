@@ -50,7 +50,7 @@ public class PoolListActivity extends ListActivity<PoolModel> {
                             public void onClick(DialogInterface dialog, int which) {
                                 Config.setPoolAddress(item.address);
                                 mAdapter.setNewData(PoolModel.getPoolList());
-                                MainActivity.start(mContext, false);
+                                MainActivity.switchPool(mContext);
                             }
                         })
                         .setNegativeButton(R.string.cancel, null);

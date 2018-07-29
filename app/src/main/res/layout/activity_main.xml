@@ -1,23 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context="io.xdag.xdagwallet.MainActivity">
-
+    
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/space_8"
+            android:paddingLeft="@dimen/space_16"
+            android:paddingRight="@dimen/space_16"
+            android:paddingTop="@dimen/space_8">
+        
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="有新版本的 XDagWallet 可用"
+                android:textColor="@color/BLACK"
+                android:textSize="@dimen/size_text" />
+        
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:paddingBottom="@dimen/space_4"
+                android:paddingLeft="@dimen/space_8"
+                android:paddingRight="@dimen/space_8"
+                android:paddingTop="@dimen/space_4"
+                android:text="更新"
+                android:textColor="@color/WHITE"
+                android:textSize="@dimen/size_text" />
+        
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_16"
+                android:background="@color/colorPrimary"
+                android:paddingBottom="@dimen/space_4"
+                android:paddingLeft="@dimen/space_8"
+                android:paddingRight="@dimen/space_8"
+                android:paddingTop="@dimen/space_4"
+                android:text="关闭"
+                android:textColor="@color/WHITE"
+                android:textSize="@dimen/size_text" />
+    
+    </LinearLayout>
+    
     <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-    <View style="@style/DividerHorizontalThin"/>
-
+            android:layout_weight="1" />
+    
+    <View style="@style/DividerHorizontalThin" />
+    
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
 </LinearLayout>
