@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">XDagWallet</string>
-    <string name="app_name_debug">XDagDebug</string>
     <string name="XDAG">XDAG</string>
     
     <!-- common -->

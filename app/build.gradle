@@ -13,7 +13,6 @@ android {
         versionCode 10
         versionName "0.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [appName: "@string/app_name"]
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++11 -frtti -fexceptions"
@@ -35,11 +34,6 @@ android {
     }
 
     buildTypes {
-        debug {
-            versionNameSuffix "-debug"
-            applicationIdSuffix '.debug'
-            manifestPlaceholders = [appName: "@string/app_name_debug"]
-        }
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false
