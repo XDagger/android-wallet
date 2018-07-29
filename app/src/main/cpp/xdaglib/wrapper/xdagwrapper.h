@@ -70,6 +70,8 @@ typedef enum {
     en_event_read_socket_error      = 0x700b,
     en_event_write_socket_error     = 0x700c,
 
+    //disconnected from pool finished
+    en_event_disconneted_finished   = 0x700d,
 
     en_event_unkown                 = 0xf000,
 } en_xdag_event_type;

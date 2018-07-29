@@ -548,7 +548,9 @@ void xdag_uninit(){
     xdag_storage_uninit();
     xdag_mem_uninit();
     xdag_transport_stop();
-
     //reinit ui if needed
     xdag_show_state(0);
+
+    //report ui already disconnected from pool
+    report_ui_walletinit_event(en_event_disconneted_finished,NINT,"disconnected from pool finished");
 }

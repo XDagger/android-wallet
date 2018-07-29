@@ -55,6 +55,7 @@ public class XdagEvent {
     public static final int en_event_socket_error = 0x700a;
     public static final int en_event_read_socket_error = 0x700b;
     public static final int en_event_write_socket_error = 0x700c;
+    public static final int en_event_disconneted_finished = 0x700d;
     public static final int en_event_unkown = 0xf000;
     /**
      * xdag event type end

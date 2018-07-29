@@ -100,7 +100,6 @@ JNIEXPORT jint JNICALL Java_io_xdag_xdagwallet_wrapper_XdagWrapper_XdagNotifyNat
     pthread_mutex_lock(&gWaitUiMutex);
     //put password into buffer
     std::string authInfo = env->GetStringUTFChars(jauthInfo,NULL);
-    LOGI("signal message to native receive autho info from ui is %s",authInfo.c_str());
     gAuthInfoMap.insert(std::pair<std::string, std::string>("set-password",authInfo));
 
     pthread_cond_signal(&gWaitUiCond);
@@ -133,7 +132,6 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
             if(it != gAuthInfoMap.end()){
                 //user cancel password type in while transfer coin
                 if(it->second.c_str() == NULL || strlen(it->second.c_str()) == 0){
-                    LOGI("user cancel password type in");
                     gAuthInfoMap.clear();
                     pthread_mutex_unlock(&gWaitUiMutex);
                     return NULL;
@@ -143,15 +141,12 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
                 char* authinfo = strdup(it->second.c_str());
                 if(event->event_type == en_event_set_pwd || event->event_type == en_event_type_pwd){
                     msg->xdag_pwd = authinfo;
-                    LOGI("user typed password  %s",msg->xdag_pwd);
                 }
                 else if(event->event_type == en_event_retype_pwd ){
                     msg->xdag_retype_pwd = authinfo;
-                    LOGI("user re-typed password  info %s",msg->xdag_retype_pwd);
                 }
                 else if(event->event_type == en_event_set_rdm ){
                     msg->xdag_rdm = authinfo;
-                    LOGI("user typed random keys %s",msg->xdag_rdm);
                 }
 
                 gAuthInfoMap.clear();
@@ -181,6 +176,13 @@ st_xdag_app_msg* XdagWalletProcessCallback(const void *call_back_object, st_xdag
         {
             LOGI("receive xdag event  en_event_update_state xdag program state %d",event->xdag_program_state);
             LOGI("receive xdag event  en_event_update_state xdag state %s",event->state);
+            invokeJavaCallBack(event);
+        }
+        return NULL;
+        case en_event_disconneted_finished:
+        {
+            LOGI("receive xdag event  en_event_disconneted_finished xdag program state %d",event->xdag_program_state);
+            LOGI("receive xdag event  en_event_disconneted_finished xdag state %s",event->state);
             invokeJavaCallBack(event);
         }
         return NULL;
@@ -314,7 +316,7 @@ extern "C"
 JNIEXPORT jint JNICALL Java_io_xdag_xdagwallet_wrapper_XdagWrapper_XdagDisConnect(
         JNIEnv *env,
         jobject *obj) {
-
+    xdag_wrapper_uninit();
     return 0;
 }
 

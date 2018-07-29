@@ -9,9 +9,12 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import io.xdag.common.base.ListActivity;
+import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.model.PoolModel;
+import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
+import io.xdag.xdagwallet.wrapper.XdagWrapper;
 
 /**
  * created by ssyijiu  on 2018/7/29
@@ -50,6 +53,7 @@ public class PoolListActivity extends ListActivity<PoolModel> {
                                 Config.setPoolAddress(item.address);
                                 mAdapter.setNewData(PoolModel.getPoolList());
                                 // TODO: switch pool
+                                MainActivity.startForChangePool(getApplicationContext());
                             }
                         })
                         .setNegativeButton(R.string.cancel, null);

@@ -101,20 +101,16 @@ static int input_password(const char *prompt, char *buf, unsigned len) {
             break;
         case en_event_set_pwd:
             if(msg->xdag_pwd){
-                xdag_app_info(" set password from ui %s ",msg->xdag_pwd);
                 strcpy(buf,msg->xdag_pwd);
             }
             break;
         case en_event_retype_pwd:
-            xdag_app_info("user retype password ");
             if(msg->xdag_retype_pwd){
-                xdag_app_info(" retype password from ui %s ",msg->xdag_retype_pwd);
                 strcpy(buf,msg->xdag_retype_pwd);
             }
             break;
         case en_event_set_rdm:
             if(msg->xdag_rdm){
-                xdag_app_info(" set random keys from ui %s ",msg->xdag_rdm);
                 strcpy(buf,msg->xdag_rdm);
             }
             break;
@@ -354,7 +350,6 @@ dnet_crypt_reinit:
             if (dnet_test_keys()) {
 
                 res = (*g_input_password)("Password", pwd, 256);
-                xdag_app_debug("user typed password from ui is  %s",pwd);
                 report_ui_walletinit_event(en_event_update_state,INIT,NULL);
                 if(res == -1){
                     xdag_app_debug("dnet crypt user cancel password type in");

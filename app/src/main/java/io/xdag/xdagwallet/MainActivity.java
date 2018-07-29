@@ -1,6 +1,7 @@
 package io.xdag.xdagwallet;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -120,6 +121,16 @@ public class MainActivity extends ToolbarActivity {
         }
     }
 
+    @Override
+    protected void onNewIntent(Intent intent){
+        super.onNewIntent(intent);
+
+        //change pool
+        String msgType = intent.getStringExtra("msgType");
+        if(msgType.equals("change_pool")){
+            XdagHandlerWrapper.getInstance(this).disconnectPool();
+        }
+    }
 
     /**
      * the event from c
@@ -245,5 +256,11 @@ public class MainActivity extends ToolbarActivity {
         intent.putExtra(EXTRA_RESTORE, restore);
         context.startActivity(intent);
         context.finish();
+    }
+    public static void startForChangePool(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(EXTRA_RESTORE, false);
+        intent.putExtra("msgType","change_pool");
+        context.startActivity(intent);
     }
 }
