@@ -4,17 +4,20 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.xdag.common.Common;
 import io.xdag.common.tool.MLog;
+import io.xdag.common.util.InputMethodUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.dialog.InputBuilder;
 import io.xdag.xdagwallet.dialog.LoadingBuilder;
 import io.xdag.xdagwallet.dialog.TipBuilder;
+import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
 
 /**
@@ -61,23 +64,20 @@ public class XdagEventManager {
             case XdagEvent.en_event_set_pwd:
             case XdagEvent.en_event_retype_pwd:
             case XdagEvent.en_event_set_rdm: {
-                MLog.i("Event: set password and random");
                 mLoadingDialog.dismiss();
-                mInputDialog.setMessage(getAuthHintString(event.eventType));
+                mInputDialog.setMessage(getTipMessage(event.eventType));
                 mInputDialog.show();
+                showInputNegativeButton(event);
+                InputMethodUtil.showSoftInput(mActivity);
             }
             break;
-            case XdagEvent.en_event_pwd_not_same: {
-                MLog.i("Event: password not same");
+            case XdagEvent.en_event_pwd_not_same:
+            case XdagEvent.en_event_pwd_error:
+            case XdagEvent.en_event_nothing_transfer:
+            case XdagEvent.en_event_balance_too_small:
+            case XdagEvent.en_event_invalid_recv_address: {
                 mLoadingDialog.dismiss();
-                mTipDialog.setMessage(Common.getString(R.string.error_password_not_same));
-                mTipDialog.show();
-            }
-            break;
-            case XdagEvent.en_event_pwd_error: {
-                MLog.i("Event: password error");
-                mLoadingDialog.dismiss();
-                mTipDialog.setMessage(Common.getString(R.string.error_password));
+                mTipDialog.setMessage(getTipMessage(event.eventType));
                 mTipDialog.show();
             }
             break;
@@ -117,7 +117,7 @@ public class XdagEventManager {
     private void notifyEventUpdate(XdagEvent event) {
         if (!mEventUpdateCallbacks.isEmpty()) {
             for (OnEventUpdateCallback callback : mEventUpdateCallbacks) {
-                if(callback != null) {
+                if (callback != null) {
                     callback.onEventUpdate(event);
                 }
             }
@@ -127,7 +127,7 @@ public class XdagEventManager {
     private void notifyAddressReady(XdagEvent event) {
         if (!mEventUpdateCallbacks.isEmpty()) {
             for (OnEventUpdateCallback callback : mEventUpdateCallbacks) {
-                if(callback != null) {
+                if (callback != null) {
                     callback.onAddressReady(event);
                 }
             }
@@ -137,7 +137,7 @@ public class XdagEventManager {
     private void notifyEventXfer(XdagEvent event) {
         if (!mEventUpdateCallbacks.isEmpty()) {
             for (OnEventUpdateCallback callback : mEventUpdateCallbacks) {
-                if(callback != null) {
+                if (callback != null) {
                     callback.onEventXfer(event);
                 }
             }
@@ -153,7 +153,7 @@ public class XdagEventManager {
                 .setPositiveListener(new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        XdagWrapper.getInstance().XdagNotifyMsg("");
+                        XdagWrapper.getInstance().XdagNotifyMsg();
                         dialog.dismiss();
                         mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
                         mLoadingDialog.show();
@@ -171,6 +171,7 @@ public class XdagEventManager {
                                 @Override
                                 public void run() {
                                     mInputDialog.show();
+                                    InputMethodUtil.showSoftInput(mActivity);
                                 }
                             }, 500);
                         } else {
@@ -179,6 +180,14 @@ public class XdagEventManager {
                             mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
                             mLoadingDialog.show();
                         }
+                        InputMethodUtil.hideSoftInput(mActivity);
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        XdagWrapper.getInstance().XdagNotifyMsg();
+                        InputMethodUtil.hideSoftInput(mActivity);
                     }
                 }).create();
 
@@ -186,7 +195,7 @@ public class XdagEventManager {
     }
 
 
-    private String getAuthHintString(int eventType) {
+    private String getTipMessage(int eventType) {
         switch (eventType) {
             case XdagEvent.en_event_type_pwd:
                 return Common.getString(R.string.please_input_password);
@@ -196,10 +205,30 @@ public class XdagEventManager {
                 return Common.getString(R.string.please_retype_password);
             case XdagEvent.en_event_set_rdm:
                 return Common.getString(R.string.please_input_random);
+            case XdagEvent.en_event_pwd_error:
+                return Common.getString(R.string.error_password);
+            case XdagEvent.en_event_pwd_not_same:
+                return Common.getString(R.string.error_password_not_same);
+            case XdagEvent.en_event_nothing_transfer:
+                return Common.getString(R.string.error_noting_to_transfer);
+            case XdagEvent.en_event_balance_too_small:
+                return Common.getString(R.string.error_balance_too_small);
+            case XdagEvent.en_event_invalid_recv_address:
+                return Common.getString(R.string.error_invalid_recv_address);
             default:
                 return Common.getString(R.string.please_input_password);
         }
     }
+
+
+    private void showInputNegativeButton(XdagEvent event) {
+        if (event.eventType == XdagEvent.en_event_type_pwd && mActivity.mShowFragment instanceof SendFragment) {
+            mInputDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setVisibility(View.VISIBLE);
+        } else {
+            mInputDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setVisibility(View.INVISIBLE);
+        }
+    }
+
 
     public void addOnEventUpdateCallback(OnEventUpdateCallback callback) {
         mEventUpdateCallbacks.add(callback);
