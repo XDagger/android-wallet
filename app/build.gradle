@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+static def buildTime() {
+    return new Date().format("MM_dd_HH_mm", TimeZone.getDefault())
+}
+
 android {
     compileSdkVersion compile_version
     defaultConfig {
@@ -9,6 +13,7 @@ android {
         versionCode 10
         versionName "0.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [appName: "@string/app_name"]
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++11 -frtti -fexceptions"
@@ -30,7 +35,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            versionNameSuffix "-debug"
+            applicationIdSuffix '.debug'
+            manifestPlaceholders = [appName: "@string/app_name_debug"]
+        }
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -38,10 +49,15 @@ android {
         }
     }
 
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "xdag_android_${variant.buildType.name}_v${defaultConfig.versionName}_${buildTime()}.apk"
+        }
+    }
+
+
     lintOptions {
         checkReleaseBuilds false
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
         abortOnError false
     }
 
