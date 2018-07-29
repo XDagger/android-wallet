@@ -118,6 +118,12 @@ public class HomeFragment extends BaseMainFragment {
     }
 
 
+    public void showNotReady() {
+        mTvAddress.setText(R.string.not_ready);
+        mCollapsingToolbarLayout.setTitle(getString(R.string.not_ready));
+        mAdapter.setNewData(null);
+    }
+
     @OnClick(R.id.home_tv_address)
     void copyAddress() {
         CopyUtil.copyAddress(mContext, mTvAddress.getText().toString());

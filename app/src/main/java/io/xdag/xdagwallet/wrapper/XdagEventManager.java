@@ -103,7 +103,7 @@ public class XdagEventManager {
                 }
             }
             break;
-            case XdagEvent.en_event_disconneted_finished:{
+            case XdagEvent.en_event_disconneted_finished: {
                 MLog.i("disconnected from pool finished reconnected to the pool");
                 mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
                 mLoadingDialog.show();

@@ -13,8 +13,6 @@ import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.model.PoolModel;
-import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
-import io.xdag.xdagwallet.wrapper.XdagWrapper;
 
 /**
  * created by ssyijiu  on 2018/7/29
@@ -52,8 +50,7 @@ public class PoolListActivity extends ListActivity<PoolModel> {
                             public void onClick(DialogInterface dialog, int which) {
                                 Config.setPoolAddress(item.address);
                                 mAdapter.setNewData(PoolModel.getPoolList());
-                                // TODO: switch pool
-                                MainActivity.startForChangePool(getApplicationContext());
+                                MainActivity.start(mContext, false);
                             }
                         })
                         .setNegativeButton(R.string.cancel, null);

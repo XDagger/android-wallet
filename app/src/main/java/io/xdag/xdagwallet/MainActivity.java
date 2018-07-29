@@ -46,10 +46,10 @@ public class MainActivity extends ToolbarActivity {
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation mNavigationView;
     private FragmentManager mFragmentManager;
-    private BaseMainFragment mHomeFragment;
-    private BaseMainFragment mReceiveFragment;
-    private BaseMainFragment mSendFragment;
-    private BaseMainFragment mSettingFragment;
+    private HomeFragment mHomeFragment;
+    private ReceiveFragment mReceiveFragment;
+    private SendFragment mSendFragment;
+    private SettingFragment mSettingFragment;
     public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
@@ -122,14 +122,12 @@ public class MainActivity extends ToolbarActivity {
     }
 
     @Override
-    protected void onNewIntent(Intent intent){
+    protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-
-        //change pool
-        String msgType = intent.getStringExtra("msgType");
-        if(msgType.equals("change_pool")){
-            XdagHandlerWrapper.getInstance(this).disconnectPool();
-        }
+        XdagHandlerWrapper.getInstance(this).disconnectPool();
+        mHomeFragment.showNotReady();
+        showFragment(mHomeFragment);
+        mNavigationView.setCurrentItem(mHomeFragment.getPosition());
     }
 
     /**
@@ -256,11 +254,5 @@ public class MainActivity extends ToolbarActivity {
         intent.putExtra(EXTRA_RESTORE, restore);
         context.startActivity(intent);
         context.finish();
-    }
-    public static void startForChangePool(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(EXTRA_RESTORE, false);
-        intent.putExtra("msgType","change_pool");
-        context.startActivity(intent);
     }
 }
