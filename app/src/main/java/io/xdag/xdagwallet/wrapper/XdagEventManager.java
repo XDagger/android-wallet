@@ -14,6 +14,7 @@ import io.xdag.common.tool.MLog;
 import io.xdag.common.util.InputMethodUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.dialog.InputBuilder;
 import io.xdag.xdagwallet.dialog.LoadingBuilder;
 import io.xdag.xdagwallet.dialog.TipBuilder;
@@ -97,11 +98,16 @@ public class XdagEventManager {
                 } else {
                     mLoadingDialog.dismiss();
                 }
-                MLog.i("last  program state is " + mLastProgramState);
-                MLog.i("event program state is " + event.programState);
                 if (event.programState == XdagEvent.POOL && mLastProgramState == XdagEvent.XFER) {
                     notifyEventXfer(event);
                 }
+            }
+            break;
+            case XdagEvent.en_event_disconneted_finished:{
+                MLog.i("disconnected from pool finished reconnected to the pool");
+                mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
+                mLoadingDialog.show();
+                XdagHandlerWrapper.getInstance(mActivity).connectToPool(Config.getPoolAddress());
             }
             break;
             default:
