@@ -49,7 +49,7 @@ public class MainActivity extends ToolbarActivity {
     private BaseMainFragment mReceiveFragment;
     private BaseMainFragment mSendFragment;
     private BaseMainFragment mSettingFragment;
-    private BaseMainFragment mShowFragment;
+    public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
     private XdagEventManager mXdagEventManager;

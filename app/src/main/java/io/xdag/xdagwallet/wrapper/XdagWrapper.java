@@ -1,6 +1,7 @@
 package io.xdag.xdagwallet.wrapper;
 
 import android.util.Log;
+
 import org.greenrobot.eventbus.EventBus;
 
 public class XdagWrapper {
@@ -13,7 +14,8 @@ public class XdagWrapper {
     private static XdagWrapper instance = null;
 
 
-    private XdagWrapper() {}
+    private XdagWrapper() {
+    }
 
 
     public static XdagWrapper getInstance() {
@@ -53,7 +55,13 @@ public class XdagWrapper {
     }
 
 
-    public int XdagNotifyMsg(String authInfo) {return XdagNotifyNativeMsg(authInfo);}
+    public int XdagNotifyMsg() {
+        return XdagNotifyMsg("");
+    }
+
+    public int XdagNotifyMsg(String authInfo) {
+        return XdagNotifyNativeMsg(authInfo);
+    }
 
 
     private native int XdagInit();
@@ -81,9 +89,9 @@ public class XdagWrapper {
 
     public static void nativeCallbackFunc(XdagEvent event) {
         Log.i(TAG, " receive event event type " + event.eventType
-            + " balance " + event.balance
-            + " state " + event.state
-            + " thread id " + Thread.currentThread().getId());
+                + " balance " + event.balance
+                + " state " + event.state
+                + " thread id " + Thread.currentThread().getId());
         EventBus.getDefault().post(event);
     }
 }
