@@ -10,6 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -33,11 +36,21 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (enableEventBus()) {
+            if (!EventBus.getDefault().isRegistered(this)) {
+                EventBus.getDefault().register(this);
+            }
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(
-        @NonNull LayoutInflater inflater,
-        @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(getLayoutResId(), container, false);
     }
 
@@ -77,6 +90,17 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
+    @Override
+    public void onDestroy() {
+        if (enableEventBus()) {
+            if (EventBus.getDefault().isRegistered(this)) {
+                EventBus.getDefault().unregister(this);
+            }
+        }
+        super.onDestroy();
+    }
+
+
     protected abstract int getLayoutResId();
 
 
@@ -89,5 +113,13 @@ public abstract class BaseFragment extends Fragment {
             return ((ToolbarActivity) mContext).getToolbar();
         }
         throw new RuntimeException("The fragment must attach on ToolbarActivity");
+    }
+
+
+    /**
+     * default enable EventBus
+     */
+    protected boolean enableEventBus() {
+        return false;
     }
 }

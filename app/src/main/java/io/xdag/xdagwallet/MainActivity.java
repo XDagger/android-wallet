@@ -12,6 +12,9 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,6 +29,8 @@ import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ToolbarUtil;
+import io.xdag.xdagwallet.wrapper.XdagEvent;
+import io.xdag.xdagwallet.wrapper.XdagEventManager;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 
 /**
@@ -47,6 +52,7 @@ public class MainActivity extends ToolbarActivity {
     private BaseMainFragment mShowFragment;
 
     private boolean mRestore;
+    private XdagEventManager mXdagEventManager;
 
 
     @Override
@@ -54,6 +60,10 @@ public class MainActivity extends ToolbarActivity {
         return R.layout.activity_main;
     }
 
+    @Override
+    protected boolean enableEventBus() {
+        return true;
+    }
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
@@ -67,7 +77,8 @@ public class MainActivity extends ToolbarActivity {
     }
 
 
-    @Override protected void parseIntent(Intent intent) {
+    @Override
+    protected void parseIntent(Intent intent) {
         super.parseIntent(intent);
         mRestore = intent.getBooleanExtra(EXTRA_RESTORE, false);
     }
@@ -75,17 +86,20 @@ public class MainActivity extends ToolbarActivity {
 
     @Override
     protected void initData() {
+        mXdagEventManager = XdagEventManager.getInstance(this);
+        mXdagEventManager.initDialog();
+
         // request permissions
         AndPermission.with(mContext)
-            .runtime()
-            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-            .onGranted(new Action<List<String>>() {
-                @Override
-                public void onAction(List<String> data) {
-                    connectToPool();
-                }
-            })
-            .start();
+                .runtime()
+                .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+                .onGranted(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> data) {
+                        connectToPool();
+                    }
+                })
+                .start();
     }
 
 
@@ -107,16 +121,24 @@ public class MainActivity extends ToolbarActivity {
     }
 
 
+    /**
+     * the event from c
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void ProcessXdagEvent(XdagEvent event) {
+        mXdagEventManager.manageEvent(event);
+    }
+
     private void initNavigationView() {
         // create items
         AHBottomNavigationItem home =
-            new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_home);
+                new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_home);
         AHBottomNavigationItem receive =
-            new AHBottomNavigationItem(getString(R.string.receive), R.drawable.ic_receive);
+                new AHBottomNavigationItem(getString(R.string.receive), R.drawable.ic_receive);
         AHBottomNavigationItem send =
-            new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
+                new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
         AHBottomNavigationItem setting =
-            new AHBottomNavigationItem(getString(R.string.setting), R.drawable.ic_setting);
+                new AHBottomNavigationItem(getString(R.string.setting), R.drawable.ic_setting);
         // add items
         mNavigationView.addItem(home);
         mNavigationView.addItem(receive);
@@ -162,13 +184,13 @@ public class MainActivity extends ToolbarActivity {
         mSettingFragment = SettingFragment.newInstance();
 
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
-            HomeFragment.class.getName());
+                HomeFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mReceiveFragment, R.id.container,
-            ReceiveFragment.class.getName());
+                ReceiveFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSendFragment, R.id.container,
-            SendFragment.class.getName());
+                SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
-            SettingFragment.class.getName());
+                SettingFragment.class.getName());
 
         showFragment(mHomeFragment);
     }
@@ -176,25 +198,25 @@ public class MainActivity extends ToolbarActivity {
 
     private void recoverFragment() {
         mHomeFragment = (HomeFragment) mFragmentManager.findFragmentByTag(
-            HomeFragment.class.getName());
+                HomeFragment.class.getName());
         mReceiveFragment = (ReceiveFragment) mFragmentManager.findFragmentByTag(
-            ReceiveFragment.class.getName());
+                ReceiveFragment.class.getName());
         mSendFragment = (SendFragment) mFragmentManager.findFragmentByTag(
-            SendFragment.class.getName());
+                SendFragment.class.getName());
         mSettingFragment = (SettingFragment) mFragmentManager.findFragmentByTag(
-            SettingFragment.class.getName());
+                SettingFragment.class.getName());
     }
 
 
     private void showFragment(BaseMainFragment fragment) {
         if (mShowFragment != fragment) {
             mFragmentManager.beginTransaction()
-                .hide(mHomeFragment)
-                .hide(mReceiveFragment)
-                .hide(mSendFragment)
-                .hide(mSettingFragment)
-                .show(fragment)
-                .commit();
+                    .hide(mHomeFragment)
+                    .hide(mReceiveFragment)
+                    .hide(mSendFragment)
+                    .hide(mSettingFragment)
+                    .show(fragment)
+                    .commit();
             mShowFragment = fragment;
             ToolbarUtil.setToolbar(mShowFragment.getPosition(), getToolbar());
         }
