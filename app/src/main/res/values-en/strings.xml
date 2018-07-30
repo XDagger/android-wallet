@@ -72,7 +72,7 @@
     <string name="password_format">0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="error_password_format">Please input 6 to 18 alphabet chars or numbers</string>
     <string name="slogan">Fluent and Stable XDAG wallet</string>
-    <string name="about_explain">We are dedicated to develop one fluent and stable XDAG wallet. If you have any question or\n sugguestion, please send feedback to us.\n\nSourcecode is listed on github, link is shown as below. Everyone are welcomed to contribute\n to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as \nstorage (folder name: sdcard/xdag/). SD Card is not safe enough for backup,\n please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO RECOVERY.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
+    <string name="about_explain">We are dedicated to develop one fluent and stable XDAG wallet. If you have any question or\n suggestion, please send feedback to us.\n\nSourcecode is listed on github, link is shown as below. Everyone are welcomed to contribute\n to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as \nstorage (folder name: sdcard/xdag/). SD Card is not safe enough for backup,\n please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
     <string name="tran_detail">Transaction details</string>
     <string name="warning">Warning</string>
     <string name="check_root_explain">Caution! Detect your device is rooted, it's high risk to continue.</string>
@@ -82,5 +82,29 @@
     <string name="update">Update</string>
     <string name="close">Close</string>
     <string name="new_version_available">New version detected：%1$s</string>
+    <string name="use_explain_1">XDAG Android wallet is still in beta test\n</string>
+    <string name="use_explain_2">Caution:\n</string>
+    <string name="use_explain_3">Please backup your wallet in case of lose wallet due to bugs.\n</string>
+    <string name="use_explain_4">WE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.\n</string>
+    <string name="use_explain_5">Any uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER. Please backup your wallet.\n</string>
+    <string name="use_explain_6">To ensure transactions, lots of popups are can not cancel.\n</string>
+    <string name="use_explain_7">We will improve this in later releases.</string>
+    <string name="nice_to_meet_you">Glad to see you here!</string>
+    <string name="restore_explain_1">XDAG wallet doesn't support backup or restore wallet by private\n</string>
+    <string name="restore_explain_2">key or mnemonic code currently.\n</string>
+    <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
+    <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to folder xdag in SD Card root folder.</string>
+    <string name="restore_explain_5">SD Card is not a safe place for backup, any VIRUS can steal backup files from SD Card.\n</string>
+    <string name="restore_explain_6">So it will move backup to Android private folder when you click Restore.\n</string>
+    <string name="restore_explain_7">You can backup you wallet to SD Card at any time.\n</string>
+    <string name="restore_explain_8">Please keep in mind, SD Card is not safe, please transfer backup files to some safe place.\n</string>
+    <string name="wallet_explain_1">No wallet detected,\n</string>
+    <string name="wallet_explain_2">and you have two ways to have your wallet.\n</string>
+    <string name="wallet_explain_3">Create a new wallet.\n</string>
+    <string name="wallet_explain_4">Restore an old wallet. Click here to restore your wallet.\n</string>
+    <string name="wallet_explain_5">We will ask for write external SD Card permission, please do not deny it.\n</string>
+    <string name="the_function_developing_please_wait">To be continue.</string>
+    <string name="cover">Overwrite</string>
+    <string name="cover_explain">Detect one backup exists in /sdcard/xdag，overwrite it? (UNABLE TO RECOVER THE OVERWRITTEN WALLET)</string>
 
 </resources>
