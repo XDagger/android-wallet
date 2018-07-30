@@ -71,9 +71,10 @@ public class SettingFragment extends BaseMainFragment {
         builder.create().show();
     }
 
+
     @OnClick(R.id.setting_switch_pool)
     void setting_switch_pool() {
-        PoolListActivity.start(mContext);
+        PoolListActivity.start(mContext, false);
     }
 
 
@@ -88,10 +89,12 @@ public class SettingFragment extends BaseMainFragment {
         AboutActivity.start(mContext);
     }
 
+
     @OnClick(R.id.setting_github)
     void setting_github() {
         IntentUtil.openBrowser(mContext, "https://github.com/XDagger");
     }
+
 
     @OnClick(R.id.setting_xdagio)
     void setting_xdagio() {

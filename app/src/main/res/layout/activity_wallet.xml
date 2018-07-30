@@ -27,7 +27,7 @@
     <Button
         android:id="@+id/wallet_btn_restore"
         style="@style/Xdag.Button"
-        android:layout_marginTop="@dimen/space_32"
+        android:layout_marginTop="@dimen/space_16"
         android:text="@string/restore_wallet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -86,7 +86,6 @@ public class MainActivity extends ToolbarActivity {
     protected void parseIntent(Intent intent) {
         super.parseIntent(intent);
         mRestore = intent.getBooleanExtra(EXTRA_RESTORE, false);
-        mSwitchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
     }
 
 
@@ -130,6 +129,7 @@ public class MainActivity extends ToolbarActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        mSwitchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
         if (mSwitchPool) {
             XdagHandlerWrapper.getInstance(this).disconnectPool();
             mHomeFragment.showNotReady();

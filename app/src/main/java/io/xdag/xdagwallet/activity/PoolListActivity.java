@@ -19,21 +19,34 @@ import io.xdag.xdagwallet.model.PoolModel;
  */
 public class PoolListActivity extends ListActivity<PoolModel> {
 
+    private static final String EXTRA_ONLY_CONFIG = "extra_only_config";
+    private boolean mOnlyConfig;
+
+
     @Override
     protected int getItemLayout() {
         return R.layout.item_pool;
     }
+
 
     @Override
     protected boolean isRefresh() {
         return false;
     }
 
+
+    @Override protected void parseIntent(Intent intent) {
+        super.parseIntent(intent);
+        mOnlyConfig = intent.getBooleanExtra(EXTRA_ONLY_CONFIG, false);
+    }
+
+
     @Override
     protected void initData() {
         super.initData();
         mAdapter.setNewData(PoolModel.getPoolList());
     }
+
 
     @Override
     protected void convert(BaseViewHolder helper, final PoolModel item) {
@@ -44,28 +57,33 @@ public class PoolListActivity extends ListActivity<PoolModel> {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                        .setMessage(getString(R.string.switch_pool_to, item.address))
-                        .setPositiveButton(R.string.ensure, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Config.setPoolAddress(item.address);
-                                mAdapter.setNewData(PoolModel.getPoolList());
+                    .setMessage(getString(R.string.switch_pool_to, item.address))
+                    .setPositiveButton(R.string.ensure, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Config.setPoolAddress(item.address);
+                            mAdapter.setNewData(PoolModel.getPoolList());
+                            if(!mOnlyConfig) {
                                 MainActivity.switchPool(mContext);
                             }
-                        })
-                        .setNegativeButton(R.string.cancel, null);
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, null);
                 builder.create().show();
             }
         });
     }
 
+
     @Override
     protected int getToolbarTitle() {
-        return R.string.switch_pool;
+        return R.string.select_pool;
     }
 
-    public static void start(Activity context) {
+
+    public static void start(Activity context, boolean onlyConfig) {
         Intent intent = new Intent(context, PoolListActivity.class);
+        intent.putExtra(EXTRA_ONLY_CONFIG, onlyConfig);
         context.startActivity(intent);
     }
 }
