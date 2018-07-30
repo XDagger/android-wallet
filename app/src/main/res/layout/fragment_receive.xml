@@ -39,8 +39,8 @@
         android:layout_marginTop="@dimen/space_32"
         android:text="@string/copy_address"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/receive_img_qrcode"
-        app:layout_constraintRight_toRightOf="@id/receive_img_qrcode"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/receive_img_qrcode" />
 
 </android.support.constraint.ConstraintLayout>
