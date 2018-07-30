@@ -41,8 +41,8 @@ public class SettingFragment extends BaseMainFragment {
 
         mBuilder = new AlertDialog.Builder(mContext)
             .setTitle(R.string.warning)
-            .setMessage("检测到 /sdcard/xdag 已经存在一个钱包，继续备份将覆盖这个钱包（钱包被覆盖意味着钱包的资产丢失且无法找回）。")
-            .setPositiveButton("覆盖", new DialogInterface.OnClickListener() {
+            .setMessage(R.string.cover_explain)
+            .setPositiveButton(R.string.cover, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     backupWallet();
@@ -66,7 +66,7 @@ public class SettingFragment extends BaseMainFragment {
     @OnClick(R.id.setting_switch_wallet)
     void setting_switch() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-            .setMessage("这个功能我们正在开发中，请稍后。")
+            .setMessage(R.string.the_function_developing_please_wait)
             .setPositiveButton(R.string.ensure, null);
         builder.create().show();
     }

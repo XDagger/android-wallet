@@ -12,6 +12,7 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
+import io.xdag.common.tool.ActivityStack;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -54,7 +55,6 @@ public class MainActivity extends ToolbarActivity {
     public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
-    private boolean mSwitchPool;
     private XdagEventManager mXdagEventManager;
 
 
@@ -129,13 +129,19 @@ public class MainActivity extends ToolbarActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        mSwitchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
-        if (mSwitchPool) {
+        boolean switchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
+        if (switchPool) {
             XdagHandlerWrapper.getInstance(this).disconnectPool();
             mHomeFragment.showNotReady();
             showFragment(mHomeFragment);
             mNavigationView.setCurrentItem(mHomeFragment.getPosition());
         }
+    }
+
+
+    @Override protected void onDestroy() {
+        super.onDestroy();
+        ActivityStack.getInstance().exit();
     }
 
 
