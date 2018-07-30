@@ -14,6 +14,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <meta-data
+                android:name="android.max_aspect"
+                android:value="2.4"/>
         <activity
                 android:name=".activity.UseExplainActivity"
                 android:theme="@style/AppSplashTheme">
@@ -31,7 +34,7 @@
         <activity android:name=".activity.RestoreActivity"/>
         <activity android:name=".activity.AboutActivity"/>
         <activity android:name=".activity.TranDetailActivity"/>
-        <activity android:name=".activity.PoolListActivity" />
+        <activity android:name=".activity.PoolListActivity"/>
     </application>
 
 </manifest>
