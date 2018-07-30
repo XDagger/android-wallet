@@ -12,6 +12,7 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
+import io.xdag.common.tool.ActivityStack;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -136,6 +137,12 @@ public class MainActivity extends ToolbarActivity {
             showFragment(mHomeFragment);
             mNavigationView.setCurrentItem(mHomeFragment.getPosition());
         }
+    }
+
+
+    @Override protected void onDestroy() {
+        super.onDestroy();
+        ActivityStack.getInstance().exit();
     }
 
 

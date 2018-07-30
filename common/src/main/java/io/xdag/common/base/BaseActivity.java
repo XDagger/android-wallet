@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import io.xdag.common.tool.ActivityStack;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.Objects;
@@ -36,6 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         View rootView = View.inflate(mContext, getLayoutResId(), null);
         setContentView(rootView);
         initView(rootView, savedInstanceState);
+        ActivityStack.getInstance().addActivity(mContext);
         if (getIntent() != null) {
             parseIntent(getIntent());
         }
@@ -76,9 +78,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         Objects.requireNonNull(fragmentManager);
         Objects.requireNonNull(fragment);
         fragmentManager.beginTransaction()
-                .add(frameId, fragment, tag)
-                .commit();
+            .add(frameId, fragment, tag)
+            .commit();
     }
+
 
     @Override
     protected void onDestroy() {
@@ -87,8 +90,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 EventBus.getDefault().unregister(this);
             }
         }
+        ActivityStack.getInstance().removeActivity(mContext);
         super.onDestroy();
     }
+
 
     /**
      * default enable EventBus
