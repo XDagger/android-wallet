@@ -1,7 +1,6 @@
 package io.xdag.xdagwallet;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -43,16 +42,19 @@ import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 public class MainActivity extends ToolbarActivity {
 
     private static final String EXTRA_RESTORE = "extra_restore";
+    private static final String EXTRA_SWITCH_POOL = "extra_switch_pool";
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation mNavigationView;
+
     private FragmentManager mFragmentManager;
-    private BaseMainFragment mHomeFragment;
-    private BaseMainFragment mReceiveFragment;
-    private BaseMainFragment mSendFragment;
-    private BaseMainFragment mSettingFragment;
+    private HomeFragment mHomeFragment;
+    private ReceiveFragment mReceiveFragment;
+    private SendFragment mSendFragment;
+    private SettingFragment mSettingFragment;
     public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
+    private boolean mSwitchPool;
     private XdagEventManager mXdagEventManager;
 
 
@@ -61,10 +63,12 @@ public class MainActivity extends ToolbarActivity {
         return R.layout.activity_main;
     }
 
+
     @Override
     protected boolean enableEventBus() {
         return true;
     }
+
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
@@ -92,15 +96,15 @@ public class MainActivity extends ToolbarActivity {
 
         // request permissions
         AndPermission.with(mContext)
-                .runtime()
-                .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-                .onGranted(new Action<List<String>>() {
-                    @Override
-                    public void onAction(List<String> data) {
-                        connectToPool();
-                    }
-                })
-                .start();
+            .runtime()
+            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+            .onGranted(new Action<List<String>>() {
+                @Override
+                public void onAction(List<String> data) {
+                    connectToPool();
+                }
+            })
+            .start();
     }
 
 
@@ -121,16 +125,19 @@ public class MainActivity extends ToolbarActivity {
         }
     }
 
-    @Override
-    protected void onNewIntent(Intent intent){
-        super.onNewIntent(intent);
 
-        //change pool
-        String msgType = intent.getStringExtra("msgType");
-        if(msgType.equals("change_pool")){
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        mSwitchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
+        if (mSwitchPool) {
             XdagHandlerWrapper.getInstance(this).disconnectPool();
+            mHomeFragment.showNotReady();
+            showFragment(mHomeFragment);
+            mNavigationView.setCurrentItem(mHomeFragment.getPosition());
         }
     }
+
 
     /**
      * the event from c
@@ -140,16 +147,17 @@ public class MainActivity extends ToolbarActivity {
         mXdagEventManager.manageEvent(event);
     }
 
+
     private void initNavigationView() {
         // create items
         AHBottomNavigationItem home =
-                new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_home);
+            new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_home);
         AHBottomNavigationItem receive =
-                new AHBottomNavigationItem(getString(R.string.receive), R.drawable.ic_receive);
+            new AHBottomNavigationItem(getString(R.string.receive), R.drawable.ic_receive);
         AHBottomNavigationItem send =
-                new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
+            new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
         AHBottomNavigationItem setting =
-                new AHBottomNavigationItem(getString(R.string.setting), R.drawable.ic_setting);
+            new AHBottomNavigationItem(getString(R.string.setting), R.drawable.ic_setting);
         // add items
         mNavigationView.addItem(home);
         mNavigationView.addItem(receive);
@@ -195,13 +203,13 @@ public class MainActivity extends ToolbarActivity {
         mSettingFragment = SettingFragment.newInstance();
 
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
-                HomeFragment.class.getName());
+            HomeFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mReceiveFragment, R.id.container,
-                ReceiveFragment.class.getName());
+            ReceiveFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSendFragment, R.id.container,
-                SendFragment.class.getName());
+            SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
-                SettingFragment.class.getName());
+            SettingFragment.class.getName());
 
         showFragment(mHomeFragment);
     }
@@ -209,25 +217,25 @@ public class MainActivity extends ToolbarActivity {
 
     private void recoverFragment() {
         mHomeFragment = (HomeFragment) mFragmentManager.findFragmentByTag(
-                HomeFragment.class.getName());
+            HomeFragment.class.getName());
         mReceiveFragment = (ReceiveFragment) mFragmentManager.findFragmentByTag(
-                ReceiveFragment.class.getName());
+            ReceiveFragment.class.getName());
         mSendFragment = (SendFragment) mFragmentManager.findFragmentByTag(
-                SendFragment.class.getName());
+            SendFragment.class.getName());
         mSettingFragment = (SettingFragment) mFragmentManager.findFragmentByTag(
-                SettingFragment.class.getName());
+            SettingFragment.class.getName());
     }
 
 
     private void showFragment(BaseMainFragment fragment) {
         if (mShowFragment != fragment) {
             mFragmentManager.beginTransaction()
-                    .hide(mHomeFragment)
-                    .hide(mReceiveFragment)
-                    .hide(mSendFragment)
-                    .hide(mSettingFragment)
-                    .show(fragment)
-                    .commit();
+                .hide(mHomeFragment)
+                .hide(mReceiveFragment)
+                .hide(mSendFragment)
+                .hide(mSettingFragment)
+                .show(fragment)
+                .commit();
             mShowFragment = fragment;
             ToolbarUtil.setToolbar(mShowFragment.getPosition(), getToolbar());
         }
@@ -257,10 +265,12 @@ public class MainActivity extends ToolbarActivity {
         context.startActivity(intent);
         context.finish();
     }
-    public static void startForChangePool(Context context) {
+
+
+    public static void switchPool(Activity context) {
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(EXTRA_RESTORE, false);
-        intent.putExtra("msgType","change_pool");
+        intent.putExtra(EXTRA_SWITCH_POOL, true);
         context.startActivity(intent);
+        context.finish();
     }
 }

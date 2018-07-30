@@ -11,9 +11,14 @@ import io.xdag.xdagwallet.api.xdagscan.XdagScanApi;
 public class ApiServer {
 
     private static final String BASE_URL_XDAGSCAN = "http://xdagscan.com/";
+    private static final String BASE_URL_UPDATE= "https://raw.githubusercontent.com/";
 
 
     public static XdagScanApi getApi() {
         return ApiFactory.getInstance().createApi(BASE_URL_XDAGSCAN, XdagScanApi.class);
+    }
+
+    public static UpdateApi updateApi() {
+        return ApiFactory.getInstance().createApi(BASE_URL_UPDATE, UpdateApi.class);
     }
 }

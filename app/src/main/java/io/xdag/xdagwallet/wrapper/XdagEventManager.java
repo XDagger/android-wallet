@@ -43,6 +43,7 @@ public class XdagEventManager {
     @SuppressLint("StaticFieldLeak")
     private static XdagEventManager sInstance = null;
 
+
     public static XdagEventManager getInstance(MainActivity activity) {
         synchronized (XdagHandlerWrapper.class) {
             if (sInstance == null) {
@@ -53,6 +54,7 @@ public class XdagEventManager {
         }
         return sInstance;
     }
+
 
     private XdagEventManager(MainActivity activity) {
         mActivity = activity;
@@ -86,13 +88,14 @@ public class XdagEventManager {
                 MLog.i("Event: state update");
                 notifyEventUpdate(event);
                 if (mLastAddressState == XdagEvent.en_address_not_ready &&
-                        event.addressLoadState == XdagEvent.en_address_ready) {
+                    event.addressLoadState == XdagEvent.en_address_ready) {
                     notifyAddressReady(event);
                 }
 
                 if (mActivity.getXdagHandler().isNotConnectedToPool(event)) {
                     if (!mInputDialog.isShowing()) {
-                        mLoadingBuilder.setMessage(Common.getString(R.string.please_wait_connecting_pool));
+                        mLoadingBuilder.setMessage(
+                            Common.getString(R.string.please_wait_connecting_pool));
                         mLoadingDialog.show();
                     }
                 } else {
@@ -103,7 +106,7 @@ public class XdagEventManager {
                 }
             }
             break;
-            case XdagEvent.en_event_disconneted_finished:{
+            case XdagEvent.en_event_disconneted_finished: {
                 MLog.i("disconnected from pool finished reconnected to the pool");
                 mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
                 mLoadingDialog.show();
@@ -120,6 +123,7 @@ public class XdagEventManager {
         mLastProgramState = event.programState;
     }
 
+
     private void notifyEventUpdate(XdagEvent event) {
         if (!mEventUpdateCallbacks.isEmpty()) {
             for (OnEventUpdateCallback callback : mEventUpdateCallbacks) {
@@ -129,6 +133,7 @@ public class XdagEventManager {
             }
         }
     }
+
 
     private void notifyAddressReady(XdagEvent event) {
         if (!mEventUpdateCallbacks.isEmpty()) {
@@ -140,6 +145,7 @@ public class XdagEventManager {
         }
     }
 
+
     private void notifyEventXfer(XdagEvent event) {
         if (!mEventUpdateCallbacks.isEmpty()) {
             for (OnEventUpdateCallback callback : mEventUpdateCallbacks) {
@@ -150,52 +156,53 @@ public class XdagEventManager {
         }
     }
 
+
     public void initDialog() {
         mLoadingBuilder = new LoadingBuilder(mActivity)
-                .setMessage(R.string.please_wait_read_wallet);
+            .setMessage(R.string.please_wait_read_wallet);
         mLoadingDialog = mLoadingBuilder.create();
 
         mTipDialog = new TipBuilder(mActivity)
-                .setPositiveListener(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        XdagWrapper.getInstance().XdagNotifyMsg();
-                        dialog.dismiss();
-                        mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
-                        mLoadingDialog.show();
+            .setPositiveListener(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    XdagWrapper.getInstance().XdagNotifyMsg();
+                    dialog.dismiss();
+                    mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
+                    mLoadingDialog.show();
 
-                    }
-                }).create();
+                }
+            }).create();
 
         mInputDialog = new InputBuilder(mActivity)
-                .setPositiveListener(new InputBuilder.OnPositiveClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, String input) {
-                        if (input.length() < 6) {
-                            AlertUtil.show(mActivity, R.string.error_password_format);
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mInputDialog.show();
-                                    InputMethodUtil.showSoftInput(mActivity);
-                                }
-                            }, 500);
-                        } else {
-                            XdagWrapper.getInstance().XdagNotifyMsg(input);
-                            dialog.dismiss();
-                            mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
-                            mLoadingDialog.show();
-                        }
-                        InputMethodUtil.hideSoftInput(mActivity);
+            .setPositiveListener(new InputBuilder.OnPositiveClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, String input) {
+                    if (input.length() < 6) {
+                        AlertUtil.show(mActivity, R.string.error_password_format);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mInputDialog.show();
+                                InputMethodUtil.showSoftInput(mActivity);
+                            }
+                        }, 500);
+                    } else {
+                        XdagWrapper.getInstance().XdagNotifyMsg(input);
+                        dialog.dismiss();
+                        mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
+                        mLoadingDialog.show();
                     }
-                })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        XdagWrapper.getInstance().XdagNotifyMsg();
-                        InputMethodUtil.hideSoftInput(mActivity);
-                    }
-                }).create();
+                    InputMethodUtil.hideSoftInput(mActivity);
+                }
+            })
+            .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    XdagWrapper.getInstance().XdagNotifyMsg();
+                    InputMethodUtil.hideSoftInput(mActivity);
+                }
+            }).create();
 
         mLoadingDialog.show();
     }
@@ -228,7 +235,8 @@ public class XdagEventManager {
 
 
     private void showInputNegativeButton(XdagEvent event) {
-        if (event.eventType == XdagEvent.en_event_type_pwd && mActivity.mShowFragment instanceof SendFragment) {
+        if (event.eventType == XdagEvent.en_event_type_pwd &&
+            mActivity.mShowFragment instanceof SendFragment) {
             mInputDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setVisibility(View.VISIBLE);
         } else {
             mInputDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setVisibility(View.INVISIBLE);

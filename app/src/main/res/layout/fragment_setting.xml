@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/WHITE"
-            android:text="@string/switch_pool" />
+            android:text="@string/select_pool" />
         
         <io.xdag.xdagwallet.widget.SettingItemView
             android:id="@+id/setting_suggest"

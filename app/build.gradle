@@ -1,13 +1,17 @@
 apply plugin: 'com.android.application'
 
+static def buildTime() {
+    return new Date().format("MM_dd_HH_mm", TimeZone.getDefault())
+}
+
 android {
     compileSdkVersion compile_version
     defaultConfig {
         applicationId "io.xdag.xdagwallet"
         minSdkVersion min_version
         targetSdkVersion target_version
-        versionCode 10
-        versionName "0.1.0"
+        versionCode 20
+        versionName "0.2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -31,6 +35,7 @@ android {
 
     buildTypes {
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -38,10 +43,15 @@ android {
         }
     }
 
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "xdag_android_${variant.buildType.name}_v${defaultConfig.versionName}_${buildTime()}.apk"
+        }
+    }
+
+
     lintOptions {
         checkReleaseBuilds false
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
         abortOnError false
     }
 

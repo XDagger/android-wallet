@@ -1,5 +1,7 @@
 package io.xdag.xdagwallet.util;
 
+import java.util.List;
+
 import io.reactivex.disposables.Disposable;
 
 /**
@@ -13,4 +15,11 @@ public class RxUtil {
         }
     }
 
+    public static void dispose(List<Disposable> disposableList) {
+        for (Disposable disposable : disposableList) {
+            if (disposable != null && !disposable.isDisposed()) {
+                disposable.dispose();
+            }
+        }
+    }
 }

@@ -15,6 +15,7 @@ public class PoolModel {
     public String address;
     public int selectedImage;
 
+
     public PoolModel(String address) {
         this.address = address;
         this.selectedImage = 0;
@@ -22,9 +23,15 @@ public class PoolModel {
 
 
     private static List<PoolModel> sPoolModelList = Arrays.asList(
-            new PoolModel("xdagscan.com:13654"),
-            new PoolModel("xdagmine.com:13654")
+        new PoolModel("xdagscan.com:13654"),
+        new PoolModel("xdagmine.com:13654"),
+        new PoolModel("cn.xdag.vspool.com:13654"),
+        new PoolModel("142.44.143.234:777"),
+        new PoolModel("pool.xdagcn.com:13654"),
+        new PoolModel("pool.xdagpool.com:13654"),
+        new PoolModel("xdag.coolmine.top:13654")
     );
+
 
     public static List<PoolModel> getPoolList() {
         for (int i = 0; i < sPoolModelList.size(); i++) {
