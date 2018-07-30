@@ -45,16 +45,16 @@ public class UseExplainActivity extends ToolbarActivity
     protected void initView(View rootView, Bundle savedInstanceState) {
         mTvExplain.setText(
             new TextStyleUtil()
-                .append("XDAG Android 钱包目前还处于测试版本\n")
-                .append("使用请注意：\n")
-                .append("请务必在其他位置备份好您的钱包文件，以防止因本钱包的 bug 造成您的资产损失。\n")
+                .append(getString(R.string.use_explain_1))
+                .append(getString(R.string.use_explain_2))
+                .append(getString(R.string.use_explain_3))
                 .setForegroundColor(Common.getColor(R.color.RED))
-                .append("出现任何资产损失，作者不承担这个责任。\n")
-                .append("任何卸载应用、删除数据的行为都将造成钱包文件丢失，且无法找回，请您在进行这些操作前务必备份您的钱包。\n")
+                .append(getString(R.string.use_explain_4))
+                .append(getString(R.string.use_explain_5))
                 .setForegroundColor(Common.getColor(R.color.RED))
                 .appendLine()
-                .append("为保证钱包事物的连续性，目前的版本应用内的很多弹框都不可取消，请您见谅。\n")
-                .append("我们在后续版本中将改善这个问题。")
+                .append(getString(R.string.use_explain_6))
+                .append(getString(R.string.use_explain_7))
                 .create()
         );
 

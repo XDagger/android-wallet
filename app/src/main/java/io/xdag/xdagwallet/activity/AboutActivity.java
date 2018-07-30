@@ -38,7 +38,7 @@ public class AboutActivity extends AbsAboutActivity {
 
     @Override protected void onItemsCreated(@NonNull Items items) {
 
-        items.add(new Category("很高兴见到您"));
+        items.add(new Category(getString(R.string.nice_to_meet_you)));
         items.add(new Card(getString(R.string.about_explain)));
 
         // Source code

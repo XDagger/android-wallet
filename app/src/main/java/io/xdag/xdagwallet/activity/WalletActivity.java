@@ -54,13 +54,13 @@ public class WalletActivity extends ToolbarActivity {
 
         mTvFunction.setText(
             new TextStyleUtil()
-                .append("未检测到您的 XDAG 钱包文件，\n")
-                .append("现在您可以使用以下两种方式获取 XDAG 钱包。\n")
+                .append(getString(R.string.wallet_explain_1))
+                .append(getString(R.string.wallet_explain_2))
                 .appendLine()
-                .append("创建钱包：为您创建一个新的钱包来存储和交易您的 XAG。\n")
-                .append("恢复钱包：如果您创建过 XDAG 钱包，可以从这里导入钱包文件来恢复钱包。\n")
+                .append(getString(R.string.wallet_explain_3))
+                .append(getString(R.string.wallet_explain_4))
                 .appendLine()
-                .append("在点击恢复钱包后，我们会帮您在存储卡根目录创建一个 xdag 文件夹，这个时候我们会请求您的存储卡权限，请您不要拒绝。\n")
+                .append(getString(R.string.wallet_explain_5))
                 .create()
         );
     }

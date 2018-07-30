@@ -55,7 +55,6 @@ public class MainActivity extends ToolbarActivity {
     public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
-    private boolean mSwitchPool;
     private XdagEventManager mXdagEventManager;
 
 
@@ -130,8 +129,8 @@ public class MainActivity extends ToolbarActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        mSwitchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
-        if (mSwitchPool) {
+        boolean switchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
+        if (switchPool) {
             XdagHandlerWrapper.getInstance(this).disconnectPool();
             mHomeFragment.showNotReady();
             showFragment(mHomeFragment);
