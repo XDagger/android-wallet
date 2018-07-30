@@ -1,52 +1,86 @@
 <resources>
-    <string name="app_name">XdagWallet</string>
+    <string name="app_name">XDagWallet</string>
+    <string name="XDAG">XDAG</string>
 
     <!-- common -->
     <string name="home">Home</string>
     <string name="send">Send</string>
     <string name="receive">Receive</string>
     <string name="setting">Setting</string>
-    <string name="send_xdag">Send Xdag</string>
-    <string name="receive_xdag">Receive Xdag</string>
+    <string name="send_xdag">Send XDAG</string>
+    <string name="receive_xdag">Receive XDAG</string>
     <string name="scan">Scan QRCode</string>
     <string name="to_address">To Address</string>
-    <string name="send_to_address">Send To Address</string>
-    <string name="amount_to_send">Amount to Send</string>
+    <string name="send_to_address">Send to Address</string>
+    <string name="amount_to_send">Amount</string>
     <string name="amount">Amount</string>
-    <string name="not_ready">Not Ready</string>
-    <string name="loading_address">Loading Address</string>
-    <string name="loading_balance">Loading Balance</string>
+    <string name="not_ready">Not ready</string>
     <string name="create_wallet">Create Wallet</string>
     <string name="restore_wallet">Restore Wallet</string>
+    <string name="no_transaction">No transaction found</string>
+    <string name="copy_address">Copy Address</string>
 
     <!-- please -->
-    <string name="please_set_password">please set password</string>
-    <string name="please_retype_password">please retype password</string>
-    <string name="please_input_password">please input password</string>
-    <string name="please_input_random">please input random</string>
+    <string name="please_set_password">Please set wallet password</string>
+    <string name="please_retype_password">Please retype wallet password</string>
+    <string name="please_input_password">Please input password</string>
+    <string name="please_input_random">Please input random key</string>
 
     <!-- error tips -->
-    <string name="error_cannot_identify_qr_code">Cannot identify QR code</string>
-    <string name="error_file_make_fail">The xdag file make fail</string>
-    <string name="error_sdcard_not_available">SDCard is not available</string>
-    <string name="error_create_xdag_wallet">Xdag wallet create fail</string>
-    <string name="error_restore_xdag_wallet">Xdag wallet restore fail</string>
-    <string name="error_backup_xdag_wallet">Xdag wallet backup fail</string>
-    <string name="error_password_not_same">password not same</string>
-    <string name="error_password">password error</string>
-    <string name="error_noting_to_transfer">amount must larger than 0</string>
-    <string name="error_balance_too_small">balance too small</string>
-    <string name="error_invalid_recv_address">invalid recv address</string>
+    <string name="error_cannot_identify_qr_code">Failed to identify QRCode</string>
+    <string name="error_file_make_fail">Create file failed</string>
+    <string name="error_sdcard_not_available">No SD card detected</string>
+    <string name="error_create_xdag_wallet">Failed to create wallet</string>
+    <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
+    <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
+    <string name="error_password">Password incorrect</string>
+    <string name="error_password_not_same">Password inconsistent</string>
+    <string name="error_noting_to_transfer">Send amount must greater than 0</string>
+    <string name="error_balance_too_small">Amount not sufficient </string>
+    <string name="error_invalid_recv_address">Invalid address</string>
 
     <!-- success -->
-    <string name="success_refresh">Refresh success</string>
-    <string name="success_copy_address">Copy address success</string>
-    <string name="success_backup_xdag_wallet">Xdag wallet backup success</string>
+    <string name="success_refresh">Refresh successfully</string>
+    <string name="success_copy_address">Copy successfully</string>
+    <string name="success_backup_xdag_wallet">Your wallet is backup to /sdcard/xdag </string>
 
     <!-- setting item-->
-    <string name="setting_messages">Messages</string>
+    <string name="setting_messages">Message</string>
     <string name="setting_backup_wallet">Backup Wallet</string>
+    <string name="setting_suggest">Feedback</string>
     <string name="switch_wallet">Switch Wallet</string>
-    <string name="about">About XDAG</string>
+    <string name="select_pool">Switch Pool</string>
+    <string name="setting_xdag_io">Community Site - xdag.io</string>
+    <string name="setting_github">GitHub - XDagger</string>
+    <string name="about">About</string>
+
+    <string name="use_explain">Usage</string>
+    <string name="function_explain">Terms</string>
+    <string name="backup_explain">I have read above content</string>
+    <string name="start_use">Start</string>
+    <string name="not_show_explain">Don't display again</string>
+    <string name="please_backup_your_xdag_wallet_first">Please read this carefully, and backup your wallet.</string>
+    <string name="restore_read">I have read above content, and backup wallet to xdag folder</string>
+    <string name="please_restore_read">Please read this page and copy your backup file to xdag folder</string>
+    <string name="loading_please_wait">Loading in progress</string>
+    <string name="please_wait_connecting_pool">Connecting to main net</string>
+    <string name="ensure">Confirm</string>
+    <string name="please_wait_read_wallet">Reading wallet data</string>
+    <string name="please_wait_transfer">Transferring in progress</string>
+    <string name="available_xdag">Available %1$s XDAG</string>
+    <string name="cancel">Cancel</string>
+    <string name="password_format">0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="error_password_format">Please input 6 to 18 alphabet chars or numbers</string>
+    <string name="slogan">Fluent and Stable XDAG wallet</string>
+    <string name="about_explain">We are dedicated to develop one fluent and stable XDAG wallet. If you have any question or\n sugguestion, please send feedback to us.\n\nSourcecode is listed on github, link is shown as below. Everyone are welcomed to contribute\n to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as \nstorage (folder name: sdcard/xdag/). SD Card is not safe enough for backup,\n please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO RECOVERY.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
+    <string name="tran_detail">Transaction details</string>
+    <string name="warning">Warning</string>
+    <string name="check_root_explain">Caution! Detect your device is rooted, it's high risk to continue.</string>
+    <string name="continue_use">Continue</string>
+    <string name="exit">Quit</string>
+    <string name="switch_pool_to">Switch to pool \n%1$s</string>
+    <string name="update">Update</string>
+    <string name="close">Close</string>
+    <string name="new_version_available">New version detected：%1$s</string>
 
 </resources>
