@@ -20,6 +20,6 @@
             android:layout_marginTop="@dimen/space_16"
             android:textColor="@color/DEEP_GERY"
             android:textSize="@dimen/size_text"
-            android:text="没有交易记录"/>
+            android:text="@string/no_transaction"/>
 
 </LinearLayout>
