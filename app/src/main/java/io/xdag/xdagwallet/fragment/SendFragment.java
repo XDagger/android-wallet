@@ -115,6 +115,13 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
         mEtAmount.setText(mBalance);
     }
 
+
+
+    @OnClick({R.id.send_tv_all})
+    void send_tv_all() {
+        mEtAmount.setText(mBalance);
+    }
+
     public static SendFragment newInstance() {
         return new SendFragment();
     }

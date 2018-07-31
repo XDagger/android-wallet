@@ -64,6 +64,17 @@
             app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
+            android:id="@+id/send_tv_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/send_et_amount"
+            app:layout_constraintLeft_toLeftOf="@id/send_tv_address"
+            android:layout_marginTop="@dimen/space_8"
+            android:textColor="@color/c_alert_btntxt"
+            android:textSize="@dimen/size_tip"
+            android:text="@string/all_send"/>
+
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/DEEP_GERY"
