@@ -10,7 +10,7 @@ import io.xdag.common.util.SPUtil;
 public class Config {
 
     private static final String DEFAULT_POOL = "xdagscan.com:13654";
-    public static final String CONFIG_KEY_POOL = "config_key_pool";
+    private static final String CONFIG_KEY_POOL = "config_key_pool";
     private static final String CONFIG_KEY_IS_USER_BACKUP = "config_key_is_user_backup";
     private static final String CONFIG_KEY_NOT_SHOW_EXPLAIN = "config_key_not_show_explain";
 

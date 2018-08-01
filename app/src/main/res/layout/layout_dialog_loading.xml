@@ -22,6 +22,6 @@
             android:textColor="@color/DEEP_GERY"
             android:layout_marginLeft="@dimen/space_8"
             android:textSize="@dimen/size_title"
-            android:text="@string/loading_please_wait"/>
+            android:text="@string/please_wait_loading"/>
 
 </LinearLayout>
