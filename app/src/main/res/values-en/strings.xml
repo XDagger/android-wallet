@@ -13,6 +13,7 @@
     <string name="to_address">To Address</string>
     <string name="send_to_address">Send to Address</string>
     <string name="amount_to_send">Amount</string>
+    <string name="all_send">All Send</string>
     <string name="amount">Amount</string>
     <string name="not_ready">Not ready</string>
     <string name="create_wallet">Create Wallet</string>
