@@ -74,7 +74,7 @@
     <string name="setting_github">GitHub - XDagger</string>
 
     <!-- format -->
-    <string name="password_format">0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 
     <!-- about -->
     <string name="slogan">Fluent and Stable XDAG wallet</string>
