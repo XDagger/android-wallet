@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import io.reactivex.disposables.CompositeDisposable;
 import io.xdag.common.tool.MLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class HomeFragment extends BaseMainFragment {
 
     private TransactionAdapter mAdapter;
     private View mEmptyView;
-    private List<Disposable> mDisposables = new ArrayList<>();
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 
     @Override
     protected int getLayoutResId() {
@@ -120,7 +121,12 @@ public class HomeFragment extends BaseMainFragment {
     @Override
     protected void initData() {
         super.initData();
-        mDisposables.add(ApiServer.getApi().getVersionInfo()
+        requestUpdate();
+    }
+
+
+    private void requestUpdate() {
+        mDisposable.add(ApiServer.getApi().getVersionInfo()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<VersionModel>() {
                     @Override
@@ -131,9 +137,10 @@ public class HomeFragment extends BaseMainFragment {
                 }, new ErrorConsumer(mContext)));
     }
 
+
     private void requestTransaction() {
 
-        mDisposables.add(ApiServer.getXdagScanApi().getBlockDetail(mTvAddress.getText().toString())
+        mDisposable.add(ApiServer.getXdagScanApi().getBlockDetail(mTvAddress.getText().toString())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Detail2AddressListFunction())
                 .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
@@ -161,13 +168,14 @@ public class HomeFragment extends BaseMainFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RxUtil.dispose(mDisposables);
+        RxUtil.dispose(mDisposable);
     }
 
 
     @Override
     public void onRefresh() {
         super.onRefresh();
+        requestUpdate();
         requestTransaction();
     }
 
