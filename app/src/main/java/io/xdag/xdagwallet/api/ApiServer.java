@@ -10,15 +10,16 @@ import io.xdag.xdagwallet.api.xdagscan.XdagScanApi;
  */
 public class ApiServer {
 
-    private static final String BASE_URL_XDAGSCAN = "http://139.99.124.100/";
-    private static final String BASE_URL_UPDATE= "https://raw.githubusercontent.com/";
+    private static final String BASE_URL_POOL = "http://139.99.124.100/api/block/";
+    private static final String BASE_URL_GITHUB = "https://raw.githubusercontent.com/";
 
 
-    public static XdagScanApi getApi() {
-        return ApiFactory.getInstance().createApi(BASE_URL_XDAGSCAN, XdagScanApi.class);
+    public static XdagScanApi getXdagScanApi() {
+        return ApiFactory.getInstance().createApi(BASE_URL_POOL, XdagScanApi.class);
     }
 
-    public static UpdateApi updateApi() {
-        return ApiFactory.getInstance().createApi(BASE_URL_UPDATE, UpdateApi.class);
+
+    public static Api getApi() {
+        return ApiFactory.getInstance().createApi(BASE_URL_GITHUB, Api.class);
     }
 }

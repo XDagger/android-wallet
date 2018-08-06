@@ -1,7 +1,4 @@
 {
-    "versionCode": 21,
-    "versionName": "0.2.1",
-    "url": "https://www.pgyer.com/xdagandroid",
-    "default_pool": "142.44.143.234:777",
-    "transfer_url": "http://139.99.124.100/"
+    "defaultPool": "142.44.143.234:777",
+    "transferUrl": "http://139.99.124.100/api/block/"
 }

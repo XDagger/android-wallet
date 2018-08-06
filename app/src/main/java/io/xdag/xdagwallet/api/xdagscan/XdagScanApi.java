@@ -16,7 +16,7 @@ public interface XdagScanApi {
      *
      * @param address the block
      */
-    @GET("api/block/{address}")
+    @GET("{address}")
     Observable<BlockDetailModel> getBlockDetail(@Path("address") String address);
 
 }

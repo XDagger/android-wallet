@@ -57,7 +57,7 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
 
     private void requestTranDetail(final boolean alert) {
 
-        mDisposable = ApiServer.getApi().getBlockDetail(mAddress)
+        mDisposable = ApiServer.getXdagScanApi().getBlockDetail(mAddress)
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Detail2TranListFunction())
                 .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {

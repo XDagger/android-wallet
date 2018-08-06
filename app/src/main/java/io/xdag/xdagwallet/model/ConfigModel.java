@@ -1,24 +1,18 @@
 package io.xdag.xdagwallet.model;
 
 /**
- * created by ssyijiu  on 2018/7/29
+ * created by ssyijiu  on 2018/8/6
  */
 public class ConfigModel {
 
-    public int versionCode;
-    public String versionName;
-    public String url;
-    public String default_pool;
-    public String transfer_url;
+    public String defaultPool;
+    public String transferUrl;
 
 
     @Override public String toString() {
         return "ConfigModel{" +
-            "versionCode=" + versionCode +
-            ", versionName='" + versionName + '\'' +
-            ", url='" + url + '\'' +
-            ", default_pool='" + default_pool + '\'' +
-            ", transfer_url='" + transfer_url + '\'' +
+            "default_pool='" + defaultPool + '\'' +
+            ", transfer_url='" + transferUrl + '\'' +
             '}';
     }
 }

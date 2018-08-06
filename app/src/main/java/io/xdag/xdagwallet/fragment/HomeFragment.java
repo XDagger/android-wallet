@@ -23,7 +23,7 @@ import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
-import io.xdag.xdagwallet.model.ConfigModel;
+import io.xdag.xdagwallet.model.VersionModel;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
@@ -120,20 +120,20 @@ public class HomeFragment extends BaseMainFragment {
     @Override
     protected void initData() {
         super.initData();
-        mDisposables.add(ApiServer.updateApi().getVersionInfo()
+        mDisposables.add(ApiServer.getApi().getVersionInfo()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<ConfigModel>() {
+                .subscribe(new Consumer<VersionModel>() {
                     @Override
-                    public void accept(ConfigModel configModel) {
-                        MLog.i(configModel);
-                        UpdateUtil.update(configModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
+                    public void accept(VersionModel versionModel) {
+                        MLog.i(versionModel);
+                        UpdateUtil.update(versionModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
                     }
                 }, new ErrorConsumer(mContext)));
     }
 
     private void requestTransaction() {
 
-        mDisposables.add(ApiServer.getApi().getBlockDetail(mTvAddress.getText().toString())
+        mDisposables.add(ApiServer.getXdagScanApi().getBlockDetail(mTvAddress.getText().toString())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Detail2AddressListFunction())
                 .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
