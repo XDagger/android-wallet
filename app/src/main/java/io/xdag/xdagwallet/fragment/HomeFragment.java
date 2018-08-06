@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import io.xdag.common.tool.MLog;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
-import io.xdag.xdagwallet.model.UpdateModel;
+import io.xdag.xdagwallet.model.ConfigModel;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
@@ -121,10 +122,11 @@ public class HomeFragment extends BaseMainFragment {
         super.initData();
         mDisposables.add(ApiServer.updateApi().getVersionInfo()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<UpdateModel>() {
+                .subscribe(new Consumer<ConfigModel>() {
                     @Override
-                    public void accept(UpdateModel updateModel) {
-                        UpdateUtil.update(updateModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
+                    public void accept(ConfigModel configModel) {
+                        MLog.i(configModel);
+                        UpdateUtil.update(configModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
                     }
                 }, new ErrorConsumer(mContext)));
     }

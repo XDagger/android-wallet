@@ -8,24 +8,24 @@ import android.widget.TextView;
 import io.xdag.common.util.IntentUtil;
 import io.xdag.xdagwallet.BuildConfig;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.model.UpdateModel;
+import io.xdag.xdagwallet.model.ConfigModel;
 
 /**
  * created by ssyijiu  on 2018/7/30
  */
 public class UpdateUtil {
 
-    public static void update(final UpdateModel updateModel, final LinearLayout versionLayout, TextView tvDesc, TextView tvUpdate, TextView tvClose) {
-        if (updateModel.versionCode > BuildConfig.VERSION_CODE) {
+    public static void update(final ConfigModel configModel, final LinearLayout versionLayout, TextView tvDesc, TextView tvUpdate, TextView tvClose) {
+        if (configModel.versionCode > BuildConfig.VERSION_CODE) {
 
             final Context context = versionLayout.getContext();
             versionLayout.setVisibility(View.VISIBLE);
-            tvDesc.setText(context.getString(R.string.new_version_available, updateModel.versionName));
+            tvDesc.setText(context.getString(R.string.new_version_available, configModel.versionName));
 
             tvUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    IntentUtil.openBrowser(context, updateModel.url);
+                    IntentUtil.openBrowser(context, configModel.url);
                 }
             });
 

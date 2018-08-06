@@ -1,7 +1,7 @@
 package io.xdag.xdagwallet.api;
 
 import io.reactivex.Observable;
-import io.xdag.xdagwallet.model.UpdateModel;
+import io.xdag.xdagwallet.model.ConfigModel;
 import retrofit2.http.GET;
 
 /**
@@ -9,11 +9,10 @@ import retrofit2.http.GET;
  */
 public interface UpdateApi {
 
-
     /**
      * get update info
      */
-    @GET("ssyijiu/android-wallet/master/update.json")
-    Observable<UpdateModel> getVersionInfo();
+    @GET("ssyijiu/android-wallet/master/config.json")
+    Observable<ConfigModel> getVersionInfo();
 
 }
