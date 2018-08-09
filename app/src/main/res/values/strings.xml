@@ -57,7 +57,6 @@
     <string name="error_noting_to_transfer">发送金额必须大于0</string>
     <string name="error_balance_too_small">余额不足</string>
     <string name="error_invalid_recv_address">非法的接收地址</string>
-    <string name="error_password_format">请输入 6–18 位的字母或数字</string>
 
     <!-- success -->
     <string name="success_refresh">刷新成功</string>
@@ -73,8 +72,9 @@
     <string name="setting_xdag_io">社区官网 - xdag.io</string>
     <string name="setting_github">GitHub - XDagger</string>
 
-    <!-- format -->
-    <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <!-- password format -->
+    <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
+    <string name="error_password_format">请输入 6–18 位的字母、数字或者符号</string>
 
     <!-- about -->
     <string name="slogan">流畅、稳定的 XDAG 钱包</string>

@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import io.reactivex.disposables.CompositeDisposable;
+import io.xdag.common.tool.MLog;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ import io.xdag.xdagwallet.api.ApiServer;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
-import io.xdag.xdagwallet.model.UpdateModel;
+import io.xdag.xdagwallet.model.VersionModel;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
@@ -59,7 +61,7 @@ public class HomeFragment extends BaseMainFragment {
 
     private TransactionAdapter mAdapter;
     private View mEmptyView;
-    private List<Disposable> mDisposables = new ArrayList<>();
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 
     @Override
     protected int getLayoutResId() {
@@ -119,19 +121,26 @@ public class HomeFragment extends BaseMainFragment {
     @Override
     protected void initData() {
         super.initData();
-        mDisposables.add(ApiServer.updateApi().getVersionInfo()
+        requestUpdate();
+    }
+
+
+    private void requestUpdate() {
+        mDisposable.add(ApiServer.getApi().getVersionInfo()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<UpdateModel>() {
+                .subscribe(new Consumer<VersionModel>() {
                     @Override
-                    public void accept(UpdateModel updateModel) {
-                        UpdateUtil.update(updateModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
+                    public void accept(VersionModel versionModel) {
+                        MLog.i(versionModel);
+                        UpdateUtil.update(versionModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
                     }
                 }, new ErrorConsumer(mContext)));
     }
 
+
     private void requestTransaction() {
 
-        mDisposables.add(ApiServer.getApi().getBlockDetail(mTvAddress.getText().toString())
+        mDisposable.add(ApiServer.getXdagScanApi().getBlockDetail(mTvAddress.getText().toString())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Detail2AddressListFunction())
                 .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
@@ -159,13 +168,14 @@ public class HomeFragment extends BaseMainFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RxUtil.dispose(mDisposables);
+        RxUtil.dispose(mDisposable);
     }
 
 
     @Override
     public void onRefresh() {
         super.onRefresh();
+        requestUpdate();
         requestTransaction();
     }
 

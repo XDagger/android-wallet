@@ -33,6 +33,9 @@ public class InitManager {
         mApplication = application;
         Common.init(mApplication, BuildConfig.DEBUG);
         initLeakCanary();
+        if (BuildConfig.DEBUG) {
+            MLog.setLogLev(MLog.LogLev.NO_LOG);
+        }
     }
 
 
