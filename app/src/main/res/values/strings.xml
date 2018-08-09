@@ -57,7 +57,6 @@
     <string name="error_noting_to_transfer">发送金额必须大于0</string>
     <string name="error_balance_too_small">余额不足</string>
     <string name="error_invalid_recv_address">非法的接收地址</string>
-    <string name="error_password_format">请输入 6–18 位的字母、数字或者符号</string>
 
     <!-- success -->
     <string name="success_refresh">刷新成功</string>
@@ -73,9 +72,10 @@
     <string name="setting_xdag_io">社区官网 - xdag.io</string>
     <string name="setting_github">GitHub - XDagger</string>
 
-    <!-- format -->
-    <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\
-    </string>
+    <!-- password format -->
+    <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
+    <string name="error_password_format">请输入 6–18 位的字母、数字或者符号</string>
+
     <!-- about -->
     <string name="slogan">流畅、稳定的 XDAG 钱包</string>
     <string name="about_explain">我们致力于做一款流畅、稳定的 XDAG 钱包，在使用过程中您有什么问题和建议，可以通过上一页面的问题与建议反馈给我们。 \n\n为了让您放心使用，我们的钱包代码已经在 GitHub 上开源，地址在下方，欢迎您随时检查，也欢迎各位 Coder 贡献代码。 \n\n最后提醒您：\n\n使本钱包之前，请务必在其他地方备份好您的钱包文件。\n\n您的钱包文件我们保存在了 Android 系统中的私有目录。\n但是备份和恢复钱包都是在存储卡进行的(sdcard/xdag/)，在 Android 系统中存储卡并不是一个安全的位置，请您在备份恢复钱包后立即转移您的钱包文件到其他设备上。\n\n任何卸载应用、删除数据的行为都将造成钱包文件丢失，且无法找回。请您在进行这些操作前务必备份您的钱包。\n\n出现任何资产损失，作者不会承担这个责任。</string>
