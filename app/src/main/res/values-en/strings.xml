@@ -62,7 +62,7 @@
     <string name="please_backup_your_xdag_wallet_first">Please read this carefully, and backup your wallet.</string>
     <string name="restore_read">I have read the content above, and created a backup in xdag folder</string>
     <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
-    <string name="loading_please_wait">Loading in progress ...</string>
+    <string name="loading_please_wait">Loading in progress..</string>
     <string name="please_wait_connecting_pool">Connecting to main net..</string>
     <string name="ensure">Confirm</string>
     <string name="please_wait_read_wallet">Reading wallet data..</string>
