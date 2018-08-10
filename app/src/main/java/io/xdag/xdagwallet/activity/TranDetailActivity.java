@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 
+import io.reactivex.disposables.CompositeDisposable;
+import io.xdag.xdagwallet.api.NoTransactionException;
+import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
+import io.xdag.xdagwallet.config.Config;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -29,8 +33,9 @@ import io.xdag.xdagwallet.util.RxUtil;
 public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAddress> {
 
     private static final String EXTRA_ADDRESS = "extra_address";
-    private Disposable mDisposable;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
     private String mAddress;
+
 
     @Override
     protected void parseIntent(Intent intent) {
@@ -38,10 +43,12 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
         mAddress = intent.getStringExtra(EXTRA_ADDRESS);
     }
 
+
     @Override
     protected int getItemLayout() {
         return R.layout.item_transaction;
     }
+
 
     @Override
     protected void initData() {
@@ -49,27 +56,48 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
         requestTranDetail(false);
     }
 
+
     @Override
     public void onRefresh() {
         super.onRefresh();
         requestTranDetail(true);
     }
 
-    private void requestTranDetail(final boolean alert) {
 
-        mDisposable = ApiServer.getXdagScanApi().getBlockDetail(mAddress)
+    private void requestTranDetail(final boolean alert) {
+        mDisposable.add(
+            ApiServer.getTransactionApi(Config.getTransactionHost()).getBlockDetail(mAddress)
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Detail2TranListFunction())
-                .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
-                    @Override
-                    public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
-                        mAdapter.setNewData(blockAsAddresses);
-                        if (alert) {
-                            AlertUtil.show(mContext, R.string.success_refresh);
+                .subscribe(blockAsAddresses -> showTransaction(blockAsAddresses, alert),
+                    throwable -> {
+                        // no transaction
+                        if (throwable instanceof NoTransactionException) {
+                            AlertUtil.show(mContext, throwable.getMessage());
+                            return;
                         }
-                    }
-                }, new ErrorConsumer(mContext));
+
+                        // if failed request api2 again
+                        mDisposable.add(
+                            ApiServer.getTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
+                                .getBlockDetail(mAddress)
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .map(new Detail2AddressListFunction())
+                                .subscribe(
+                                    blockAsAddresses -> showTransaction(blockAsAddresses, alert),
+                                    new ErrorConsumer(mContext))
+                        );
+                    }));
     }
+
+
+    private void showTransaction(List<BlockDetailModel.BlockAsAddress> blockAsAddresses, boolean alert) {
+        mAdapter.setNewData(blockAsAddresses);
+        if (alert) {
+            AlertUtil.show(mContext, R.string.success_refresh);
+        }
+    }
+
 
     @Override
     protected void convert(BaseViewHolder helper, final BlockDetailModel.BlockAsAddress item) {
@@ -102,6 +130,7 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
             }
         });
     }
+
 
     @Override
     public void onDestroy() {

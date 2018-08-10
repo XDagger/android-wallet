@@ -1,6 +1,7 @@
 package io.xdag.xdagwallet.config;
 
 import io.xdag.common.util.SPUtil;
+import io.xdag.xdagwallet.api.ApiServer;
 
 /**
  * created by lxm on 2018/7/18.
@@ -13,6 +14,7 @@ public class Config {
     private static final String CONFIG_KEY_POOL = "config_key_pool";
     private static final String CONFIG_KEY_IS_USER_BACKUP = "config_key_is_user_backup";
     private static final String CONFIG_KEY_NOT_SHOW_USAGE = "config_key_not_show_explain";
+    private static final String CONFIG_KEY_TRAN_HOST = "config_key_tran_host";
 
 
     public static void setPoolAddress(String poolAddress) {
@@ -44,4 +46,13 @@ public class Config {
         return SPUtil.getBoolean(CONFIG_KEY_NOT_SHOW_USAGE, false);
     }
 
+
+    public static void setTransactionHost(String host) {
+        SPUtil.putString(CONFIG_KEY_TRAN_HOST, host);
+    }
+
+
+    public static String getTransactionHost() {
+        return SPUtil.getString(CONFIG_KEY_TRAN_HOST, ApiServer.BASE_URL_TRANSACTION);
+    }
 }

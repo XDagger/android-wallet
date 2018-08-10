@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import io.xdag.xdagwallet.config.Config;
 import java.util.List;
 
 import butterknife.BindView;
@@ -60,10 +61,12 @@ public class HomeFragment extends BaseMainFragment {
     private View mEmptyView;
     private CompositeDisposable mDisposable = new CompositeDisposable();
 
+
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_home;
     }
+
 
     @Override
     protected void initView(View rootView) {
@@ -75,7 +78,7 @@ public class HomeFragment extends BaseMainFragment {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {
                 getRefreshDelegate().setRefreshEnabled(
-                        state.equals(AppBarStateChangedListener.State.EXPANDED));
+                    state.equals(AppBarStateChangedListener.State.EXPANDED));
             }
         });
 
@@ -90,25 +93,29 @@ public class HomeFragment extends BaseMainFragment {
         }
 
         mRecyclerView.setAdapter(mAdapter);
-        XdagEventManager.getInstance(getMainActivity()).addOnEventUpdateCallback(new XdagEventManager.OnEventUpdateCallback() {
-            @Override
-            public void onAddressReady(XdagEvent event) {
-                requestTransaction();
-            }
+        XdagEventManager.getInstance(getMainActivity())
+            .addOnEventUpdateCallback(new XdagEventManager.OnEventUpdateCallback() {
+                @Override
+                public void onAddressReady(XdagEvent event) {
+                    requestTransaction();
+                }
 
-            @Override
-            public void onEventUpdate(XdagEvent event) {
-                mTvAddress.setText(event.address);
-                mCollapsingToolbarLayout.setTitle(event.balance);
-            }
 
-            @Override
-            public void onEventXfer(XdagEvent event) {
-                requestTransaction();
-            }
-        });
+                @Override
+                public void onEventUpdate(XdagEvent event) {
+                    mTvAddress.setText(event.address);
+                    mCollapsingToolbarLayout.setTitle(event.balance);
+                }
+
+
+                @Override
+                public void onEventXfer(XdagEvent event) {
+                    requestTransaction();
+                }
+            });
 
     }
+
 
     @Override
     protected void initData() {
@@ -118,18 +125,20 @@ public class HomeFragment extends BaseMainFragment {
 
 
     private void requestUpdate() {
-        mDisposable.add(ApiServer.getApi().getVersionInfo()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(versionModel -> {
-                    MLog.i(versionModel);
-                    UpdateUtil.update(versionModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
-                }, new ErrorConsumer(mContext)));
+        mDisposable.add(ApiServer.getGitHubApi().getVersionInfo()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(versionModel -> {
+                MLog.i(versionModel);
+                UpdateUtil.update(versionModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate,
+                    mTvVersionClose);
+            }, new ErrorConsumer(mContext)));
     }
 
 
     private void requestTransaction() {
-
-        mDisposable.add(ApiServer.getXdagScanApi().getBlockDetail(mTvAddress.getText().toString())
+        String baseUrl = Config.getTransactionHost();
+        mDisposable.add(
+            ApiServer.getTransactionApi(baseUrl).getBlockDetail(mTvAddress.getText().toString())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Detail2AddressListFunction())
                 .subscribe(this::showTransaction, throwable -> {
@@ -141,10 +150,11 @@ public class HomeFragment extends BaseMainFragment {
 
                     // if failed request api2 again
                     mDisposable.add(
-                            ApiServer.getXdagScanApi2().getBlockDetail(mTvAddress.getText().toString())
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .map(new Detail2AddressListFunction())
-                                    .subscribe(this::showTransaction, new ErrorConsumer(mContext))
+                        ApiServer.getTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
+                            .getBlockDetail(mTvAddress.getText().toString())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .map(new Detail2AddressListFunction())
+                            .subscribe(this::showTransaction, new ErrorConsumer(mContext))
                     );
                 }));
     }
@@ -161,6 +171,7 @@ public class HomeFragment extends BaseMainFragment {
         mCollapsingToolbarLayout.setTitle(getString(R.string.not_ready));
         mAdapter.setNewData(null);
     }
+
 
     @OnClick(R.id.home_tv_address)
     void copyAddress() {
@@ -180,6 +191,7 @@ public class HomeFragment extends BaseMainFragment {
         super.onRefresh();
         requestTransaction();
     }
+
 
     public static HomeFragment newInstance() {
         return new HomeFragment();

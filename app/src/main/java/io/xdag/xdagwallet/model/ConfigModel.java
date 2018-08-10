@@ -6,13 +6,13 @@ package io.xdag.xdagwallet.model;
 public class ConfigModel {
 
     public String defaultPool;
-    public String transferUrl;
+    public String transactionHost;
 
 
     @Override public String toString() {
         return "ConfigModel{" +
-            "default_pool='" + defaultPool + '\'' +
-            ", transfer_url='" + transferUrl + '\'' +
+            "defaultPool='" + defaultPool + '\'' +
+            ", transactionHost='" + transactionHost + '\'' +
             '}';
     }
 }
