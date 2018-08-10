@@ -22,7 +22,7 @@
                 style="@style/Xdag.Button"
                 android:id="@+id/explain_btn_pool"
                 android:layout_marginTop="@dimen/space_16"
-                android:text="@string/select_pool"
+                android:text="@string/more_pool"
                 app:layout_constraintBottom_toTopOf="@id/explain_btn_start"
                 app:layout_constraintTop_toBottomOf="@id/explain_tv_explain_text"
                 app:layout_constraintVertical_chainStyle="packed"/>

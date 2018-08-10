@@ -76,21 +76,13 @@ public class UseExplainActivity extends ToolbarActivity
                 .setCancelable(false)
                 .setTitle(R.string.warning)
                 .setMessage(R.string.check_root_explain)
-                .setPositiveButton(R.string.continue_use, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (isNotShow()) {
-                            WalletActivity.start(mContext);
-                            finish();
-                        }
+                .setPositiveButton(R.string.continue_use, (dialog, which) -> {
+                    if (isNotShow()) {
+                        WalletActivity.start(mContext);
+                        finish();
                     }
                 })
-                .setNegativeButton(R.string.exit, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mContext.finish();
-                    }
-                });
+                .setNegativeButton(R.string.exit, (dialog, which) -> mContext.finish());
             builder.create().show();
         } else if (isNotShow()) {
             WalletActivity.start(mContext);

@@ -87,13 +87,10 @@ public class WalletActivity extends ToolbarActivity {
         AndPermission.with(mContext)
             .runtime()
             .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-            .onGranted(new Action<List<String>>() {
-                @Override
-                public void onAction(List<String> data) {
-                    if (XdagHandlerWrapper.createSDCardFile(mContext) != null) {
-                        RestoreActivity.start(mContext);
-                        finish();
-                    }
+            .onGranted(data -> {
+                if (XdagHandlerWrapper.createSDCardFile(mContext) != null) {
+                    RestoreActivity.start(mContext);
+                    finish();
                 }
             })
             .start();

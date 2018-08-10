@@ -105,8 +105,8 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         RxUtil.dispose(mDisposable);
+        super.onDestroy();
     }
 
 

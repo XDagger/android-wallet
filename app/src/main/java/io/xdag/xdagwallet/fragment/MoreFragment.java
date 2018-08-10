@@ -1,6 +1,5 @@
 package io.xdag.xdagwallet.fragment;
 
-import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import butterknife.OnClick;
@@ -19,14 +18,14 @@ import java.util.Arrays;
  * <p>
  * desc :
  */
-public class SettingFragment extends BaseMainFragment {
+public class MoreFragment extends BaseMainFragment {
 
     AlertDialog.Builder mBuilder;
 
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_setting;
+        return R.layout.fragment_more;
     }
 
 
@@ -42,17 +41,12 @@ public class SettingFragment extends BaseMainFragment {
         mBuilder = new AlertDialog.Builder(mContext)
             .setTitle(R.string.warning)
             .setMessage(R.string.cover_explain)
-            .setPositiveButton(R.string.cover, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    backupWallet();
-                }
-            })
+            .setPositiveButton(R.string.cover, (dialog, which) -> backupWallet())
             .setNegativeButton(R.string.cancel, null);
     }
 
 
-    @OnClick(R.id.setting_backup)
+    @OnClick(R.id.more_backup)
     void setting_backup() {
 
         if (isSDCardWalletExists()) {
@@ -63,7 +57,7 @@ public class SettingFragment extends BaseMainFragment {
     }
 
 
-    @OnClick(R.id.setting_switch_wallet)
+    @OnClick(R.id.more_switch_wallet)
     void setting_switch() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
             .setMessage(R.string.the_function_developing_please_wait)
@@ -72,31 +66,31 @@ public class SettingFragment extends BaseMainFragment {
     }
 
 
-    @OnClick(R.id.setting_switch_pool)
+    @OnClick(R.id.more_switch_pool)
     void setting_switch_pool() {
         PoolListActivity.start(mContext, false);
     }
 
 
-    @OnClick(R.id.setting_suggest)
+    @OnClick(R.id.more_suggest)
     void setting_suggest() {
         IntentUtil.openBrowser(mContext, "http://cn.mikecrm.com/im90MMt");
     }
 
 
-    @OnClick(R.id.setting_about)
+    @OnClick(R.id.more_about)
     void setting_about() {
         AboutActivity.start(mContext);
     }
 
 
-    @OnClick(R.id.setting_github)
+    @OnClick(R.id.more_github)
     void setting_github() {
         IntentUtil.openBrowser(mContext, "https://github.com/XDagger");
     }
 
 
-    @OnClick(R.id.setting_xdagio)
+    @OnClick(R.id.more_xdagio)
     void setting_xdagio() {
         IntentUtil.openBrowser(mContext, "https://xdag.io");
     }
@@ -121,8 +115,8 @@ public class SettingFragment extends BaseMainFragment {
     }
 
 
-    public static SettingFragment newInstance() {
-        return new SettingFragment();
+    public static MoreFragment newInstance() {
+        return new MoreFragment();
     }
 
 

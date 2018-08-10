@@ -13,6 +13,7 @@ import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
 import io.xdag.common.tool.ActivityStack;
+import io.xdag.xdagwallet.fragment.MoreFragment;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -27,7 +28,6 @@ import io.xdag.xdagwallet.fragment.BaseMainFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
-import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ToolbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
@@ -51,7 +51,7 @@ public class MainActivity extends ToolbarActivity {
     private HomeFragment mHomeFragment;
     private ReceiveFragment mReceiveFragment;
     private SendFragment mSendFragment;
-    private SettingFragment mSettingFragment;
+    private MoreFragment mSettingFragment;
     public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
@@ -163,7 +163,7 @@ public class MainActivity extends ToolbarActivity {
         AHBottomNavigationItem send =
             new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
         AHBottomNavigationItem setting =
-            new AHBottomNavigationItem(getString(R.string.setting), R.drawable.ic_setting);
+            new AHBottomNavigationItem(getString(R.string.more), R.drawable.ic_more);
         // add items
         mNavigationView.addItem(home);
         mNavigationView.addItem(receive);
@@ -206,7 +206,7 @@ public class MainActivity extends ToolbarActivity {
         mHomeFragment = HomeFragment.newInstance();
         mReceiveFragment = ReceiveFragment.newInstance();
         mSendFragment = SendFragment.newInstance();
-        mSettingFragment = SettingFragment.newInstance();
+        mSettingFragment = MoreFragment.newInstance();
 
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
             HomeFragment.class.getName());
@@ -215,7 +215,7 @@ public class MainActivity extends ToolbarActivity {
         addFragmentToActivity(mFragmentManager, mSendFragment, R.id.container,
             SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
-            SettingFragment.class.getName());
+            MoreFragment.class.getName());
 
         showFragment(mHomeFragment);
     }
@@ -228,8 +228,8 @@ public class MainActivity extends ToolbarActivity {
             ReceiveFragment.class.getName());
         mSendFragment = (SendFragment) mFragmentManager.findFragmentByTag(
             SendFragment.class.getName());
-        mSettingFragment = (SettingFragment) mFragmentManager.findFragmentByTag(
-            SettingFragment.class.getName());
+        mSettingFragment = (MoreFragment) mFragmentManager.findFragmentByTag(
+            MoreFragment.class.getName());
     }
 
 

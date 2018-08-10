@@ -11,64 +11,64 @@
         android:orientation="vertical">
         
         <io.xdag.xdagwallet.widget.SettingItemView
-            android:id="@+id/setting_backup"
+            android:id="@+id/more_backup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/setting_item_space"
             android:background="@color/WHITE"
-            android:text="@string/setting_backup_wallet" />
+            android:text="@string/more_backup_wallet" />
         
         <View style="@style/DividerHorizontalThin" />
         
         <io.xdag.xdagwallet.widget.SettingItemView
-            android:id="@+id/setting_switch_wallet"
+            android:id="@+id/more_switch_wallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/WHITE"
-            android:text="@string/switch_wallet" />
+            android:text="@string/more_wallet" />
         
         <View style="@style/DividerHorizontalThin" />
         
         <io.xdag.xdagwallet.widget.SettingItemView
-            android:id="@+id/setting_switch_pool"
+            android:id="@+id/more_switch_pool"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/WHITE"
-            android:text="@string/select_pool" />
+            android:text="@string/more_pool" />
         
         <io.xdag.xdagwallet.widget.SettingItemView
-            android:id="@+id/setting_suggest"
+            android:id="@+id/more_suggest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/setting_item_space"
             android:background="@color/WHITE"
-            android:text="@string/setting_suggest" />
+            android:text="@string/more_suggest" />
         
         <View style="@style/DividerHorizontalThin" />
         
         <io.xdag.xdagwallet.widget.SettingItemView
-            android:id="@+id/setting_about"
+            android:id="@+id/more_about"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/WHITE"
             android:text="@string/about" />
         
         <io.xdag.xdagwallet.widget.SettingItemView
-            android:id="@+id/setting_github"
+            android:id="@+id/more_github"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/setting_item_space"
             android:background="@color/WHITE"
-            android:text="@string/setting_github" />
+            android:text="@string/more_github" />
         
         <View style="@style/DividerHorizontalThin" />
         
         <io.xdag.xdagwallet.widget.SettingItemView
-            android:id="@+id/setting_xdagio"
+            android:id="@+id/more_xdagio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/WHITE"
-            android:text="@string/setting_xdag_io" />
+            android:text="@string/more_xdag_io" />
     
     
     </LinearLayout>

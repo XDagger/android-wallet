@@ -7,24 +7,21 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.xdag.common.tool.MLog;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
+import io.reactivex.disposables.CompositeDisposable;
 import io.xdag.common.tool.AppBarStateChangedListener;
+import io.xdag.common.tool.MLog;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
 import io.xdag.xdagwallet.api.ApiServer;
+import io.xdag.xdagwallet.api.NoTransactionException;
 import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
 import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
 import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
-import io.xdag.xdagwallet.model.VersionModel;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
@@ -84,12 +81,7 @@ public class HomeFragment extends BaseMainFragment {
 
         if (mEmptyView == null) {
             mEmptyView = new EmptyView(mContext);
-            mEmptyView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    requestTransaction();
-                }
-            });
+            mEmptyView.setOnClickListener(v -> requestTransaction());
         }
 
         if (mAdapter == null) {
@@ -128,12 +120,9 @@ public class HomeFragment extends BaseMainFragment {
     private void requestUpdate() {
         mDisposable.add(ApiServer.getApi().getVersionInfo()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<VersionModel>() {
-                    @Override
-                    public void accept(VersionModel versionModel) {
-                        MLog.i(versionModel);
-                        UpdateUtil.update(versionModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
-                    }
+                .subscribe(versionModel -> {
+                    MLog.i(versionModel);
+                    UpdateUtil.update(versionModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
                 }, new ErrorConsumer(mContext)));
     }
 
@@ -143,13 +132,27 @@ public class HomeFragment extends BaseMainFragment {
         mDisposable.add(ApiServer.getXdagScanApi().getBlockDetail(mTvAddress.getText().toString())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Detail2AddressListFunction())
-                .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
-                    @Override
-                    public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
-                        mAdapter.setNewData(blockAsAddresses);
-                        AlertUtil.show(mContext, R.string.success_refresh);
+                .subscribe(this::showTransaction, throwable -> {
+                    // no transaction
+                    if (throwable instanceof NoTransactionException) {
+                        AlertUtil.show(mContext, throwable.getMessage());
+                        return;
                     }
-                }, new ErrorConsumer(getMainActivity())));
+
+                    // if failed request api2 again
+                    mDisposable.add(
+                            ApiServer.getXdagScanApi2().getBlockDetail(mTvAddress.getText().toString())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .map(new Detail2AddressListFunction())
+                                    .subscribe(this::showTransaction, new ErrorConsumer(mContext))
+                    );
+                }));
+    }
+
+
+    private void showTransaction(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
+        mAdapter.setNewData(blockAsAddresses);
+        AlertUtil.show(mContext, R.string.success_refresh);
     }
 
 
@@ -167,15 +170,14 @@ public class HomeFragment extends BaseMainFragment {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         RxUtil.dispose(mDisposable);
+        super.onDestroy();
     }
 
 
     @Override
     public void onRefresh() {
         super.onRefresh();
-        requestUpdate();
         requestTransaction();
     }
 
