@@ -7,6 +7,7 @@
     <string name="send">发送</string>
     <string name="receive">接收</string>
     <string name="more">更多</string>
+    <string name="setting">设置</string>
     <string name="send_xdag">发送 XDAG</string>
     <string name="receive_xdag">接收 XDAG</string>
     <string name="scan">扫一扫</string>
@@ -86,7 +87,7 @@
     <string name="new_version_available">有新版本的 XDAG 钱包可用：%1$s</string>
 
     <!-- explain-->
-    <string name="use_explain">使用说明</string>
+    <string name="usage">使用说明</string>
     <string name="function_explain">功能说明</string>
     <string name="backup_explain">我已经仔细阅读上述内容</string>
     <string name="restore_read_explain">已仔细阅读上述内容，并将钱包文件拷贝到了存储卡的 xdag 文件夹。</string>
@@ -113,5 +114,8 @@
     <string name="wallet_explain_4">恢复钱包：如果您创建过 XDAG 钱包，可以从这里导入钱包文件来恢复钱包。\n</string>
     <string name="wallet_explain_5">在点击恢复钱包后，我们会帮您在存储卡根目录创建一个 xdag 文件夹，这个时候我们会请求您的存储卡权限，请您不要拒绝。\n</string>
     <string name="cover_explain">检测到 /sdcard/xdag 已经存在一个钱包，继续备份将覆盖这个钱包（钱包被覆盖意味着钱包的资产丢失且无法找回）。</string>
+
+    <!-- settings -->
+    <string name="settings_show_usage">不显示使用说明</string>
 
 </resources>

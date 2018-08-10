@@ -15,30 +15,30 @@ import io.xdag.xdagwallet.R;
  *
  * desc :
  */
-public class SettingItemView extends FrameLayout {
+public class MoreItemView extends FrameLayout {
 
     private TextView mTvText;
 
 
-    public SettingItemView(@NonNull Context context) {
+    public MoreItemView(@NonNull Context context) {
         this(context, null);
     }
 
 
-    public SettingItemView(
+    public MoreItemView(
         @NonNull Context context,
         @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
 
-    public SettingItemView(
+    public MoreItemView(
         @NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         this(context, attrs, defStyleAttr, 0);
     }
 
 
-    public SettingItemView(
+    public MoreItemView(
         @NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs);
@@ -46,11 +46,11 @@ public class SettingItemView extends FrameLayout {
 
 
     private void init(Context context, AttributeSet attrs) {
-        View rootView = View.inflate(context, R.layout.view_setting_item, this);
-        mTvText = rootView.findViewById(R.id.setting_item_title);
+        View rootView = View.inflate(context, R.layout.view_more_item, this);
+        mTvText = rootView.findViewById(R.id.more_item_title);
 
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.SettingItemView);
-        CharSequence text = a.getText(R.styleable.SettingItemView_android_text);
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.MoreItemView);
+        CharSequence text = a.getText(R.styleable.MoreItemView_android_text);
         a.recycle();
         mTvText.setText(text);
 

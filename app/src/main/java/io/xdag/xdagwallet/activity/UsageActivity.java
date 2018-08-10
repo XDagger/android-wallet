@@ -1,7 +1,6 @@
 package io.xdag.xdagwallet.activity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -24,7 +23,7 @@ import io.xdag.xdagwallet.util.AlertUtil;
  * created by ssyijiu  on 2018/7/22
  */
 
-public class UseExplainActivity extends ToolbarActivity
+public class UsageActivity extends ToolbarActivity
     implements CompoundButton.OnCheckedChangeListener {
 
     @BindView(R.id.explain_tv_explain_text)
@@ -67,7 +66,7 @@ public class UseExplainActivity extends ToolbarActivity
     protected void onStart() {
         super.onStart();
         mCbBackup.setChecked(Config.isUserBackup());
-        mCbNoShow.setChecked(Config.isNotShowExplain());
+        mCbNoShow.setChecked(Config.isNotShowUsage());
         RootBeer rootBeer = new RootBeer(mContext);
 
         // root
@@ -112,13 +111,13 @@ public class UseExplainActivity extends ToolbarActivity
 
 
     public static boolean isNotShow() {
-        return Config.isUserBackup() && Config.isNotShowExplain();
+        return Config.isUserBackup() && Config.isNotShowUsage();
     }
 
 
     @Override
     protected int getToolbarTitle() {
-        return R.string.use_explain;
+        return R.string.usage;
     }
 
 
@@ -135,7 +134,7 @@ public class UseExplainActivity extends ToolbarActivity
                 Config.setUserBackup(isChecked);
                 break;
             case R.id.explain_cb_not_show:
-                Config.setNotShowExplain(isChecked);
+                Config.setNotShowUsage(isChecked);
                 break;
             default:
 
