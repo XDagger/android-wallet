@@ -170,8 +170,8 @@ public class HomeFragment extends BaseMainFragment {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         RxUtil.dispose(mDisposable);
+        super.onDestroy();
     }
 
 

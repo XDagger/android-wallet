@@ -34,7 +34,7 @@ public class ToolbarUtil {
                 toolbar.getMenu().setGroupVisible(0, true);
                 break;
             case 3:
-                toolbar.setTitle(R.string.setting);
+                toolbar.setTitle(R.string.more);
                 toolbar.setVisibility(View.VISIBLE);
                 toolbar.getMenu().setGroupVisible(0, false);
                 break;

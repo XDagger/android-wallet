@@ -2,9 +2,7 @@ package io.xdag.xdagwallet.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.view.View;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -53,31 +51,25 @@ public class PoolListActivity extends ListActivity<PoolModel> {
         super.convert(helper, item);
         helper.setText(R.id.item_pool_tv, item.address);
         helper.setImageResource(R.id.item_pool_img, item.selectedImage);
-        helper.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                    .setMessage(getString(R.string.switch_pool_to, item.address))
-                    .setPositiveButton(R.string.ensure, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Config.setPoolAddress(item.address);
-                            mAdapter.setNewData(PoolModel.getPoolList());
-                            if(!mOnlyConfig) {
-                                MainActivity.switchPool(mContext);
-                            }
-                        }
-                    })
-                    .setNegativeButton(R.string.cancel, null);
-                builder.create().show();
-            }
+        helper.itemView.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.switch_pool_to, item.address))
+                .setPositiveButton(R.string.ensure, (dialog, which) -> {
+                    Config.setPoolAddress(item.address);
+                    mAdapter.setNewData(PoolModel.getPoolList());
+                    if(!mOnlyConfig) {
+                        MainActivity.switchPool(mContext);
+                    }
+                })
+                .setNegativeButton(R.string.cancel, null);
+            builder.create().show();
         });
     }
 
 
     @Override
     protected int getToolbarTitle() {
-        return R.string.select_pool;
+        return R.string.more_pool;
     }
 
 

@@ -6,7 +6,7 @@
     <string name="home">Home</string>
     <string name="send">Send</string>
     <string name="receive">Receive</string>
-    <string name="setting">Setting</string>
+    <string name="more">More</string>
     <string name="send_xdag">Send XDAG</string>
     <string name="receive_xdag">Receive XDAG</string>
     <string name="scan">Scan QRCode</string>
@@ -64,13 +64,13 @@
     <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
 
     <!-- setting item-->
-    <string name="setting_messages">Message</string>
-    <string name="setting_backup_wallet">Backup Wallet</string>
-    <string name="setting_suggest">Feedback</string>
-    <string name="switch_wallet">Switch wallet</string>
-    <string name="select_pool">Switch pool</string>
-    <string name="setting_xdag_io">Community website - xdag.io</string>
-    <string name="setting_github">GitHub - XDagger</string>
+    <string name="more_messages">Message</string>
+    <string name="more_backup_wallet">Backup wallet</string>
+    <string name="more_suggest">Feedback</string>
+    <string name="more_wallet">Switch wallet</string>
+    <string name="more_pool">Switch pool</string>
+    <string name="more_xdag_io">Community website - xdag.io</string>
+    <string name="more_github">GitHub - XDagger</string>
 
     <!-- password format -->
     <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>

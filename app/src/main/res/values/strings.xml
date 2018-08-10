@@ -6,7 +6,7 @@
     <string name="home">首页</string>
     <string name="send">发送</string>
     <string name="receive">接收</string>
-    <string name="setting">设置</string>
+    <string name="more">更多</string>
     <string name="send_xdag">发送 XDAG</string>
     <string name="receive_xdag">接收 XDAG</string>
     <string name="scan">扫一扫</string>
@@ -63,14 +63,14 @@
     <string name="success_copy_address">地址复制成功</string>
     <string name="success_backup_xdag_wallet">您的钱包已备份至 /sdcard/xdag 目录</string>
 
-    <!-- setting item-->
-    <string name="setting_messages">消息</string>
-    <string name="setting_backup_wallet">备份钱包</string>
-    <string name="setting_suggest">问题与建议</string>
-    <string name="switch_wallet">切换钱包</string>
-    <string name="select_pool">选择矿池</string>
-    <string name="setting_xdag_io">社区官网 - xdag.io</string>
-    <string name="setting_github">GitHub - XDagger</string>
+    <!-- more item-->
+    <string name="more_messages">消息</string>
+    <string name="more_backup_wallet">备份钱包</string>
+    <string name="more_suggest">问题与建议</string>
+    <string name="more_wallet">切换钱包</string>
+    <string name="more_pool">选择矿池</string>
+    <string name="more_xdag_io">社区官网 - xdag.io</string>
+    <string name="more_github">GitHub - XDagger</string>
 
     <!-- password format -->
     <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
