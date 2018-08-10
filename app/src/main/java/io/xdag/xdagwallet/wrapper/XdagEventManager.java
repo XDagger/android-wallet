@@ -175,12 +175,9 @@ public class XdagEventManager {
             .setPositiveListener((dialog, input) -> {
                 if (input.length() < 6) {
                     AlertUtil.show(mActivity, R.string.error_password_format);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mInputDialog.show();
-                            InputMethodUtil.showSoftInput(mActivity);
-                        }
+                    new Handler().postDelayed(() -> {
+                        mInputDialog.show();
+                        InputMethodUtil.showSoftInput(mActivity);
                     }, 500);
                 } else {
                     XdagWrapper.getInstance().XdagNotifyMsg(input);

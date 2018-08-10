@@ -2,14 +2,20 @@ package io.xdag.xdagwallet.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.text.InputType;
+import android.view.View;
+import butterknife.BindView;
 import com.chad.library.adapter.base.BaseViewHolder;
-
 import io.xdag.common.base.ListActivity;
+import io.xdag.common.util.InputMethodUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.config.Config;
+import io.xdag.xdagwallet.dialog.InputBuilder;
 import io.xdag.xdagwallet.model.PoolModel;
 
 /**
@@ -19,6 +25,13 @@ public class PoolListActivity extends ListActivity<PoolModel> {
 
     private static final String EXTRA_ONLY_CONFIG = "extra_only_config";
     private boolean mOnlyConfig;
+
+    @BindView(R.id.pool_fab_add) FloatingActionButton mFabAdd;
+
+
+    @Override protected int getLayoutResId() {
+        return R.layout.activity_poollist;
+    }
 
 
     @Override
@@ -36,6 +49,14 @@ public class PoolListActivity extends ListActivity<PoolModel> {
     @Override protected void parseIntent(Intent intent) {
         super.parseIntent(intent);
         mOnlyConfig = intent.getBooleanExtra(EXTRA_ONLY_CONFIG, false);
+    }
+
+
+    @Override protected void initView(View rootView, Bundle savedInstanceState) {
+        super.initView(rootView, savedInstanceState);
+        mFabAdd.setOnClickListener(v -> {
+            addPool();
+        });
     }
 
 
@@ -57,12 +78,12 @@ public class PoolListActivity extends ListActivity<PoolModel> {
                 .setPositiveButton(R.string.ensure, (dialog, which) -> {
                     Config.setPoolAddress(item.address);
                     mAdapter.setNewData(PoolModel.getPoolList());
-                    if(!mOnlyConfig) {
+                    if (!mOnlyConfig) {
                         MainActivity.switchPool(mContext);
                     }
                 })
                 .setNegativeButton(R.string.cancel, null);
-            builder.create().show();
+            builder.show();
         });
     }
 
@@ -70,6 +91,19 @@ public class PoolListActivity extends ListActivity<PoolModel> {
     @Override
     protected int getToolbarTitle() {
         return R.string.more_pool;
+    }
+
+
+    private void addPool() {
+        new InputBuilder(mContext)
+            .setInputType(InputType.TYPE_CLASS_TEXT)
+            .setPositiveListener((dialog, input) -> {
+                PoolModel.sPoolModelList.add(new PoolModel(input));
+                mAdapter.setNewData(PoolModel.getPoolList());
+            })
+            .setMessage(R.string.add_pool_address)
+            .setCancelable(true)
+            .show();
     }
 
 

@@ -33,6 +33,7 @@
     <string name="ensure">Confirm</string>
     <string name="available_xdag">Available %1$s XDAG</string>
     <string name="cancel">Cancel</string>
+    <string name="add_pool_address">Add pool address</string>
 
     <!-- please -->
     <string name="please_set_password">Please set wallet password</string>

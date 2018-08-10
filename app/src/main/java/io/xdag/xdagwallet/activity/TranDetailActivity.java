@@ -82,7 +82,7 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
                             ApiServer.getTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
                                 .getBlockDetail(mAddress)
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .map(new Detail2AddressListFunction())
+                                .map(new Detail2TranListFunction())
                                 .subscribe(
                                     blockAsAddresses -> showTransaction(blockAsAddresses, alert),
                                     new ErrorConsumer(mContext))
