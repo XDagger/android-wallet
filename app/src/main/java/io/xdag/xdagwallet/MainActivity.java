@@ -98,12 +98,7 @@ public class MainActivity extends ToolbarActivity {
         AndPermission.with(mContext)
             .runtime()
             .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-            .onGranted(new Action<List<String>>() {
-                @Override
-                public void onAction(List<String> data) {
-                    connectToPool();
-                }
-            })
+            .onGranted(data -> connectToPool())
             .start();
     }
 

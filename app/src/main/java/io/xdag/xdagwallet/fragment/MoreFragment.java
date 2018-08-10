@@ -8,6 +8,7 @@ import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.activity.AboutActivity;
 import io.xdag.xdagwallet.activity.PoolListActivity;
+import io.xdag.xdagwallet.activity.SettingActivity;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 import java.io.File;
@@ -69,6 +70,11 @@ public class MoreFragment extends BaseMainFragment {
     @OnClick(R.id.more_switch_pool)
     void setting_switch_pool() {
         PoolListActivity.start(mContext, false);
+    }
+
+    @OnClick(R.id.more_setting)
+    void more_setting() {
+        SettingActivity.start(mContext);
     }
 
 

@@ -8,7 +8,7 @@
     android:padding="@dimen/space_16">
 
     <TextView
-        android:id="@+id/setting_item_title"
+        android:id="@+id/more_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"

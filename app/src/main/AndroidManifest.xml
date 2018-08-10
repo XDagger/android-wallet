@@ -20,7 +20,7 @@
                 android:value="2.4"/>
 
         <activity
-                android:name=".activity.UseExplainActivity"
+                android:name=".activity.UsageActivity"
                 android:theme="@style/AppSplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -37,6 +37,7 @@
         <activity android:name=".activity.AboutActivity"/>
         <activity android:name=".activity.TranDetailActivity"/>
         <activity android:name=".activity.PoolListActivity"/>
+        <activity android:name=".activity.SettingActivity"/>
     </application>
 
 </manifest>

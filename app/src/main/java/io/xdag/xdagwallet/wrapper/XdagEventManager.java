@@ -163,45 +163,36 @@ public class XdagEventManager {
         mLoadingDialog = mLoadingBuilder.create();
 
         mTipDialog = new TipBuilder(mActivity)
-            .setPositiveListener(new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    XdagWrapper.getInstance().XdagNotifyMsg();
-                    dialog.dismiss();
-                    mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
-                    mLoadingDialog.show();
+            .setPositiveListener((dialog, which) -> {
+                XdagWrapper.getInstance().XdagNotifyMsg();
+                dialog.dismiss();
+                mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
+                mLoadingDialog.show();
 
-                }
             }).create();
 
         mInputDialog = new InputBuilder(mActivity)
-            .setPositiveListener(new InputBuilder.OnPositiveClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, String input) {
-                    if (input.length() < 6) {
-                        AlertUtil.show(mActivity, R.string.error_password_format);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                mInputDialog.show();
-                                InputMethodUtil.showSoftInput(mActivity);
-                            }
-                        }, 500);
-                    } else {
-                        XdagWrapper.getInstance().XdagNotifyMsg(input);
-                        dialog.dismiss();
-                        mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
-                        mLoadingDialog.show();
-                    }
-                    InputMethodUtil.hideSoftInput(mActivity);
+            .setPositiveListener((dialog, input) -> {
+                if (input.length() < 6) {
+                    AlertUtil.show(mActivity, R.string.error_password_format);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mInputDialog.show();
+                            InputMethodUtil.showSoftInput(mActivity);
+                        }
+                    }, 500);
+                } else {
+                    XdagWrapper.getInstance().XdagNotifyMsg(input);
+                    dialog.dismiss();
+                    mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
+                    mLoadingDialog.show();
                 }
+                InputMethodUtil.hideSoftInput(mActivity);
             })
-            .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    XdagWrapper.getInstance().XdagNotifyMsg();
-                    InputMethodUtil.hideSoftInput(mActivity);
-                }
+            .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
+                XdagWrapper.getInstance().XdagNotifyMsg();
+                InputMethodUtil.hideSoftInput(mActivity);
             }).create();
 
         mLoadingDialog.show();
