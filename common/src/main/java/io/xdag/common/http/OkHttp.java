@@ -2,8 +2,6 @@ package io.xdag.common.http;
 
 import com.readystatesoftware.chuck.ChuckInterceptor;
 
-import java.util.Collections;
-
 import io.xdag.common.Common;
 import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
@@ -17,6 +15,7 @@ public class OkHttp {
 
     private final OkHttpClient.Builder builder;
 
+
     OkHttp() {
 
         ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
@@ -29,7 +28,8 @@ public class OkHttp {
 
         builder = new OkHttpClient.Builder()
                 .retryOnConnectionFailure(true)
-                .connectionSpecs(Collections.singletonList(spec));
+        // .connectionSpecs(Collections.singletonList(spec))
+        ;
 
         if (Common.isDebug()) {
             // chuck
@@ -37,6 +37,7 @@ public class OkHttp {
         }
 
     }
+
 
     public OkHttpClient build() {
         return builder.build();

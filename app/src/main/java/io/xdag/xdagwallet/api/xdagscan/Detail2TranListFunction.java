@@ -3,6 +3,7 @@ package io.xdag.xdagwallet.api.xdagscan;
 import io.reactivex.functions.Function;
 import io.xdag.common.Common;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.api.NoTransactionException;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class Detail2TranListFunction
         if (blockDetailModel == null
             || blockDetailModel.block_as_transaction == null
             || blockDetailModel.block_as_transaction.isEmpty()) {
-            throw new Exception(Common.getString(R.string.no_transaction));
+            throw new NoTransactionException();
         }
         return blockDetailModel.block_as_transaction;
     }

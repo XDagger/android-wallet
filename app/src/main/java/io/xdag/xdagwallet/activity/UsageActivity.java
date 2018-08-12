@@ -11,13 +11,18 @@ import com.scottyab.rootbeer.RootBeer;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.TextStyleUtil;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.api.ApiServer;
+import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
 import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.util.AlertUtil;
+import io.xdag.xdagwallet.util.RxUtil;
 
 /**
  * created by ssyijiu  on 2018/7/22
@@ -25,6 +30,8 @@ import io.xdag.xdagwallet.util.AlertUtil;
 
 public class UsageActivity extends ToolbarActivity
     implements CompoundButton.OnCheckedChangeListener {
+
+    private Disposable mDisposable;
 
     @BindView(R.id.explain_tv_explain_text)
     TextView mTvExplain;
@@ -62,13 +69,11 @@ public class UsageActivity extends ToolbarActivity
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+    @Override protected void initData() {
+        super.initData();
         mCbBackup.setChecked(Config.isUserBackup());
         mCbNoShow.setChecked(Config.isNotShowUsage());
         RootBeer rootBeer = new RootBeer(mContext);
-
         // root
         if (rootBeer.isRootedWithoutBusyBoxCheck()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
@@ -86,8 +91,13 @@ public class UsageActivity extends ToolbarActivity
         } else if (isNotShow()) {
             WalletActivity.start(mContext);
             finish();
+        } else {
+            mDisposable = ApiServer.getGitHubApi().getConfigInfo()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(configModel -> {
+                    Config.setTransactionHost(configModel.transactionHost);
+                }, new ErrorConsumer(mContext));
         }
-
     }
 
 
@@ -139,5 +149,11 @@ public class UsageActivity extends ToolbarActivity
             default:
 
         }
+    }
+
+
+    @Override protected void onDestroy() {
+        RxUtil.dispose(mDisposable);
+        super.onDestroy();
     }
 }

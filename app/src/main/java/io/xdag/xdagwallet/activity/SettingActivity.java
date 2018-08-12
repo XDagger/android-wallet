@@ -32,9 +32,10 @@ public class SettingActivity extends ToolbarActivity
     }
 
 
-    @Override protected void onStart() {
-        super.onStart();
+    @Override protected void initData() {
+        super.initData();
         mSwitchUsage.setChecked(Config.isNotShowUsage());
+
     }
 
 

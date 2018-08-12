@@ -33,6 +33,7 @@
     <string name="ensure">确定</string>
     <string name="available_xdag">Available %1$s XDAG</string>
     <string name="cancel">取消</string>
+    <string name="add_pool_address">添加矿池</string>
 
     <!-- please -->
     <string name="please_set_password">请设置您的钱包密码</string>

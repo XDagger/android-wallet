@@ -1,4 +1,4 @@
 {
-    "defaultPool": "142.44.143.234:777",
-    "transferUrl": "https://explorer.xdag.io/api/block/"
+    "defaultPool": "xdagmine.com:13654",
+    "transactionHost": "https://explorer.xdag.io/api/block/"
 }
