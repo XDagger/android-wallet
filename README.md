@@ -2,6 +2,10 @@
 
 This XDAG Wallet is based on the C implementation of XDAG, and developed for Android platform. 
 
+
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/XDagger/android-wallet.svg?columns=all)](https://waffle.io/XDagger/android-wallet)
+
+
 ## How to build 
 
 * Download the sourcecode from master branch and open it with latest Android Studio
