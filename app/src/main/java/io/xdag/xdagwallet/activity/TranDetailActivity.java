@@ -4,28 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
-
 import com.chad.library.adapter.base.BaseViewHolder;
-
 import io.reactivex.disposables.CompositeDisposable;
-import io.xdag.xdagwallet.api.NoTransactionException;
-import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
-import io.xdag.xdagwallet.config.Config;
-import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.xdag.common.base.ListActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.api.ApiServer;
-import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
-import io.xdag.xdagwallet.api.xdagscan.Detail2TranListFunction;
-import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
+import io.xdag.xdagwallet.model.BlockDetailModel;
+import io.xdag.xdagwallet.net.HttpRequest;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
+import java.util.List;
 
 /**
  * created by lxm on 2018/7/26.
@@ -65,29 +54,11 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
 
 
     private void requestTranDetail(final boolean alert) {
-        mDisposable.add(
-            ApiServer.getTransactionApi(Config.getTransactionHost()).getBlockDetail(mAddress)
-                .observeOn(AndroidSchedulers.mainThread())
-                .map(new Detail2TranListFunction())
-                .subscribe(blockAsAddresses -> showTransaction(blockAsAddresses, alert),
-                    throwable -> {
-                        // no transaction
-                        if (throwable instanceof NoTransactionException) {
-                            AlertUtil.show(mContext, throwable.getMessage());
-                            return;
-                        }
 
-                        // if failed request api2 again
-                        mDisposable.add(
-                            ApiServer.getTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
-                                .getBlockDetail(mAddress)
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .map(new Detail2TranListFunction())
-                                .subscribe(
-                                    blockAsAddresses -> showTransaction(blockAsAddresses, alert),
-                                    new ErrorConsumer(mContext))
-                        );
-                    }));
+        mDisposable.add(
+            HttpRequest.get().getBlockDetail(mContext, mAddress,
+                blockAsAddresses -> showTransaction(blockAsAddresses, alert))
+        );
     }
 
 

@@ -1,9 +1,10 @@
-package io.xdag.xdagwallet.api.xdagscan;
+package io.xdag.xdagwallet.net.rx;
 
+import io.xdag.xdagwallet.model.BlockDetailModel;
 import java.util.List;
 
 import io.reactivex.functions.Function;
-import io.xdag.xdagwallet.api.NoTransactionException;
+import io.xdag.xdagwallet.net.NoTransactionException;
 
 /**
  * created by lxm on 2018/7/24.

@@ -1,4 +1,4 @@
-package io.xdag.xdagwallet.api.xdagscan;
+package io.xdag.xdagwallet.net;
 
 import android.app.Activity;
 import io.reactivex.functions.Consumer;
@@ -10,18 +10,22 @@ import io.xdag.xdagwallet.util.AlertUtil;
  *
  * handle exception
  */
-public class ErrorConsumer implements Consumer<Throwable> {
+class ErrorConsumer implements Consumer<Throwable> {
 
     private Activity activity;
 
+    ErrorConsumer() {
+    }
 
-    public ErrorConsumer(Activity activity) {
+    ErrorConsumer(Activity activity) {
         this.activity = activity;
     }
 
 
     @Override public void accept(Throwable throwable) {
         MLog.i(throwable.getMessage());
-        AlertUtil.show(activity, throwable.getMessage());
+        if(activity != null) {
+            AlertUtil.show(activity, throwable.getMessage());
+        }
     }
 }

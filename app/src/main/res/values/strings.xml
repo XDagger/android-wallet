@@ -34,6 +34,7 @@
     <string name="available_xdag">Available %1$s XDAG</string>
     <string name="cancel">取消</string>
     <string name="add_pool_address">添加矿池</string>
+    <string name="delete_pool_address">删除矿池：%1$s？</string>
 
     <!-- please -->
     <string name="please_set_password">请设置您的钱包密码</string>
@@ -59,6 +60,9 @@
     <string name="error_noting_to_transfer">发送金额必须大于0</string>
     <string name="error_balance_too_small">余额不足</string>
     <string name="error_invalid_recv_address">非法的接收地址</string>
+    <string name="error_invalid_pool_address">非法的矿池地址</string>
+    <string name="error_pool_address_exists">矿池地址已经存在</string>
+    <string name="error_cannot_delete_selected_pool">不能删除已经选中的矿池</string>
 
     <!-- success -->
     <string name="success_refresh">刷新成功</string>

@@ -1,7 +1,7 @@
 package io.xdag.xdagwallet.config;
 
 import io.xdag.common.util.SPUtil;
-import io.xdag.xdagwallet.api.ApiServer;
+import io.xdag.xdagwallet.net.ApiServer;
 
 /**
  * created by lxm on 2018/7/18.

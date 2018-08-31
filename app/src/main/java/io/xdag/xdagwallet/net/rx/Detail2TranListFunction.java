@@ -1,9 +1,8 @@
-package io.xdag.xdagwallet.api.xdagscan;
+package io.xdag.xdagwallet.net.rx;
 
 import io.reactivex.functions.Function;
-import io.xdag.common.Common;
-import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.api.NoTransactionException;
+import io.xdag.xdagwallet.model.BlockDetailModel;
+import io.xdag.xdagwallet.net.NoTransactionException;
 import java.util.List;
 
 /**

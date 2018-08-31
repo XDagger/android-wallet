@@ -6,23 +6,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import io.xdag.xdagwallet.config.Config;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.common.tool.MLog;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
-import io.xdag.xdagwallet.api.ApiServer;
-import io.xdag.xdagwallet.api.NoTransactionException;
-import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
-import io.xdag.xdagwallet.api.xdagscan.Detail2AddressListFunction;
-import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
+import io.xdag.xdagwallet.config.Config;
+import io.xdag.xdagwallet.model.BlockDetailModel;
+import io.xdag.xdagwallet.net.HttpRequest;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
@@ -30,6 +23,7 @@ import io.xdag.xdagwallet.util.UpdateUtil;
 import io.xdag.xdagwallet.widget.EmptyView;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagEventManager;
+import java.util.List;
 
 /**
  * created by lxm on 2018/5/24.
@@ -125,38 +119,19 @@ public class HomeFragment extends BaseMainFragment {
 
 
     private void requestUpdate() {
-        mDisposable.add(ApiServer.getGitHubApi().getVersionInfo()
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(versionModel -> {
+        mDisposable.add(
+            HttpRequest.get().getVersionInfo(versionModel -> {
                 MLog.i(versionModel);
-                UpdateUtil.update(versionModel, mVersionLayout, mTvVersionDesc, mTvVersionUpdate,
-                    mTvVersionClose);
-            }, new ErrorConsumer(mContext)));
+                UpdateUtil.update(versionModel, mVersionLayout,
+                    mTvVersionDesc, mTvVersionUpdate, mTvVersionClose);
+            })
+        );
     }
 
 
     private void requestTransaction() {
-        String baseUrl = Config.getTransactionHost();
-        mDisposable.add(
-            ApiServer.getTransactionApi(baseUrl).getBlockDetail(mTvAddress.getText().toString())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map(new Detail2AddressListFunction())
-                .subscribe(this::showTransaction, throwable -> {
-                    // no transaction
-                    if (throwable instanceof NoTransactionException) {
-                        AlertUtil.show(mContext, throwable.getMessage());
-                        return;
-                    }
-
-                    // if failed request api2 again
-                    mDisposable.add(
-                        ApiServer.getTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
-                            .getBlockDetail(mTvAddress.getText().toString())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .map(new Detail2AddressListFunction())
-                            .subscribe(this::showTransaction, new ErrorConsumer(mContext))
-                    );
-                }));
+        mDisposable.add(HttpRequest.get()
+            .getBlockDetail(mContext, mTvAddress.getText().toString(), this::showTransaction));
     }
 
 
