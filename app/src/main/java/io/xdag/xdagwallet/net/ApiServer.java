@@ -15,6 +15,9 @@ public class ApiServer {
     public static final String BASE_URL_TRANSACTION2 = "http://139.99.124.100/api/block/";
     private static final String BASE_URL_GITHUB = "https://raw.githubusercontent.com/";
 
+    private ApiServer() {
+        throw new UnsupportedOperationException("ApiServer cannot be instantiated !");
+    }
 
     static TransactionApi getTransactionApi(String baseUrl) {
         return ApiFactory.getInstance().createApi(baseUrl, TransactionApi.class);

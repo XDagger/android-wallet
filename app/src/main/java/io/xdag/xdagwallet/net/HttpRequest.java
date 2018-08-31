@@ -19,9 +19,11 @@ public class HttpRequest {
 
     private static final HttpRequest sInstance = new HttpRequest();
 
-
     public static HttpRequest get() {
         return sInstance;
+    }
+
+    private HttpRequest() {
     }
 
 
