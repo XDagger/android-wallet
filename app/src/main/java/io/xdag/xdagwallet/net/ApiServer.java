@@ -1,7 +1,8 @@
-package io.xdag.xdagwallet.api;
+package io.xdag.xdagwallet.net;
 
 import io.xdag.common.http.ApiFactory;
-import io.xdag.xdagwallet.api.xdagscan.XdagScanApi;
+import io.xdag.xdagwallet.net.api.ConfigApi;
+import io.xdag.xdagwallet.net.api.TransactionApi;
 
 /**
  * created by lxm on 2018/7/6.
@@ -15,11 +16,11 @@ public class ApiServer {
     private static final String BASE_URL_GITHUB = "https://raw.githubusercontent.com/";
 
 
-    public static XdagScanApi getTransactionApi(String baseUrl) {
-        return ApiFactory.getInstance().createApi(baseUrl, XdagScanApi.class);
+    static TransactionApi getTransactionApi(String baseUrl) {
+        return ApiFactory.getInstance().createApi(baseUrl, TransactionApi.class);
     }
 
-    public static Api getGitHubApi() {
-        return ApiFactory.getInstance().createApi(BASE_URL_GITHUB, Api.class);
+    static ConfigApi getGitHubApi() {
+        return ApiFactory.getInstance().createApi(BASE_URL_GITHUB, ConfigApi.class);
     }
 }

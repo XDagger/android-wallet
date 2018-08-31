@@ -8,7 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.activity.TranDetailActivity;
-import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
+import io.xdag.xdagwallet.model.BlockDetailModel;
 import io.xdag.xdagwallet.util.CopyUtil;
 import java.util.List;
 

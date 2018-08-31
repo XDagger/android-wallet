@@ -6,21 +6,17 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-
-import com.scottyab.rootbeer.RootBeer;
-
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.android.schedulers.AndroidSchedulers;
+import com.scottyab.rootbeer.RootBeer;
 import io.reactivex.disposables.Disposable;
 import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.TextStyleUtil;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.api.ApiServer;
-import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
 import io.xdag.xdagwallet.config.Config;
+import io.xdag.xdagwallet.net.HttpRequest;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.RxUtil;
 
@@ -87,16 +83,13 @@ public class UsageActivity extends ToolbarActivity
                     }
                 })
                 .setNegativeButton(R.string.exit, (dialog, which) -> mContext.finish());
-            builder.create().show();
+            builder.show();
         } else if (isNotShow()) {
             WalletActivity.start(mContext);
             finish();
         } else {
-            mDisposable = ApiServer.getGitHubApi().getConfigInfo()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(configModel -> {
-                    Config.setTransactionHost(configModel.transactionHost);
-                }, new ErrorConsumer(mContext));
+            mDisposable = HttpRequest.get().getConfigInfo(configModel
+                -> Config.setTransactionHost(configModel.transactionHost));
         }
     }
 

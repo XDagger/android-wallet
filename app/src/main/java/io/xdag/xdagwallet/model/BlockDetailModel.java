@@ -1,4 +1,4 @@
-package io.xdag.xdagwallet.api.xdagscan;
+package io.xdag.xdagwallet.model;
 
 import android.text.TextUtils;
 import android.view.View;

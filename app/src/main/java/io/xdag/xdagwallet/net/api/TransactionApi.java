@@ -1,6 +1,7 @@
-package io.xdag.xdagwallet.api.xdagscan;
+package io.xdag.xdagwallet.net.api;
 
 import io.reactivex.Observable;
+import io.xdag.xdagwallet.model.BlockDetailModel;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -9,7 +10,7 @@ import retrofit2.http.Path;
  *
  * desc :
  */
-public interface XdagScanApi {
+public interface TransactionApi {
 
     /**
      * get the block detail

@@ -1,4 +1,4 @@
-package io.xdag.xdagwallet.api;
+package io.xdag.xdagwallet.net;
 
 import io.xdag.common.Common;
 import io.xdag.xdagwallet.R;
