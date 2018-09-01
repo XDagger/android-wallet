@@ -14,6 +14,9 @@ public class ApiFactory {
         static final OkHttpClient OK_HTTP = new OkHttp().build();
     }
 
+    private ApiFactory() {
+    }
+
 
     public static ApiFactory getInstance() {
         return Lazy.API_FACTORY;

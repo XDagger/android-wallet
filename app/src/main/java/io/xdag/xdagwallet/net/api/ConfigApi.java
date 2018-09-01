@@ -1,4 +1,4 @@
-package io.xdag.xdagwallet.api;
+package io.xdag.xdagwallet.net.api;
 
 import io.reactivex.Observable;
 import io.xdag.xdagwallet.model.ConfigModel;
@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 /**
  * created by lxm on 2018/7/29.
  */
-public interface Api {
+public interface ConfigApi {
 
     /**
      * get update info
