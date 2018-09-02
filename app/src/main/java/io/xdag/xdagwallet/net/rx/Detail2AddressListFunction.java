@@ -4,7 +4,7 @@ import io.xdag.xdagwallet.model.BlockDetailModel;
 import java.util.List;
 
 import io.reactivex.functions.Function;
-import io.xdag.xdagwallet.net.NoTransactionException;
+import io.xdag.xdagwallet.net.error.NoTransactionException;
 
 /**
  * created by lxm on 2018/7/24.

@@ -37,21 +37,15 @@ public class TransactionAdapter
         tvTime.setVisibility(item.getTimeVisible());
         tvTime.setText(item.time);
 
-        helper.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                TranDetailActivity.start(mContext, item.address);
-            }
-        });
+        helper.itemView.setOnClickListener(v -> TranDetailActivity.start(mContext, item.address));
 
-        helper.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override public boolean onLongClick(View v) {
-                if (mContext instanceof Activity) {
-                    CopyUtil.copyAddress(((Activity) mContext), item.address);
-                } else {
-                    CopyUtil.copyAddress(item.address);
-                }
-                return true;
+        helper.itemView.setOnLongClickListener(v -> {
+            if (mContext instanceof Activity) {
+                CopyUtil.copyAddress(((Activity) mContext), item.address);
+            } else {
+                CopyUtil.copyAddress(item.address);
             }
+            return true;
         });
     }
 }

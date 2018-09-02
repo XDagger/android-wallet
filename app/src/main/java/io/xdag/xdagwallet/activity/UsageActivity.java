@@ -12,6 +12,7 @@ import com.scottyab.rootbeer.RootBeer;
 import io.reactivex.disposables.Disposable;
 import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
+import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.TextStyleUtil;
 import io.xdag.xdagwallet.R;
@@ -148,5 +149,6 @@ public class UsageActivity extends ToolbarActivity
     @Override protected void onDestroy() {
         RxUtil.dispose(mDisposable);
         super.onDestroy();
+        ActivityStack.getInstance().exit();
     }
 }
