@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
+import io.xdag.common.util.ToastUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,14 +95,14 @@ public class XdagEventManager {
 
                 if (mActivity.getXdagHandler().isNotConnectedToPool(event)) {
                     if (!mInputDialog.isShowing()) {
-                        mLoadingBuilder.setMessage(
-                            Common.getString(R.string.please_wait_connecting_pool));
+                        mLoadingBuilder.setMessage(Common.getString(R.string.please_wait_connecting_pool));
                         mLoadingDialog.show();
                     }
                 } else {
                     mLoadingDialog.dismiss();
                 }
                 if (event.programState == XdagEvent.POOL && mLastProgramState == XdagEvent.XFER) {
+                    ToastUtil.show("币已发出，请耐心等待");
                     notifyEventXfer(event);
                 }
             }

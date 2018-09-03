@@ -3,12 +3,12 @@ package io.xdag.xdagwallet;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
@@ -16,8 +16,6 @@ import io.xdag.common.tool.ActivityStack;
 import io.xdag.xdagwallet.fragment.MoreFragment;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.List;
 
 import butterknife.BindView;
 import io.xdag.common.Common;
@@ -44,6 +42,7 @@ public class MainActivity extends ToolbarActivity {
 
     private static final String EXTRA_RESTORE = "extra_restore";
     private static final String EXTRA_SWITCH_POOL = "extra_switch_pool";
+    public static boolean isStart = false;
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation mNavigationView;
 
@@ -58,6 +57,13 @@ public class MainActivity extends ToolbarActivity {
     private XdagEventManager mXdagEventManager;
 
 
+    @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        isStart = true;
+        ActivityStack.getInstance().finishNotTopActivities();
+    }
+
+
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_main;
@@ -68,7 +74,6 @@ public class MainActivity extends ToolbarActivity {
     protected boolean enableEventBus() {
         return true;
     }
-
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
@@ -264,7 +269,6 @@ public class MainActivity extends ToolbarActivity {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(EXTRA_RESTORE, restore);
         context.startActivity(intent);
-        context.finish();
     }
 
 
@@ -272,6 +276,5 @@ public class MainActivity extends ToolbarActivity {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(EXTRA_SWITCH_POOL, true);
         context.startActivity(intent);
-        context.finish();
     }
 }

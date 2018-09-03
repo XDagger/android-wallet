@@ -33,6 +33,13 @@ public class ActivityStack {
         }
     }
 
+    public synchronized void finishNotTopActivities() {
+        for (int i = mActivities.size() - 2; i > -1; i--) {
+            Activity activity = mActivities.get(i);
+            removeActivity(activity);
+            activity.finish();
+        }
+    }
 
     public synchronized void exit() {
         for (int i = mActivities.size() - 1; i > -1; i--) {

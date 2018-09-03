@@ -15,6 +15,7 @@ import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.TextStyleUtil;
+import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.net.HttpRequest;
@@ -149,6 +150,8 @@ public class UsageActivity extends ToolbarActivity
     @Override protected void onDestroy() {
         RxUtil.dispose(mDisposable);
         super.onDestroy();
-        ActivityStack.getInstance().exit();
+        if(!MainActivity.isStart) {
+            ActivityStack.getInstance().exit();
+        }
     }
 }
