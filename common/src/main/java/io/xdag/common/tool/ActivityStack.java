@@ -39,7 +39,6 @@ public class ActivityStack {
             Activity activity = mActivities.get(i);
             removeActivity(activity);
             activity.finish();
-            i = mActivities.size();
         }
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(0);

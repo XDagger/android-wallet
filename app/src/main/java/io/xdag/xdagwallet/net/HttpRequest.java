@@ -8,6 +8,8 @@ import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.model.BlockDetailModel;
 import io.xdag.xdagwallet.model.ConfigModel;
 import io.xdag.xdagwallet.model.VersionModel;
+import io.xdag.xdagwallet.net.error.ErrorConsumer;
+import io.xdag.xdagwallet.net.error.NoTransactionException;
 import io.xdag.xdagwallet.net.rx.Detail2AddressListFunction;
 import io.xdag.xdagwallet.util.AlertUtil;
 import java.util.List;
@@ -28,14 +30,14 @@ public class HttpRequest {
 
 
     public Disposable getConfigInfo(Consumer<ConfigModel> consumer) {
-        return ApiServer.getGitHubApi().getConfigInfo()
+        return ApiServer.getConfigApi().getConfigInfo()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(consumer, new ErrorConsumer());
     }
 
 
     public Disposable getVersionInfo(Consumer<VersionModel> consumer) {
-        return ApiServer.getGitHubApi().getVersionInfo()
+        return ApiServer.getConfigApi().getVersionInfo()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(consumer, new ErrorConsumer());
     }

@@ -1,4 +1,4 @@
-package io.xdag.xdagwallet.net;
+package io.xdag.xdagwallet.net.error;
 
 import io.xdag.common.Common;
 import io.xdag.xdagwallet.R;

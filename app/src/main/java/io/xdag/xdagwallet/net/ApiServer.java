@@ -23,7 +23,7 @@ public class ApiServer {
         return ApiFactory.getInstance().createApi(baseUrl, TransactionApi.class);
     }
 
-    static ConfigApi getGitHubApi() {
+    static ConfigApi getConfigApi() {
         return ApiFactory.getInstance().createApi(BASE_URL_GITHUB, ConfigApi.class);
     }
 }
