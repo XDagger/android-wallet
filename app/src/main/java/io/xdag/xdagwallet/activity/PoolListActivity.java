@@ -64,12 +64,12 @@ public class PoolListActivity extends ListActivity<PoolModel> {
         mToolbar.inflateMenu(R.menu.toolbar_pool);
         mToolbar.setOnMenuItemClickListener(item -> {
             if(item.getItemId() == R.id.action_pool) {
-                PoolListModel.get().init();
-                mAdapter.setNewData(PoolListModel.get().getPoolListToAdapter());
+                resetPool();
             }
             return false;
         });
     }
+
 
 
     @Override
@@ -96,7 +96,7 @@ public class PoolListActivity extends ListActivity<PoolModel> {
         });
         helper.itemView.setOnLongClickListener(v -> {
             deletePool(item);
-            return false;
+            return true;
         });
     }
 
@@ -157,10 +157,22 @@ public class PoolListActivity extends ListActivity<PoolModel> {
             })
             .setNegativeButton(R.string.cancel,null)
             .setMessage(getString(R.string.delete_pool_address, item.address))
-            .setCancelable(true)
             .show();
     }
 
+
+    private void resetPool() {
+        new TipBuilder(mContext)
+                .setPositiveListener((dialog, which) -> {
+                    PoolListModel.get().init();
+                    mAdapter.setNewData(PoolListModel.get().getPoolListToAdapter());
+                })
+                .setNegativeButton(R.string.cancel,null)
+                .setMessage(getString(R.string.reset_pool_address))
+                .setCancelable(true)
+                .show();
+
+    }
 
     @Override protected void onStop() {
         super.onStop();

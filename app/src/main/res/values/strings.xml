@@ -35,6 +35,7 @@
     <string name="cancel">取消</string>
     <string name="add_pool_address">添加矿池</string>
     <string name="delete_pool_address">删除矿池：%1$s？</string>
+    <string name="reset_pool_address">是否恢复为默认矿池？</string>
 
     <!-- please -->
     <string name="please_set_password">请设置您的钱包密码</string>
