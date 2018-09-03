@@ -5,8 +5,10 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import butterknife.BindView;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -54,6 +56,19 @@ public class PoolListActivity extends ListActivity<PoolModel> {
     protected void parseIntent(Intent intent) {
         super.parseIntent(intent);
         mOnlyConfig = intent.getBooleanExtra(EXTRA_ONLY_CONFIG, false);
+    }
+
+
+    @Override protected void initToolbar() {
+        super.initToolbar();
+        mToolbar.inflateMenu(R.menu.toolbar_pool);
+        mToolbar.setOnMenuItemClickListener(item -> {
+            if(item.getItemId() == R.id.action_pool) {
+                PoolListModel.get().init();
+                mAdapter.setNewData(PoolListModel.get().getPoolListToAdapter());
+            }
+            return false;
+        });
     }
 
 

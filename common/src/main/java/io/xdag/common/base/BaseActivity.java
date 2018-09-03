@@ -33,11 +33,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+        ActivityStack.getInstance().addActivity(mContext);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         View rootView = View.inflate(mContext, getLayoutResId(), null);
         setContentView(rootView);
         initView(rootView, savedInstanceState);
-        ActivityStack.getInstance().addActivity(mContext);
         if (getIntent() != null) {
             parseIntent(getIntent());
         }
