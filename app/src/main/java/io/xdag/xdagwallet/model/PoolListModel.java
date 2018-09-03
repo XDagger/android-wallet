@@ -34,6 +34,7 @@ public class PoolListModel implements Serializable {
 
 
     private PoolListModel() {
+        poolList.add(new PoolModel("feipool.xyz:13654"));
         poolList.add(new PoolModel("xdagmine.com:13654"));
         poolList.add(new PoolModel("xdagscan.com:13654"));
         poolList.add(new PoolModel("cn.xdag.vspool.com:13654"));

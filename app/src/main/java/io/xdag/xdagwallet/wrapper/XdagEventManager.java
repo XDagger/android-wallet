@@ -101,9 +101,14 @@ public class XdagEventManager {
                 } else {
                     mLoadingDialog.dismiss();
                 }
+
+                // xfer success
                 if (event.programState == XdagEvent.POOL && mLastProgramState == XdagEvent.XFER) {
-                    ToastUtil.show("币已发出，请耐心等待");
                     notifyEventXfer(event);
+                }
+
+                if(event.programState == XdagEvent.XFER) {
+                    AlertUtil.show(mActivity,R.string.success_send_coin);
                 }
             }
             break;

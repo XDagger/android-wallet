@@ -67,6 +67,7 @@
     <!-- success -->
     <string name="success_refresh">刷新成功</string>
     <string name="success_copy_address">地址复制成功</string>
+    <string name="success_send_coin">发送成功y</string>
     <string name="success_backup_xdag_wallet">您的钱包已备份至 /sdcard/xdag 目录</string>
 
     <!-- more item-->
