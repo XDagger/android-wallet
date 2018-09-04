@@ -36,6 +36,7 @@
     <string name="add_pool_address">Add pool address</string>
     <string name="delete_pool_address">Delete pool address:%1$s?</string>
     <string name="reset_pool_address">Whether restore to the default pool address?</string>
+    <string name="not_remind_again">Don\'t remind again</string>
     
     <!-- please -->
     <string name="please_set_password">Please set wallet password</string>

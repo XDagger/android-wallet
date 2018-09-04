@@ -37,6 +37,8 @@ public class UsageActivity extends ToolbarActivity
     CheckBox mCbBackup;
     @BindView(R.id.explain_cb_not_show)
     CheckBox mCbNoShow;
+    View mRootRemindLayout;
+    CheckBox mCbRootRemind;
 
 
     @Override
@@ -64,27 +66,38 @@ public class UsageActivity extends ToolbarActivity
 
         mCbBackup.setOnCheckedChangeListener(this);
         mCbNoShow.setOnCheckedChangeListener(this);
+        mRootRemindLayout = View.inflate(mContext, R.layout.dialog_item_checkbox, null);
+        mCbRootRemind = mRootRemindLayout.findViewById(R.id.dialog_cb);
     }
 
 
     @Override protected void initData() {
         super.initData();
         mCbBackup.setChecked(Config.isUserBackup());
-        mCbNoShow.setChecked(Config.isNotShowUsage());
+        mCbNoShow.setChecked(Config.isNotDisplayUsage());
         RootBeer rootBeer = new RootBeer(mContext);
-        // root
-        if (rootBeer.isRootedWithoutBusyBoxCheck()) {
+        // check root
+        if (Config.isRemindRoot() && !rootBeer.isRootedWithoutBusyBoxCheck()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
                 .setCancelable(false)
                 .setTitle(R.string.warning)
+                .setView(mRootRemindLayout)
                 .setMessage(R.string.check_root_explain)
                 .setPositiveButton(R.string.continue_use, (dialog, which) -> {
+                    if (mCbRootRemind.isChecked()) {
+                        Config.setNotRemindRoot(true);
+                    }
                     if (isNotShow()) {
                         WalletActivity.start(mContext);
                         finish();
                     }
                 })
-                .setNegativeButton(R.string.exit, (dialog, which) -> mContext.finish());
+                .setNegativeButton(R.string.exit, (dialog, which) -> {
+                    if (mCbRootRemind.isChecked()) {
+                        Config.setNotRemindRoot(true);
+                    }
+                    mContext.finish();
+                });
             builder.show();
         } else if (isNotShow()) {
             WalletActivity.start(mContext);
@@ -116,7 +129,7 @@ public class UsageActivity extends ToolbarActivity
 
 
     public static boolean isNotShow() {
-        return Config.isUserBackup() && Config.isNotShowUsage();
+        return Config.isUserBackup() && Config.isNotDisplayUsage();
     }
 
 
@@ -139,7 +152,7 @@ public class UsageActivity extends ToolbarActivity
                 Config.setUserBackup(isChecked);
                 break;
             case R.id.explain_cb_not_show:
-                Config.setNotShowUsage(isChecked);
+                Config.setNotDisplayUsage(isChecked);
                 break;
             default:
 
@@ -150,7 +163,7 @@ public class UsageActivity extends ToolbarActivity
     @Override protected void onDestroy() {
         RxUtil.dispose(mDisposable);
         super.onDestroy();
-        if(!MainActivity.isStart) {
+        if (!MainActivity.isStart) {
             ActivityStack.getInstance().exit();
         }
     }
