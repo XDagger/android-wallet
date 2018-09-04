@@ -77,7 +77,7 @@ public class UsageActivity extends ToolbarActivity
         mCbNoShow.setChecked(Config.isNotDisplayUsage());
         RootBeer rootBeer = new RootBeer(mContext);
         // check root
-        if (Config.isRemindRoot() && !rootBeer.isRootedWithoutBusyBoxCheck()) {
+        if (Config.isRemindRoot() && rootBeer.isRootedWithoutBusyBoxCheck()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
                 .setCancelable(false)
                 .setTitle(R.string.warning)

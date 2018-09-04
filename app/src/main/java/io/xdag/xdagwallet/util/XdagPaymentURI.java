@@ -1,7 +1,5 @@
 package io.xdag.xdagwallet.util;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -124,34 +122,24 @@ public class XdagPaymentURI {
 
 	public String getURI() {
 		String queryParameters = null;
-		try {
 			for (Map.Entry<String, Parameter> entry : parameters.entrySet()) {
 				if (queryParameters == null) {
 					if (entry.getValue().isRequired()) {
-						queryParameters = String.format("req-%s=%s", URLEncoder.encode(entry.getKey(), "UTF-8"), URLEncoder.encode(entry.getValue().getValue(), "UTF-8"));
-
+						queryParameters = String.format("req-%s=%s", entry.getKey(), entry.getValue().getValue());
 						continue;
 					}
 
-					queryParameters = String.format("%s=%s", URLEncoder.encode(entry.getKey(), "UTF-8"), URLEncoder.encode(entry.getValue().getValue(), "UTF-8"));
-
+					queryParameters = String.format("%s=%s", entry.getKey(), entry.getValue().getValue());
 					continue;
 				}
 
 				if (entry.getValue().isRequired()) {
-					queryParameters = String.format("%s&req-%s=%s", queryParameters, URLEncoder.encode(entry.getKey(), "UTF-8"), URLEncoder.encode(entry.getValue().getValue(), "UTF-8"));
-
+					queryParameters = String.format("%s&req-%s=%s", queryParameters, entry.getKey(), entry.getValue().getValue());
 					continue;
 				}
 
-				queryParameters = String.format("%s&%s=%s", queryParameters, URLEncoder.encode(entry.getKey(), "UTF-8"), URLEncoder.encode(entry.getValue().getValue(), "UTF-8"));
+				queryParameters = String.format("%s&%s=%s", queryParameters, entry.getKey(), entry.getValue().getValue());
 			}
-
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-
-			return null;
-		}
 
 		return String.format("%s%s%s", SCHEME, getAddress(), queryParameters == null ? "" : String.format("?%s", queryParameters));
 	}
@@ -165,13 +153,6 @@ public class XdagPaymentURI {
 	 */
 
 	public static XdagPaymentURI parse(String string) {
-		try {
-			string = URLDecoder.decode(string,  "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-
-			return null;
-		}
 
 		if (string == null) {
 			return null;
