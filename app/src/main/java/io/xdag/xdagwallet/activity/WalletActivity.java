@@ -7,13 +7,11 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -22,7 +20,6 @@ import io.xdag.common.tool.ToolbarMode;
 import io.xdag.common.util.TextStyleUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 
 public class WalletActivity extends ToolbarActivity {
@@ -87,13 +84,10 @@ public class WalletActivity extends ToolbarActivity {
         AndPermission.with(mContext)
             .runtime()
             .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-            .onGranted(new Action<List<String>>() {
-                @Override
-                public void onAction(List<String> data) {
-                    if (XdagHandlerWrapper.createSDCardFile(mContext) != null) {
-                        RestoreActivity.start(mContext);
-                        finish();
-                    }
+            .onGranted(data -> {
+                if (XdagHandlerWrapper.createSDCardFile(mContext) != null) {
+                    RestoreActivity.start(mContext);
+                    finish();
                 }
             })
             .start();
@@ -114,7 +108,7 @@ public class WalletActivity extends ToolbarActivity {
 
     @Override
     protected int getToolbarMode() {
-        if (UseExplainActivity.isNotShow()) {
+        if (UsageActivity.isNotShow()) {
             return ToolbarMode.MODE_NONE;
         }
         return ToolbarMode.MODE_BACK;

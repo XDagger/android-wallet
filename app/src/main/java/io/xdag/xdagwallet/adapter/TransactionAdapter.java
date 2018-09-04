@@ -8,7 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.activity.TranDetailActivity;
-import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
+import io.xdag.xdagwallet.model.BlockDetailModel;
 import io.xdag.xdagwallet.util.CopyUtil;
 import java.util.List;
 
@@ -37,21 +37,15 @@ public class TransactionAdapter
         tvTime.setVisibility(item.getTimeVisible());
         tvTime.setText(item.time);
 
-        helper.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                TranDetailActivity.start(mContext, item.address);
-            }
-        });
+        helper.itemView.setOnClickListener(v -> TranDetailActivity.start(mContext, item.address));
 
-        helper.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override public boolean onLongClick(View v) {
-                if (mContext instanceof Activity) {
-                    CopyUtil.copyAddress(((Activity) mContext), item.address);
-                } else {
-                    CopyUtil.copyAddress(item.address);
-                }
-                return true;
+        helper.itemView.setOnLongClickListener(v -> {
+            if (mContext instanceof Activity) {
+                CopyUtil.copyAddress(((Activity) mContext), item.address);
+            } else {
+                CopyUtil.copyAddress(item.address);
             }
+            return true;
         });
     }
 }

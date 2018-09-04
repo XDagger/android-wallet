@@ -8,6 +8,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.CopyUtil;
+import io.xdag.xdagwallet.util.XdagPaymentURI;
 import io.xdag.xdagwallet.util.ZbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagEventManager;
@@ -42,10 +43,10 @@ public class ReceiveFragment extends BaseMainFragment {
             public void onEventUpdate(XdagEvent event) {
                 mTvAddress.setText(event.address);
                 if (event.addressLoadState == XdagEvent.en_address_ready) {
-                    mImgQrAddress.setImageBitmap(ZbarUtil.createQRCode(event.address));
+                    String receiveUrl = new XdagPaymentURI.Builder().address(event.address).build().getURI();
+                    mImgQrAddress.setImageBitmap(ZbarUtil.createQRCode(receiveUrl));
                 } else {
-                    mImgQrAddress.setImageDrawable(
-                            getResources().getDrawable(R.drawable.pic_loading));
+                    mImgQrAddress.setImageDrawable(getResources().getDrawable(R.drawable.pic_empty));
                 }
             }
 

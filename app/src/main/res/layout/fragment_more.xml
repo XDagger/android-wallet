@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MORE_LIGHT_GERY">
+    
+    
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <io.xdag.xdagwallet.widget.MoreItemView
+            android:id="@+id/more_backup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/setting_item_space"
+            android:background="@color/WHITE"
+            android:text="@string/more_backup_wallet" />
+        
+        <View style="@style/DividerHorizontalThin" />
+        
+        <io.xdag.xdagwallet.widget.MoreItemView
+            android:id="@+id/more_switch_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/WHITE"
+            android:text="@string/more_wallet" />
+        
+        <View style="@style/DividerHorizontalThin" />
+        
+        <io.xdag.xdagwallet.widget.MoreItemView
+            android:id="@+id/more_switch_pool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/WHITE"
+            android:text="@string/more_pool" />
+
+        <View style="@style/DividerHorizontalThin" />
+
+        <io.xdag.xdagwallet.widget.MoreItemView
+                android:id="@+id/more_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/WHITE"
+                android:text="@string/setting" />
+        
+        <io.xdag.xdagwallet.widget.MoreItemView
+            android:id="@+id/more_suggest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/setting_item_space"
+            android:background="@color/WHITE"
+            android:text="@string/more_suggest" />
+        
+        <View style="@style/DividerHorizontalThin" />
+        
+        <io.xdag.xdagwallet.widget.MoreItemView
+            android:id="@+id/more_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/WHITE"
+            android:text="@string/about" />
+        
+        <io.xdag.xdagwallet.widget.MoreItemView
+            android:id="@+id/more_github"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/setting_item_space"
+            android:background="@color/WHITE"
+            android:text="@string/more_github" />
+        
+        <View style="@style/DividerHorizontalThin" />
+        
+        <io.xdag.xdagwallet.widget.MoreItemView
+            android:id="@+id/more_xdagio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/WHITE"
+            android:text="@string/more_xdag_io" />
+    
+    
+    </LinearLayout>
+</ScrollView>

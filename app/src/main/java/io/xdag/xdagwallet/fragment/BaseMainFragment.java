@@ -10,7 +10,7 @@ import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
  * created by lxm on 2018/7/18.
  * <p>
  * link {@link MainActivity} and {@link HomeFragment}、{@link SendFragment}、
- * {@link ReceiveFragment}、{@link SettingFragment}
+ * {@link ReceiveFragment}、{@link MoreFragment}
  */
 public abstract class BaseMainFragment extends RefreshFragment {
 

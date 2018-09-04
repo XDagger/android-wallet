@@ -3,20 +3,19 @@ package io.xdag.xdagwallet;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
 import io.xdag.common.tool.ActivityStack;
+import io.xdag.xdagwallet.fragment.MoreFragment;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.List;
 
 import butterknife.BindView;
 import io.xdag.common.Common;
@@ -27,7 +26,6 @@ import io.xdag.xdagwallet.fragment.BaseMainFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
-import io.xdag.xdagwallet.fragment.SettingFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ToolbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
@@ -44,6 +42,7 @@ public class MainActivity extends ToolbarActivity {
 
     private static final String EXTRA_RESTORE = "extra_restore";
     private static final String EXTRA_SWITCH_POOL = "extra_switch_pool";
+    public static boolean isStart = false;
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation mNavigationView;
 
@@ -51,11 +50,18 @@ public class MainActivity extends ToolbarActivity {
     private HomeFragment mHomeFragment;
     private ReceiveFragment mReceiveFragment;
     private SendFragment mSendFragment;
-    private SettingFragment mSettingFragment;
+    private MoreFragment mSettingFragment;
     public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
     private XdagEventManager mXdagEventManager;
+
+
+    @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        isStart = true;
+        ActivityStack.getInstance().finishNotTopActivities();
+    }
 
 
     @Override
@@ -68,7 +74,6 @@ public class MainActivity extends ToolbarActivity {
     protected boolean enableEventBus() {
         return true;
     }
-
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
@@ -98,12 +103,7 @@ public class MainActivity extends ToolbarActivity {
         AndPermission.with(mContext)
             .runtime()
             .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-            .onGranted(new Action<List<String>>() {
-                @Override
-                public void onAction(List<String> data) {
-                    connectToPool();
-                }
-            })
+            .onGranted(data -> connectToPool())
             .start();
     }
 
@@ -163,7 +163,7 @@ public class MainActivity extends ToolbarActivity {
         AHBottomNavigationItem send =
             new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
         AHBottomNavigationItem setting =
-            new AHBottomNavigationItem(getString(R.string.setting), R.drawable.ic_setting);
+            new AHBottomNavigationItem(getString(R.string.more), R.drawable.ic_more);
         // add items
         mNavigationView.addItem(home);
         mNavigationView.addItem(receive);
@@ -206,7 +206,7 @@ public class MainActivity extends ToolbarActivity {
         mHomeFragment = HomeFragment.newInstance();
         mReceiveFragment = ReceiveFragment.newInstance();
         mSendFragment = SendFragment.newInstance();
-        mSettingFragment = SettingFragment.newInstance();
+        mSettingFragment = MoreFragment.newInstance();
 
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
             HomeFragment.class.getName());
@@ -215,7 +215,7 @@ public class MainActivity extends ToolbarActivity {
         addFragmentToActivity(mFragmentManager, mSendFragment, R.id.container,
             SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
-            SettingFragment.class.getName());
+            MoreFragment.class.getName());
 
         showFragment(mHomeFragment);
     }
@@ -228,8 +228,8 @@ public class MainActivity extends ToolbarActivity {
             ReceiveFragment.class.getName());
         mSendFragment = (SendFragment) mFragmentManager.findFragmentByTag(
             SendFragment.class.getName());
-        mSettingFragment = (SettingFragment) mFragmentManager.findFragmentByTag(
-            SettingFragment.class.getName());
+        mSettingFragment = (MoreFragment) mFragmentManager.findFragmentByTag(
+            MoreFragment.class.getName());
     }
 
 
@@ -269,7 +269,6 @@ public class MainActivity extends ToolbarActivity {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(EXTRA_RESTORE, restore);
         context.startActivity(intent);
-        context.finish();
     }
 
 
@@ -277,6 +276,5 @@ public class MainActivity extends ToolbarActivity {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(EXTRA_SWITCH_POOL, true);
         context.startActivity(intent);
-        context.finish();
     }
 }

@@ -1,23 +1,20 @@
 package io.xdag.xdagwallet.fragment;
 
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.yanzhenjie.permission.Action;
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.Permission;
-
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bertsir.zbar.QRManager;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Permission;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.AlertUtil;
+import io.xdag.xdagwallet.util.XdagPaymentURI;
 import io.xdag.xdagwallet.util.ZbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagEventManager;
@@ -80,23 +77,28 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
             AndPermission.with(mContext)
                     .runtime()
                     .permission(Permission.READ_EXTERNAL_STORAGE, Permission.CAMERA)
-                    .onGranted(new Action<List<String>>() {
+                    .onGranted(data -> ZbarUtil.startScan(mContext, new QRManager.OnScanResultCallback() {
                         @Override
-                        public void onAction(List<String> data) {
-                            ZbarUtil.startScan(mContext, new QRManager.OnScanResultCallback() {
-                                @Override
-                                public void onScanSuccess(String result) {
-                                    mEtAddress.setText(result);
+                        public void onScanSuccess(String result) {
+                            XdagPaymentURI xdagPaymentURI = XdagPaymentURI.parse(result);
+                            if(xdagPaymentURI != null) {
+                                String address = xdagPaymentURI.getAddress();
+                                if(!TextUtils.isEmpty(address)) {
+                                    mEtAddress.setText(address);
                                 }
-
-
-                                @Override
-                                public void onScanFailed() {
-                                    AlertUtil.show(mContext, R.string.error_cannot_identify_qr_code);
+                                Double amount = xdagPaymentURI.getAmount();
+                                if(amount != null) {
+                                    mEtAmount.setText(String.valueOf(amount));
                                 }
-                            });
+                            }
                         }
-                    })
+
+
+                        @Override
+                        public void onScanFailed() {
+                            AlertUtil.show(mContext, R.string.error_cannot_identify_qr_code);
+                        }
+                    }))
                     .start();
         }
         return false;

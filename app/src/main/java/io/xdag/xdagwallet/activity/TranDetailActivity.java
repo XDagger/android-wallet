@@ -4,24 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
-
 import com.chad.library.adapter.base.BaseViewHolder;
-
-import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
+import io.reactivex.disposables.CompositeDisposable;
 import io.xdag.common.base.ListActivity;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.xdagwallet.R;
-import io.xdag.xdagwallet.api.ApiServer;
-import io.xdag.xdagwallet.api.xdagscan.BlockDetailModel;
-import io.xdag.xdagwallet.api.xdagscan.Detail2TranListFunction;
-import io.xdag.xdagwallet.api.xdagscan.ErrorConsumer;
+import io.xdag.xdagwallet.model.BlockDetailModel;
+import io.xdag.xdagwallet.net.HttpRequest;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
+import java.util.List;
 
 /**
  * created by lxm on 2018/7/26.
@@ -29,8 +22,9 @@ import io.xdag.xdagwallet.util.RxUtil;
 public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAddress> {
 
     private static final String EXTRA_ADDRESS = "extra_address";
-    private Disposable mDisposable;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
     private String mAddress;
+
 
     @Override
     protected void parseIntent(Intent intent) {
@@ -38,10 +32,12 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
         mAddress = intent.getStringExtra(EXTRA_ADDRESS);
     }
 
+
     @Override
     protected int getItemLayout() {
         return R.layout.item_transaction;
     }
+
 
     @Override
     protected void initData() {
@@ -49,27 +45,30 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
         requestTranDetail(false);
     }
 
+
     @Override
     public void onRefresh() {
         super.onRefresh();
         requestTranDetail(true);
     }
 
+
     private void requestTranDetail(final boolean alert) {
 
-        mDisposable = ApiServer.getApi().getBlockDetail(mAddress)
-                .observeOn(AndroidSchedulers.mainThread())
-                .map(new Detail2TranListFunction())
-                .subscribe(new Consumer<List<BlockDetailModel.BlockAsAddress>>() {
-                    @Override
-                    public void accept(List<BlockDetailModel.BlockAsAddress> blockAsAddresses) {
-                        mAdapter.setNewData(blockAsAddresses);
-                        if (alert) {
-                            AlertUtil.show(mContext, R.string.success_refresh);
-                        }
-                    }
-                }, new ErrorConsumer(mContext));
+        mDisposable.add(
+            HttpRequest.get().getBlockDetail(mContext, mAddress,
+                blockAsAddresses -> showTransaction(blockAsAddresses, alert))
+        );
     }
+
+
+    private void showTransaction(List<BlockDetailModel.BlockAsAddress> blockAsAddresses, boolean alert) {
+        mAdapter.setNewData(blockAsAddresses);
+        if (alert) {
+            AlertUtil.show(mContext, R.string.success_refresh);
+        }
+    }
+
 
     @Override
     protected void convert(BaseViewHolder helper, final BlockDetailModel.BlockAsAddress item) {
@@ -103,10 +102,11 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
         });
     }
 
+
     @Override
     public void onDestroy() {
-        super.onDestroy();
         RxUtil.dispose(mDisposable);
+        super.onDestroy();
     }
 
 

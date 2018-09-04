@@ -31,20 +31,23 @@ public class InputBuilder extends AlertBuilder {
         setView(view);
         mEtInput = view.findViewById(R.id.dialog_input_et);
         setCancelable(false);
-        setPositiveButton(R.string.ensure, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (mOnPositiveClickListener != null) {
-                    mOnPositiveClickListener.onClick(dialog, mEtInput.getText().toString().trim());
-                    mEtInput.setText("");
-                }
+        setPositiveButton(R.string.ensure, (dialog, which) -> {
+            if (mOnPositiveClickListener != null) {
+                mOnPositiveClickListener.onClick(dialog, mEtInput.getText().toString());
+                mEtInput.setText("");
             }
         });
     }
 
 
-    public AlertDialog.Builder setPositiveListener(OnPositiveClickListener listener) {
+    public InputBuilder setPositiveListener(OnPositiveClickListener listener) {
         mOnPositiveClickListener = listener;
+        return this;
+    }
+
+
+    public InputBuilder setInputType(int inputType) {
+        mEtInput.setInputType(inputType);
         return this;
     }
 
