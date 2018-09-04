@@ -4,13 +4,14 @@ import android.text.TextUtils;
 import android.view.View;
 import io.xdag.common.Common;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.net.error.ErrorResponse;
 import java.util.List;
 
 /**
  * created by lxm on 2018/7/24.
  */
 
-public class BlockDetailModel {
+public class BlockDetailModel extends ErrorResponse {
 
     public String block;
     public String time;

@@ -65,6 +65,7 @@
     <string name="error_invalid_pool_address">非法的矿池地址</string>
     <string name="error_pool_address_exists">矿池地址已经存在</string>
     <string name="error_cannot_delete_selected_pool">不能删除已经选中的矿池</string>
+    <string name="error_server_problem">服务器开小差了</string>
 
     <!-- success -->
     <string name="success_refresh">刷新成功</string>
