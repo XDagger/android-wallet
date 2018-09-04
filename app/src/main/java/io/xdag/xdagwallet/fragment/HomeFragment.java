@@ -13,7 +13,6 @@ import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.common.tool.MLog;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
-import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.model.BlockDetailModel;
 import io.xdag.xdagwallet.net.HttpRequest;
 import io.xdag.xdagwallet.util.AlertUtil;
@@ -131,7 +130,7 @@ public class HomeFragment extends BaseMainFragment {
 
     private void requestTransaction() {
         mDisposable.add(HttpRequest.get()
-            .getBlockDetail(mContext, mTvAddress.getText().toString(), this::showTransaction));
+            .getBlockList(mContext, mTvAddress.getText().toString(), this::showTransaction));
     }
 
 

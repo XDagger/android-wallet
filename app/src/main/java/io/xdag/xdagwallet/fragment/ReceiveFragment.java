@@ -46,7 +46,7 @@ public class ReceiveFragment extends BaseMainFragment {
                     String receiveUrl = new XdagPaymentURI.Builder().address(event.address).build().getURI();
                     mImgQrAddress.setImageBitmap(ZbarUtil.createQRCode(receiveUrl));
                 } else {
-                    mImgQrAddress.setImageDrawable(getResources().getDrawable(R.drawable.pic_loading));
+                    mImgQrAddress.setImageDrawable(getResources().getDrawable(R.drawable.pic_empty));
                 }
             }
 

@@ -34,7 +34,7 @@ public class SettingActivity extends ToolbarActivity
 
     @Override protected void initData() {
         super.initData();
-        mSwitchUsage.setChecked(Config.isNotShowUsage());
+        mSwitchUsage.setChecked(Config.isNotDisplayUsage());
 
     }
 
@@ -53,7 +53,7 @@ public class SettingActivity extends ToolbarActivity
     @Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         switch (buttonView.getId()) {
             case R.id.settings_sw_usage:
-                Config.setNotShowUsage(isChecked);
+                Config.setNotDisplayUsage(isChecked);
                 break;
             default:
         }

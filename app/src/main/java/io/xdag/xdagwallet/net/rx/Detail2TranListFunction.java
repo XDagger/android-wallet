@@ -1,6 +1,9 @@
 package io.xdag.xdagwallet.net.rx;
 
+import android.text.TextUtils;
 import io.reactivex.functions.Function;
+import io.xdag.common.Common;
+import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.model.BlockDetailModel;
 import io.xdag.xdagwallet.net.error.NoTransactionException;
 import java.util.List;
@@ -18,6 +21,16 @@ public class Detail2TranListFunction
             || blockDetailModel.block_as_transaction.isEmpty()) {
             throw new NoTransactionException();
         }
+
+        // error message
+        if(!TextUtils.isEmpty(blockDetailModel.error)) {
+            String message = Common.getString(R.string.error_server_problem);
+            if(!TextUtils.isEmpty(blockDetailModel.message)) {
+                message = blockDetailModel.message;
+            }
+            throw new Exception(message);
+        }
+
         return blockDetailModel.block_as_transaction;
     }
 }

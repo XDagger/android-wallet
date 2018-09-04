@@ -36,6 +36,7 @@
     <string name="add_pool_address">Add pool address</string>
     <string name="delete_pool_address">Delete pool address:%1$s?</string>
     <string name="reset_pool_address">Whether restore to the default pool address?</string>
+    <string name="not_remind_again">Don\'t remind again</string>
     
     <!-- please -->
     <string name="please_set_password">Please set wallet password</string>
@@ -64,6 +65,7 @@
     <string name="error_invalid_pool_address">Invalid pool address</string>
     <string name="error_pool_address_exists">Pool address already exists</string>
     <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
+    <string name="error_server_problem">The server is running out of the way</string>
 
     <!-- success -->
     <string name="success_refresh">Refreshed successfully</string>

@@ -36,6 +36,7 @@
     <string name="add_pool_address">添加矿池</string>
     <string name="delete_pool_address">删除矿池：%1$s？</string>
     <string name="reset_pool_address">是否恢复为默认矿池？</string>
+    <string name="not_remind_again">不再提示</string>
 
     <!-- please -->
     <string name="please_set_password">请设置您的钱包密码</string>
@@ -64,11 +65,12 @@
     <string name="error_invalid_pool_address">非法的矿池地址</string>
     <string name="error_pool_address_exists">矿池地址已经存在</string>
     <string name="error_cannot_delete_selected_pool">不能删除已经选中的矿池</string>
+    <string name="error_server_problem">服务器开小差了</string>
 
     <!-- success -->
     <string name="success_refresh">刷新成功</string>
     <string name="success_copy_address">地址复制成功</string>
-    <string name="success_send_coin">发送成功y</string>
+    <string name="success_send_coin">发送成功</string>
     <string name="success_backup_xdag_wallet">您的钱包已备份至 /sdcard/xdag 目录</string>
 
     <!-- more item-->

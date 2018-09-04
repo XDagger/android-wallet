@@ -107,7 +107,8 @@ public class XdagEventManager {
                     notifyEventXfer(event);
                 }
 
-                if(event.programState == XdagEvent.XFER) {
+                // sending coin
+                if(event.programState == XdagEvent.XFER && mLastProgramState == XdagEvent.POOL) {
                     AlertUtil.show(mActivity,R.string.success_send_coin);
                 }
             }
