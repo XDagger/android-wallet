@@ -66,6 +66,7 @@
     <string name="error_pool_address_exists">Pool address already exists</string>
     <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
     <string name="error_server_problem">The server is running out of the way</string>
+    <string name="error_send_coin_itself">can\'t transfer XDAG to itself</string>
 
     <!-- success -->
     <string name="success_refresh">Refreshed successfully</string>

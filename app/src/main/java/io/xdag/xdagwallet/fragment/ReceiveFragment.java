@@ -7,6 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.XdagPaymentURI;
 import io.xdag.xdagwallet.util.ZbarUtil;
@@ -42,6 +43,7 @@ public class ReceiveFragment extends BaseMainFragment {
             @Override
             public void onEventUpdate(XdagEvent event) {
                 mTvAddress.setText(event.address);
+                Config.setAddress(event.address);
                 if (event.addressLoadState == XdagEvent.en_address_ready) {
                     String receiveUrl = new XdagPaymentURI.Builder().address(event.address).build().getURI();
                     mImgQrAddress.setImageBitmap(ZbarUtil.createQRCode(receiveUrl));

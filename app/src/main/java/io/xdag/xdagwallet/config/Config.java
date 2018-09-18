@@ -16,6 +16,7 @@ public class Config {
     private static final String CONFIG_KEY_NOT_SHOW_USAGE = "config_key_not_show_explain";
     private static final String CONFIG_KEY_NOT_REMIND_ROOT = "config_key_not_remind_root";
     private static final String CONFIG_KEY_TRAN_HOST = "config_key_tran_host";
+    private static final String CONFIG_KEY_ADDRESS = "config_key_address";
 
 
     public static void setPoolAddress(String poolAddress) {
@@ -63,5 +64,14 @@ public class Config {
 
     public static String getTransactionHost() {
         return SPUtil.getString(CONFIG_KEY_TRAN_HOST, ApiServer.BASE_URL_TRANSACTION);
+    }
+
+
+    public static void setAddress(String address) {
+        SPUtil.putString(CONFIG_KEY_ADDRESS, address);
+    }
+
+    public static String getAddress() {
+        return SPUtil.getString(CONFIG_KEY_ADDRESS, "");
     }
 }
