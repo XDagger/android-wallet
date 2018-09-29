@@ -2,20 +2,10 @@ cmake_minimum_required(VERSION 3.4.1)
 
 PROJECT(xdaglib)
 
-#crypto arm src files
-set(CRYPTO_ARM_SRC_FILES
-                src/main/cpp/openssl/crypto/aes/asm/aes-armv4.S
-                src/main/cpp/openssl/crypto/bn/asm/armv4-mont.S
-                src/main/cpp/openssl/crypto/sha/asm/sha1-armv4-large.S
-                src/main/cpp/openssl/crypto/sha/asm/sha256-armv4.S
-                src/main/cpp/openssl/crypto/sha/asm/sha512-armv4.S)
-
-#crypto no arm src files
-set(CRYPTO_NON_ARM_SRC_FILES
-                src/main/cpp/openssl/crypto/aes/aes_core.c)
-
 #crypto src files
 set(CRYPTO_COMMON_SRC_FILES
+                src/main/cpp/openssl/crypto/aes/aes_core.c
+                src/main/cpp/openssl/crypto/o_init.c
                 src/main/cpp/openssl/crypto/cryptlib.c
                 src/main/cpp/openssl/crypto/mem.c
                 src/main/cpp/openssl/crypto/mem_clr.c
@@ -29,6 +19,7 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/o_str.c
                 src/main/cpp/openssl/crypto/o_dir.c
                 src/main/cpp/openssl/crypto/aes/aes_cbc.c
+                src/main/cpp/openssl/crypto/aes/aes_core.c
                 src/main/cpp/openssl/crypto/aes/aes_cfb.c
                 src/main/cpp/openssl/crypto/aes/aes_ctr.c
                 src/main/cpp/openssl/crypto/aes/aes_ecb.c
@@ -163,10 +154,7 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/bn/bn_word.c
                 src/main/cpp/openssl/crypto/buffer/buf_err.c
                 src/main/cpp/openssl/crypto/buffer/buffer.c
-                src/main/cpp/openssl/crypto/comp/c_rle.c
-                src/main/cpp/openssl/crypto/comp/c_zlib.c
-                src/main/cpp/openssl/crypto/comp/comp_err.c
-                src/main/cpp/openssl/crypto/comp/comp_lib.c
+                src/main/cpp/openssl/crypto/buffer/buf_str.c
                 src/main/cpp/openssl/crypto/conf/conf_api.c
                 src/main/cpp/openssl/crypto/conf/conf_def.c
                 src/main/cpp/openssl/crypto/conf/conf_err.c
@@ -200,6 +188,7 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/des/set_key.c
                 src/main/cpp/openssl/crypto/des/str2key.c
                 src/main/cpp/openssl/crypto/des/xcbc_enc.c
+                src/main/cpp/openssl/crypto/dh/dh_rfc5114.c
                 src/main/cpp/openssl/crypto/dh/dh_ameth.c
                 src/main/cpp/openssl/crypto/dh/dh_asn1.c
                 src/main/cpp/openssl/crypto/dh/dh_check.c
@@ -229,8 +218,10 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/dso/dso_openssl.c
                 src/main/cpp/openssl/crypto/dso/dso_vms.c
                 src/main/cpp/openssl/crypto/dso/dso_win32.c
+                src/main/cpp/openssl/crypto/ec/ec2_oct.c
                 src/main/cpp/openssl/crypto/ec/ec2_mult.c
                 src/main/cpp/openssl/crypto/ec/ec2_smpl.c
+                src/main/cpp/openssl/crypto/ec/ec_oct.c
                 src/main/cpp/openssl/crypto/ec/ec_ameth.c
                 src/main/cpp/openssl/crypto/ec/ec_asn1.c
                 src/main/cpp/openssl/crypto/ec/ec_check.c
@@ -243,9 +234,11 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/ec/ec_pmeth.c
                 src/main/cpp/openssl/crypto/ec/ec_print.c
                 src/main/cpp/openssl/crypto/ec/eck_prn.c
+                src/main/cpp/openssl/crypto/ec/ecp_oct.c
                 src/main/cpp/openssl/crypto/ec/ecp_mont.c
                 src/main/cpp/openssl/crypto/ec/ecp_nist.c
                 src/main/cpp/openssl/crypto/ec/ecp_smpl.c
+                src/main/cpp/openssl/crypto/ecdh/ech_kdf.c
                 src/main/cpp/openssl/crypto/ecdh/ech_err.c
                 src/main/cpp/openssl/crypto/ecdh/ech_key.c
                 src/main/cpp/openssl/crypto/ecdh/ech_lib.c
@@ -259,6 +252,11 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/err/err.c
                 src/main/cpp/openssl/crypto/err/err_all.c
                 src/main/cpp/openssl/crypto/err/err_prn.c
+                src/main/cpp/openssl/crypto/evp/names.c
+                src/main/cpp/openssl/crypto/evp/e_aes_cbc_hmac_sha1.c
+                src/main/cpp/openssl/crypto/evp/e_aes_cbc_hmac_sha256.c
+                src/main/cpp/openssl/crypto/evp/e_rc4_hmac_md5.c
+                src/main/cpp/openssl/crypto/evp/evp_cnf.c
                 src/main/cpp/openssl/crypto/evp/bio_b64.c
                 src/main/cpp/openssl/crypto/evp/bio_enc.c
                 src/main/cpp/openssl/crypto/evp/bio_md.c
@@ -319,6 +317,10 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/md4/md4_one.c
                 src/main/cpp/openssl/crypto/md5/md5_dgst.c
                 src/main/cpp/openssl/crypto/md5/md5_one.c
+                src/main/cpp/openssl/crypto/modes/xts128.c
+                src/main/cpp/openssl/crypto/modes/ccm128.c
+                src/main/cpp/openssl/crypto/modes/gcm128.c
+                src/main/cpp/openssl/crypto/modes/wrap128.c
                 src/main/cpp/openssl/crypto/modes/cbc128.c
                 src/main/cpp/openssl/crypto/modes/cfb128.c
                 src/main/cpp/openssl/crypto/modes/ctr128.c
@@ -337,6 +339,7 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/ocsp/ocsp_prn.c
                 src/main/cpp/openssl/crypto/ocsp/ocsp_srv.c
                 src/main/cpp/openssl/crypto/ocsp/ocsp_vfy.c
+                src/main/cpp/openssl/crypto/pqueue/pqueue.c
                 src/main/cpp/openssl/crypto/pem/pem_all.c
                 src/main/cpp/openssl/crypto/pem/pem_err.c
                 src/main/cpp/openssl/crypto/pem/pem_info.c
@@ -382,10 +385,12 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/rc2/rc2_skey.c
                 src/main/cpp/openssl/crypto/rc2/rc2cfb64.c
                 src/main/cpp/openssl/crypto/rc2/rc2ofb64.c
+                src/main/cpp/openssl/crypto/rc4/rc4_utl.c
                 src/main/cpp/openssl/crypto/rc4/rc4_enc.c
                 src/main/cpp/openssl/crypto/rc4/rc4_skey.c
                 src/main/cpp/openssl/crypto/ripemd/rmd_dgst.c
                 src/main/cpp/openssl/crypto/ripemd/rmd_one.c
+                src/main/cpp/openssl/crypto/rsa/rsa_crpt.c
                 src/main/cpp/openssl/crypto/rsa/rsa_ameth.c
                 src/main/cpp/openssl/crypto/rsa/rsa_asn1.c
                 src/main/cpp/openssl/crypto/rsa/rsa_chk.c
@@ -409,6 +414,8 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/sha/sha256.c
                 src/main/cpp/openssl/crypto/sha/sha512.c
                 src/main/cpp/openssl/crypto/sha/sha_dgst.c
+                src/main/cpp/openssl/crypto/srp/srp_lib.c
+                src/main/cpp/openssl/crypto/srp/srp_vfy.c
                 src/main/cpp/openssl/crypto/stack/stack.c
                 src/main/cpp/openssl/crypto/ts/ts_err.c
                 src/main/cpp/openssl/crypto/txt_db/txt_db.c
@@ -447,6 +454,7 @@ set(CRYPTO_COMMON_SRC_FILES
                 src/main/cpp/openssl/crypto/x509v3/pcy_map.c
                 src/main/cpp/openssl/crypto/x509v3/pcy_node.c
                 src/main/cpp/openssl/crypto/x509v3/pcy_tree.c
+                src/main/cpp/openssl/crypto/x509v3/v3_scts.c
                 src/main/cpp/openssl/crypto/x509v3/v3_akey.c
                 src/main/cpp/openssl/crypto/x509v3/v3_akeya.c
                 src/main/cpp/openssl/crypto/x509v3/v3_alt.c
@@ -485,6 +493,7 @@ set(SSL_COMMON_SRC_FILES
                 src/main/cpp/openssl/ssl/s2_lib.c
                 src/main/cpp/openssl/ssl/s2_enc.c
                 src/main/cpp/openssl/ssl/s2_pkt.c
+                src/main/cpp/openssl/ssl/s3_cbc.c
                 src/main/cpp/openssl/ssl/s3_meth.c
                 src/main/cpp/openssl/ssl/s3_srvr.c
                 src/main/cpp/openssl/ssl/s3_clnt.c
@@ -503,6 +512,15 @@ set(SSL_COMMON_SRC_FILES
                 src/main/cpp/openssl/ssl/t1_lib.c
                 src/main/cpp/openssl/ssl/t1_enc.c
                 src/main/cpp/openssl/ssl/t1_reneg.c
+                src/main/cpp/openssl/ssl/t1_ext.c
+                src/main/cpp/openssl/ssl/tls_srp.c
+                src/main/cpp/openssl/ssl/d1_srvr.c
+                src/main/cpp/openssl/ssl/d1_clnt.c
+                src/main/cpp/openssl/ssl/d1_srtp.c
+                src/main/cpp/openssl/ssl/d1_both.c
+                src/main/cpp/openssl/ssl/d1_pkt.c
+                src/main/cpp/openssl/ssl/d1_lib.c
+                src/main/cpp/openssl/ssl/d1_meth.c
                 src/main/cpp/openssl/ssl/ssl_lib.c
                 src/main/cpp/openssl/ssl/ssl_err2.c
                 src/main/cpp/openssl/ssl/ssl_cert.c
@@ -564,11 +582,8 @@ set(XDAG_COMMON_FLAGS
 set(SSL_COMMON_FLAGS
         -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN
         -DOPENSSL_NO_CAMELLIA -DOPENSSL_NO_CAPIENG -DOPENSSL_NO_CAST -DOPENSSL_NO_CMS -DOPENSSL_NO_GMP -DOPENSSL_NO_IDEA -DOPENSSL_NO_JPAKE -DOPENSSL_NO_MD2 -DOPENSSL_NO_MDC2 -DOPENSSL_NO_RC5 -DOPENSSL_NO_SHA0 -DOPENSSL_NO_RFC3779 -DOPENSSL_NO_SEED -DOPENSSL_NO_STORE -DOPENSSL_NO_WHIRLPOOL
-        -DOPENSSL_NO_HW -DOPENSSL_NO_ENGINE -DZLIB -DNO_WINDOWS_BRAINDEATH
+        -DOPENSSL_NO_HW -DOPENSSL_NO_ENGINE -DZLIB -DNO_WINDOWS_BRAINDEATH -DOPENSSL_NO_CMAC -DOPENSSL_NO_ASM
     )
-
-#crypto arm flags
-set(CRYPTO_ARM_FLAGS -DOPENSSL_BN_ASM_MONT -DAES_ASM -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM)
 
 #cypto include path
 set(CRYPTO_INCLUDE_PATH
@@ -585,17 +600,7 @@ include_directories(${CRYPTO_INCLUDE_PATH})
 add_definitions(${SSL_COMMON_FLAGS})
 add_definitions(${XDAG_COMMON_FLAGS})
 
-#if target abi is arm
-if(${ANDROID_ABI} STREQUAL "armeabi-v7a")
-enable_language(ASM)
-add_definitions(${CRYPTO_ARM_FLAGS})
-set(CRYPTO_SRC_FILES ${CRYPTO_COMMON_SRC_FILES} ${CRYPTO_ARM_SRC_FILES})
-endif()
-
-#if target abi is x86
-if(${ANDROID_ABI} STREQUAL "x86")
 set(CRYPTO_SRC_FILES ${CRYPTO_COMMON_SRC_FILES} ${CRYPTO_NON_ARM_SRC_FILES})
-endif()
 
 #crypto
 add_library(crypto SHARED ${CRYPTO_SRC_FILES})

@@ -5,7 +5,7 @@ static def buildTime() {
 }
 
 android {
-    compileSdkVersion compile_version
+    compileSdkVersion 28
     defaultConfig {
         applicationId "io.xdag.xdagwallet"
         minSdkVersion min_version
@@ -23,7 +23,6 @@ android {
             abiFilters "armeabi-v7a"
         }
     }
-
     signingConfigs {
         release {
             keyAlias 'xdagwalltkey'
@@ -32,7 +31,6 @@ android {
             storePassword 'xdagtothemoon'
         }
     }
-
     buildTypes {
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
@@ -42,29 +40,25 @@ android {
             signingConfig signingConfigs.release
         }
     }
-
     android.applicationVariants.all { variant ->
         variant.outputs.all {
             outputFileName = "xdag_android_${variant.buildType.name}_v${defaultConfig.versionName}_${buildTime()}.apk"
         }
     }
-
-
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
-
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
