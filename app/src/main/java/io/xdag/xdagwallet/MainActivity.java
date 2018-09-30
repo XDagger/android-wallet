@@ -6,24 +6,19 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
-
+import butterknife.BindView;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
-
-import io.xdag.common.tool.ActivityStack;
-import io.xdag.xdagwallet.fragment.MoreFragment;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import butterknife.BindView;
 import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
+import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.fragment.BaseMainFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
+import io.xdag.xdagwallet.fragment.MoreFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
@@ -31,6 +26,8 @@ import io.xdag.xdagwallet.util.ToolbarUtil;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagEventManager;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * created by ssyijiu  on 2018/5/22
