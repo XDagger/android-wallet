@@ -66,6 +66,7 @@
     <string name="error_pool_address_exists">矿池地址已经存在</string>
     <string name="error_cannot_delete_selected_pool">不能删除已经选中的矿池</string>
     <string name="error_server_problem">服务器开小差了</string>
+    <string name="error_send_coin_itself">不能发送 XDAG 给钱包本身的地址</string>
 
     <!-- success -->
     <string name="success_refresh">刷新成功</string>

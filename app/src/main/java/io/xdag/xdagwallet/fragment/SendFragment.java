@@ -13,6 +13,7 @@ import cn.bertsir.zbar.QRManager;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 import io.xdag.xdagwallet.R;
+import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.XdagPaymentURI;
 import io.xdag.xdagwallet.util.ZbarUtil;
@@ -109,6 +110,10 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
     void send_btn_xdag() {
         String address = mEtAddress.getText().toString();
         String amount = mEtAmount.getText().toString();
+        if(TextUtils.equals(address, Config.getAddress())) {
+            AlertUtil.show(mContext,R.string.error_send_coin_itself);
+            return;
+        }
         getXdagHandler().xferXdagCoin(address, amount);
     }
 
