@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">XDagWallet</string>
     <string name="XDAG">XDAG</string>
@@ -101,7 +102,7 @@
     <string name="function_explain">Terms</string>
     <string name="backup_explain">I have read the content above</string>
     <string name="not_show_explain">Don\'t display again</string>
-    <string name="restore_read">I have read the content above, and created a backup in xdag folder</string>
+    <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
     <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
     <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
     <string name="use_explain_2">Caution:\n</string>
