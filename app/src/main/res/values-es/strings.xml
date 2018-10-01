@@ -44,11 +44,11 @@
     <string name="please_retype_password">Por favor, vuelve a escribir la contraseña de la cartera</string>
     <string name="please_input_password">Por favor introduce una contraseña</string>
     <string name="please_input_random">Por favor introduce carácteres aleatorios</string>
-    <string name="please_wait_read_wallet">Leyendo datos de la cartera...</string>
-    <string name="please_wait_transfer">Transferencia en curso...</string>
+    <string name="please_wait_read_wallet">Leyendo datos de la cartera…</string>
+    <string name="please_wait_transfer">Transferencia en curso…</string>
     <string name="please_backup_your_xdag_wallet_first">Por favor, lee esto con cuidado y haz una copia de seguridad de tu cartera.</string>
-    <string name="please_wait_loading">Cargando...</string>
-    <string name="please_wait_connecting_pool">Conectando a la red principal...</string>
+    <string name="please_wait_loading">Cargando…</string>
+    <string name="please_wait_connecting_pool">Conectando a la red principal…</string>
     <string name="please_restore_read">Por favor, lee esta página y copia los archivos del backup en el directorio xdag</string>
 
     <!-- error tips -->
