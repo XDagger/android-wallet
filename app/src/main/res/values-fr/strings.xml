@@ -1,132 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
     <string name="app_name">XDagWallet</string>
     <string name="XDAG">XDAG</string>
 
     <!-- common -->
-    <string name="home">Home</string>
-    <string name="send">Send</string>
-    <string name="receive">Receive</string>
-    <string name="more">More</string>
-    <string name="setting">Settings</string>
-    <string name="send_xdag">Send XDAG</string>
-    <string name="receive_xdag">Receive XDAG</string>
-    <string name="scan">Scan QRCode</string>
-    <string name="to_address">To Address</string>
-    <string name="send_to_address">Send to Address</string>
-    <string name="amount_to_send">Amount</string>
-    <string name="amount">Amount</string>
-    <string name="not_ready">Not ready</string>
-    <string name="create_wallet">Create Wallet</string>
-    <string name="restore_wallet">Restore Wallet</string>
-    <string name="no_transaction">No transaction found</string>
-    <string name="copy_address">Copy Address</string>
-    <string name="about">About</string>
-    <string name="start_use">Start</string>
-    <string name="cover">Overwrite</string>
-    <string name="nice_to_meet_you">Glad to see you here!</string>
-    <string name="the_function_developing_please_wait">To be continued.</string>
-    <string name="continue_use">Continue</string>
-    <string name="exit">Quit</string>
-    <string name="switch_pool_to">Switch pool \n%1$s</string>
-    <string name="tran_detail">Transaction details</string>
-    <string name="warning">Warning</string>
-    <string name="ensure">Confirm</string>
-    <string name="available_xdag">Available %1$s XDAG</string>
-    <string name="cancel">Cancel</string>
-    <string name="add_pool_address">Add pool address</string>
-    <string name="delete_pool_address">Delete pool address:%1$s?</string>
-    <string name="reset_pool_address">Whether restore to the default pool address?</string>
-    <string name="not_remind_again">Don\'t remind again</string>
-    
+    <string name="home">Acceuil</string>
+    <string name="send">Envoyer</string>
+    <string name="receive">Recevoir</string>
+    <string name="more">Plus</string>
+    <string name="setting">Options</string>
+    <string name="send_xdag">Envoyer des XDAG</string>
+    <string name="receive_xdag">Recevoir des XDAG</string>
+    <string name="scan">Scanner un QRCode</string>
+    <string name="to_address">A l\'adresse</string>
+    <string name="send_to_address">Envoyer a l\'adresse</string>
+    <string name="amount_to_send">Montant</string>
+    <string name="amount">Montant</string>
+    <string name="not_ready">Pas prêt</string>
+    <string name="create_wallet">Créer Portefeuille</string>
+    <string name="restore_wallet">Restaurer Portefeuille</string>
+    <string name="no_transaction">Pas de transactions trouvée</string>
+    <string name="copy_address">Copier Adresse</string>
+    <string name="about">A propos</string>
+    <string name="start_use">Démarrer</string>
+    <string name="cover">Ecraser</string>
+    <string name="nice_to_meet_you">Hereux de vous voir ici!</string>
+    <string name="the_function_developing_please_wait">A suivre.</string>
+    <string name="continue_use">Continuer</string>
+    <string name="exit">Quitter</string>
+    <string name="switch_pool_to">changer de pool pour \n%1$s</string>
+    <string name="tran_detail">Détail de la transaction</string>
+    <string name="warning">Attention</string>
+    <string name="ensure">Confirmer</string>
+    <string name="available_xdag">XDAG Disponible %1$s </string>
+    <string name="cancel">Annuler</string>
+    <string name="add_pool_address">Ajouter une adresse de pool</string>
+    <string name="delete_pool_address">Effacer l\'adresse de la pool:%1$s?</string>
+    <string name="reset_pool_address">Restaurer par défaut?</string>
+    <string name="not_remind_again">Ne pas se souvenir</string>
+
     <!-- please -->
-    <string name="please_set_password">Please set wallet password</string>
-    <string name="please_retype_password">Please retype wallet password</string>
-    <string name="please_input_password">Please input password</string>
-    <string name="please_input_random">Please input random key</string>
-    <string name="please_wait_read_wallet">Reading wallet data..</string>
-    <string name="please_wait_transfer">Transfer in progress..</string>
-    <string name="please_backup_your_xdag_wallet_first">Please read this carefully, and backup your wallet.</string>
-    <string name="please_wait_loading">Loading in progress..</string>
-    <string name="please_wait_connecting_pool">Connecting to main net..</string>
-    <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
+    <string name="please_set_password">Veuillez définir un mot de passe</string>
+    <string name="please_retype_password">Veuillez retaper votre mot de passe</string>
+    <string name="please_input_password">Veuillez entrer votre mot de passe</string>
+    <string name="please_input_random">Veuillez entrer une clé aléatoire</string>
+    <string name="please_wait_read_wallet">Lecture des données du portefeuille..</string>
+    <string name="please_wait_transfer">Transfert en cours..</string>
+    <string name="please_backup_your_xdag_wallet_first">Veuillez lire ceci attentivement, faite une sauvegarde de votre portefeuille</string>
+    <string name="please_wait_loading">Chargement en cours..</string>
+    <string name="please_wait_connecting_pool">Connection au réseau..</string>
+    <string name="please_restore_read">Veuillez lire cette page et copier vos fichiers sauvegardé dans le répertoire XDAG</string>
 
     <!-- error tips -->
-    <string name="error_cannot_identify_qr_code">Failed to identify QRCode</string>
-    <string name="error_file_make_fail">Failed to create file</string>
-    <string name="error_sdcard_not_available">No SD card detected</string>
-    <string name="error_create_xdag_wallet">Failed to create wallet</string>
-    <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
-    <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
-    <string name="error_password">Password incorrect</string>
-    <string name="error_password_not_same">Password inconsistent</string>
-    <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
-    <string name="error_balance_too_small">Amount not sufficient</string>
-    <string name="error_invalid_recv_address">Invalid address</string>
-    <string name="error_invalid_pool_address">Invalid pool address</string>
-    <string name="error_pool_address_exists">Pool address already exists</string>
-    <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
-    <string name="error_server_problem">The server is running out of the way</string>
-    <string name="error_send_coin_itself">can\'t transfer XDAG to itself</string>
+    <string name="error_cannot_identify_qr_code">Echec d\'identification du QRCode</string>
+    <string name="error_file_make_fail">Echec de la création du fichier</string>
+    <string name="error_sdcard_not_available">Pas de carte SD reperée</string>
+    <string name="error_create_xdag_wallet">Echec de la création de portefeuille</string>
+    <string name="error_restore_xdag_wallet">Echec de la restauration du portefeuille</string>
+    <string name="error_backup_xdag_wallet">Echec de la sauvegarde du portefeuille</string>
+    <string name="error_password">Mauvais mot de passe</string>
+    <string name="error_password_not_same">Mot de passe non similaire</string>
+    <string name="error_noting_to_transfer">Le montant a envoyer doit etre supérieur a 0</string>
+    <string name="error_balance_too_small">Montant non suffisant</string>
+    <string name="error_invalid_recv_address">Adresse invalide</string>
+    <string name="error_invalid_pool_address">Adresse de pool invalide</string>
+    <string name="error_pool_address_exists">Cette adresse de pool existe déja</string>
+    <string name="error_cannot_delete_selected_pool">Vous ne pouvez pas effacer l\'adresse selectionnée</string>
+    <string name="error_server_problem">Le serveur est saturé</string>
+    <string name="error_send_coin_itself">impossible de se transférer des XDAG</string>
 
     <!-- success -->
-    <string name="success_refresh">Refreshed successfully</string>
-    <string name="success_copy_address">Copied successfully</string>
-    <string name="success_send_coin">Sent successfully</string>
-    <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
+    <string name="success_refresh">Rafraîchissement réussi</string>
+    <string name="success_copy_address">Copie réussie</string>
+    <string name="success_send_coin">Envois réussir</string>
+    <string name="success_backup_xdag_wallet">Sauvegarde du portefeuille crée dans /sdcard/xdag </string>
 
     <!-- setting item-->
     <string name="more_messages">Message</string>
-    <string name="more_backup_wallet">Backup wallet</string>
+    <string name="more_backup_wallet">Sauvegarde du portefeuille</string>
     <string name="more_suggest">Feedback</string>
-    <string name="more_wallet">Switch wallet</string>
-    <string name="more_pool">Switch pool</string>
-    <string name="more_xdag_io">Community website - xdag.io</string>
+    <string name="more_wallet">Changer de portefeuille</string>
+    <string name="more_pool">Changer de pool</string>
+    <string name="more_xdag_io">Site de la communauté- xdag.io</string>
     <string name="more_github">GitHub - XDagger</string>
 
     <!-- password format -->
     <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
-    <string name="error_password_format">Please input 6 to 18 characters, numbers, or special characters</string>
+    <string name="error_password_format">Veuillez entrer entre 6 et 18 caracteres, nombres, caracteres spéciaux</string>
 
     <!-- about -->
-    <string name="slogan">Fluent and Stable XDAG wallet</string>
+    <string name="slogan">Portefeuille XDAG courant et stable</string>
     <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
 
     <!-- update -->
-    <string name="update">Update</string>
-    <string name="close">Close</string>
-    <string name="new_version_available">New version detected：%1$s</string>
+    <string name="update">Mise a jour</string>
+    <string name="close">Fermer</string>
+    <string name="new_version_available">Nouvelle version détectée:%1$s</string>
 
     <!-- explain-->
     <string name="usage">Usage</string>
     <string name="function_explain">Terms</string>
-    <string name="backup_explain">I have read the content above</string>
-    <string name="not_show_explain">Don\'t display again</string>
-    <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
-    <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
-    <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
-    <string name="use_explain_2">Caution:\n</string>
-    <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
-    <string name="use_explain_4">WE ARE NOT RESPONSIBLE FOR ANY LOSS OF ASSETS.\n</string>
-    <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
-    <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
-    <string name="use_explain_7">We will improve this in later releases.</string>
-    <string name="restore_explain_1">Due to special data structure of XDAG, \n</string>
-    <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
-    <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
-    <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
-    <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
-    <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
-    <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
-    <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
-    <string name="wallet_explain_1">No wallet detected!\n</string>
-    <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
-    <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
-    <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-    <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
-    <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
+    <string name="backup_explain">J\'ai lu le texte ci dessus</string>
+    <string name="not_show_explain">Ne plus afficher</string>
+    <string name="restore_read_explain">J\'ai lu le texte ci-dessus et créer une sauvegarde dans le dossier xdag</string>
+    <string name="check_root_explain">Attention! Votre appareil est rooté, il est risqué de continuer</string>
+    <string name="use_explain_1">Le portefeuille XDAG Android est encore en version beta\n</string>
+    <string name="use_explain_2">Attention:\n</string>
+    <string name="use_explain_3">Veuillez sauvegarder votre portefeuille en cas de perte due a un bug.\n</string>
+    <string name="use_explain_4">NOUS NE SOMME PAS RESPONSABLE DE VOS PERTES.\n</string>
+    <string name="use_explain_5">Désinstaller ou effacer les données vont causer la perte du portefeuille, SANS POSSIBILITEE DE RECUPERATION. Veuillez sauvegarder votre portefeuille d\'abord\n</string>
+    <string name="use_explain_6">Pour sécuriser les transactions, les popups ne sont pas annulable.\n</string>
+    <string name="use_explain_7">Ceci sera amélioré dans une prochaine versionWe will improve this in later releases.</string>
+    <string name="restore_explain_1">En raison de la structure spécifique de XDAG, \n</string>
+    <string name="restore_explain_2">Le portefeuille XDAG ne supporte pas encore la restauration ou la sauvegarde par clé privée ou phrase mnemonique actuellement.\n</string>
+    <string name="restore_explain_3">Vous pouvez seulement sauvegarder et restaurer votre portefeuille a partir des fichiers dans le dossier xdag.\n</string>
+    <string name="restore_explain_4">Pour restaurer votre portefeuille, vous devez copierles fichiers de votre portefeuille dans le dossier xdag qui est a la racine de votre carte SD.\n</string>
+    <string name="restore_explain_5">La carte SD n\'est pas un endroit sur pour une sauvegarde, n\'importe quel VIRUS peut voler des infos d'une carte SD.\n</string>
+    <string name="restore_explain_6">Quand vous restaurezWhen restoring a wallet, the backup is moved to Android private folder.\n</string>
+    <string name="restore_explain_7">Vous pouvez sauvegarder votre portefeuille sur une carte SD a tout moment.\n</string>
+    <string name="restore_explain_8">Rappelez vous qu\'une carte SD n\'est pas fiable, veillez transferer votre sauvegarde en lieu sur.\n</string>
+    <string name="wallet_explain_1">Pas de portefeuille détecté!\n</string>
+    <string name="wallet_explain_2">Vous avez deux moyen pour avoir votre portefeuille.\n</string>
+    <string name="wallet_explain_3">Créer un nouveau portefeuille.Vous pouvez créer un tout nouveau portefeuille.\n</string>
+    <string name="wallet_explain_4">Restaurer un portefeuille.Vous pouvez importer votre ancien portefeuille ici.\n</string>
+    <string name="wallet_explain_5">Nous allons vous demander la permission d\'écriture sur une carte SD externe, veuillez ne pas la refuser.\n</string>
+    <string name="cover_explain">Détéction d\'une sauvegarde existante dans /sdcard/xdag, voulez vous l\'effacer? Vous ne pourrez plus la récupérer si vous l'effacez.</string>
 
     <!-- settings-->
-    <string name="settings_show_usage">Don\'t display usage</string>
+    <string name="settings_show_usage">Ne pas afficher usage</string>
 
 </resources>
