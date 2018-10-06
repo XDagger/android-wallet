@@ -60,4 +60,9 @@ fastlane/test_output
 fastlane/readme.md
 
 app/xdagwallt.jks
+<<<<<<< Updated upstream
 *.DS_store
+=======
+.DS_store
+app/release
+>>>>>>> Stashed changes
