@@ -4,11 +4,11 @@
   <string name="app_name">XDagWallet</string>
   <string name="XDAG">XDAG</string>
   <!-- common -->
-  <string name="home">首页</string>
-  <string name="send">发送</string>
+  <string name="home">首頁</string>
+  <string name="send">發送</string>
   <string name="receive">接收</string>
   <string name="more">更多</string>
-  <string name="setting">设置</string>
+  <string name="setting">設定</string>
   <string name="send_xdag">发送 XDAG</string>
   <string name="receive_xdag">接收 XDAG</string>
   <string name="scan">扫一扫</string>
@@ -21,13 +21,13 @@
   <string name="restore_wallet">恢复钱包</string>
   <string name="no_transaction">没有交易记录</string>
   <string name="copy_address">复制地址</string>
-  <string name="about">关于我们</string>
+  <string name="about">關於</string>
   <string name="start_use">开始使用</string>
   <string name="cover">覆盖</string>
   <string name="nice_to_meet_you">很高兴见到您</string>
   <string name="the_function_developing_please_wait">这个功能我们正在开发中，请稍后。</string>
-  <string name="continue_use">继续使用</string>
-  <string name="exit">退出</string>
+  <string name="continue_use">繼續</string>
+  <string name="exit">離開</string>
   <string name="switch_pool_to">是否切换到矿池到\n%1$s</string>
   <string name="tran_detail">交易详情</string>
   <string name="warning">警告</string>
