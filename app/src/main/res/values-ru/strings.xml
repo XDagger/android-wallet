@@ -110,7 +110,7 @@
   <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
   <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
   <string name="restore_explain_7">Вы можете создать резервную копию вашего кошелька на SD-карте в любое время.\n</string>
-  <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
+  <string name="restore_explain_8">Пожалуйста, имейте в виду: SD-карта не является безопасным устройством для хранения данных, пожалуйста сохраните резервные копии на безопасном устройстве.\n</string>
   <string name="wallet_explain_1">No wallet detected!\n</string>
   <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
   <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
