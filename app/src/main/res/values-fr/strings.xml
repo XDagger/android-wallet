@@ -74,11 +74,11 @@
   <!-- setting item-->
   <string name="more_messages">Message</string>
   <string name="more_backup_wallet">Sauvegarde du portefeuille</string>
-  <string name="more_suggest">Feedback</string>
+  <string name="more_suggest">Commentaire</string>
   <string name="more_wallet">Changer de portefeuille</string>
   <string name="more_pool">Changer de pool</string>
   <string name="more_xdag_io">Site de la communauté- xdag.io</string>
-  <string name="more_github">GitHub - XDagger</string>
+  <string name="more_github">Github - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
   <string name="error_password_format">Veuillez entrer entre 6 et 18 caracteres, nombres, caracteres spéciaux</string>
@@ -90,8 +90,8 @@
   <string name="close">Fermer</string>
   <string name="new_version_available">Nouvelle version détectée:%1$s</string>
   <!-- explain-->
-  <string name="usage">Usage</string>
-  <string name="function_explain">Terms</string>
+  <string name="usage">Utilisation</string>
+  <string name="function_explain">Termes</string>
   <string name="backup_explain">J\'ai lu le texte ci dessus</string>
   <string name="not_show_explain">Ne plus afficher</string>
   <string name="restore_read_explain">J\'ai lu le texte ci-dessus et créer une sauvegarde dans le dossier xdag</string>
