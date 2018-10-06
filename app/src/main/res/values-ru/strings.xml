@@ -39,7 +39,7 @@
   <string name="reset_pool_address">Восстановить ли адрес пула по умолчанию?</string>
   <string name="not_remind_again">Не напоминать больше</string>
   <!-- please -->
-  <string name="please_set_password">Пожалуйста, установить пароль кошелька</string>
+  <string name="please_set_password">Пожалуйста, задайте пароль кошелька</string>
   <string name="please_retype_password">Пожалуйста, повторите пароль кошелька</string>
   <string name="please_input_password">Пожалуйста, введите пароль</string>
   <string name="please_input_random">Пожалуйста, введите случайный ключ</string>
@@ -94,7 +94,7 @@
   <string name="function_explain">Условия</string>
   <string name="backup_explain">Я прочитал информацию выше</string>
   <string name="not_show_explain">Больше не показывать</string>
-  <string name="restore_read_explain">Я прочитал содержание выше и создал резервную копию в папке XDAG</string>
+  <string name="restore_read_explain">Я ознакомлен(а) с информацией выше и создал(а) резервную копию в папке XDAG</string>
   <string name="check_root_explain">Внимание! Ваше устройство разлочено, что несёт высокий риск.</string>
   <string name="use_explain_1">Кошелёк XDAG для Android находится на стадии бета-версии.\n</string>
   <string name="use_explain_2">Предостережение:\n</string>
@@ -108,7 +108,7 @@
   <string name="restore_explain_3">Вы можете создавать резервные копии и восстанавливать ваш кошелёк только с помощью файлов в папке XDAG.\n</string>
   <string name="restore_explain_4">Чтобы восстановить свой кошелёк, вы должны скопировать файлы вашего кошелька в папку XDAG в корневой папке SD-карты.\n</string>
   <string name="restore_explain_5">SD-карта не является безопасным местом для хранения резервных копий.\n</string>
-  <string name="restore_explain_6">В ходе восстановление кошелька, резервные файлы будут перемещены в скрытую папку Android.\n</string>
+  <string name="restore_explain_6">При восстановлении кошелька резервные файлы будут перемещены в системную директорию системы Android.\n</string>
   <string name="restore_explain_7">Вы можете создать резервную копию вашего кошелька на SD-карте в любое время.\n</string>
   <string name="restore_explain_8">Пожалуйста, имейте в виду: SD-карта не является безопасным устройством для хранения данных, пожалуйста сохраните резервные копии на безопасном устройстве.\n</string>
   <string name="wallet_explain_1">Кошелёк не найден!\n</string>
