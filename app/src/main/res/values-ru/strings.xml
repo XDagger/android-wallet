@@ -47,7 +47,7 @@
   <string name="please_wait_transfer">Транзакция в прогрессе...</string>
   <string name="please_backup_your_xdag_wallet_first">Пожалуйста, прочтите внимательно и создайте резервную копию вашего кошелька.</string>
   <string name="please_wait_loading">Загрузка...</string>
-  <string name="please_wait_connecting_pool">Подключение к пулу...</string>
+  <string name="please_wait_connecting_pool">Подключение к сети...</string>
   <string name="please_restore_read">Пожалуйста, прочтите страницу и скопируйте резервные файлы в папку XDAG</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Не удалось прочесть SRCode</string>
