@@ -18,9 +18,9 @@
   <string name="amount">数量</string>
   <string name="not_ready">准備中</string>
   <string name="create_wallet">創建錢包</string>
-  <string name="restore_wallet">恢复钱包</string>
+  <string name="restore_wallet">恢復錢包</string>
   <string name="no_transaction">沒有交易記錄</string>
-  <string name="copy_address">复制地址</string>
+  <string name="copy_address">復制地址</string>
   <string name="about">關於</string>
   <string name="start_use">開始使用</string>
   <string name="cover">覆蓋</string>
@@ -73,50 +73,51 @@
   <string name="success_backup_xdag_wallet">您的錢包已備份至/sdcard/xdag目錄</string>
   <!-- setting item-->
   <string name="more_messages">訊息</string>
-  <string name="more_backup_wallet">备份钱包</string>
-  <string name="more_suggest">问题与建议</string>
-  <string name="more_wallet">切换钱包</string>
-  <string name="more_pool">选择矿池</string>
-  <string name="more_xdag_io">社区官网 - xdag.io</string>
+  <string name="more_backup_wallet">備份錢包</string>
+  <string name="more_suggest">問題與建議</string>
+  <string name="more_wallet">切換錢包</string>
+  <string name="more_pool">選擇礦池</string>
+  <string name="more_xdag_io">社區官網 - xdag.io</string>
   <string name="more_github">Github - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
-  <string name="error_password_format">请输入 6–18 位的字母、数字或者符号</string>
+  <string name="error_password_format">請輸入 6–18 位的字母、數字或者符號</string>
   <!-- about -->
-  <string name="slogan">流畅、稳定的 XDAG 钱包</string>
-  <string name="about_explain">我们致力于做一款流畅、稳定的 XDAG 钱包，在使用过程中您有什么问题和建议，可以通过上一页面的问题与建议反馈给我们。 \n\n为了让您放心使用，我们的钱包代码已经在 GitHub 上开源，地址在下方，欢迎您随时检查，也欢迎各位 Coder 贡献代码。 \n\n最后提醒您：\n\n使本钱包之前，请务必在其他地方备份好您的钱包文件。\n\n您的钱包文件我们保存在了 Android 系统中的私有目录。\n但是备份和恢复钱包都是在存储卡进行的(sdcard/xdag/)，在 Android 系统中存储卡并不是一个安全的位置，请您在备份恢复钱包后立即转移您的钱包文件到其他设备上。\n\n任何卸载应用、删除数据的行为都将造成钱包文件丢失，且无法找回。请您在进行这些操作前务必备份您的钱包。\n\n出现任何资产损失，作者不会承担这个责任。</string>
+  <string name="slogan">流暢、穩定的 XDAG 錢包</string>
+  <string name="about_explain">我們致力於做一款流暢、穩定的 XDAG 錢包，在使用過程中您有什麼問題和建議，可以透過上一頁面的問題與建議反饋給我們。\n\n為了讓您放心使用，我們的錢包代碼已經在 GitHub 上開源，地址在下方，歡迎您隨時檢查，也歡迎各位 Coder 貢獻代碼。\n\n最後提醒您：\n\n使本錢包之前，請務必在其他地方備份好您的錢包文件。\n\n您的錢包文件我們保存在了 Android 系統中的私有目錄。\n但是備份和恢複錢包都是在存儲卡進行的(sdcard/xdag/)，在 Android 系統中存儲卡並不是一個安全的位置，請您在備份恢複錢包後立即轉移您的錢包文件到其他設備上。\n\n任何卸載應用、刪除數據的行為都將造成錢包文件丟失，且無法找回。請您在進行這些操作前務必備份您的錢包。\n\n出現任何資產損失，作者不會承担這個責任。</string>
   <!-- update -->
   <string name="update">更新</string>
   <string name="close">關閉</string>
-  <string name="new_version_available">有新版本的 XDAG 钱包可用：%1$s</string>
+  <string name="new_version_available">有新版本的 XDAG 錢包可用：%1$s</string>
   <!-- explain-->
-  <string name="usage">使用说明</string>
+  <string name="usage">使用說明</string>
   <string name="function_explain">職權範圍</string>
-  <string name="backup_explain">我已经仔细阅读上述内容</string>
-  <string name="not_show_explain">不再显示本页面</string>
-  <string name="restore_read_explain">已仔细阅读上述内容，并将钱包文件拷贝到了存储卡的 xdag 文件夹。</string>
-  <string name="check_root_explain">检测到您的手机已经 Root，继续使用有资产被盗的风险。</string>
-  <string name="use_explain_1">XDAG Android 钱包目前还处于测试版本\n</string>
-  <string name="use_explain_2">使用请注意：\n</string>
-  <string name="use_explain_3">请务必在其他位置备份好您的钱包文件，以防止因本钱包的 bug 造成您的资产损失。\n</string>
-  <string name="use_explain_4">出现任何资产损失，作者不承担这个责任。\n</string>
-  <string name="use_explain_5">任何卸载应用、删除数据的行为都将造成钱包文件丢失，且无法找回，请您在进行这些操作前务必备份您的钱包。\n</string>
-  <string name="use_explain_6">为保证钱包事物的连续性，目前的版本应用内的很多弹框都不可取消，请您见谅。\n</string>
-  <string name="use_explain_7">我们在后续版本中将改善这个问题。</string>
-  <string name="restore_explain_1">XDAG 因为其独特的设计，\n</string>
-  <string name="restore_explain_2">目前不支持私钥、助记词等方式备份和恢复钱包。\n</string>
-  <string name="restore_explain_3">您只能通过以下钱包文件来备份和恢复您的钱包：\n</string>
-  <string name="restore_explain_4">恢复钱包需要将您的三个钱包文件拷贝到存储卡根目录下的 xdag 文件夹。\n</string>
-  <string name="restore_explain_5">存储卡并不是一个安全的位置，任何恶意程序都可以轻而易举的从存储卡将您的钱包拷贝走。\n</string>
-  <string name="restore_explain_6">因此，在您点击恢复钱包的按钮后，我们会将您的钱包文件移动到 Android 系统中最为安全的私有目录。\n</string>
-  <string name="restore_explain_7">您可以随时在设置页面将您的钱包备份回存储卡。\n</string>
-  <string name="restore_explain_8">但是请切记，存储卡不是一个安全的位置，备份后请您快速转移钱包文件，以免造成资产损失。</string>
-  <string name="wallet_explain_1">未检测到您的 XDAG 钱包文件，\n</string>
-  <string name="wallet_explain_2">现在您可以使用以下两种方式获取 XDAG 钱包。\n</string>
-  <string name="wallet_explain_3">创建钱包：为您创建一个新的钱包来存储和交易您的 XAG。\n</string>
-  <string name="wallet_explain_4">恢复钱包：如果您创建过 XDAG 钱包，可以从这里导入钱包文件来恢复钱包。\n</string>
-  <string name="wallet_explain_5">在点击恢复钱包后，我们会帮您在存储卡根目录创建一个 xdag 文件夹，这个时候我们会请求您的存储卡权限，请您不要拒绝。\n</string>
-  <string name="cover_explain">检测到 /sdcard/xdag 已经存在一个钱包，继续备份将覆盖这个钱包（钱包被覆盖意味着钱包的资产丢失且无法找回）。</string>
+  <string name="backup_explain">我已經仔細閱讀上述内容</string>
+  <string name="not_show_explain">不再顯示本頁面</string>
+  <string name="restore_read_explain">已仔細閱讀上述内容，並將錢包文件拷貝到了存儲卡的 xdag 文件夾。</string>
+  <string name="check_root_explain">偵測到您的手機已經 Root，繼續使用有資產被盜的風險。</string>
+  <string name="use_explain_1">XDAG Android 錢包目前還處於測試版本\n</string>
+  <string name="use_explain_2">使用請註意：\n</string>
+  <string name="use_explain_3">請務必在其他位置備份好您的錢包文件，以防止因本錢包的bug造成您的資產損失。\n</string>
+  <string name="use_explain_4">出現任何資產損失，作者不承担這個責任。\n</string>
+  <string name="use_explain_5">任何卸載應用、刪除數據的行為都將造成錢包文件丟失，且無法找回，請您在進行這些操作前務必備份您的錢包。\n</string>
+  <string name="use_explain_6">為保證錢包事物的連續性，目前的版本應用内的很多彈框都不可取消，請您見諒。\n</string>
+  <string name="use_explain_7">我們在後續版本中將改善這個問題。</string>
+  <string name="restore_explain_1">XDAG因為其獨特的設計，\n</string>
+  <string name="restore_explain_2">目前不支持私鑰、助記詞等方式備份和恢複錢包。\n</string>
+  <string name="restore_explain_3">您祗能透過以下錢包文件來備份和恢複您的錢包：\n</string>
+  <string name="restore_explain_4">恢複錢包需要將您的三個錢包文件拷貝到存儲卡根目錄下的xdag文件夾。\n</string>
+  <string name="restore_explain_5">存儲卡並不是一個安全的位置，任何惡意程式都可以輕而易擧的從存儲卡將您的錢包拷貝走。\n</string>
+  <string name="restore_explain_6">因此，在您點擊恢複錢包的按鈕後，我們會將您的錢包文件移動到Android系統中最為安全的私有目錄。\n</string>
+  <string name="restore_explain_7">您可以隨時在設置頁面將您的錢包備份回存儲卡。\n</string>
+  <string name="restore_explain_8">但是請切記，存儲卡不是一個安全的位置，備份後請您快速轉移錢包文件，以免造成資產損失。</string>
+  <string name="wallet_explain_1">未偵測到您的XDAG錢包文件，\n</string>
+  <string name="wallet_explain_2">現在您可以使用以下兩種方式獲取 XDAG 錢包。\n</string>
+  <string name="wallet_explain_3">創建錢包：為您創建一個新的錢包來存儲和交易您的 XAG。\n</string>
+  <string name="wallet_explain_4">恢複錢包：如果您創建過XDAG錢包，可以從這裏導入錢包文件來恢複錢包。\n</string>
+  <string name="wallet_explain_5">在點擊恢複錢包後，我們會幫您在存儲卡根目錄創建一個xdag文件夾，這個時候我們會請求您的存儲卡權限，請您不要拒絕。\n</string>
+  <string name="cover_explain">偵測到/sdcard/xdag已經存在一個錢包，繼續備份將覆蓋這個錢包（錢包被覆蓋意味着錢包的資產丟失且無法找回）。
+</string>
   <!-- settings-->
-  <string name="settings_show_usage">不显示使用说明</string>
+  <string name="settings_show_usage">不顯示使用說明</string>
 </resources>
