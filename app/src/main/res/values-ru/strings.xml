@@ -48,12 +48,12 @@
   <string name="please_backup_your_xdag_wallet_first">Пожалуйста, прочтите внимательно и создайте резервную копию вашего кошелька.</string>
   <string name="please_wait_loading">Загрузка...</string>
   <string name="please_wait_connecting_pool">Подключение к пулу...</string>
-  <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
+  <string name="please_restore_read">Пожалуйста, прочтите страницу и скопируйте резервные файлы в папку XDAG</string>
   <!-- error tips -->
-  <string name="error_cannot_identify_qr_code">Failed to identify QRCode</string>
-  <string name="error_file_make_fail">Failed to create file</string>
-  <string name="error_sdcard_not_available">No SD card detected</string>
-  <string name="error_create_xdag_wallet">Failed to create wallet</string>
+  <string name="error_cannot_identify_qr_code">Не удалось прочесть SRCode</string>
+  <string name="error_file_make_fail">Не удалось создать файл</string>
+  <string name="error_sdcard_not_available">SD-карта не найдена</string>
+  <string name="error_create_xdag_wallet">Не удалось создать кошелек</string>
   <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
   <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
   <string name="error_password">Password incorrect</string>
@@ -109,7 +109,7 @@
   <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
   <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
   <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
-  <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
+  <string name="restore_explain_7">Вы можете создать резервную копию вашего кошелька на SD-карте в любое время.\n</string>
   <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
   <string name="wallet_explain_1">No wallet detected!\n</string>
   <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
