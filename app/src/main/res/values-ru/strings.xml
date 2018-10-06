@@ -84,7 +84,7 @@
   <string name="error_password_format">Пожалуйста, введите 6-18 символов, цифр или специальных символов</string>
   <!-- about -->
   <string name="slogan">Быстрый и стабильный кошелёк XDAG</string>
-  <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
+  <string name="about_explain">Мы занимаемся для разработкой быстрого и стабильного кошелька XDAG. Если у вас есть любые вопросы или предложения, пожалуйста, отправьте нам ваш обратную связть.\n\nИсходный код представлен на Github, ссылка отображается ниже. Вы можете помочь в разработке.\n\nНапоминание:\n\nПожалуйста, создайте резервную копию вашего кошелька.\n\nМы сохранили ваши файлы в скрытой папке Android, но резервное копирование и восстановления производится с использованием внешней SD-карты (имя папки: /sdcard/xdag /). SD-карта не является достаточно безопасной для хранения резервной копии, пожалуйста сохрание файлы резервной копии в более безопасном месте.\n\nДеинсталляция и удаление данных могут привести к потере кошелька без возможности восстановления.\nПожалуйста, создайте резервную копию Вашего кошелька перед данными операциями.\n\nМЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТИ ЗА ВОЗМОЖНУЮ ПОТЕРЮ СРЕДСТВ.</string>
   <!-- update -->
   <string name="update">Обновить</string>
   <string name="close">Закрыть</string>
@@ -101,14 +101,14 @@
   <string name="use_explain_3">Пожалуйста, создайте резервную копию вашего кошелька на случай утери.\n</string>
   <string name="use_explain_4">МЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТИ В СЛУЧАЕ УТЕРИ ВАШИХ СРЕДСТВ.\n</string>
   <string name="use_explain_5">Деинсталляция или удаление данных могут вызвать потерю кошелька без возможности восстановления. Пожалуйста, сначала создайте резервную копию.\n</string>
-  <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
-  <string name="use_explain_7">We will improve this in later releases.</string>
-  <string name="restore_explain_1">Due to special data structure of XDAG, \n</string>
-  <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
-  <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
-  <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
-  <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
-  <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
+  <string name="use_explain_6">Чтобы гарантировать транзакции, всплывающие окна не отменяемы.\n</string>
+  <string name="use_explain_7">Мы улучшим это у будущих выпусках.</string>
+  <string name="restore_explain_1">Вследствие особой структуры данных XDAG,\n</string>
+  <string name="restore_explain_2">В настоящее время XDAG не поддерживает резервное копирование и восстановление посредством приватного ключа или мнемонического кода.\n</string>
+  <string name="restore_explain_3">Вы можете создавать резервные копии и восстанавливать ваш кошелёк только с помощью файлов в папке XDAG.\n</string>
+  <string name="restore_explain_4">Чтобы восстановить свой кошелёк, вы должны скопировать файлы вашего кошелька в папку XDAG в корневой папке SD-карты.\n</string>
+  <string name="restore_explain_5">SD-карта не является безопасным местом для резервных копий.\n</string>
+  <string name="restore_explain_6">В ходе восстановление кошелька, резервные файлы будут перемещены в скрытую папку Android.\n</string>
   <string name="restore_explain_7">Вы можете создать резервную копию вашего кошелька на SD-карте в любое время.\n</string>
   <string name="restore_explain_8">Пожалуйста, имейте в виду: SD-карта не является безопасным устройством для хранения данных, пожалуйста сохраните резервные копии на безопасном устройстве.\n</string>
   <string name="wallet_explain_1">Кошелёк не найден!\n</string>
