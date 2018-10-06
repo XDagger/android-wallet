@@ -72,7 +72,7 @@
   <string name="success_send_coin">发送成功</string>
   <string name="success_backup_xdag_wallet">您的钱包已备份至 /sdcard/xdag 目录</string>
   <!-- setting item-->
-  <string name="more_messages">消息</string>
+  <string name="more_messages">訊息</string>
   <string name="more_backup_wallet">备份钱包</string>
   <string name="more_suggest">问题与建议</string>
   <string name="more_wallet">切换钱包</string>
@@ -87,11 +87,11 @@
   <string name="about_explain">我们致力于做一款流畅、稳定的 XDAG 钱包，在使用过程中您有什么问题和建议，可以通过上一页面的问题与建议反馈给我们。 \n\n为了让您放心使用，我们的钱包代码已经在 GitHub 上开源，地址在下方，欢迎您随时检查，也欢迎各位 Coder 贡献代码。 \n\n最后提醒您：\n\n使本钱包之前，请务必在其他地方备份好您的钱包文件。\n\n您的钱包文件我们保存在了 Android 系统中的私有目录。\n但是备份和恢复钱包都是在存储卡进行的(sdcard/xdag/)，在 Android 系统中存储卡并不是一个安全的位置，请您在备份恢复钱包后立即转移您的钱包文件到其他设备上。\n\n任何卸载应用、删除数据的行为都将造成钱包文件丢失，且无法找回。请您在进行这些操作前务必备份您的钱包。\n\n出现任何资产损失，作者不会承担这个责任。</string>
   <!-- update -->
   <string name="update">更新</string>
-  <string name="close">关闭</string>
+  <string name="close">關閉</string>
   <string name="new_version_available">有新版本的 XDAG 钱包可用：%1$s</string>
   <!-- explain-->
   <string name="usage">使用说明</string>
-  <string name="function_explain">使用条款</string>
+  <string name="function_explain">職權範圍</string>
   <string name="backup_explain">我已经仔细阅读上述内容</string>
   <string name="not_show_explain">不再显示本页面</string>
   <string name="restore_read_explain">已仔细阅读上述内容，并将钱包文件拷贝到了存储卡的 xdag 文件夹。</string>
