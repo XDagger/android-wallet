@@ -110,7 +110,7 @@
   <string name="restore_explain_5">存储卡并不是一个安全的位置，任何恶意程序都可以轻而易举的从存储卡将您的钱包拷贝走。\n</string>
   <string name="restore_explain_6">因此，在您点击恢复钱包的按钮后，我们会将您的钱包文件移动到 Android 系统中最为安全的私有目录。\n</string>
   <string name="restore_explain_7">您可以随时在设置页面将您的钱包备份回存储卡。\n</string>
-  <string name="restore_explain_8">但是请切记，存储卡不是一个安全的位置，备份后请您快速转移钱包文件，以免造成资产损失。</string>
+  <string name="restore_explain_8">但是请切记，存储卡不是一个安全的位置，备份后请您快速转移钱包文件，以免造成资产损失。\n</string>
   <string name="wallet_explain_1">未检测到您的 XDAG 钱包文件，\n</string>
   <string name="wallet_explain_2">现在您可以使用以下两种方式获取 XDAG 钱包。\n</string>
   <string name="wallet_explain_3">创建钱包：为您创建一个新的钱包来存储和交易您的 XAG。\n</string>
