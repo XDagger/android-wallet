@@ -57,7 +57,7 @@
   <string name="error_restore_xdag_wallet">XDAG 錢包備份失敗</string>
   <string name="error_backup_xdag_wallet">XDAG錢包備份失敗</string>
   <string name="error_password">密碼錯誤</string>
-  <string name="error_password_not_same">密码不一致</string>
+  <string name="error_password_not_same">密碼不壹致</string>
   <string name="error_noting_to_transfer">發送金額必須大於0</string>
   <string name="error_balance_too_small">餘額不足</string>
   <string name="error_invalid_recv_address">非法的接收地址</string>
