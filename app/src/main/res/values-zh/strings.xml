@@ -32,7 +32,7 @@
   <string name="tran_detail">交易详情</string>
   <string name="warning">警告</string>
   <string name="ensure">确定</string>
-  <string name="available_xdag">Available %1$s XDAG</string>
+  <string name="available_xdag">拥有 %1$s XDAG</string>
   <string name="cancel">取消</string>
   <string name="add_pool_address">添加矿池</string>
   <string name="delete_pool_address">删除矿池：%1$s？</string>
@@ -78,7 +78,7 @@
   <string name="more_wallet">切换钱包</string>
   <string name="more_pool">选择矿池</string>
   <string name="more_xdag_io">社区官网 - xdag.io</string>
-  <string name="more_github">GitHub - XDagger</string>
+  <string name="more_github">Github - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
   <string name="error_password_format">请输入 6–18 位的字母、数字或者符号</string>
@@ -91,7 +91,7 @@
   <string name="new_version_available">有新版本的 XDAG 钱包可用：%1$s</string>
   <!-- explain-->
   <string name="usage">使用说明</string>
-  <string name="function_explain">功能说明</string>
+  <string name="function_explain">使用条款</string>
   <string name="backup_explain">我已经仔细阅读上述内容</string>
   <string name="not_show_explain">不再显示本页面</string>
   <string name="restore_read_explain">已仔细阅读上述内容，并将钱包文件拷贝到了存储卡的 xdag 文件夹。</string>
