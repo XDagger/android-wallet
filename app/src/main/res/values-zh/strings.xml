@@ -57,7 +57,7 @@
   <string name="error_restore_xdag_wallet">XDAG 錢包備份失敗</string>
   <string name="error_backup_xdag_wallet">XDAG錢包備份失敗</string>
   <string name="error_password">密碼錯誤</string>
-  <string name="error_password_not_same">密碼不壹致</string>
+  <string name="error_password_not_same">密碼不一致</string>
   <string name="error_noting_to_transfer">發送金額必須大於0</string>
   <string name="error_balance_too_small">餘額不足</string>
   <string name="error_invalid_recv_address">非法的接收地址</string>
@@ -113,7 +113,7 @@
   <string name="restore_explain_8">但是請切記，存儲卡不是一個安全的位置，備份後請您快速轉移錢包文件，以免造成資產損失。</string>
   <string name="wallet_explain_1">未偵測到您的 XDAG 錢包文件，\n</string>
   <string name="wallet_explain_2">現在您可以使用以下兩種方式獲取 XDAG 錢包。\n</string>
-  <string name="wallet_explain_3">創建錢包：為您創建一個新的錢包來存儲和交易您的 XAG。\n</string>
+  <string name="wallet_explain_3">創建錢包：為您創建一個新的錢包來存儲和交易您的 XDAG。\n</string>
   <string name="wallet_explain_4">恢複錢包：如果您創建過 XDAG 錢包，可以從這裏導入錢包文件來恢複錢包。\n</string>
   <string name="wallet_explain_5">在點擊恢複錢包後，我們會幫您在存儲卡根目錄創建一個 xdag 文件夾，這個時候我們會請求您的存儲卡權限，請您不要拒絕。\n</string>
   <string name="cover_explain">偵測到 /sdcard/xdag 已經存在一個錢包，繼續備份將覆蓋這個錢包（錢包被覆蓋意味着錢包的資產丟失且無法找回）。
