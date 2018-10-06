@@ -74,24 +74,24 @@
   <!-- setting item-->
   <string name="more_messages">Message</string>
   <string name="more_backup_wallet">Sauvegarde du portefeuille</string>
-  <string name="more_suggest">Feedback</string>
+  <string name="more_suggest">Commentaire</string>
   <string name="more_wallet">Changer de portefeuille</string>
   <string name="more_pool">Changer de pool</string>
   <string name="more_xdag_io">Site de la communauté- xdag.io</string>
-  <string name="more_github">GitHub - XDagger</string>
+  <string name="more_github">Github - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
   <string name="error_password_format">Veuillez entrer entre 6 et 18 caracteres, nombres, caracteres spéciaux</string>
   <!-- about -->
   <string name="slogan">Portefeuille XDAG courant et stable</string>
-  <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
+  <string name="about_explain">Nous essayons de développer un portefeuille pour XDAG fluide et stable. Si vous avez une questions ou des suggestions merci de nous envoyer des feedback.\n\nLe code source est publié sur Github, le lien est disponible ci dessous. Tout le monde peut participer a enrichir ce projet.\n\nRAPPEL:\n\n Veuillez sauvegarder vos fichier du portefeuille en lieu sur.\n\nNous sauvegardons vos fichiers dans un dossier Android privé, mais la sauvegarde et la restauration utilise votre carte SD comme stockage(dossier: sdcard/xdag/). Les carte SD ne sont pas considérée comme un espace de stockage sur, veuillez sauvegarder vos fichier dans un autre endroit.\n\nToute desinstallation ou effacement de donnée résultera en une perte de votre portefeuille, SANS POSSIBILITEE DE RECUPERATION.\nVeuillez sauvegarder votre portefeuille avant d\'effectuer ce genre d\'opérations.\n\nNOUS NE SOMME EN AUCUN CAS RESPONSABLE DE LA PERTE DE VOS FONDS.</string>
   <!-- update -->
   <string name="update">Mise a jour</string>
   <string name="close">Fermer</string>
   <string name="new_version_available">Nouvelle version détectée:%1$s</string>
   <!-- explain-->
-  <string name="usage">Usage</string>
-  <string name="function_explain">Terms</string>
+  <string name="usage">Utilisation</string>
+  <string name="function_explain">Termes</string>
   <string name="backup_explain">J\'ai lu le texte ci dessus</string>
   <string name="not_show_explain">Ne plus afficher</string>
   <string name="restore_read_explain">J\'ai lu le texte ci-dessus et créer une sauvegarde dans le dossier xdag</string>

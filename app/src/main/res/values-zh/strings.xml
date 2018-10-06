@@ -32,7 +32,7 @@
   <string name="tran_detail">交易详情</string>
   <string name="warning">警告</string>
   <string name="ensure">确定</string>
-  <string name="available_xdag">Available %1$s XDAG</string>
+  <string name="available_xdag">拥有 %1$s XDAG</string>
   <string name="cancel">取消</string>
   <string name="add_pool_address">添加矿池</string>
   <string name="delete_pool_address">删除矿池：%1$s？</string>
@@ -110,10 +110,10 @@
   <string name="restore_explain_5">存储卡并不是一个安全的位置，任何恶意程序都可以轻而易举的从存储卡将您的钱包拷贝走。\n</string>
   <string name="restore_explain_6">因此，在您点击恢复钱包的按钮后，我们会将您的钱包文件移动到 Android 系统中最为安全的私有目录。\n</string>
   <string name="restore_explain_7">您可以随时在设置页面将您的钱包备份回存储卡。\n</string>
-  <string name="restore_explain_8">但是请切记，存储卡不是一个安全的位置，备份后请您快速转移钱包文件，以免造成资产损失。</string>
+  <string name="restore_explain_8">但是请切记，存储卡不是一个安全的位置，备份后请您快速转移钱包文件，以免造成资产损失。\n</string>
   <string name="wallet_explain_1">未检测到您的 XDAG 钱包文件，\n</string>
   <string name="wallet_explain_2">现在您可以使用以下两种方式获取 XDAG 钱包。\n</string>
-  <string name="wallet_explain_3">创建钱包：为您创建一个新的钱包来存储和交易您的 XAG。\n</string>
+  <string name="wallet_explain_3">创建钱包：为您创建一个新的钱包来存储和交易您的 XDAG。\n</string>
   <string name="wallet_explain_4">恢复钱包：如果您创建过 XDAG 钱包，可以从这里导入钱包文件来恢复钱包。\n</string>
   <string name="wallet_explain_5">在点击恢复钱包后，我们会帮您在存储卡根目录创建一个 xdag 文件夹，这个时候我们会请求您的存储卡权限，请您不要拒绝。\n</string>
   <string name="cover_explain">检测到 /sdcard/xdag 已经存在一个钱包，继续备份将覆盖这个钱包（钱包被覆盖意味着钱包的资产丢失且无法找回）。</string>
