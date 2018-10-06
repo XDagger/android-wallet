@@ -92,15 +92,15 @@
   <!-- explain-->
   <string name="usage">Справка</string>
   <string name="function_explain">Условия</string>
-  <string name="backup_explain">I have read the content above</string>
-  <string name="not_show_explain">Don\'t display again</string>
-  <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
-  <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
-  <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
-  <string name="use_explain_2">Caution:\n</string>
-  <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
-  <string name="use_explain_4">WE ARE NOT RESPONSIBLE FOR ANY LOSS OF ASSETS.\n</string>
-  <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
+  <string name="backup_explain">Я прочитал содержимое выше</string>
+  <string name="not_show_explain">Больше не показывать</string>
+  <string name="restore_read_explain">Я прочитал содержание выше и создал резервную копию в папке XDAG</string>
+  <string name="check_root_explain">Внимание! Ваше устройство разлочено, что несёт высокий риск.</string>
+  <string name="use_explain_1">Кошелёк XDAG для Android находится в состоянии бета-версии.\n</string>
+  <string name="use_explain_2">Осторожно:\n</string>
+  <string name="use_explain_3">Пожалуйста, создайте резервную копию вашего кошелька на случай утери.\n</string>
+  <string name="use_explain_4">МЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТИ В СЛУЧАЕ УТЕРИ ВАШИХ СРЕДСТВ.\n</string>
+  <string name="use_explain_5">Деинсталляция или удаление данных могут вызвать потерю кошелька без возможности восстановления. Пожалуйста, сначала создайте резервную копию.\n</string>
   <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
   <string name="use_explain_7">We will improve this in later releases.</string>
   <string name="restore_explain_1">Due to special data structure of XDAG, \n</string>
