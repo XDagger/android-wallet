@@ -31,7 +31,7 @@
   <string name="switch_pool_to">是否切換到礦池到\n%1$s</string>
   <string name="tran_detail">交易詳情</string>
   <string name="warning">警告</string>
-  <string name="ensure">确定</string>
+  <string name="ensure">確定</string>
   <string name="available_xdag">擁有%1$s XDAG</string>
   <string name="cancel">取消</string>
   <string name="add_pool_address">添加礦池</string>
@@ -91,7 +91,7 @@
   <string name="new_version_available">有新版本的 XDAG 錢包可用：%1$s</string>
   <!-- explain-->
   <string name="usage">使用說明</string>
-  <string name="function_explain">職權範圍</string>
+  <string name="function_explain">使用條款</string>
   <string name="backup_explain">我已經仔細閱讀上述内容</string>
   <string name="not_show_explain">不再顯示本頁面</string>
   <string name="restore_read_explain">已仔細閱讀上述内容，並將錢包文件拷貝到了存儲卡的 xdag 文件夾。</string>
