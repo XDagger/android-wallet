@@ -90,16 +90,16 @@
   <string name="close">Закрыть</string>
   <string name="new_version_available">Найдена новая версия: %1$s</string>
   <!-- explain-->
-  <string name="usage">Справка</string>
+  <string name="usage">Использование</string>
   <string name="function_explain">Условия</string>
-  <string name="backup_explain">Я прочитал содержимое выше</string>
+  <string name="backup_explain">Я прочитал информацию выше</string>
   <string name="not_show_explain">Больше не показывать</string>
   <string name="restore_read_explain">Я прочитал содержание выше и создал резервную копию в папке XDAG</string>
   <string name="check_root_explain">Внимание! Ваше устройство разлочено, что несёт высокий риск.</string>
-  <string name="use_explain_1">Кошелёк XDAG для Android находится в состоянии бета-версии.\n</string>
-  <string name="use_explain_2">Осторожно:\n</string>
+  <string name="use_explain_1">Кошелёк XDAG для Android находится на стадии бета-версии.\n</string>
+  <string name="use_explain_2">Предостережение:\n</string>
   <string name="use_explain_3">Пожалуйста, создайте резервную копию вашего кошелька на случай утери.\n</string>
-  <string name="use_explain_4">МЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТИ В СЛУЧАЕ УТЕРИ ВАШИХ СРЕДСТВ.\n</string>
+  <string name="use_explain_4">МЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТИ В СЛУЧАЕ ПОТЕРИ ВАШИХ СРЕДСТВ.\n</string>
   <string name="use_explain_5">Деинсталляция или удаление данных могут вызвать потерю кошелька без возможности восстановления. Пожалуйста, сначала создайте резервную копию.\n</string>
   <string name="use_explain_6">Чтобы гарантировать транзакции, всплывающие окна не отменяемы.\n</string>
   <string name="use_explain_7">Мы улучшим это у будущих выпусках.</string>
