@@ -40,14 +40,14 @@
   <string name="not_remind_again">Keine aufforderung mehr</string>
   <!-- please -->
   <string name="please_set_password">Bitte brieftasche kennwort festlegen</string>
-  <string name="please_retype_password">Bitte geben Sie Brieftasche Kennwort erneut</string>
-  <string name="please_input_password">Bitte geben Sie Kennwort</string>
+  <string name="please_retype_password">Bitte geben sie brieftasche kennwort erneut</string>
+  <string name="please_input_password">Bitte geben sie kennwort</string>
   <string name="please_input_random">Bitte geben Sie zufälligen Schlüssel</string>
-  <string name="please_wait_read_wallet">Brieftaschen-Daten lesen..</string>
+  <string name="please_wait_read_wallet">Brieftaschen daten lesen..</string>
   <string name="please_wait_transfer">Übertragung läuft..</string>
-  <string name="please_backup_your_xdag_wallet_first">Bitte lesen Sie dies sorgfältig, und sichern Sie Ihren Brieftasche.</string>
+  <string name="please_backup_your_xdag_wallet_first">Bitte lesen sie dies sorgfältig, und sichern sie Ihren brieftasche.</string>
   <string name="please_wait_loading">Ladevorgang läuft..</string>
-  <string name="please_wait_connecting_pool">Verbindung zum Hauptnetz..</string>
+  <string name="please_wait_connecting_pool">Verbindung zum hauptnetzwerk..</string>
   <string name="please_restore_read">Bitte lesen Sie die Seite und kopieren Sie Ihre backup-Dateien in Xdag Ordner</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Fehler beim QRCode identifizieren</string>
