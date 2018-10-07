@@ -106,17 +106,17 @@
   <string name="restore_explain_1">Aufgrund der speziellen datenstruktur von XDAG, \n</string>
   <string name="restore_explain_2">XDAG brieftasche unterstützt derzeit keine sicherung oder wiederherstellung durch privaten schlüssel oder mnemotechnischen code.\n</string>
   <string name="restore_explain_3">Sie können Ihre brieftasche nur durch dateien im xdag ordner sichern und wiederherstellen.\n</string>
-  <string name="restore_explain_4">Um Ihre Brieftasche wiederherzustellen, müssen Sie Ihre Wallet-Dateien in den Ordner xdag im Stammordner Ihrer SD-Karte kopieren.\n</string>
-  <string name="restore_explain_5">SD-Karte ist kein sicherer Ort für Backups, jeder VIRUS kann Backup-Dateien von SD-Karte stehlen.\n</string>
-  <string name="restore_explain_6">Beim Wiederherstellen einer Brieftasche wird die Sicherung in den privaten Android-Ordner verschoben.\n</string>
-  <string name="restore_explain_7">Sie können Ihre Brieftasche jederzeit auf einer SD-Karte sichern.\n</string>
-  <string name="restore_explain_8">Bitte beachten Sie: Die SD-Karte ist nicht sicher, bitte übertragen Sie die Sicherungsdateien an einen sicheren Ort.\n</string>
-  <string name="wallet_explain_1">Keine Brieftasche gefunden!\n</string>
-  <string name="wallet_explain_2">Sie haben zwei Möglichkeiten, Ihren brieftasche zu erhalten.\n</string>
-  <string name="wallet_explain_3">Erstellen Sie eine neue Brieftasche. Sie können eine völlig neue Brieftasche erstellen.\n</string>
-  <string name="wallet_explain_4">Stellen Sie eine alte Brieftasche wieder her. Sie können Ihre alte Brieftasche hier importieren.\n</string>
-  <string name="wallet_explain_5">Wir werden um Erlaubnis bitten, auf eine externe SD-Karte zu schreiben, bitte bestreite es nicht.\n</string>
-  <string name="cover_explain">Erkannt, dass ein Backup in /sdcard/xdag existiert, möchtest du es überschreiben? Sie können das alte Backup nicht wiederherstellen, wenn Sie es überschreiben.</string>
+  <string name="restore_explain_4">Um Ihre brieftasche wiederherzustellen, müssen sie Ihre brieftasche dateien in den ordner xdag im stammordner Ihrer SD karte kopieren.\n</string>
+  <string name="restore_explain_5">SD karte ist kein sicherer ort für backups, jeder VIRUS kann backup dateien von SD karte stehlen.\n</string>
+  <string name="restore_explain_6">Beim wiederherstellen einer brieftasche wird die sicherung in den privaten Android ordner verschoben.\n</string>
+  <string name="restore_explain_7">Sie können Ihre brieftasche jederzeit auf einer SD karte sichern.\n</string>
+  <string name="restore_explain_8">Bitte beachten Sie: Die SD karte ist nicht sicher, bitte übertragen sie die sicherungsdateien an einen sicheren ort.\n</string>
+  <string name="wallet_explain_1">Keine brieftasche gefunden!\n</string>
+  <string name="wallet_explain_2">Sie haben zwei möglichkeiten, Ihren brieftasche zu erhalten.\n</string>
+  <string name="wallet_explain_3">Erstellen sie eine neue brieftasche. Sie können eine völlig neue brieftasche erstellen.\n</string>
+  <string name="wallet_explain_4">Stellen sie eine alte brieftasche wieder her. Sie können Ihre alte brieftasche hier importieren.\n</string>
+  <string name="wallet_explain_5">Wir werden um erlaubnis bitten, auf eine externe SD karte zu schreiben, bitte bestreite es nicht.\n</string>
+  <string name="cover_explain">Erkannt, dass ein backup in /sdcard/xdag existiert，möchtest du es überschreiben? Sie können das alte backup nicht wiederherstellen, wenn Sie es überschreiben.</string>
   <!-- settings-->
-  <string name="settings_show_usage">Zeigen Sie die Verwendung nicht an</string>
+  <string name="settings_show_usage">Zeigen sie die verwendung nicht an</string>
 </resources>
