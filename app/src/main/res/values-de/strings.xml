@@ -14,8 +14,8 @@
   <string name="scan">QRCode scannen</string>
   <string name="to_address">An Adresse</string>
   <string name="send_to_address">An Adresse senden</string>
-  <string name="amount_to_send">Menge</string>
-  <string name="amount">Menge</string>
+  <string name="amount_to_send">Betrag</string>
+  <string name="amount">Betrag</string>
   <string name="not_ready">Nicht bereit</string>
   <string name="create_wallet">Brieftasche Erstellen</string>
   <string name="restore_wallet">Brieftasche Wiederherstellen</string>
