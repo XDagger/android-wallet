@@ -29,7 +29,7 @@
   <string name="continue_use">Fortsetzen</string>
   <string name="exit">Verlassen</string>
   <string name="switch_pool_to">Wechseln Sie den Pool \n%1$s</string>
-  <string name="tran_detail">Transaktions details</string>
+  <string name="tran_detail">Details der Transaktion</string>
   <string name="warning">Warnung</string>
   <string name="ensure">Bestätigen</string>
   <string name="available_xdag">Verfügbar %1$s XDAG</string>
