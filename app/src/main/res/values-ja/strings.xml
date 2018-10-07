@@ -20,7 +20,7 @@
   <string name="create_wallet">ウォレットを作成する</string>
   <string name="restore_wallet">ウォレットを復元する</string>
   <string name="no_transaction">取引記録なし</string>
-  <string name="copy_address">Copy Address</string>
+  <string name="copy_address">アドレスのコピー</string>
   <string name="about">紹介</string>
   <string name="start_use">はじめる</string>
   <string name="cover">上書きする</string>
