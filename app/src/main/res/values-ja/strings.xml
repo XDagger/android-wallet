@@ -114,8 +114,8 @@
   <string name="wallet_explain_1">No wallet detected!\n</string>
   <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
   <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
-  <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-  <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
+  <string name="wallet_explain_4">古いウォレットを復元する。 古いウォレットをここにインポートできます。\n</string>
+  <string name="wallet_explain_5">私たちは外部SDカードに書き込む許可を求めますが、否定しないでください。\n</string>
   <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
   <!-- settings-->
   <string name="settings_show_usage">ドン \' t 表示もう一度</string>
