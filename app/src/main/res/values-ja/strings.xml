@@ -72,12 +72,12 @@
   <string name="success_send_coin">Sent successfully</string>
   <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
   <!-- setting item-->
-  <string name="more_messages">Message</string>
+  <string name="more_messages">メッセージ</string>
   <string name="more_backup_wallet">Backup wallet</string>
-  <string name="more_suggest">Feedback</string>
+  <string name="more_suggest">フィードバック</string>
   <string name="more_wallet">Switch wallet</string>
   <string name="more_pool">Switch pool</string>
-  <string name="more_xdag_io">Community website - xdag.io</string>
+  <string name="more_xdag_io">コミュニティウェブサイト - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
@@ -93,7 +93,7 @@
   <string name="usage">使い方の説明</string>
   <string name="function_explain">機能の説明</string>
   <string name="backup_explain">I have read the content above</string>
-  <string name="not_show_explain">Don\'t display again</string>
+  <string name="not_show_explain">ドン \' t 表示もう一度</string>
   <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
   <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
   <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
