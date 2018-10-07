@@ -5,15 +5,15 @@
   <string name="XDAG">XDAG</string>
   <!-- common -->
   <string name="home">ホーム</string>
-  <string name="send">支払いました</string>
-  <string name="receive">いただきました</string>
+  <string name="send">送信</string>
+  <string name="receive">受信</string>
   <string name="more">もっと</string>
   <string name="setting">設定</string>
-  <string name="send_xdag">支払いました XDAG</string>
-  <string name="receive_xdag">いただきました XDAG</string>
-  <string name="scan">バーコード読み込み</string>
-  <string name="to_address">振り込みアドレス</string>
-  <string name="send_to_address">アドレスを送る</string>
+  <string name="send_xdag">Xdag を送信します。</string>
+  <string name="receive_xdag">Xdag を受け取る</string>
+  <string name="scan">Qr コードをスキャンします。</string>
+  <string name="to_address">アドレス</string>
+  <string name="send_to_address">アドレスに送る</string>
   <string name="amount_to_send">量</string>
   <string name="amount">量</string>
   <string name="not_ready">準備中</string>
