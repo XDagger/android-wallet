@@ -19,10 +19,10 @@
   <string name="not_ready">Nicht bereit</string>
   <string name="create_wallet">Brieftasche Erstellen</string>
   <string name="restore_wallet">Brieftasche Wiederherstellen</string>
-  <string name="no_transaction">Keine Transaktion gefunden</string>
+  <string name="no_transaction">Keine transaktion gefunden</string>
   <string name="copy_address">Adresse kopieren</string>
   <string name="about">Über</string>
-  <string name="start_use">Anfang</string>
+  <string name="start_use">Beginn</string>
   <string name="cover">Überschreiben</string>
   <string name="nice_to_meet_you">Schön dich hier zu sehen!</string>
   <string name="the_function_developing_please_wait">Fortsetzung folgt.</string>
