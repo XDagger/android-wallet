@@ -35,7 +35,7 @@
   <string name="available_xdag">Verfügbar %1$s XDAG</string>
   <string name="cancel">Stornieren</string>
   <string name="add_pool_address">Pool adresse hinzufügen</string>
-  <string name="delete_pool_address">Löschen der Pooladresse:%1$s?</string>
+  <string name="delete_pool_address">Löschen der Pool adresse:%1$s?</string>
   <string name="reset_pool_address">Ob die Wiederherstellung auf die Standard Pool adresse erfolgt?</string>
   <string name="not_remind_again">Erinnere dich nicht noch einmal</string>
   <!-- please -->
