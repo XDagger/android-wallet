@@ -81,7 +81,7 @@
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
-  <string name="error_password_format">Bitte geben Sie 6 Zeichen, Zahlen oder Sonderzeichen</string>
+  <string name="error_password_format">Bitte geben sie 6 zeichen, zahlen oder sonderzeichen</string>
   <!-- about -->
   <string name="slogan">Flüssig und stabil XDAG brieftasche</string>
   <string name="about_explain">Wir ist eine flüssig und stabil Xdag brieftasche zu entwickeln. Wenn Sie Fragen oder Anregungen haben, senden Sie uns bitte Ihre feedback.\n\nsource code auf github aufgeführt ist, als link angezeigt wird Unten. Jeder ist willkommen zu dieser project.\n\nreminder:\n\nplease Sicherung beitragen Ihre brieftasche dateien speichern somewhere.\n\nWir Ihre Dateien in Android private Ordner, aber Backup und Restore Use externe SD-Karte als Speicher (ordner name: Sdcard/Xdag /) . SD-Karte ist nicht sicher genug für Backup, Bitte überweisen Sie Ihre brieftasche backup Dateien irgendwo Else.\n\nJede Deinstallation oder Daten löschen verlöre Ursache der brieftasche, und Nein zu Recover.\nBitte sichern Ihren brieftasche vor solchen Operationen.\n\nWIR SIND FÜR VERLUSTE NICHT VERANTWORTLICH.</string>
