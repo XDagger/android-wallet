@@ -11,7 +11,7 @@
   <string name="setting">Einstellungen</string>
   <string name="send_xdag">Senden XDAG</string>
   <string name="receive_xdag">Erhalten XDAG</string>
-  <string name="scan">QR-Code scannen</string>
+  <string name="scan">QRCode scannen</string>
   <string name="to_address">An Adresse</string>
   <string name="send_to_address">An Adresse senden</string>
   <string name="amount_to_send">Menge</string>
@@ -50,10 +50,10 @@
   <string name="please_wait_connecting_pool">Verbindung zum Hauptnetz..</string>
   <string name="please_restore_read">Bitte lesen Sie die Seite und kopieren Sie Ihre backup-Dateien in Xdag Ordner</string>
   <!-- error tips -->
-  <string name="error_cannot_identify_qr_code">Failed to identify QRCode</string>
+  <string name="error_cannot_identify_qr_code">Fehler beim QRCode identifizieren</string>
   <string name="error_file_make_fail">Failed to create file</string>
-  <string name="error_sdcard_not_available">No SD card detected</string>
-  <string name="error_create_xdag_wallet">Failed to create wallet</string>
+  <string name="error_sdcard_not_available">Keine SD-Karte erkannt</string>
+  <string name="error_create_xdag_wallet">Fehler beim Erstellen der Brieftasche</string>
   <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
   <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
   <string name="error_password">Password incorrect</string>
