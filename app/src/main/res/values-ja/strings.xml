@@ -56,8 +56,8 @@
   <string name="error_create_xdag_wallet">Failed to create wallet</string>
   <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
   <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
-  <string name="error_password">Password incorrect</string>
-  <string name="error_password_not_same">Password inconsistent</string>
+  <string name="error_password">パスワードが違います</string>
+  <string name="error_password_not_same">一貫性のないパスワード</string>
   <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
   <string name="error_balance_too_small">Amount not sufficient</string>
   <string name="error_invalid_recv_address">Invalid address</string>
@@ -118,5 +118,5 @@
   <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
   <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
   <!-- settings-->
-  <string name="settings_show_usage">Don\'t display usage</string>
+  <string name="settings_show_usage">ドン \' t 表示もう一度</string>
 </resources>
