@@ -36,13 +36,13 @@
   <string name="cancel">Stornieren</string>
   <string name="add_pool_address">Pool adresse hinzufügen</string>
   <string name="delete_pool_address">Löschen der Pool adresse:%1$s?</string>
-  <string name="reset_pool_address">Ob die Wiederherstellung auf die Standard Pool adresse erfolgt?</string>
+  <string name="reset_pool_address">Ob auf der standard pool adresse wiederherstellen?</string>
   <string name="not_remind_again">Keine aufforderung mehr</string>
   <!-- please -->
   <string name="please_set_password">Bitte brieftasche kennwort festlegen</string>
   <string name="please_retype_password">Bitte geben sie brieftasche kennwort erneut</string>
   <string name="please_input_password">Bitte geben sie kennwort</string>
-  <string name="please_input_random">Bitte geben Sie zufälligen Schlüssel</string>
+  <string name="please_input_random">Bitte geben sie zufälligen schlüssel</string>
   <string name="please_wait_read_wallet">Brieftaschen daten lesen..</string>
   <string name="please_wait_transfer">Übertragung läuft..</string>
   <string name="please_backup_your_xdag_wallet_first">Bitte lesen sie dies sorgfältig, und sichern sie Ihren brieftasche.</string>
@@ -59,9 +59,9 @@
   <string name="error_password">Falsches kennwort</string>
   <string name="error_password_not_same">Inkonsistente kennwort</string>
   <string name="error_noting_to_transfer">Betrag senden muss größer als 0 sein</string>
-  <string name="error_balance_too_small">Nicht ausreichender Menge</string>
-  <string name="error_invalid_recv_address">Ungültige Adresse</string>
-  <string name="error_invalid_pool_address">Ungültige Pool Adresse</string>
+  <string name="error_balance_too_small">Nicht ausreichender menge</string>
+  <string name="error_invalid_recv_address">Ungültige adresse</string>
+  <string name="error_invalid_pool_address">Ungültige pool adresse</string>
   <string name="error_pool_address_exists">Pool adresse ist bereits vorhanden.</string>
   <string name="error_cannot_delete_selected_pool">Sie können die ausgewählte pool adresse nicht löschen</string>
   <string name="error_server_problem">Der server läuft aus dem weg</string>
@@ -110,7 +110,7 @@
   <string name="restore_explain_5">SD karte ist kein sicherer ort für backups, jeder VIRUS kann backup dateien von SD karte stehlen.\n</string>
   <string name="restore_explain_6">Beim wiederherstellen einer brieftasche wird die sicherung in den privaten Android ordner verschoben.\n</string>
   <string name="restore_explain_7">Sie können Ihre brieftasche jederzeit auf einer SD karte sichern.\n</string>
-  <string name="restore_explain_8">Bitte beachten Sie: Die SD karte ist nicht sicher, bitte übertragen sie die sicherungsdateien an einen sicheren ort.\n</string>
+  <string name="restore_explain_8">Bitte beachten sie: Die SD karte ist nicht sicher, bitte übertragen sie die sicherungsdateien an einen sicheren ort.\n</string>
   <string name="wallet_explain_1">Keine brieftasche gefunden!\n</string>
   <string name="wallet_explain_2">Sie haben zwei möglichkeiten, Ihren brieftasche zu erhalten.\n</string>
   <string name="wallet_explain_3">Erstellen sie eine neue brieftasche. Sie können eine völlig neue brieftasche erstellen.\n</string>
