@@ -33,15 +33,15 @@
   <string name="warning">警告</string>
   <string name="ensure">確認</string>
   <string name="available_xdag">残高 %1$s XDAG</string>
-  <string name="cancel">Cancel</string>
+  <string name="cancel">取り消し</string>
   <string name="add_pool_address">Add pool address</string>
   <string name="delete_pool_address">Delete pool address:%1$s?</string>
   <string name="reset_pool_address">Whether restore to the default pool address?</string>
-  <string name="not_remind_again">Don\'t remind again</string>
+  <string name="not_remind_again">このメッセージを表示しない</string>
   <!-- please -->
-  <string name="please_set_password">Please set wallet password</string>
-  <string name="please_retype_password">Please retype wallet password</string>
-  <string name="please_input_password">Please input password</string>
+  <string name="please_set_password">ウォレットの暗証番号設置してください</string>
+  <string name="please_retype_password">もう一度暗証番号確認</string>
+  <string name="please_input_password">暗証番号入力</string>
   <string name="please_input_random">Please input random key</string>
   <string name="please_wait_read_wallet">Reading wallet data..</string>
   <string name="please_wait_transfer">Transfer in progress..</string>
