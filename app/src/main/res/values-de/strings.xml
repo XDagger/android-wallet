@@ -5,13 +5,13 @@
   <string name="XDAG">XDAG</string>
   <!-- common -->
   <string name="home">Zuhause</string>
-  <string name="send">Send</string>
-  <string name="receive">Receive</string>
-  <string name="more">More</string>
-  <string name="setting">Settings</string>
-  <string name="send_xdag">Send XDAG</string>
-  <string name="receive_xdag">Receive XDAG</string>
-  <string name="scan">Scan QRCode</string>
+  <string name="send">Senden</string>
+  <string name="receive">Erhalten</string>
+  <string name="more">Mehr</string>
+  <string name="setting">Einstellungen</string>
+  <string name="send_xdag">Senden XDAG</string>
+  <string name="receive_xdag">Erhalten XDAG</string>
+  <string name="scan">QR-Code scannen</string>
   <string name="to_address">To Address</string>
   <string name="send_to_address">Send to Address</string>
   <string name="amount_to_send">Amount</string>
