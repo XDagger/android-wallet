@@ -11,12 +11,12 @@
   <string name="setting">設定</string>
   <string name="send_xdag">Send XDAG</string>
   <string name="receive_xdag">Receive XDAG</string>
-  <string name="scan">Scan QRCode</string>
+  <string name="scan">バーコード読み込み</string>
   <string name="to_address">To Address</string>
   <string name="send_to_address">Send to Address</string>
   <string name="amount_to_send">量</string>
   <string name="amount">量</string>
-  <string name="not_ready">Not ready</string>
+  <string name="not_ready">準備中</string>
   <string name="create_wallet">Create Wallet</string>
   <string name="restore_wallet">Restore Wallet</string>
   <string name="no_transaction">No transaction found</string>
