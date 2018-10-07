@@ -51,13 +51,13 @@
   <string name="please_restore_read">Bitte lesen Sie die Seite und kopieren Sie Ihre backup-Dateien in Xdag Ordner</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Fehler beim QRCode identifizieren</string>
-  <string name="error_file_make_fail">Failed to create file</string>
+  <string name="error_file_make_fail">Datei konnte nicht erstellt</string>
   <string name="error_sdcard_not_available">Keine SD-Karte erkannt</string>
   <string name="error_create_xdag_wallet">Fehler beim Erstellen der Brieftasche</string>
-  <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
-  <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
-  <string name="error_password">Password incorrect</string>
-  <string name="error_password_not_same">Password inconsistent</string>
+  <string name="error_restore_xdag_wallet">Fehler beim Wiederherstellen der Brieftasche</string>
+  <string name="error_backup_xdag_wallet">Fehler beim Backup Brieftasche</string>
+  <string name="error_password">Falsches Passwort</string>
+  <string name="error_password_not_same">Inkonsistente Passwort</string>
   <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
   <string name="error_balance_too_small">Amount not sufficient</string>
   <string name="error_invalid_recv_address">Invalid address</string>
