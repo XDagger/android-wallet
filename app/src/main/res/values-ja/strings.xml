@@ -54,12 +54,12 @@
   <string name="error_file_make_fail">ファイルの作成に失敗した</string>
   <string name="error_sdcard_not_available">いいえ SD カードが検出</string>
   <string name="error_create_xdag_wallet">ウォレットの作成に失敗しました</string>
-  <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
-  <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
+  <string name="error_restore_xdag_wallet">ウォレットの復元に失敗しました</string>
+  <string name="error_backup_xdag_wallet">ウォレットのバックアップに失敗しました</string>
   <string name="error_password">パスワードが違います</string>
   <string name="error_password_not_same">一貫性のないパスワード</string>
   <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
-  <string name="error_balance_too_small">Amount not sufficient</string>
+  <string name="error_balance_too_small">量は十分ではないです</string>
   <string name="error_invalid_recv_address">Invalid address</string>
   <string name="error_invalid_pool_address">Invalid pool address</string>
   <string name="error_pool_address_exists">Pool address already exists</string>
@@ -95,7 +95,7 @@
   <string name="backup_explain">私は上記を注意深く読んだ</string>
   <string name="not_show_explain">ドン \' t 表示もう一度</string>
   <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
-  <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
+  <string name="check_root_explain">注意! あなたのデバイスが根ざしている、続行する危険性が高いです。</string>
   <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
   <string name="use_explain_2">警告:\n</string>
   <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
