@@ -13,17 +13,17 @@
   <string name="receive_xdag">いただきました XDAG</string>
   <string name="scan">バーコード読み込み</string>
   <string name="to_address">振り込みアドレス</string>
-  <string name="send_to_address">Send to Address</string>
+  <string name="send_to_address">アドレスを送る</string>
   <string name="amount_to_send">量</string>
   <string name="amount">量</string>
   <string name="not_ready">準備中</string>
-  <string name="create_wallet">Create Wallet</string>
-  <string name="restore_wallet">Restore Wallet</string>
+  <string name="create_wallet">ウォレットを作成する</string>
+  <string name="restore_wallet">ウォレットを復元する</string>
   <string name="no_transaction">取引記録なし</string>
   <string name="copy_address">Copy Address</string>
   <string name="about">紹介</string>
   <string name="start_use">はじめる</string>
-  <string name="cover">Overwrite</string>
+  <string name="cover">上書きする</string>
   <string name="nice_to_meet_you">初めまして</string>
   <string name="the_function_developing_please_wait">開発中</string>
   <string name="continue_use">続き</string>
@@ -52,7 +52,7 @@
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">読み込みできません</string>
   <string name="error_file_make_fail">Failed to create file</string>
-  <string name="error_sdcard_not_available">No SD card detected</string>
+  <string name="error_sdcard_not_available">いいえ SD カードが検出</string>
   <string name="error_create_xdag_wallet">Failed to create wallet</string>
   <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
   <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
