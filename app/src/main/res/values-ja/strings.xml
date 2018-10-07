@@ -43,8 +43,8 @@
   <string name="please_retype_password">もう一度暗証番号確認</string>
   <string name="please_input_password">暗証番号入力</string>
   <string name="please_input_random">Please input random key</string>
-  <string name="please_wait_read_wallet">Reading wallet data..</string>
-  <string name="please_wait_transfer">Transfer in progress..</string>
+  <string name="please_wait_read_wallet">読み込み中、お待ちください</string>
+  <string name="please_wait_transfer">振り込み中、お待ちください</string>
   <string name="please_backup_your_xdag_wallet_first">Please read this carefully, and backup your wallet.</string>
   <string name="please_wait_loading">Loading in progress..</string>
   <string name="please_wait_connecting_pool">Connecting to main net..</string>
