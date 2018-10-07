@@ -39,16 +39,16 @@
   <string name="reset_pool_address">Ob die Wiederherstellung auf die Standard Pool adresse erfolgt?</string>
   <string name="not_remind_again">Erinnere dich nicht noch einmal</string>
   <!-- please -->
-  <string name="please_set_password">Bitte legen Sie das Wallet-Passwort fest</string>
+  <string name="please_set_password">Bitte Brieftasche Kennwort festlegen</string>
   <string name="please_retype_password">Bitte geben Sie Brieftasche Kennwort erneut</string>
-  <string name="please_input_password">Please input password</string>
-  <string name="please_input_random">Please input random key</string>
-  <string name="please_wait_read_wallet">Reading wallet data..</string>
-  <string name="please_wait_transfer">Transfer in progress..</string>
-  <string name="please_backup_your_xdag_wallet_first">Please read this carefully, and backup your wallet.</string>
-  <string name="please_wait_loading">Loading in progress..</string>
-  <string name="please_wait_connecting_pool">Connecting to main net..</string>
-  <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
+  <string name="please_input_password">Bitte geben Sie Kennwort</string>
+  <string name="please_input_random">Bitte geben Sie zufälligen Schlüssel</string>
+  <string name="please_wait_read_wallet">Brieftaschen-Daten lesen..</string>
+  <string name="please_wait_transfer">Übertragung läuft..</string>
+  <string name="please_backup_your_xdag_wallet_first">Bitte lesen Sie dies sorgfältig, und sichern Sie Ihren Brieftasche.</string>
+  <string name="please_wait_loading">Ladevorgang läuft..</string>
+  <string name="please_wait_connecting_pool">Verbindung zum Hauptnetz..</string>
+  <string name="please_restore_read">Bitte lesen Sie die Seite und kopieren Sie Ihre backup-Dateien in Xdag Ordner</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Failed to identify QRCode</string>
   <string name="error_file_make_fail">Failed to create file</string>
