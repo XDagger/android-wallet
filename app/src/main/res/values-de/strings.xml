@@ -58,21 +58,21 @@
   <string name="error_backup_xdag_wallet">Fehler beim Backup Brieftasche</string>
   <string name="error_password">Falsches Passwort</string>
   <string name="error_password_not_same">Inkonsistente Passwort</string>
-  <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
-  <string name="error_balance_too_small">Amount not sufficient</string>
-  <string name="error_invalid_recv_address">Invalid address</string>
-  <string name="error_invalid_pool_address">Invalid pool address</string>
-  <string name="error_pool_address_exists">Pool address already exists</string>
-  <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
-  <string name="error_server_problem">The server is running out of the way</string>
-  <string name="error_send_coin_itself">can\'t transfer XDAG to itself</string>
+  <string name="error_noting_to_transfer">Betrag senden muss größer als 0 sein</string>
+  <string name="error_balance_too_small">Nicht ausreichender Menge</string>
+  <string name="error_invalid_recv_address">Ungültige Adresse</string>
+  <string name="error_invalid_pool_address">Ungültige Pool Adresse</string>
+  <string name="error_pool_address_exists">Pool-Adresse ist bereits vorhanden.</string>
+  <string name="error_cannot_delete_selected_pool">Sie können die ausgewählte Pool-Adresse nicht löschen</string>
+  <string name="error_server_problem">Der Server läuft aus dem Weg</string>
+  <string name="error_send_coin_itself">Kann \' t Übertragung Xdag an sich selbst</string>
   <!-- success -->
-  <string name="success_refresh">Refreshed successfully</string>
-  <string name="success_copy_address">Copied successfully</string>
-  <string name="success_send_coin">Sent successfully</string>
-  <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
+  <string name="success_refresh">Erfolgreich aktualisiert</string>
+  <string name="success_copy_address">Erfolgreich kopiert</string>
+  <string name="success_send_coin">Erfolgreich gesendet</string>
+  <string name="success_backup_xdag_wallet">Brieftasche Backup erstellt In /Sdcard/xdag </string>
   <!-- setting item-->
-  <string name="more_messages">Message</string>
+  <string name="more_messages">Nachricht</string>
   <string name="more_backup_wallet">Backup wallet</string>
   <string name="more_suggest">Feedback</string>
   <string name="more_wallet">Switch wallet</string>
