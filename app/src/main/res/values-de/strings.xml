@@ -48,32 +48,32 @@
   <string name="please_backup_your_xdag_wallet_first">Bitte lesen sie dies sorgfältig, und sichern sie Ihren brieftasche.</string>
   <string name="please_wait_loading">Ladevorgang läuft..</string>
   <string name="please_wait_connecting_pool">Verbindung zum hauptnetzwerk..</string>
-  <string name="please_restore_read">Bitte lesen Sie die Seite und kopieren Sie Ihre backup-Dateien in Xdag Ordner</string>
+  <string name="please_restore_read">Bitte lesen sie die seite und kopieren sie Ihre backup dateien in Xdag ordner</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Fehler beim QRCode identifizieren</string>
   <string name="error_file_make_fail">Datei konnte nicht erstellt</string>
-  <string name="error_sdcard_not_available">Keine SD-Karte erkannt</string>
-  <string name="error_create_xdag_wallet">Fehler beim Erstellen der Brieftasche</string>
-  <string name="error_restore_xdag_wallet">Fehler beim Wiederherstellen der Brieftasche</string>
-  <string name="error_backup_xdag_wallet">Fehler beim Backup Brieftasche</string>
-  <string name="error_password">Falsches Passwort</string>
-  <string name="error_password_not_same">Inkonsistente Passwort</string>
+  <string name="error_sdcard_not_available">Keine SD karte erkannt</string>
+  <string name="error_create_xdag_wallet">Fehler beim erstellen der brieftasche</string>
+  <string name="error_restore_xdag_wallet">Fehler beim wiederherstellen der brieftasche</string>
+  <string name="error_backup_xdag_wallet">Fehler beim backup brieftasche</string>
+  <string name="error_password">Falsches kennwort</string>
+  <string name="error_password_not_same">Inkonsistente kennwort</string>
   <string name="error_noting_to_transfer">Betrag senden muss größer als 0 sein</string>
   <string name="error_balance_too_small">Nicht ausreichender Menge</string>
   <string name="error_invalid_recv_address">Ungültige Adresse</string>
   <string name="error_invalid_pool_address">Ungültige Pool Adresse</string>
-  <string name="error_pool_address_exists">Pool-Adresse ist bereits vorhanden.</string>
-  <string name="error_cannot_delete_selected_pool">Sie können die ausgewählte Pool-Adresse nicht löschen</string>
-  <string name="error_server_problem">Der Server läuft aus dem Weg</string>
-  <string name="error_send_coin_itself">Kann \' t Übertragung Xdag an sich selbst</string>
+  <string name="error_pool_address_exists">Pool adresse ist bereits vorhanden.</string>
+  <string name="error_cannot_delete_selected_pool">Sie können die ausgewählte pool adresse nicht löschen</string>
+  <string name="error_server_problem">Der server läuft aus dem weg</string>
+  <string name="error_send_coin_itself">Kann\'t Übertragung XDAG an sich selbst</string>
   <!-- success -->
   <string name="success_refresh">Erfolgreich aktualisiert</string>
   <string name="success_copy_address">Erfolgreich kopiert</string>
   <string name="success_send_coin">Erfolgreich gesendet</string>
-  <string name="success_backup_xdag_wallet">Brieftasche Backup erstellt In /Sdcard/xdag </string>
+  <string name="success_backup_xdag_wallet">Brieftasche backup erstellt in /sdcard/xdag </string>
   <!-- setting item-->
   <string name="more_messages">Nachricht</string>
-  <string name="more_backup_wallet">Backup Brieftasche</string>
+  <string name="more_backup_wallet">Backup brieftasche</string>
   <string name="more_suggest">Feedback</string>
   <string name="more_wallet">Schalter brieftasche</string>
   <string name="more_pool">Schalter pool</string>
