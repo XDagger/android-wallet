@@ -67,8 +67,8 @@
   <string name="error_server_problem">The server is running out of the way</string>
   <string name="error_send_coin_itself">can\'t transfer XDAG to itself</string>
   <!-- success -->
-  <string name="success_refresh">Refreshed successfully</string>
-  <string name="success_copy_address">Copied successfully</string>
+  <string name="success_refresh">更新を正常に完了しました</string>
+  <string name="success_copy_address">正常にコピー</string>
   <string name="success_send_coin">Sent successfully</string>
   <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
   <!-- setting item-->
@@ -96,10 +96,10 @@
   <string name="not_show_explain">ドン \' t 表示もう一度</string>
   <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
   <string name="check_root_explain">注意! あなたのデバイスが根ざしている、続行する危険性が高いです。</string>
-  <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
+  <string name="use_explain_1">XDAG の Android ウォレットはまだベータ版です。\n</string>
   <string name="use_explain_2">警告:\n</string>
   <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
-  <string name="use_explain_4">WE ARE NOT RESPONSIBLE FOR ANY LOSS OF ASSETS.\n</string>
+  <string name="use_explain_4">私たちはいかなる資産の損失に対しても責任を負いません。\n</string>
   <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
   <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
   <string name="use_explain_7">我々 は今後のリリースでこれを改善します。</string>
