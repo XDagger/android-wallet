@@ -45,12 +45,12 @@
   <string name="please_input_random">Please input random key</string>
   <string name="please_wait_read_wallet">読み込み中、お待ちください</string>
   <string name="please_wait_transfer">振り込み中、お待ちください</string>
-  <string name="please_backup_your_xdag_wallet_first">Please read this carefully, and backup your wallet.</string>
-  <string name="please_wait_loading">Loading in progress..</string>
-  <string name="please_wait_connecting_pool">Connecting to main net..</string>
+  <string name="please_backup_your_xdag_wallet_first">内容をよく読んで、ウォレットのデータを事前にバックアップしてください</string>
+  <string name="please_wait_loading">ダウンロード中</string>
+  <string name="please_wait_connecting_pool">主なネットに接続します。</string>
   <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
   <!-- error tips -->
-  <string name="error_cannot_identify_qr_code">Failed to identify QRCode</string>
+  <string name="error_cannot_identify_qr_code">読み込みできません</string>
   <string name="error_file_make_fail">Failed to create file</string>
   <string name="error_sdcard_not_available">No SD card detected</string>
   <string name="error_create_xdag_wallet">Failed to create wallet</string>
