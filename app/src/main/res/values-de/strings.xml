@@ -108,15 +108,15 @@
   <string name="restore_explain_3">Sie können Ihre Brieftasche nur durch Dateien im xdag-Ordner sichern und wiederherstellen.\n</string>
   <string name="restore_explain_4">Um Ihre Brieftasche wiederherzustellen, müssen Sie Ihre Wallet-Dateien in den Ordner xdag im Stammordner Ihrer SD-Karte kopieren.\n</string>
   <string name="restore_explain_5">SD-Karte ist kein sicherer Ort für Backups, jeder VIRUS kann Backup-Dateien von SD-Karte stehlen.\n</string>
-  <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
-  <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
-  <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
-  <string name="wallet_explain_1">No wallet detected!\n</string>
-  <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
-  <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
-  <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-  <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
-  <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
+  <string name="restore_explain_6">Beim Wiederherstellen einer Brieftasche wird die Sicherung in den privaten Android-Ordner verschoben.\n</string>
+  <string name="restore_explain_7">Sie können Ihre Brieftasche jederzeit auf einer SD-Karte sichern.\n</string>
+  <string name="restore_explain_8">Bitte beachten Sie: Die SD-Karte ist nicht sicher, bitte übertragen Sie die Sicherungsdateien an einen sicheren Ort.\n</string>
+  <string name="wallet_explain_1">Keine Brieftasche gefunden!\n</string>
+  <string name="wallet_explain_2">Sie haben zwei Möglichkeiten, Ihren brieftasche zu erhalten.\n</string>
+  <string name="wallet_explain_3">Erstellen Sie eine neue Brieftasche. Sie können eine völlig neue Brieftasche erstellen.\n</string>
+  <string name="wallet_explain_4">Stellen Sie eine alte Brieftasche wieder her. Sie können Ihre alte Brieftasche hier importieren.\n</string>
+  <string name="wallet_explain_5">Wir werden um Erlaubnis bitten, auf eine externe SD-Karte zu schreiben, bitte bestreite es nicht.\n</string>
+  <string name="cover_explain">Erkannt, dass ein Backup in /sdcard/xdag existiert, möchtest du es überschreiben? Sie können das alte Backup nicht wiederherstellen, wenn Sie es überschreiben.</string>
   <!-- settings-->
-  <string name="settings_show_usage">Don\'t display usage</string>
+  <string name="settings_show_usage">Zeigen Sie die Verwendung nicht an</string>
 </resources>
