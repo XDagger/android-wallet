@@ -11,9 +11,9 @@
   <string name="setting">Einstellungen</string>
   <string name="send_xdag">Senden XDAG</string>
   <string name="receive_xdag">Erhalten XDAG</string>
-  <string name="scan">QRCode scannen</string>
-  <string name="to_address">An Adresse</string>
-  <string name="send_to_address">An Adresse senden</string>
+  <string name="scan">QRCode Scannen</string>
+  <string name="to_address">An adresse</string>
+  <string name="send_to_address">An adresse senden</string>
   <string name="amount_to_send">Betrag</string>
   <string name="amount">Betrag</string>
   <string name="not_ready">Nicht bereit</string>
@@ -28,14 +28,14 @@
   <string name="the_function_developing_please_wait">Fortsetzung folgt.</string>
   <string name="continue_use">Fortsetzen</string>
   <string name="exit">Verlassen</string>
-  <string name="switch_pool_to">Wechseln Sie den Pool \n%1$s</string>
-  <string name="tran_detail">Details der Transaktion</string>
+  <string name="switch_pool_to">Wechseln sie den pool \n%1$s</string>
+  <string name="tran_detail">Details der transaktion</string>
   <string name="warning">Warnung</string>
   <string name="ensure">Bestätigen</string>
   <string name="available_xdag">Verfügbar %1$s XDAG</string>
   <string name="cancel">Stornieren</string>
   <string name="add_pool_address">Pool adresse hinzufügen</string>
-  <string name="delete_pool_address">Löschen der Pool adresse:%1$s?</string>
+  <string name="delete_pool_address">Löschen der pool adresse:%1$s?</string>
   <string name="reset_pool_address">Ob auf der standard pool adresse wiederherstellen?</string>
   <string name="not_remind_again">Keine aufforderung mehr</string>
   <!-- please -->
