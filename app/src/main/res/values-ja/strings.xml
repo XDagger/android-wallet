@@ -51,9 +51,9 @@
   <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">読み込みできません</string>
-  <string name="error_file_make_fail">Failed to create file</string>
+  <string name="error_file_make_fail">ファイルの作成に失敗した</string>
   <string name="error_sdcard_not_available">いいえ SD カードが検出</string>
-  <string name="error_create_xdag_wallet">Failed to create wallet</string>
+  <string name="error_create_xdag_wallet">ウォレットの作成に失敗しました</string>
   <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
   <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
   <string name="error_password">パスワードが違います</string>
@@ -107,7 +107,7 @@
   <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
   <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
   <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
-  <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
+  <string name="restore_explain_5">SD カードは、バックアップのための安全な場所ではない、任意のウイルスは、SD カードからバックアップファイルを盗むことができる。\n</string>
   <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
   <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
   <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
