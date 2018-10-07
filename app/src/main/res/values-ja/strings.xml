@@ -4,8 +4,8 @@
   <string name="app_name">XDAGウォレット</string>
   <string name="XDAG">XDAG</string>
   <!-- common -->
-  <string name="home">ホーム</string>
-  <string name="send">送信</string>
+  <string name="home">ホームページ</string>
+  <string name="send">いただく</string>
   <string name="receive">受信</string>
   <string name="more">もっと</string>
   <string name="setting">設定</string>
