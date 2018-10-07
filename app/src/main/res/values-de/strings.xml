@@ -84,28 +84,28 @@
   <string name="error_password_format">Bitte geben sie 6 zeichen, zahlen oder sonderzeichen</string>
   <!-- about -->
   <string name="slogan">Flüssig und stabil XDAG brieftasche</string>
-  <string name="about_explain">Wir ist eine flüssig und stabil Xdag brieftasche zu entwickeln. Wenn Sie Fragen oder Anregungen haben, senden Sie uns bitte Ihre feedback.\n\nsource code auf github aufgeführt ist, als link angezeigt wird Unten. Jeder ist willkommen zu dieser project.\n\nreminder:\n\nplease Sicherung beitragen Ihre brieftasche dateien speichern somewhere.\n\nWir Ihre Dateien in Android private Ordner, aber Backup und Restore Use externe SD-Karte als Speicher (ordner name: Sdcard/Xdag /) . SD-Karte ist nicht sicher genug für Backup, Bitte überweisen Sie Ihre brieftasche backup Dateien irgendwo Else.\n\nJede Deinstallation oder Daten löschen verlöre Ursache der brieftasche, und Nein zu Recover.\nBitte sichern Ihren brieftasche vor solchen Operationen.\n\nWIR SIND FÜR VERLUSTE NICHT VERANTWORTLICH.</string>
+  <string name="about_explain">Wir ist eine flüssig und stabil XDAG brieftasche zu entwickeln. Wenn sie fragen oder anregungen haben, senden sie uns bitte Ihre feedback.\n\nQuell code auf github aufgeführt ist, als link angezeigt wird unten. Jeder ist willkommen zu dieser project.\n\nErinnerung:\n\nBitte sichern sie Ihre brieftaschen irgendwo.\n\nWir Ihre dateien in Android private ordner, aber backup und restore use externe SD karte als speicher (ordner name: Sdcard/Xdag/) . SD karte ist nicht sicher genug für backup, Bitte überweisen sie Ihre brieftasche backup dateien irgendwo Else.\n\nJede deinstallation oder daten löschen verlöre ursache der brieftasche, und nein zu recover.\nBitte sichern Ihren brieftasche vor solchen operationen.\n\nWIR SIND FÜR VERLUSTE NICHT VERANTWORTLICH.</string>
   <!-- update -->
   <string name="update">Aktualisieren</string>
   <string name="close">Schließen</string>
-  <string name="new_version_available">Neue Version erkannt：%1$s</string>
+  <string name="new_version_available">Neue version erkannt：%1$s</string>
   <!-- explain-->
   <string name="usage">Verwendung</string>
   <string name="function_explain">Begriffe</string>
   <string name="backup_explain">Ich habe den Inhalt oben gelesen</string>
   <string name="not_show_explain">Nicht mehr anzeigen</string>
-  <string name="restore_read_explain">Ich habe den obigen Inhalt gelesen, und eine Sicherungskopie im xdag Ordner erstellt</string>
-  <string name="check_root_explain">Vorsicht! Ihr Gerät ist verwurzelt, es besteht ein hohes Risiko, dass es fortgesetzt wird.</string>
-  <string name="use_explain_1">XDAG Android Brieftasche ist immer noch in der Beta-Version.\n</string>
+  <string name="restore_read_explain">Ich habe den obigen Inhalt gelesen, und eine sicherungskopie im xdag ordner erstellt</string>
+  <string name="check_root_explain">Vorsicht! Ihr gerät ist verwurzelt, es besteht ein hohes risiko, dass es fortgesetzt wird.</string>
+  <string name="use_explain_1">XDAG Android brieftasche ist immer noch in der beta version.\n</string>
   <string name="use_explain_2">Vorsicht:\n</string>
-  <string name="use_explain_3">Bitte sichern Sie Ihr Portemonnaie im Falle eines Verlustes des Portemonnaies aufgrund von Bugs.\n</string>
+  <string name="use_explain_3">Bitte sichern sie Ihr portemonnaie im falle eines verlustes des portemonnaies aufgrund von bugs.\n</string>
   <string name="use_explain_4">WIR SIND FÜR VERLUSTE VON VERMÖGENSWERTEN NICHT VERANTWORTLICH.\n</string>
-  <string name="use_explain_5">Das Deinstallieren oder Löschen von Daten führt zum Verlust des Portemonnaies und KEINERLEI WIEDERAUFNAHME. Bitte sichern Sie zuerst Ihre Brieftasche.\n</string>
-  <string name="use_explain_6">Um Transaktionen zu gewährleisten, sind Popups nicht kündbar.\n</string>
-  <string name="use_explain_7">Wir werden das in späteren Releases verbessern.</string>
-  <string name="restore_explain_1">Aufgrund der speziellen Datenstruktur von XDAG, \n</string>
-  <string name="restore_explain_2">XDAG brieftasche unterstützt derzeit keine Sicherung oder Wiederherstellung durch privaten Schlüssel oder mnemotechnischen Code.\n</string>
-  <string name="restore_explain_3">Sie können Ihre Brieftasche nur durch Dateien im xdag-Ordner sichern und wiederherstellen.\n</string>
+  <string name="use_explain_5">Das deinstallieren oder löschen von daten führt zum verlust des portemonnaies und KEINERLEI WIEDERAUFNAHME. Bitte sichern sie zuerst Ihre brieftasche.\n</string>
+  <string name="use_explain_6">Um transaktionen zu gewährleisten, sind popups nicht kündbar.\n</string>
+  <string name="use_explain_7">Wir werden das in späteren releases verbessern.</string>
+  <string name="restore_explain_1">Aufgrund der speziellen datenstruktur von XDAG, \n</string>
+  <string name="restore_explain_2">XDAG brieftasche unterstützt derzeit keine sicherung oder wiederherstellung durch privaten schlüssel oder mnemotechnischen code.\n</string>
+  <string name="restore_explain_3">Sie können Ihre brieftasche nur durch dateien im xdag ordner sichern und wiederherstellen.\n</string>
   <string name="restore_explain_4">Um Ihre Brieftasche wiederherzustellen, müssen Sie Ihre Wallet-Dateien in den Ordner xdag im Stammordner Ihrer SD-Karte kopieren.\n</string>
   <string name="restore_explain_5">SD-Karte ist kein sicherer Ort für Backups, jeder VIRUS kann Backup-Dateien von SD-Karte stehlen.\n</string>
   <string name="restore_explain_6">Beim Wiederherstellen einer Brieftasche wird die Sicherung in den privaten Android-Ordner verschoben.\n</string>
