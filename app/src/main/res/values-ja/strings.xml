@@ -5,12 +5,12 @@
   <string name="XDAG">XDAG</string>
   <!-- common -->
   <string name="home">ホームページ</string>
-  <string name="send">いただく</string>
-  <string name="receive">受信</string>
+  <string name="send">支払いました</string>
+  <string name="receive">いただきました</string>
   <string name="more">もっと</string>
   <string name="setting">設定</string>
-  <string name="send_xdag">Send XDAG</string>
-  <string name="receive_xdag">Receive XDAG</string>
+  <string name="send_xdag">支払いました XDAG</string>
+  <string name="receive_xdag">いただきました XDAG</string>
   <string name="scan">バーコード読み込み</string>
   <string name="to_address">To Address</string>
   <string name="send_to_address">Send to Address</string>
