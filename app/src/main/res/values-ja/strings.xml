@@ -33,7 +33,7 @@
   <string name="warning">警告</string>
   <string name="ensure">確認</string>
   <string name="available_xdag">残高 %1$s XDAG</string>
-  <string name="cancel">取り消し</string>
+  <string name="cancel">キャンセル</string>
   <string name="add_pool_address">追加のプール アドレス</string>
   <string name="delete_pool_address">プール アドレスを削除:%1$s?</string>
   <string name="reset_pool_address">デフォルト プール アドレスに戻すかどうか？</string>
@@ -98,7 +98,7 @@
   <string name="check_root_explain">注意! あなたのデバイスが根ざしている、続行する危険性が高いです。</string>
   <string name="use_explain_1">XDAG の Android ウォレットはまだベータ版です。\n</string>
   <string name="use_explain_2">警告:\n</string>
-  <string name="use_explain_3">バグのためにウォレットを紛失しないように、ウォレットをバックアップしてください。</string>
+  <string name="use_explain_3">バグで財布が失いように財布をバックアップしてください。\n</string>
   <string name="use_explain_4">私たちはいかなる資産の損失に対しても責任を負いません。\n</string>
   <string name="use_explain_5">データをアンインストールまたは削除すると、ウォレットが失われ、回復不能になります。 まずはお財布をバックアップしてください。\n</string>
   <string name="use_explain_6">トランザクションを確実にするために、ポップアップは取り消しできません。\n</string>
