@@ -48,7 +48,7 @@
   <string name="please_backup_your_xdag_wallet_first">内容をよく読んで、ウォレットのデータを事前にバックアップしてください</string>
   <string name="please_wait_loading">ダウンロード中</string>
   <string name="please_wait_connecting_pool">主なネットに接続します。</string>
-  <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
+  <string name="please_restore_read">くださいページを読むし、xdag フォルダーにバックアップ ファイルをコピー</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">読み込みできません</string>
   <string name="error_file_make_fail">ファイルの作成に失敗した</string>
@@ -60,12 +60,12 @@
   <string name="error_password_not_same">一貫性のないパスワード</string>
   <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
   <string name="error_balance_too_small">量は十分ではないです</string>
-  <string name="error_invalid_recv_address">Invalid address</string>
-  <string name="error_invalid_pool_address">Invalid pool address</string>
-  <string name="error_pool_address_exists">Pool address already exists</string>
-  <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
+  <string name="error_invalid_recv_address">無効なアドレス</string>
+  <string name="error_invalid_pool_address">無効なプール アドレス</string>
+  <string name="error_pool_address_exists">プール アドレスは既に存在します</string>
+  <string name="error_cannot_delete_selected_pool">選択したプール アドレスを削除することはできません</string>
   <string name="error_server_problem">The server is running out of the way</string>
-  <string name="error_send_coin_itself">can\'t transfer XDAG to itself</string>
+  <string name="error_send_coin_itself">できます \' t 転送 XDAG 自体に</string>
   <!-- success -->
   <string name="success_refresh">更新を正常に完了しました</string>
   <string name="success_copy_address">正常にコピー</string>
@@ -76,7 +76,7 @@
   <string name="more_backup_wallet">Backup wallet</string>
   <string name="more_suggest">フィードバック</string>
   <string name="more_wallet">Switch wallet</string>
-  <string name="more_pool">Switch pool</string>
+  <string name="more_pool">スイッチ プール</string>
   <string name="more_xdag_io">コミュニティウェブサイト - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
@@ -88,13 +88,13 @@
   <!-- update -->
   <string name="update">更新</string>
   <string name="close">閉じる</string>
-  <string name="new_version_available">New version detected：%1$s</string>
+  <string name="new_version_available">新しいバージョンが検出されました：%1$s</string>
   <!-- explain-->
   <string name="usage">使い方の説明</string>
   <string name="function_explain">機能の説明</string>
   <string name="backup_explain">私は上記を注意深く読んだ</string>
   <string name="not_show_explain">ドン \' t 表示もう一度</string>
-  <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
+  <string name="restore_read_explain">私は、上記の内容を読んでいるし、xdag フォルダーのバックアップを作成</string>
   <string name="check_root_explain">注意! あなたのデバイスが根ざしている、続行する危険性が高いです。</string>
   <string name="use_explain_1">XDAG の Android ウォレットはまだベータ版です。\n</string>
   <string name="use_explain_2">警告:\n</string>
