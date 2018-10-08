@@ -33,7 +33,7 @@
   <string name="warning">警告</string>
   <string name="ensure">確認</string>
   <string name="available_xdag">残高 %1$s XDAG</string>
-  <string name="cancel">取り消し</string>
+  <string name="cancel">キャンセル</string>
   <string name="add_pool_address">追加のプール アドレス</string>
   <string name="delete_pool_address">プール アドレスを削除:%1$s?</string>
   <string name="reset_pool_address">デフォルト プール アドレスに戻すかどうか？</string>
@@ -58,18 +58,18 @@
   <string name="error_backup_xdag_wallet">ウォレットのバックアップに失敗しました</string>
   <string name="error_password">パスワードが違います</string>
   <string name="error_password_not_same">一貫性のないパスワード</string>
-  <string name="error_noting_to_transfer">送信ボリュームは0より大きくなければなりません</string>
+  <string name="error_noting_to_transfer">送信数は0より大きくなければなりません。</string>
   <string name="error_balance_too_small">量は十分ではないです</string>
   <string name="error_invalid_recv_address">無効なアドレス</string>
   <string name="error_invalid_pool_address">無効なプール アドレス</string>
   <string name="error_pool_address_exists">プール アドレスは既に存在します</string>
   <string name="error_cannot_delete_selected_pool">選択したプール アドレスを削除することはできません</string>
-  <string name="error_server_problem">サーバーがタイムアウトしました</string>
+  <string name="error_server_problem">サーバーの故障が発生しました。</string>
   <string name="error_send_coin_itself">できます \' t 転送 XDAG 自体に</string>
   <!-- success -->
   <string name="success_refresh">更新を正常に完了しました</string>
   <string name="success_copy_address">正常にコピー</string>
-  <string name="success_send_coin">正常に送信されました</string>
+  <string name="success_send_coin">発送が成功しました。</string>
   <string name="success_backup_xdag_wallet">ウォレットのバックアップは/sdcard /xdagに作成されます</string>
   <!-- setting item-->
   <string name="more_messages">メッセージ</string>
@@ -98,7 +98,7 @@
   <string name="check_root_explain">注意! あなたのデバイスが根ざしている、続行する危険性が高いです。</string>
   <string name="use_explain_1">XDAG の Android ウォレットはまだベータ版です。\n</string>
   <string name="use_explain_2">警告:\n</string>
-  <string name="use_explain_3">バグのためにウォレットを紛失しないように、ウォレットをバックアップしてください。</string>
+  <string name="use_explain_3">バグで財布が失いように財布をバックアップしてください。\n</string>
   <string name="use_explain_4">私たちはいかなる資産の損失に対しても責任を負いません。\n</string>
   <string name="use_explain_5">データをアンインストールまたは削除すると、ウォレットが失われ、回復不能になります。 まずはお財布をバックアップしてください。\n</string>
   <string name="use_explain_6">トランザクションを確実にするために、ポップアップは取り消しできません。\n</string>
