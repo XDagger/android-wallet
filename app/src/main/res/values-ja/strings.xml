@@ -70,7 +70,7 @@
   <string name="success_refresh">更新を正常に完了しました</string>
   <string name="success_copy_address">正常にコピー</string>
   <string name="success_send_coin">Sent successfully</string>
-  <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
+  <string name="success_backup_xdag_wallet">ウォレットのバックアップは/sdcard /xdagに作成されます</string>
   <!-- setting item-->
   <string name="more_messages">メッセージ</string>
   <string name="more_backup_wallet">バックアップウォレット</string>
