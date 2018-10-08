@@ -14,7 +14,7 @@
   <string name="scan">掃描二維碼</string>
   <string name="to_address">收款地址</string>
   <string name="send_to_address">收款地址</string>
-  <string name="amount_to_send">發送數量</string>
+  <string name="amount_to_send">发送数量</string>
   <string name="amount">數量</string>
   <string name="not_ready">准備中</string>
   <string name="create_wallet">創建錢包</string>
@@ -69,7 +69,7 @@
   <!-- success -->
   <string name="success_refresh">更新成功</string>
   <string name="success_copy_address">地址複制成功</string>
-  <string name="success_send_coin">發送成功</string>
+  <string name="success_send_coin">发送成功</string>
   <string name="success_backup_xdag_wallet">您的錢包已備份至 /sdcard/xdag 目錄</string>
   <!-- setting item-->
   <string name="more_messages">訊息</string>
