@@ -73,17 +73,17 @@
   <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
   <!-- setting item-->
   <string name="more_messages">メッセージ</string>
-  <string name="more_backup_wallet">Backup wallet</string>
+  <string name="more_backup_wallet">バックアップウォレット</string>
   <string name="more_suggest">フィードバック</string>
-  <string name="more_wallet">Switch wallet</string>
+  <string name="more_wallet">スイッチウォレット</string>
   <string name="more_pool">スイッチ プール</string>
   <string name="more_xdag_io">コミュニティウェブサイト - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
-  <string name="error_password_format">Please input 6 to 18 characters, numbers, or special characters</string>
+  <string name="error_password_format">6〜18文字、数字、または特殊文字を入力してください</string>
   <!-- about -->
-  <string name="slogan">Fluent and Stable XDAG wallet</string>
+  <string name="slogan">流暢で安定したXDAGウォレット</string>
   <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
   <!-- update -->
   <string name="update">更新</string>
@@ -101,14 +101,14 @@
   <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
   <string name="use_explain_4">私たちはいかなる資産の損失に対しても責任を負いません。\n</string>
   <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
-  <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
+  <string name="use_explain_6">トランザクションを確実にするために、ポップアップは取り消しできません。\n</string>
   <string name="use_explain_7">我々 は今後のリリースでこれを改善します。</string>
-  <string name="restore_explain_1">Due to special data structure of XDAG, \n</string>
-  <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
-  <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
-  <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
+  <string name="restore_explain_1">XDAGの特別なデータ構造。\n</string>
+  <string name="restore_explain_2">XDAGウォレットは、現在秘密鍵またはニーモニックコードによるバックアップまたはリストアをサポートしていません。\n</string>
+  <string name="restore_explain_3">ウォレットは、xdagフォルダー内のファイルでのみバックアップおよびリストアできます。\n</string>
+  <string name="restore_explain_4">ウォレットを復元するには、ウォレットファイルをSDカードのルートフォルダのxdagフォルダにコピーする必要があります。\n</string>
   <string name="restore_explain_5">SD カードは、バックアップのための安全な場所ではない、任意のウイルスは、SD カードからバックアップファイルを盗むことができる。\n</string>
-  <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
+  <string name="restore_explain_6">ウォレットを復元すると、バックアップはAndroid専用フォルダに移動されます。\n</string>
   <string name="restore_explain_7">いつでもウォレットをSDカードにバックアップできます。\n</string>
   <string name="restore_explain_8">覚えている：SD カードは安全ではない、安全な場所に迅速にファイルをバックアップしてください。</string>
   <string name="wallet_explain_1">No wallet detected!\n</string>
