@@ -58,7 +58,7 @@
   <string name="error_backup_xdag_wallet">ウォレットのバックアップに失敗しました</string>
   <string name="error_password">パスワードが違います</string>
   <string name="error_password_not_same">一貫性のないパスワード</string>
-  <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
+  <string name="error_noting_to_transfer">送信ボリュームは0より大きくなければなりません</string>
   <string name="error_balance_too_small">量は十分ではないです</string>
   <string name="error_invalid_recv_address">無効なアドレス</string>
   <string name="error_invalid_pool_address">無効なプール アドレス</string>
@@ -69,7 +69,7 @@
   <!-- success -->
   <string name="success_refresh">更新を正常に完了しました</string>
   <string name="success_copy_address">正常にコピー</string>
-  <string name="success_send_coin">Sent successfully</string>
+  <string name="success_send_coin">正常に送信されました</string>
   <string name="success_backup_xdag_wallet">ウォレットのバックアップは/sdcard /xdagに作成されます</string>
   <!-- setting item-->
   <string name="more_messages">メッセージ</string>
@@ -98,9 +98,9 @@
   <string name="check_root_explain">注意! あなたのデバイスが根ざしている、続行する危険性が高いです。</string>
   <string name="use_explain_1">XDAG の Android ウォレットはまだベータ版です。\n</string>
   <string name="use_explain_2">警告:\n</string>
-  <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
+  <string name="use_explain_3">バグのために財布を紛失しないように、財布をバックアップしてください。</string>
   <string name="use_explain_4">私たちはいかなる資産の損失に対しても責任を負いません。\n</string>
-  <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
+  <string name="use_explain_5">データをアンインストールまたは削除すると、ウォレットが失われ、回復不能になります。 まずはお財布をバックアップしてください。\n</string>
   <string name="use_explain_6">トランザクションを確実にするために、ポップアップは取り消しできません。\n</string>
   <string name="use_explain_7">我々 は今後のリリースでこれを改善します。</string>
   <string name="restore_explain_1">XDAGの特別なデータ構造。\n</string>
@@ -112,7 +112,7 @@
   <string name="restore_explain_7">いつでもウォレットをSDカードにバックアップできます。\n</string>
   <string name="restore_explain_8">覚えている：SD カードは安全ではない、安全な場所に迅速にファイルをバックアップしてください。</string>
   <string name="wallet_explain_1">ウォレットが検出されない！\n</string>
-  <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
+  <string name="wallet_explain_2">ウォレットを入手するには2つの方法があります。\n</string>
   <string name="wallet_explain_3">新しいウォレットを作成します。 全く新しいウォレットを作成することができます。\n</string>
   <string name="wallet_explain_4">古いウォレットを復元する。 古いウォレットをここにインポートできます。\n</string>
   <string name="wallet_explain_5">私たちは外部SDカードに書き込む許可を求めますが、否定しないでください。\n</string>
