@@ -28,14 +28,14 @@
   <string name="the_function_developing_please_wait">開発中</string>
   <string name="continue_use">続き</string>
   <string name="exit">sign out</string>
-  <string name="switch_pool_to">Switch pool \n%1$s</string>
+  <string name="switch_pool_to">プールを切り替える \%1$s</string>
   <string name="tran_detail">取引記録</string>
   <string name="warning">警告</string>
   <string name="ensure">確認</string>
   <string name="available_xdag">残高 %1$s XDAG</string>
   <string name="cancel">取り消し</string>
-  <string name="add_pool_address">Add pool address</string>
-  <string name="delete_pool_address">Delete pool address:%1$s?</string>
+  <string name="add_pool_address">追加のプール アドレス</string>
+  <string name="delete_pool_address">プール アドレスを削除:%1$s?</string>
   <string name="reset_pool_address">Whether restore to the default pool address?</string>
   <string name="not_remind_again">このメッセージを表示しない</string>
   <!-- please -->
