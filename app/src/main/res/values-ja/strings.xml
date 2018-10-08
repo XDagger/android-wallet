@@ -58,7 +58,7 @@
   <string name="error_backup_xdag_wallet">ウォレットのバックアップに失敗しました</string>
   <string name="error_password">パスワードが違います</string>
   <string name="error_password_not_same">一貫性のないパスワード</string>
-  <string name="error_noting_to_transfer">送信数は0より大きくなければなりません</string>
+  <string name="error_noting_to_transfer">送信数は0より大きくなければなりません。</string>
   <string name="error_balance_too_small">量は十分ではないです</string>
   <string name="error_invalid_recv_address">無効なアドレス</string>
   <string name="error_invalid_pool_address">無効なプール アドレス</string>
