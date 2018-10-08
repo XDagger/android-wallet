@@ -7,7 +7,7 @@
   <string name="home">Домой</string>
   <string name="send">Отправить</string>
   <string name="receive">Принять</string>
-  <string name="more">Больше</string>
+  <string name="more">Далее</string>
   <string name="setting">Настройки</string>
   <string name="send_xdag">Отправить XDAG</string>
   <string name="receive_xdag">Получить XDAG</string>
@@ -39,7 +39,7 @@
   <string name="reset_pool_address">Восстановить ли адрес пула по умолчанию?</string>
   <string name="not_remind_again">Не напоминать больше</string>
   <!-- please -->
-  <string name="please_set_password">Пожалуйста, установить пароль кошелька</string>
+  <string name="please_set_password">Пожалуйста, задайте пароль кошелька</string>
   <string name="please_retype_password">Пожалуйста, повторите пароль кошелька</string>
   <string name="please_input_password">Пожалуйста, введите пароль</string>
   <string name="please_input_random">Пожалуйста, введите случайный ключ</string>
@@ -47,7 +47,7 @@
   <string name="please_wait_transfer">Транзакция в прогрессе...</string>
   <string name="please_backup_your_xdag_wallet_first">Пожалуйста, прочтите внимательно и создайте резервную копию вашего кошелька.</string>
   <string name="please_wait_loading">Загрузка...</string>
-  <string name="please_wait_connecting_pool">Подключение к пулу...</string>
+  <string name="please_wait_connecting_pool">Подключение к сети...</string>
   <string name="please_restore_read">Пожалуйста, прочтите страницу и скопируйте резервные файлы в папку XDAG</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Не удалось прочесть SRCode</string>
@@ -84,38 +84,38 @@
   <string name="error_password_format">Пожалуйста, введите 6-18 символов, цифр или специальных символов</string>
   <!-- about -->
   <string name="slogan">Быстрый и стабильный кошелёк XDAG</string>
-  <string name="about_explain">Мы занимаемся для разработкой быстрого и стабильного кошелька XDAG. Если у вас есть любые вопросы или предложения, пожалуйста, отправьте нам ваш обратную связть.\n\nИсходный код представлен на Github, ссылка отображается ниже. Вы можете помочь в разработке.\n\nНапоминание:\n\nПожалуйста, создайте резервную копию вашего кошелька.\n\nМы сохранили ваши файлы в скрытой папке Android, но резервное копирование и восстановления производится с использованием внешней SD-карты (имя папки: /sdcard/xdag /). SD-карта не является достаточно безопасной для хранения резервной копии, пожалуйста сохрание файлы резервной копии в более безопасном месте.\n\nДеинсталляция и удаление данных могут привести к потере кошелька без возможности восстановления.\nПожалуйста, создайте резервную копию Вашего кошелька перед данными операциями.\n\nМЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТИ ЗА ВОЗМОЖНУЮ ПОТЕРЮ СРЕДСТВ.</string>
+  <string name="about_explain">Мы занимаемся разработкой быстрого и стабильного кошелька XDAG. Если у вас есть любые вопросы или предложения, пожалуйста, отправьте нам обратную связь.\n\nИсходный код представлен на Github, ссылка отображается ниже. Вы можете помочь в разработке.\n\nНапоминание:\n\nПожалуйста, создайте резервную копию вашего кошелька.\n\nМы сохранили ваши файлы в скрытой папке Android, но резервное копирование и восстановление производится с использованием внешней SD-карты (имя папки: /sdcard/xdag/). SD-карта не является достаточно безопасной для хранения резервной копии, пожалуйста сохраните файлы резервной копии в более безопасном месте.\n\nДеинсталляция и удаление данных могут привести к потере кошелька без возможности восстановления.\nПожалуйста, создайте резервную копию Вашего кошелька перед данными операциями.\n\nМЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТИ ЗА ВОЗМОЖНУЮ ПОТЕРЮ СРЕДСТВ.</string>
   <!-- update -->
   <string name="update">Обновить</string>
   <string name="close">Закрыть</string>
   <string name="new_version_available">Найдена новая версия: %1$s</string>
   <!-- explain-->
-  <string name="usage">Справка</string>
+  <string name="usage">Использование</string>
   <string name="function_explain">Условия</string>
-  <string name="backup_explain">Я прочитал содержимое выше</string>
+  <string name="backup_explain">Я прочитал информацию выше</string>
   <string name="not_show_explain">Больше не показывать</string>
-  <string name="restore_read_explain">Я прочитал содержание выше и создал резервную копию в папке XDAG</string>
+  <string name="restore_read_explain">Я ознакомлен(а) с информацией выше и создал(а) резервную копию в папке XDAG</string>
   <string name="check_root_explain">Внимание! Ваше устройство разлочено, что несёт высокий риск.</string>
-  <string name="use_explain_1">Кошелёк XDAG для Android находится в состоянии бета-версии.\n</string>
-  <string name="use_explain_2">Осторожно:\n</string>
+  <string name="use_explain_1">Кошелёк XDAG для Android находится на стадии бета-версии.\n</string>
+  <string name="use_explain_2">Предостережение:\n</string>
   <string name="use_explain_3">Пожалуйста, создайте резервную копию вашего кошелька на случай утери.\n</string>
-  <string name="use_explain_4">МЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТИ В СЛУЧАЕ УТЕРИ ВАШИХ СРЕДСТВ.\n</string>
+  <string name="use_explain_4">МЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТИ В СЛУЧАЕ ПОТЕРИ ВАШИХ СРЕДСТВ.\n</string>
   <string name="use_explain_5">Деинсталляция или удаление данных могут вызвать потерю кошелька без возможности восстановления. Пожалуйста, сначала создайте резервную копию.\n</string>
   <string name="use_explain_6">Чтобы гарантировать транзакции, всплывающие окна не отменяемы.\n</string>
-  <string name="use_explain_7">Мы улучшим это у будущих выпусках.</string>
+  <string name="use_explain_7">Мы улучшим это в последующих версиях.</string>
   <string name="restore_explain_1">Вследствие особой структуры данных XDAG,\n</string>
-  <string name="restore_explain_2">В настоящее время XDAG не поддерживает резервное копирование и восстановление посредством приватного ключа или мнемонического кода.\n</string>
+  <string name="restore_explain_2">в настоящее время XDAG не поддерживает резервное копирование и восстановление посредством приватного ключа или мнемонического кода.\n</string>
   <string name="restore_explain_3">Вы можете создавать резервные копии и восстанавливать ваш кошелёк только с помощью файлов в папке XDAG.\n</string>
   <string name="restore_explain_4">Чтобы восстановить свой кошелёк, вы должны скопировать файлы вашего кошелька в папку XDAG в корневой папке SD-карты.\n</string>
-  <string name="restore_explain_5">SD-карта не является безопасным местом для резервных копий.\n</string>
-  <string name="restore_explain_6">В ходе восстановление кошелька, резервные файлы будут перемещены в скрытую папку Android.\n</string>
+  <string name="restore_explain_5">SD-карта не является безопасным местом для хранения резервных копий.\n</string>
+  <string name="restore_explain_6">При восстановлении кошелька резервные файлы будут перемещены в системную директорию системы Android.\n</string>
   <string name="restore_explain_7">Вы можете создать резервную копию вашего кошелька на SD-карте в любое время.\n</string>
   <string name="restore_explain_8">Пожалуйста, имейте в виду: SD-карта не является безопасным устройством для хранения данных, пожалуйста сохраните резервные копии на безопасном устройстве.\n</string>
   <string name="wallet_explain_1">Кошелёк не найден!\n</string>
   <string name="wallet_explain_2">У Вас есть два способа получить кошелёк.\n</string>
-  <string name="wallet_explain_3">Создать кошелёк. Вы можете создать новый кошелёк.\n</string>
-  <string name="wallet_explain_4">Восстановить старый кошелёк. Вы можете импортировать Ваш существующий кошелёк.\n</string>
-  <string name="wallet_explain_5">Мы запросим разрешение на запись во внешнюю SD-карту. Пожалуйста, не отклоняйте его.\n</string>
+  <string name="wallet_explain_3">Создать кошелёк: Вы можете создать новый кошелёк.\n</string>
+  <string name="wallet_explain_4">Восстановить старый кошелёк: Вы можете импортировать Ваш существующий кошелёк.\n</string>
+  <string name="wallet_explain_5">Мы запросим разрешение на запись на внешнюю SD-карту. Пожалуйста, не отклоняйте его.\n</string>
   <string name="cover_explain">Обнаружена существующая резервная копия в /sdcard/xdag. Вы хотите перезаписать её? Предыдущая резервная копия будет удалена.</string>
   <!-- settings-->
   <string name="settings_show_usage">Не отображать справку</string>
