@@ -109,8 +109,8 @@
   <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
   <string name="restore_explain_5">SD カードは、バックアップのための安全な場所ではない、任意のウイルスは、SD カードからバックアップファイルを盗むことができる。\n</string>
   <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
-  <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
-  <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
+  <string name="restore_explain_7">いつでもウォレットをSDカードにバックアップできます。\n</string>
+  <string name="restore_explain_8">覚えている：SD カードは安全ではない、安全な場所に迅速にファイルをバックアップしてください。</string>
   <string name="wallet_explain_1">No wallet detected!\n</string>
   <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
   <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
