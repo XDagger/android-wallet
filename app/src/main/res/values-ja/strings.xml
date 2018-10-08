@@ -58,18 +58,18 @@
   <string name="error_backup_xdag_wallet">ウォレットのバックアップに失敗しました</string>
   <string name="error_password">パスワードが違います</string>
   <string name="error_password_not_same">一貫性のないパスワード</string>
-  <string name="error_noting_to_transfer">送信ボリュームは0より大きくなければなりません</string>
+  <string name="error_noting_to_transfer">送信数は0より大きくなければなりません</string>
   <string name="error_balance_too_small">量は十分ではないです</string>
   <string name="error_invalid_recv_address">無効なアドレス</string>
   <string name="error_invalid_pool_address">無効なプール アドレス</string>
   <string name="error_pool_address_exists">プール アドレスは既に存在します</string>
   <string name="error_cannot_delete_selected_pool">選択したプール アドレスを削除することはできません</string>
-  <string name="error_server_problem">サーバーがタイムアウトしました</string>
+  <string name="error_server_problem">サーバーの故障が発生しました。</string>
   <string name="error_send_coin_itself">できます \' t 転送 XDAG 自体に</string>
   <!-- success -->
   <string name="success_refresh">更新を正常に完了しました</string>
   <string name="success_copy_address">正常にコピー</string>
-  <string name="success_send_coin">正常に送信されました</string>
+  <string name="success_send_coin">発送が成功しました。</string>
   <string name="success_backup_xdag_wallet">ウォレットのバックアップは/sdcard /xdagに作成されます</string>
   <!-- setting item-->
   <string name="more_messages">メッセージ</string>
