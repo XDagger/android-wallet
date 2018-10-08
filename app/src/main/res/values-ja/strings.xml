@@ -111,9 +111,9 @@
   <string name="restore_explain_6">ウォレットを復元すると、バックアップはAndroid専用フォルダに移動されます。\n</string>
   <string name="restore_explain_7">いつでもウォレットをSDカードにバックアップできます。\n</string>
   <string name="restore_explain_8">覚えている：SD カードは安全ではない、安全な場所に迅速にファイルをバックアップしてください。</string>
-  <string name="wallet_explain_1">No wallet detected!\n</string>
+  <string name="wallet_explain_1">ウォレットが検出されない！\n</string>
   <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
-  <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
+  <string name="wallet_explain_3">新しいウォレットを作成します。 全く新しいウォレットを作成することができます。\n</string>
   <string name="wallet_explain_4">古いウォレットを復元する。 古いウォレットをここにインポートできます。\n</string>
   <string name="wallet_explain_5">私たちは外部SDカードに書き込む許可を求めますが、否定しないでください。\n</string>
   <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
