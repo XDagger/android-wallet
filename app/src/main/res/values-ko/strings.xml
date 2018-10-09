@@ -86,15 +86,15 @@
   <string name="slogan">Fluent and Stable XDAG wallet</string>
   <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
   <!-- update -->
-  <string name="update">Update</string>
-  <string name="close">Close</string>
-  <string name="new_version_available">New version detected：%1$s</string>
+  <string name="update">업데이트</string>
+  <string name="close">닫기</string>
+  <string name="new_version_available">새 버전이 검색 됨：%1$s</string>
   <!-- explain-->
-  <string name="usage">Usage</string>
-  <string name="function_explain">Terms</string>
-  <string name="backup_explain">I have read the content above</string>
-  <string name="not_show_explain">Don\'t display again</string>
-  <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
+  <string name="usage">사용</string>
+  <string name="function_explain">이용 약관</string>
+  <string name="backup_explain">나는 상기의 내용을 읽었다</string>
+  <string name="not_show_explain">돈 \' t 디스플레이 다시</string>
+  <string name="restore_read_explain">위의 내용을 읽고 있고 xdag 폴더에 백업 생성</string>
   <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
   <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
   <string name="use_explain_2">Caution:\n</string>
