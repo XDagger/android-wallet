@@ -95,9 +95,9 @@
   <string name="backup_explain">나는 상기의 내용을 읽었다</string>
   <string name="not_show_explain">돈 \' t 디스플레이 다시</string>
   <string name="restore_read_explain">위의 내용을 읽고 있고 xdag 폴더에 백업 생성</string>
-  <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
-  <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
-  <string name="use_explain_2">Caution:\n</string>
+  <string name="check_root_explain">주의! 당신의 장치가 Root, 그것은 계속 높은 위험이.</string>
+  <string name="use_explain_1">XDAG 안 드 로이드 지갑은 아직 베타 버전.\n</string>
+  <string name="use_explain_2">주의:\n</string>
   <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
   <string name="use_explain_4">WE ARE NOT RESPONSIBLE FOR ANY LOSS OF ASSETS.\n</string>
   <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
