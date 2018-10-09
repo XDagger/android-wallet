@@ -34,7 +34,7 @@
   <string name="ensure">확인</string>
   <string name="available_xdag">Available %1$s XDAG</string>
   <string name="cancel">취소</string>
-  <string name="add_pool_address">Add pool address</string>
+  <string name="add_pool_address">풀 주소 늘리기</string>
   <string name="delete_pool_address">풀 주소 삭제:%1$s?</string>
   <string name="reset_pool_address">기본 풀 주소로 복원할지 여부?</string>
   <string name="not_remind_again">돈 \' t는 다시 생각나 게</string>
@@ -76,7 +76,7 @@
   <string name="more_backup_wallet">Backup wallet</string>
   <string name="more_suggest">피드백</string>
   <string name="more_wallet">스위치 지갑</string>
-  <string name="more_pool">Switch pool</string>
+  <string name="more_pool">스위치 풀</string>
   <string name="more_xdag_io">커뮤니티 웹사이트 - xdag.io</string>
   <string name="more_github">Github - xDagger</string>
   <!-- password format -->
@@ -84,7 +84,7 @@
   <string name="error_password_format">6 ~ 18 자, 숫자 또는 특수 문자를 입력 하십시오</string>
   <!-- about -->
   <string name="slogan">유창하고 안정적인 XDAG 지갑</string>
-  <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
+  <string name="about_explain">우리는 유창 하 고 안정적인 xdag 지갑을 개발 하기 위해 최선을 다하고 있습니다. 당신은 질문이 나 제안이 있는 경우, 우리에 게 당신에 게 피드백을 보내주시기 바랍니다. \n\n소스 코드는 github에 나열 되어, 링크는 다음과 같이 표시 됩니다. 모두는이 프로젝트에 공헌 하기 위하여 환영 된다. \n\n알림: 어딘가에 당신의 지갑 파일을 백업 하십시오. \n\n우리는 안 드 로이드 개인 폴더에 파일을 저장, 하지만 백업 및 복원 저장으로 외부 SD 카드를 사용 하 여 (폴더 이름: sdcard/xdag/). SD 카드는 백업에 대 한 충분 한 안전 하지 않습니다, 당신의 지갑 백업 파일을 다른 곳으로 전송 하십시오. \n\n모든 제거 또는 삭제 데이터는 지갑을 잃게 하 고, 복구 할 수 있는 방법이 발생 합니다. 이러한 작업 전에 지갑을 백업 하십시오. \n\n우리는 자산의 손실에 대 한 책임을 지지 않습니다.</string>
   <!-- update -->
   <string name="update">업데이트</string>
   <string name="close">닫기</string>
