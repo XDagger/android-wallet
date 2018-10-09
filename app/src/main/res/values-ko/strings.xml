@@ -35,8 +35,8 @@
   <string name="available_xdag">Available %1$s XDAG</string>
   <string name="cancel">취소</string>
   <string name="add_pool_address">Add pool address</string>
-  <string name="delete_pool_address">Delete pool address:%1$s?</string>
-  <string name="reset_pool_address">Whether restore to the default pool address?</string>
+  <string name="delete_pool_address">풀 주소 삭제:%1$s?</string>
+  <string name="reset_pool_address">기본 풀 주소로 복원할지 여부?</string>
   <string name="not_remind_again">돈 \' t는 다시 생각나 게</string>
   <!-- please -->
   <string name="please_set_password">지갑 암호를 설정 하십시오</string>
@@ -61,9 +61,9 @@
   <string name="error_noting_to_transfer">보낼 금액은 0 보다 커야 합니다</string>
   <string name="error_balance_too_small">불충분 한 수량</string>
   <string name="error_invalid_recv_address">잘못 된 주소</string>
-  <string name="error_invalid_pool_address">Invalid pool address</string>
-  <string name="error_pool_address_exists">Pool address already exists</string>
-  <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
+  <string name="error_invalid_pool_address">잘못된 풀 주소</string>
+  <string name="error_pool_address_exists">풀 주소가 이미 존재 합니다</string>
+  <string name="error_cannot_delete_selected_pool">선택한 풀 주소를 삭제할 수 없습니다</string>
   <string name="error_server_problem">서버 시간이 초과 되었습니다</string>
   <string name="error_send_coin_itself">XDAG를 자신에 게 전송할 수 없음</string>
   <!-- success -->
