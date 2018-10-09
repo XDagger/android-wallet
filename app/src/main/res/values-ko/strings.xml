@@ -64,7 +64,7 @@
   <string name="error_invalid_pool_address">Invalid pool address</string>
   <string name="error_pool_address_exists">Pool address already exists</string>
   <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
-  <string name="error_server_problem">The server is running out of the way</string>
+  <string name="error_server_problem">서버 시간이 초과 되었습니다</string>
   <string name="error_send_coin_itself">XDAG를 자신에 게 전송할 수 없음</string>
   <!-- success -->
   <string name="success_refresh">성공적으로 새로 고침</string>
@@ -101,7 +101,7 @@
   <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
   <string name="use_explain_4">우리는 자산의 손실에 대해 책임지지 않습니다.\n</string>
   <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
-  <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
+  <string name="use_explain_6">트랜잭션을 보장 하기 위해, 팝업은 취소할 수 없습니다. \n</string>
   <string name="use_explain_7">우리는이 이후 릴리스에서 향상 거 야.</string>
   <string name="restore_explain_1">Due to special data structure of XDAG, \n</string>
   <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
@@ -115,8 +115,8 @@
   <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
   <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
   <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-  <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
-  <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
+  <string name="wallet_explain_5">우리는 외부 SD 카드에 쓸 수 있는 권한을 요청 합니다, 그것을 부정 하지 마십시오.\n</string>
+  <string name="cover_explain">/sdcard/xdag 에 백업이 있음을 감지했습니다. 덮어 쓰시겠습니까? 덮어 쓰면 이전 백업을 복구 할 수 없습니다.</string>
   <!-- settings-->
   <string name="settings_show_usage">사용을 표시 하지 않음</string>
 </resources>
