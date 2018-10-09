@@ -6,7 +6,7 @@
   <!-- common -->
   <string name="home">홈</string>
   <string name="send">보내기</string>
-  <string name="receive">Receive</string>
+  <string name="receive">받은</string>
   <string name="more">기타</string>
   <string name="setting">설정</string>
   <string name="send_xdag">XDAG 보내기</string>
@@ -73,7 +73,7 @@
   <string name="success_backup_xdag_wallet">/sdcard/xdag에 지갑 백업 만들기</string>
   <!-- setting item-->
   <string name="more_messages">메시지</string>
-  <string name="more_backup_wallet">Backup wallet</string>
+  <string name="more_backup_wallet">백업 지갑</string>
   <string name="more_suggest">피드백</string>
   <string name="more_wallet">스위치 지갑</string>
   <string name="more_pool">스위치 풀</string>
@@ -93,7 +93,7 @@
   <string name="usage">사용</string>
   <string name="function_explain">이용 약관</string>
   <string name="backup_explain">나는 상기의 내용을 읽었다</string>
-  <string name="not_show_explain">돈 \' t 디스플레이 다시</string>
+  <string name="not_show_explain">다시 표시 하지 않음</string>
   <string name="restore_read_explain">위의 내용을 읽고 있고 xdag 폴더에 백업 생성</string>
   <string name="check_root_explain">주의! 당신의 장치가 Root, 그것은 계속 높은 위험이.</string>
   <string name="use_explain_1">XDAG 안 드 로이드 지갑은 아직 베타 버전.\n</string>
