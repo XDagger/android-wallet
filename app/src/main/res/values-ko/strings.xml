@@ -99,7 +99,7 @@
   <string name="use_explain_1">XDAG 안 드 로이드 지갑은 아직 베타 버전.\n</string>
   <string name="use_explain_2">주의:\n</string>
   <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
-  <string name="use_explain_4">WE ARE NOT RESPONSIBLE FOR ANY LOSS OF ASSETS.\n</string>
+  <string name="use_explain_4">우리는 자산의 손실에 대해 책임지지 않습니다.\n</string>
   <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
   <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
   <string name="use_explain_7">We will improve this in later releases.</string>
