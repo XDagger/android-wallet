@@ -12,7 +12,7 @@
   <string name="send_xdag">XDAG 보내기</string>
   <string name="receive_xdag">XDAG 수신</string>
   <string name="scan">스캔 QRCode</string>
-  <string name="to_address">To Address</string>
+  <string name="to_address">주소로 보내기</string>
   <string name="send_to_address">주소 보내기</string>
   <string name="amount_to_send">금액</string>
   <string name="amount">금액</string>
@@ -28,11 +28,11 @@
   <string name="the_function_developing_please_wait">계속.</string>
   <string name="continue_use">계속</string>
   <string name="exit">종료</string>
-  <string name="switch_pool_to">Switch pool \n%1$s</string>
+  <string name="switch_pool_to">스위치 풀 \n%1$s</string>
   <string name="tran_detail">트랜잭션 세부 정보</string>
   <string name="warning">경고</string>
   <string name="ensure">확인</string>
-  <string name="available_xdag">Available %1$s XDAG</string>
+  <string name="available_xdag">사용 가능한 잔액 %1$s XDAG</string>
   <string name="cancel">취소</string>
   <string name="add_pool_address">풀 주소 늘리기</string>
   <string name="delete_pool_address">풀 주소 삭제:%1$s?</string>
@@ -114,7 +114,7 @@
   <string name="wallet_explain_1">감지 된 지갑이 없습니다!\n</string>
   <string name="wallet_explain_2">당신은 당신의 지갑을 얻을 수 있는 두 가지 방법이 있습니다.\n</string>
   <string name="wallet_explain_3">새 지갑을 만드십시오. 새로운 지갑을 만들 수 있습니다.\n</string>
-  <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
+  <string name="wallet_explain_4">지갑 복구. 지갑을 복구 하려면 여기에서 지갑 파일을 가져올 수 있습니다.\n</string>
   <string name="wallet_explain_5">우리는 외부 SD 카드에 쓸 수 있는 권한을 요청 합니다, 그것을 부정 하지 마십시오.\n</string>
   <string name="cover_explain">/sdcard/xdag 에 백업이 있음을 감지했습니다. 덮어 쓰시겠습니까? 덮어 쓰면 이전 백업을 복구 할 수 없습니다.</string>
   <!-- settings-->
