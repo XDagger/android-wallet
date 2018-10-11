@@ -20,11 +20,11 @@
   <string name="create_wallet">Criar carteira</string>
   <string name="restore_wallet">Restaurar carteira</string>
   <string name="no_transaction">Nenhuma transação encontrada</string>
-  <string name="copy_address">Copy Address</string>
-  <string name="about">About</string>
-  <string name="start_use">Start</string>
-  <string name="cover">Overwrite</string>
-  <string name="nice_to_meet_you">Glad to see you here!</string>
+  <string name="copy_address">Copiar endereço</string>
+  <string name="about">Sobre</string>
+  <string name="start_use">Começar</string>
+  <string name="cover">Substituir</string>
+  <string name="nice_to_meet_you">Fico feliz em vê-lo aqui!</string>
   <string name="the_function_developing_please_wait">To be continued.</string>
   <string name="continue_use">Continue</string>
   <string name="exit">Quit</string>
