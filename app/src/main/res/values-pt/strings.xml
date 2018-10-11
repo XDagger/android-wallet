@@ -25,9 +25,9 @@
   <string name="start_use">Começar</string>
   <string name="cover">Substituir</string>
   <string name="nice_to_meet_you">Fico feliz em vê-lo aqui!</string>
-  <string name="the_function_developing_please_wait">To be continued.</string>
-  <string name="continue_use">Continue</string>
-  <string name="exit">Quit</string>
+  <string name="the_function_developing_please_wait">Para continuar.</string>
+  <string name="continue_use">Continuar</string>
+  <string name="exit">Sair</string>
   <string name="switch_pool_to">Switch pool \n%1$s</string>
   <string name="tran_detail">Transaction details</string>
   <string name="warning">Warning</string>
