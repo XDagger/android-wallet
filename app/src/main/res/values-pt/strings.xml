@@ -70,23 +70,23 @@
   <string name="success_refresh">Atualizado com sucesso</string>
   <string name="success_copy_address">Copiado com êxito</string>
   <string name="success_send_coin">Enviado com êxito</string>
-  <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
+  <string name="success_backup_xdag_wallet">Carteira de backup é criado em /sdcard/xdag</string>
   <!-- setting item-->
-  <string name="more_messages">Message</string>
-  <string name="more_backup_wallet">Backup wallet</string>
+  <string name="more_messages">Mensagem</string>
+  <string name="more_backup_wallet">Carteira de backup</string>
   <string name="more_suggest">Feedback</string>
   <string name="more_wallet">Switch wallet</string>
   <string name="more_pool">Switch pool</string>
-  <string name="more_xdag_io">Community website - xdag.io</string>
+  <string name="more_xdag_io">Site da Comunidade - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
   <string name="error_password_format">Please input 6 to 18 characters, numbers, or special characters</string>
   <!-- about -->
-  <string name="slogan">Fluent and Stable XDAG wallet</string>
+  <string name="slogan">Carteira XDAG fluente e estável</string>
   <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
   <!-- update -->
-  <string name="update">Update</string>
+  <string name="update">Atualização</string>
   <string name="close">Perto</string>
   <string name="new_version_available">Nova versão detectada：%1$s</string>
   <!-- explain-->
@@ -108,15 +108,15 @@
   <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
   <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
   <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
-  <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
-  <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
-  <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
-  <string name="wallet_explain_1">No wallet detected!\n</string>
-  <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
-  <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
-  <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-  <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
-  <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
+  <string name="restore_explain_6">Ao restaurar uma carteira, o backup é movido para a pasta privada do Android.\n</string>
+  <string name="restore_explain_7">Você pode fazer backup de sua carteira para um cartão SD a qualquer momento.\n</string>
+  <string name="restore_explain_8">Por favor, tenha em mente: cartão SD não é seguro, por favor transfira arquivos de backup para um local seguro.\n</string>
+  <string name="wallet_explain_1">Nenhuma carteira detectada!\n</string>
+  <string name="wallet_explain_2">Você tem duas maneiras de obter a sua carteira.\n</string>
+  <string name="wallet_explain_3">Crie uma nova carteira. Você pode criar uma carteira totalmente nova.\n</string>
+  <string name="wallet_explain_4">Restaure uma carteira velha. Você pode importar sua carteira velha aqui.\n</string>
+  <string name="wallet_explain_5">Vamos pedir permissão para escrever para um cartão SD externo, por favor, não negá-lo.\n</string>
+  <string name="cover_explain">Detectado que existe um backup em /sdcard/xdag, você deseja substituí-lo? Não será possível recuperar o backup antigo se você sobrescrever.</string>
   <!-- settings-->
-  <string name="settings_show_usage">Don\'t display usage</string>
+  <string name="settings_show_usage">Não exibir o uso</string>
 </resources>
