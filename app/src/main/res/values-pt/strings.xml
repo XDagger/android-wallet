@@ -12,7 +12,7 @@
   <string name="send_xdag">Enviar XDAG</string>
   <string name="receive_xdag">Receber XDAG</string>
   <string name="scan">Digitalizar QRCode</string>
-  <string name="to_address">To Address</string>
+  <string name="to_address">para o endereço</string>
   <string name="send_to_address">Enviar para o endereço</string>
   <string name="amount_to_send">Quantidade</string>
   <string name="amount">Quantidade</string>
@@ -28,22 +28,22 @@
   <string name="the_function_developing_please_wait">Para continuar.</string>
   <string name="continue_use">Continuar</string>
   <string name="exit">Sair</string>
-  <string name="switch_pool_to">Switch pool \n%1$s</string>
+  <string name="switch_pool_to">Alternar pool \n%1$s</string>
   <string name="tran_detail">Detalhes da transação</string>
   <string name="warning">Aviso</string>
   <string name="ensure">Confirmar</string>
-  <string name="available_xdag">Available %1$s XDAG</string>
+  <string name="available_xdag">Disponível %1$s XDAG</string>
   <string name="cancel">Cancelar</string>
-  <string name="add_pool_address">Add pool address</string>
-  <string name="delete_pool_address">Delete pool address:%1$s?</string>
-  <string name="reset_pool_address">Whether restore to the default pool address?</string>
+  <string name="add_pool_address">Adicionar endereço do pool</string>
+  <string name="delete_pool_address">Excluir endereço do pool:%1$s?</string>
+  <string name="reset_pool_address">Quer restaurar o endereço do pool padrão?</string>
   <string name="not_remind_again">Não lembre de novo</string>
   <!-- please -->
   <string name="please_set_password">Por favor, defina a senha da carteira</string>
   <string name="please_retype_password">Por favor, digite a senha da carteira</string>
   <string name="please_input_password">Por favor senha de entrada</string>
   <string name="please_input_random">Introduza por favor a chave aleatória</string>
-  <string name="please_wait_read_wallet">Reading wallet data..</string>
+  <string name="please_wait_read_wallet">Dados de leitura..</string>
   <string name="please_wait_transfer">Transferência em andamento..</string>
   <string name="please_backup_your_xdag_wallet_first">Por favor, leia isso com cuidado, e backup sua carteira.</string>
   <string name="please_wait_loading">Carregamento em andamento..</string>
@@ -61,11 +61,11 @@
   <string name="error_noting_to_transfer">Valor a ser enviado deve ser maior que 0</string>
   <string name="error_balance_too_small">Montante não suficiente</string>
   <string name="error_invalid_recv_address">Endereço inválido</string>
-  <string name="error_invalid_pool_address">Invalid pool address</string>
-  <string name="error_pool_address_exists">Pool address already exists</string>
-  <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
+  <string name="error_invalid_pool_address">Endereço de pool inválido</string>
+  <string name="error_pool_address_exists">O endereço da piscina já existe</string>
+  <string name="error_cannot_delete_selected_pool">Não é possível excluir o endereço do pool selecionado</string>
   <string name="error_server_problem">O servidor atingiu o tempo limite</string>
-  <string name="error_send_coin_itself">can\'t transfer XDAG to itself</string>
+  <string name="error_send_coin_itself">Não pode enviar XDAG para si mesmo</string>
   <!-- success -->
   <string name="success_refresh">Atualizado com sucesso</string>
   <string name="success_copy_address">Copiado com êxito</string>
@@ -84,7 +84,7 @@
   <string name="error_password_format">Please input 6 to 18 characters, numbers, or special characters</string>
   <!-- about -->
   <string name="slogan">Carteira XDAG fluente e estável</string>
-  <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
+  <string name="about_explain">Estamos dedicados a desenvolver uma carteira XDAG fluente e estável. Se você tem qualquer pergunta ou sugestão, emita-nos por favor o gabarito. \n\nCódigo-fonte está listado no GitHub, link é mostrado como abaixo. Todos são bem-vindos para contribuir para este projeto. \n\nLembrete: \n\npor favor, backup seus arquivos carteira em algum lugar. \n\nSalvamos seus arquivos na pasta privada do Android, mas backup e restauração usam cartão SD externo como armazenamento (nome da pasta: sdcard/xdag/). Cartão SD não é seguro o suficiente para backup, por favor transfira seus arquivos de backup da carteira para outro lugar. \n\nQualquer desinstalação ou exclusão de dados causará perda de carteira, e nenhuma maneira de recuperar. \nPor favor, faça backup da sua carteira antes de qualquer operação. \n\nNós não somos responsáveis por qualquer perda de ativos.</string>
   <!-- update -->
   <string name="update">Atualização</string>
   <string name="close">Perto</string>
@@ -97,7 +97,7 @@
   <string name="restore_read_explain">Eu li o conteúdo acima, e criou um backup na pasta xdag</string>
   <string name="check_root_explain">Cuidado! Seu dispositivo está enraizado, é um alto risco para continuar.</string>
   <string name="use_explain_1">XDAG Android Wallet ainda está em versão beta.\n</string>
-  <string name="use_explain_2">Caution:\n</string>
+  <string name="use_explain_2">PRECAUÇÃO:\n</string>
   <string name="use_explain_3">Por favor, faça o backup da sua carteira para evitar perder carteira por causa de bugs.\n</string>
   <string name="use_explain_4">Nós não somos responsáveis por qualquer perda de ativos.\n</string>
   <string name="use_explain_5">Desinstalar ou excluir dados causará perda de carteira, e nenhuma maneira de recuperar. Por favor, backup sua carteira primeiro.\n</string>
