@@ -29,7 +29,7 @@
   <string name="continue_use">Continuar</string>
   <string name="exit">Sair</string>
   <string name="switch_pool_to">Switch pool \n%1$s</string>
-  <string name="tran_detail">Transaction details</string>
+  <string name="tran_detail">Detalhes da transação</string>
   <string name="warning">Aviso</string>
   <string name="ensure">Confirmar</string>
   <string name="available_xdag">Available %1$s XDAG</string>
@@ -45,10 +45,10 @@
   <string name="please_input_random">Introduza por favor a chave aleatória</string>
   <string name="please_wait_read_wallet">Reading wallet data..</string>
   <string name="please_wait_transfer">Transferência em andamento..</string>
-  <string name="please_backup_your_xdag_wallet_first">Please read this carefully, and backup your wallet.</string>
+  <string name="please_backup_your_xdag_wallet_first">Por favor, leia isso com cuidado, e backup sua carteira.</string>
   <string name="please_wait_loading">Carregamento em andamento..</string>
   <string name="please_wait_connecting_pool">Conectando-se à rede principal..</string>
-  <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
+  <string name="please_restore_read">Por favor, leia esta página e copie seus arquivos de backup para xdag pasta</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Falha ao identificar QRCode</string>
   <string name="error_file_make_fail">Falha ao criar arquivo</string>
@@ -75,8 +75,8 @@
   <string name="more_messages">Mensagem</string>
   <string name="more_backup_wallet">Carteira de backup</string>
   <string name="more_suggest">Feedback</string>
-  <string name="more_wallet">Switch wallet</string>
-  <string name="more_pool">Switch pool</string>
+  <string name="more_wallet">Troque a carteira</string>
+  <string name="more_pool">Alternar pool</string>
   <string name="more_xdag_io">Site da Comunidade - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
@@ -96,18 +96,18 @@
   <string name="not_show_explain">Não exibir novamente</string>
   <string name="restore_read_explain">Eu li o conteúdo acima, e criou um backup na pasta xdag</string>
   <string name="check_root_explain">Cuidado! Seu dispositivo está enraizado, é um alto risco para continuar.</string>
-  <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
+  <string name="use_explain_1">XDAG Android Wallet ainda está em versão beta.\n</string>
   <string name="use_explain_2">Caution:\n</string>
-  <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
+  <string name="use_explain_3">Por favor, faça o backup da sua carteira para evitar perder carteira por causa de bugs.\n</string>
   <string name="use_explain_4">Nós não somos responsáveis por qualquer perda de ativos.\n</string>
   <string name="use_explain_5">Desinstalar ou excluir dados causará perda de carteira, e nenhuma maneira de recuperar. Por favor, backup sua carteira primeiro.\n</string>
   <string name="use_explain_6">Para garantir transações, popups não são canceláveis.\n</string>
   <string name="use_explain_7">Nós vamos melhorar isso em versões posteriores.</string>
   <string name="restore_explain_1">Devido à estrutura de dados especial de XDAG, \n</string>
-  <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
-  <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
-  <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
-  <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
+  <string name="restore_explain_2">XDAG carteira não suporta backup ou restauração através de chave privada ou código mnemônico atualmente.\n</string>
+  <string name="restore_explain_3">Você só pode backup e restaurar sua carteira por arquivos na pasta xdag.\n</string>
+  <string name="restore_explain_4">Para restaurar sua carteira, você tem que copiar seus arquivos de carteira para a pasta xdag na pasta raiz do seu cartão SD.\n</string>
+  <string name="restore_explain_5">Cartão SD não é um lugar seguro para backups, qualquer vírus pode roubar arquivos de backup do cartão SD.\n</string>
   <string name="restore_explain_6">Ao restaurar uma carteira, o backup é movido para a pasta privada do Android.\n</string>
   <string name="restore_explain_7">Você pode fazer backup de sua carteira para um cartão SD a qualquer momento.\n</string>
   <string name="restore_explain_8">Por favor, tenha em mente: cartão SD não é seguro, por favor transfira arquivos de backup para um local seguro.\n</string>
