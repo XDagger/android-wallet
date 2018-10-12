@@ -97,7 +97,7 @@
   <string name="restore_read_explain">Tôi đã đọc nội dung ở trên và tạo bản sao lưu trong thư mục xdag</string>
   <string name="check_root_explain">Thận trọng! Thiết bị của bạn đã được root, nó có nguy cơ cao để tiếp tục.</string>
   <string name="use_explain_1">Ví điện tử XDAG Android vẫn đang trong phiên bản beta.\n</string>
-  <string name="use_explain_2">Thận trọng</string>
+  <string name="use_explain_2">Thận trọng:\n</string>
   <string name="use_explain_3">Vui lòng sao lưu ví của bạn để tránh mất ví của bạn do lỗi.\n</string>
   <string name="use_explain_4">CHÚNG TÔI KHÔNG CHỊU TRÁCH NHIỆM CHO MẤT MỌI TÀI SẢN.\n</string>
   <string name="use_explain_5">Gỡ bỏ cài đặt hoặc xóa các dữ liệu sẽ gây ra mất ví, và không có cách nào để phục hồi. Xin vui lòng sao lưu của bạn ví đầu.\n</string>
@@ -116,7 +116,7 @@
   <string name="wallet_explain_3">Tạo ví mới. Bạn có thể tạo ví hoàn toàn mới.\n</string>
   <string name="wallet_explain_4">Khôi phục ví cũ. Bạn có thể nhập khẩu ví cũ của bạn ở đây.\n</string>
   <string name="wallet_explain_5">Chúng tôi sẽ yêu cầu sự cho phép để ghi vào một thẻ SD bên ngoài, xin vui lòng không từ chối nó.\n</string>
-  <string name="cover_explain">Đã phát hiện rằng bản sao lưu tồn tại trong /sdcard /xdag, bạn có muốn ghi đè lên không? Bạn sẽ không thể khôi phục bản sao lưu cũ nếu bạn ghi đè lên.</string>
+  <string name="cover_explain">Đã phát hiện rằng bản sao lưu tồn tại trong /sdcard/xdag, bạn có muốn ghi đè lên không? Bạn sẽ không thể khôi phục bản sao lưu cũ nếu bạn ghi đè lên.</string>
   <!-- settings-->
   <string name="settings_show_usage">Không hiển thị mức sử dụng</string>
 </resources>
