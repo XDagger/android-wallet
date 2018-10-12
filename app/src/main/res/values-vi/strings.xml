@@ -50,10 +50,10 @@
   <string name="please_wait_connecting_pool">Kết nối với mạng chính..</string>
   <string name="please_restore_read">Vui lòng đọc trang này và sao chép các tệp sao lưu của bạn vào thư mục xdag</string>
   <!-- error tips -->
-  <string name="error_cannot_identify_qr_code">Failed to identify QRCode</string>
-  <string name="error_file_make_fail">Failed to create file</string>
-  <string name="error_sdcard_not_available">No SD card detected</string>
-  <string name="error_create_xdag_wallet">Failed to create wallet</string>
+  <string name="error_cannot_identify_qr_code">Không nhận dạng được QRCode</string>
+  <string name="error_file_make_fail">Không thể tạo tệp</string>
+  <string name="error_sdcard_not_available">Không phát hiện thấy thẻ SD nào</string>
+  <string name="error_create_xdag_wallet">Không tạo được ví</string>
   <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
   <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
   <string name="error_password">Password incorrect</string>
@@ -110,8 +110,8 @@
   <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
   <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
   <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
-  <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
-  <string name="wallet_explain_1">No wallet detected!\n</string>
+  <string name="restore_explain_8">Xin lưu ý: Thẻ SD không an toàn, vui lòng chuyển tệp sao lưu đến vị trí an toàn.\n</string>
+  <string name="wallet_explain_1">Không phát hiện ví!\n</string>
   <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
   <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
   <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
