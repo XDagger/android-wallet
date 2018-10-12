@@ -112,11 +112,11 @@
   <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
   <string name="restore_explain_8">Xin lưu ý: Thẻ SD không an toàn, vui lòng chuyển tệp sao lưu đến vị trí an toàn.\n</string>
   <string name="wallet_explain_1">Không phát hiện ví!\n</string>
-  <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
-  <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
-  <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-  <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
-  <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
+  <string name="wallet_explain_2">Bạn có hai cách để lấy ví của mình.\n</string>
+  <string name="wallet_explain_3">Tạo ví mới. Bạn có thể tạo ví hoàn toàn mới.\n</string>
+  <string name="wallet_explain_4">Khôi phục ví cũ. Bạn có thể nhập khẩu ví cũ của bạn ở đây.\n</string>
+  <string name="wallet_explain_5">Chúng tôi sẽ yêu cầu sự cho phép để ghi vào một thẻ SD bên ngoài, xin vui lòng không từ chối nó.\n</string>
+  <string name="cover_explain">Đã phát hiện rằng bản sao lưu tồn tại trong /sdcard /xdag, bạn có muốn ghi đè lên không? Bạn sẽ không thể khôi phục bản sao lưu cũ nếu bạn ghi đè lên.</string>
   <!-- settings-->
-  <string name="settings_show_usage">Don\'t display usage</string>
+  <string name="settings_show_usage">Không hiển thị mức sử dụng</string>
 </resources>
