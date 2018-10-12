@@ -12,7 +12,7 @@
   <string name="send_xdag">Invia XDAG</string>
   <string name="receive_xdag">Ricevere XDAG</string>
   <string name="scan">Scansione QRCode</string>
-  <string name="to_address">To Address</string>
+  <string name="to_address">Indirizzo</string>
   <string name="send_to_address">Inviare all\'indirizzo</string>
   <string name="amount_to_send">Importo</string>
   <string name="amount">Importo</string>
@@ -28,22 +28,22 @@
   <string name="the_function_developing_please_wait">Continua.</string>
   <string name="continue_use">Continuare</string>
   <string name="exit">Uscire da</string>
-  <string name="switch_pool_to">Switch pool \n%1$s</string>
-  <string name="tran_detail">Transaction details</string>
+  <string name="switch_pool_to">Cambia piscina \n%1$s</string>
+  <string name="tran_detail">Dettagli transazione</string>
   <string name="warning">Avviso</string>
   <string name="ensure">Confermare</string>
   <string name="available_xdag">Disponibile %1$s XDAG</string>
   <string name="cancel">Annulla</string>
-  <string name="add_pool_address">Add pool address</string>
+  <string name="add_pool_address">Aggiungi indirizzo pool</string>
   <string name="delete_pool_address">Eliminare l\'indirizzo del pool:%1$s?</string>
-  <string name="reset_pool_address">Whether restore to the default pool address?</string>
+  <string name="reset_pool_address">Indica se ripristinare l\'indirizzo del pool predefinito?</string>
   <string name="not_remind_again">Non ricordare di nuovo</string>
   <!-- please -->
   <string name="please_set_password">Si prega di impostare la password portafoglio</string>
   <string name="please_retype_password">Ridigita la password del portafogli</string>
   <string name="please_input_password">Inserire la password</string>
   <string name="please_input_random">Si prega di ingresso chiave casuale</string>
-  <string name="please_wait_read_wallet">Reading wallet data..</string>
+  <string name="please_wait_read_wallet">Lettura dei dati del portafoglio..</string>
   <string name="please_wait_transfer">Trasferimento in corso</string>
   <string name="please_backup_your_xdag_wallet_first">Si prega di leggere attentamente, e il backup del portafoglio.</string>
   <string name="please_wait_loading">Caricamento in corso..</string>
