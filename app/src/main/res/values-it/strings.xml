@@ -4,16 +4,16 @@
   <string name="app_name">XDagWallet</string>
   <string name="XDAG">XDAG</string>
   <!-- common -->
-  <string name="home">Home</string>
-  <string name="send">Send</string>
-  <string name="receive">Receive</string>
-  <string name="more">More</string>
-  <string name="setting">Settings</string>
-  <string name="send_xdag">Send XDAG</string>
-  <string name="receive_xdag">Receive XDAG</string>
-  <string name="scan">Scan QRCode</string>
+  <string name="home">Casa</string>
+  <string name="send">Invia</string>
+  <string name="receive">Ricevere</string>
+  <string name="more">Più</string>
+  <string name="setting">Impostazioni</string>
+  <string name="send_xdag">Invia XDAG</string>
+  <string name="receive_xdag">Ricevere XDAG</string>
+  <string name="scan">Scansione QRCode</string>
   <string name="to_address">To Address</string>
-  <string name="send_to_address">Send to Address</string>
+  <string name="send_to_address">Inviare all\'indirizzo</string>
   <string name="amount_to_send">Amount</string>
   <string name="amount">Amount</string>
   <string name="not_ready">Not ready</string>
