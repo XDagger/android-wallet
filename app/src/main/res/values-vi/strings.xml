@@ -16,7 +16,7 @@
   <string name="send_to_address">Gửi đến địa chỉ</string>
   <string name="amount_to_send">Số lượng</string>
   <string name="amount">Số lượng</string>
-  <string name="not_ready">Not ready</string>
+  <string name="not_ready">Không sẵn sàng</string>
   <string name="create_wallet">Create Wallet</string>
   <string name="restore_wallet">Restore Wallet</string>
   <string name="no_transaction">No transaction found</string>
