@@ -18,7 +18,7 @@
   <string name="amount">Số lượng</string>
   <string name="not_ready">Không sẵn sàng</string>
   <string name="create_wallet">Tạo ví</string>
-  <string name="restore_wallet">Khôi phục Wallet</string>
+  <string name="restore_wallet">Khôi phục ví</string>
   <string name="no_transaction">Không tìm thấy giao dịch</string>
   <string name="copy_address">Sao chép địa chỉ</string>
   <string name="about">Về</string>
@@ -43,7 +43,7 @@
   <string name="please_retype_password">Vui lòng nhập lại mật khẩu ví</string>
   <string name="please_input_password">Vui lòng nhập mật khẩu</string>
   <string name="please_input_random">Vui lòng nhập khóa ngẫu nhiên</string>
-  <string name="please_wait_read_wallet">Đọc dữ liệu ví</string>
+  <string name="please_wait_read_wallet">Đọc dữ liệu ví..</string>
   <string name="please_wait_transfer">Chuyển tiếp trong tiến trình..</string>
   <string name="please_backup_your_xdag_wallet_first">Vui lòng đọc kỹ điều này và sao lưu ví của bạn.</string>
   <string name="please_wait_loading">Đang tải..</string>
@@ -58,7 +58,7 @@
   <string name="error_backup_xdag_wallet">Thất bại khi sao lưu ví</string>
   <string name="error_password">Mật khẩu không đúng</string>
   <string name="error_password_not_same">Mật khẩu không nhất quán</string>
-  <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
+  <string name="error_noting_to_transfer">Số tiền gửi phải lớn hơn 0</string>
   <string name="error_balance_too_small">Số tiền không đủ</string>
   <string name="error_invalid_recv_address">Địa chỉ không hợp lệ</string>
   <string name="error_invalid_pool_address">Địa chỉ hồ bơi không hợp lệ</string>
@@ -70,7 +70,7 @@
   <string name="success_refresh">Đã làm mới thành công</string>
   <string name="success_copy_address">Đã sao chép thành công</string>
   <string name="success_send_coin">Đã gửi thành công</string>
-  <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
+  <string name="success_backup_xdag_wallet">Ví sao lưu được tạo ra trong /sdcard/xdag</string>
   <!-- setting item-->
   <string name="more_messages">Tin nhắn</string>
   <string name="more_backup_wallet">Ví tiền sao lưu</string>
@@ -84,7 +84,7 @@
   <string name="error_password_format">Vui lòng nhập 6 đến 18 ký tự, số hoặc ký tự đặc biệt</string>
   <!-- about -->
   <string name="slogan">Thông thạo và ổn định Ví XDAG</string>
-  <string name="about_explain">Chúng tôi được dành riêng để phát triển một ví XDAG thông minh và ổn định. Nếu bạn có bất kỳ câu hỏi hoặc gợi ý nào, vui lòng gửi cho chúng tôi phản hồi của bạn.\n\nMã nguồn được liệt kê trên github, liên kết được hiển thị như bên dưới. Mọi người đều được hoan nghênh đóng góp cho dự án này. \n\nLời nhắc:\n\nVui lòng sao lưu các tệp ví của bạn ở đâu đó.\n\nChúng tôi đã lưu tệp của bạn trong thư mục riêng tư trên Android, nhưng sao lưu và khôi phục sử dụng thẻ SD bên ngoài làm bộ nhớ tên thư mục: sdcard /xdag/). Thẻ SD không đủ an toàn để sao lưu, vui lòng chuyển các tệp sao lưu ví của bạn đến một nơi khác.\n\nBất kỳ gỡ bỏ hoặc xóa dữ liệu sẽ gây ra mất ví, và không để phục hồi.\nVui lòng sao lưu ví của bạn trước khi bất kỳ thao tác nào.\n\nCHÚNG TÔI KHÔNG CHỊU TRÁCH NHIỆM CHO MẤT MỌI TÀI SẢN.\n</string>
+  <string name="about_explain">Chúng tôi được dành riêng để phát triển một ví XDAG thông minh và ổn định. Nếu bạn có bất kỳ câu hỏi hoặc gợi ý nào, vui lòng gửi cho chúng tôi phản hồi của bạn.\n\nMã nguồn được liệt kê trên github, liên kết được hiển thị như bên dưới. Mọi người đều được hoan nghênh đóng góp cho dự án này. \n\nLời nhắc:\n\nVui lòng sao lưu các tệp ví của bạn ở đâu đó.\n\nChúng tôi đã lưu tệp của bạn trong thư mục dành riêng cho Android, nhưng bản sao lưu và khôi phục sử dụng thẻ SD bên ngoài làm bộ nhớ (tên thư mục:sdcard/xdag/). Thẻ SD không đủ an toàn để sao lưu, vui lòng chuyển các tệp sao lưu ví của bạn đến một nơi khác.\n\nBất kỳ gỡ bỏ hoặc xóa dữ liệu sẽ gây ra mất ví, và không để phục hồi.\nVui lòng sao lưu ví của bạn trước khi bất kỳ thao tác nào.\n\nCHÚNG TÔI KHÔNG CHỊU TRÁCH NHIỆM CHO MẤT MỌI TÀI SẢN.\n</string>
   <!-- update -->
   <string name="update">Cập nhật</string>
   <string name="close">Đóng</string>
