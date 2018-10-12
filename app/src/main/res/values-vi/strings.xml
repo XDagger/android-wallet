@@ -104,11 +104,11 @@
   <string name="use_explain_6">Để đảm bảo giao dịch, cửa sổ bật lên không thể hủy.\n</string>
   <string name="use_explain_7">Chúng tôi sẽ cải thiện điều này trong các phiên bản sau.</string>
   <string name="restore_explain_1">Do cấu trúc dữ liệu đặc biệt của XDAG, \n</string>
-  <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
+  <string name="restore_explain_2">Ví XDAG hiện không hỗ trợ sao lưu hoặc khôi phục thông qua khóa riêng hoặc ghi nhớ.\n</string>
   <string name="restore_explain_3">Bạn chỉ có thể sao lưu và khôi phục ví của mình bằng các tệp trong thư mục xdag.\n</string>
   <string name="restore_explain_4">Để khôi phục ví của bạn, bạn phải sao chép các tệp ví của mình vào thư mục xdag trong thư mục gốc của thẻ SD.\n</string>
   <string name="restore_explain_5">Thẻ SD không phải là nơi an toàn để sao lưu, bất kỳ vi-rút có thể ăn cắp tập tin sao lưu từ thẻ SD.\n</string>
-  <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
+  <string name="restore_explain_6">Khi ví được khôi phục, bản sao lưu được chuyển đến thư mục dành riêng cho Android.\n</string>
   <string name="restore_explain_7">Bạn có thể sao lưu ví của mình vào Thẻ SD bất kỳ lúc nào.\n</string>
   <string name="restore_explain_8">Xin lưu ý: Thẻ SD không an toàn, vui lòng chuyển tệp sao lưu đến vị trí an toàn.\n</string>
   <string name="wallet_explain_1">Không phát hiện ví!\n</string>
