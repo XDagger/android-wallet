@@ -92,10 +92,10 @@
   <!-- explain-->
   <string name="usage">Utilizzo</string>
   <string name="function_explain">Termini</string>
-  <string name="backup_explain">I have read the content above</string>
-  <string name="not_show_explain">Don\'t display again</string>
-  <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
-  <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
+  <string name="backup_explain">Ho letto il contenuto di cui sopra</string>
+  <string name="not_show_explain">Non visualizzare di nuovo</string>
+  <string name="restore_read_explain">Ho letto il contenuto sopra e ho creato un backup nella cartella xdag</string>
+  <string name="check_root_explain">Attenzione! Il tuo dispositivo è radicato, è un rischio elevato per continuare.</string>
   <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
   <string name="use_explain_2">Attenzione:\n</string>
   <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
