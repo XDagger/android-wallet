@@ -51,8 +51,8 @@
   <string name="please_restore_read">Si prega di leggere questa pagina e copiare i file di backup in xdag cartella</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Impossibile identificare QRCode</string>
-  <string name="error_file_make_fail">Failed to create file</string>
-  <string name="error_sdcard_not_available">No SD card detected</string>
+  <string name="error_file_make_fail">Impossibile creare file</string>
+  <string name="error_sdcard_not_available">Nessuna scheda SD rilevata</string>
   <string name="error_create_xdag_wallet">Failed to create wallet</string>
   <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
   <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
@@ -99,13 +99,13 @@
   <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
   <string name="use_explain_2">Caution:\n</string>
   <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
-  <string name="use_explain_4">WE ARE NOT RESPONSIBLE FOR ANY LOSS OF ASSETS.\n</string>
-  <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
-  <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
-  <string name="use_explain_7">We will improve this in later releases.</string>
-  <string name="restore_explain_1">Due to special data structure of XDAG, \n</string>
-  <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
-  <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
+  <string name="use_explain_4">NON siamo responsabili di alcuna perdita di beni.\n</string>
+  <string name="use_explain_5">La disinstallazione o l\'eliminazione dei dati causerà la perdita del portafoglio e NESSUN MODO DI RECUPERARE. Effettua prima il backup del tuo portafoglio.\n</string>
+  <string name="use_explain_6">Per garantire transazioni, i popup non sono cancellabili.\n</string>
+  <string name="use_explain_7">Potremo migliorare questo in versioni successive.</string>
+  <string name="restore_explain_1">Dovuto la struttura speciale di dati di XDAG, \n</string>
+  <string name="restore_explain_2">XDAG wallet non supporta il backup tramite chiave privata o codice mnemonico attuale.\n</string>
+  <string name="restore_explain_3">Puoi solo eseguire il backup e ripristinare il tuo portafoglio per file nella cartella xdag.\n</string>
   <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
   <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
   <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
