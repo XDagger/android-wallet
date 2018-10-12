@@ -35,7 +35,7 @@
   <string name="available_xdag">Disponibile %1$s XDAG</string>
   <string name="cancel">Annulla</string>
   <string name="add_pool_address">Add pool address</string>
-  <string name="delete_pool_address">Delete pool address:%1$s?</string>
+  <string name="delete_pool_address">Eliminare l\'indirizzo del pool:%1$s?</string>
   <string name="reset_pool_address">Whether restore to the default pool address?</string>
   <string name="not_remind_again">Non ricordare di nuovo</string>
   <!-- please -->
@@ -60,10 +60,10 @@
   <string name="error_password_not_same">Password incoerente</string>
   <string name="error_noting_to_transfer">Importo da inviare deve essere maggiore di 0</string>
   <string name="error_balance_too_small">Importo non sufficiente</string>
-  <string name="error_invalid_recv_address">Invalid address</string>
-  <string name="error_invalid_pool_address">Invalid pool address</string>
-  <string name="error_pool_address_exists">Pool address already exists</string>
-  <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
+  <string name="error_invalid_recv_address">Indirizzo non valido</string>
+  <string name="error_invalid_pool_address">Indirizzo di pool non valido</string>
+  <string name="error_pool_address_exists">L\'indirizzo del pool esiste già</string>
+  <string name="error_cannot_delete_selected_pool">Non è possibile eliminare l\'indirizzo del pool selezionato</string>
   <string name="error_server_problem">Il server è scaduto</string>
   <string name="error_send_coin_itself">non è possibile trasferire XDAG a se stesso</string>
   <!-- success -->
@@ -75,8 +75,8 @@
   <string name="more_messages">Messaggio</string>
   <string name="more_backup_wallet">Portafoglio di backup</string>
   <string name="more_suggest">feedback</string>
-  <string name="more_wallet">Switch wallet</string>
-  <string name="more_pool">Switch pool</string>
+  <string name="more_wallet">Cambia portafoglio</string>
+  <string name="more_pool">Cambia piscina</string>
   <string name="more_xdag_io">Sito Web della Comunità - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
@@ -96,9 +96,9 @@
   <string name="not_show_explain">Non visualizzare di nuovo</string>
   <string name="restore_read_explain">Ho letto il contenuto sopra e ho creato un backup nella cartella xdag</string>
   <string name="check_root_explain">Attenzione! Il tuo dispositivo è radicato, è un rischio elevato per continuare.</string>
-  <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
+  <string name="use_explain_1">Il portafoglio XDAG per Android è ancora in versione beta.\n</string>
   <string name="use_explain_2">Attenzione:\n</string>
-  <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
+  <string name="use_explain_3">Si prega di eseguire il backup del portafoglio per evitare di perdere portafoglio a causa di bugs.\n</string>
   <string name="use_explain_4">NON siamo responsabili di alcuna perdita di beni.\n</string>
   <string name="use_explain_5">La disinstallazione o l\'eliminazione dei dati causerà la perdita del portafoglio e NESSUN MODO DI RECUPERARE. Effettua prima il backup del tuo portafoglio.\n</string>
   <string name="use_explain_6">Per garantire transazioni, i popup non sono cancellabili.\n</string>
