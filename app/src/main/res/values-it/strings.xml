@@ -106,16 +106,16 @@
   <string name="restore_explain_1">Dovuto la struttura speciale di dati di XDAG, \n</string>
   <string name="restore_explain_2">XDAG wallet non supporta il backup tramite chiave privata o codice mnemonico attuale.\n</string>
   <string name="restore_explain_3">Puoi solo eseguire il backup e ripristinare il tuo portafoglio per file nella cartella xdag.\n</string>
-  <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
-  <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
-  <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
-  <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
-  <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
-  <string name="wallet_explain_1">No wallet detected!\n</string>
-  <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
-  <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
-  <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-  <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
+  <string name="restore_explain_4">Per ripristinare il portafoglio, è necessario copiare i file del portafoglio nella cartella xdag nella cartella principale della scheda SD.\n</string>
+  <string name="restore_explain_5">SD card non è un luogo sicuro per i backup, qualsiasi virus può rubare i file di backup da scheda SD.\n</string>
+  <string name="restore_explain_6">Quando si ripristina un portafoglio, il backup viene spostato a Android privato cartella.\n</string>
+  <string name="restore_explain_7">È possibile eseguire il backup del portafoglio su una scheda SD in qualsiasi momento.\n</string>
+  <string name="restore_explain_8">Si prega di tenere presente: scheda SD non è sicuro, si prega di trasferire i file di backup in un luogo sicuro.\n</string>
+  <string name="wallet_explain_1">Nessun portafoglio rilevato!\n</string>
+  <string name="wallet_explain_2">Hai due modi per ottenere il tuo portafoglio.\n</string>
+  <string name="wallet_explain_3">Creare un nuovo portafoglio. È possibile creare un nuovo portafoglio.\n</string>
+  <string name="wallet_explain_4">Ripristinare un vecchio portafoglio. È possibile importare il vecchio portafoglio qui.\n</string>
+  <string name="wallet_explain_5">Vi chiederemo il permesso di scrivere su una scheda SD esterna, per favore non negarlo.\n</string>
   <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
   <!-- settings-->
   <string name="settings_show_usage">Don\'t display usage</string>
