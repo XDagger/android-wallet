@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion compile_version
     defaultConfig {
         minSdkVersion min_version
         targetSdkVersion target_version
@@ -16,11 +16,6 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
         }
-    }
-    buildToolsVersion '28.0.3'
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
