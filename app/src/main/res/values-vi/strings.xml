@@ -68,44 +68,44 @@
   <string name="error_send_coin_itself">Không thể chuyển giao XDAG cho chính nó</string>
   <!-- success -->
   <string name="success_refresh">Đã làm mới thành công</string>
-  <string name="success_copy_address">Copied successfully</string>
-  <string name="success_send_coin">Sent successfully</string>
+  <string name="success_copy_address">Đã sao chép thành công</string>
+  <string name="success_send_coin">Đã gửi thành công</string>
   <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
   <!-- setting item-->
-  <string name="more_messages">Message</string>
-  <string name="more_backup_wallet">Backup wallet</string>
-  <string name="more_suggest">Feedback</string>
-  <string name="more_wallet">Switch wallet</string>
-  <string name="more_pool">Switch pool</string>
-  <string name="more_xdag_io">Community website - xdag.io</string>
+  <string name="more_messages">Tin nhắn</string>
+  <string name="more_backup_wallet">Ví tiền sao lưu</string>
+  <string name="more_suggest">Phản hồi</string>
+  <string name="more_wallet">Chuyển đổi ví</string>
+  <string name="more_pool">Chuyển trời</string>
+  <string name="more_xdag_io">Trang web cộng đồng - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
-  <string name="error_password_format">Please input 6 to 18 characters, numbers, or special characters</string>
+  <string name="error_password_format">Vui lòng nhập 6 đến 18 ký tự, số hoặc ký tự đặc biệt</string>
   <!-- about -->
-  <string name="slogan">Fluent and Stable XDAG wallet</string>
+  <string name="slogan">Thông thạo và ổn định Ví XDAG</string>
   <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
   <!-- update -->
-  <string name="update">Update</string>
-  <string name="close">Close</string>
-  <string name="new_version_available">New version detected：%1$s</string>
+  <string name="update">Cập nhật</string>
+  <string name="close">Đóng</string>
+  <string name="new_version_available">Đã phát hiện phiên bản mới：%1$s</string>
   <!-- explain-->
-  <string name="usage">Usage</string>
-  <string name="function_explain">Terms</string>
-  <string name="backup_explain">I have read the content above</string>
-  <string name="not_show_explain">Don\'t display again</string>
-  <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
-  <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
-  <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
-  <string name="use_explain_2">Caution:\n</string>
-  <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
-  <string name="use_explain_4">WE ARE NOT RESPONSIBLE FOR ANY LOSS OF ASSETS.\n</string>
-  <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
-  <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
-  <string name="use_explain_7">We will improve this in later releases.</string>
-  <string name="restore_explain_1">Due to special data structure of XDAG, \n</string>
+  <string name="usage">Cách sử dụng</string>
+  <string name="function_explain">Điều khoản</string>
+  <string name="backup_explain">Tôi đã đọc nội dung ở trên</string>
+  <string name="not_show_explain">Không hiển thị lại</string>
+  <string name="restore_read_explain">Tôi đã đọc nội dung ở trên và tạo bản sao lưu trong thư mục xdag</string>
+  <string name="check_root_explain">Thận trọng! Thiết bị của bạn đã được root, nó có nguy cơ cao để tiếp tục.</string>
+  <string name="use_explain_1">Ví điện tử XDAG Android vẫn đang trong phiên bản beta.\n</string>
+  <string name="use_explain_2">Thận trọng</string>
+  <string name="use_explain_3">Vui lòng sao lưu ví của bạn để tránh mất ví của bạn do lỗi.\n</string>
+  <string name="use_explain_4">CHÚNG TÔI KHÔNG CHỊU TRÁCH NHIỆM CHO MẤT MỌI TÀI SẢN.\n</string>
+  <string name="use_explain_5">Gỡ bỏ cài đặt hoặc xóa các dữ liệu sẽ gây ra mất ví, và không có cách nào để phục hồi. Xin vui lòng sao lưu của bạn ví đầu.\n</string>
+  <string name="use_explain_6">Để đảm bảo giao dịch, cửa sổ bật lên không thể hủy.\n</string>
+  <string name="use_explain_7">Chúng tôi sẽ cải thiện điều này trong các phiên bản sau.</string>
+  <string name="restore_explain_1">Do cấu trúc dữ liệu đặc biệt của XDAG, \n</string>
   <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
-  <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
+  <string name="restore_explain_3">Bạn chỉ có thể sao lưu và khôi phục ví của mình bằng các tệp trong thư mục xdag.\n</string>
   <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
   <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
   <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
