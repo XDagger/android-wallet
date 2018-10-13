@@ -52,9 +52,9 @@
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Kunne ikke identificere QRCode</string>
   <string name="error_file_make_fail">Kunne ikke oprette fil</string>
-  <string name="error_sdcard_not_available">No SD card detected</string>
-  <string name="error_create_xdag_wallet">Failed to create wallet</string>
-  <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
+  <string name="error_sdcard_not_available">Intet SD kort fundet</string>
+  <string name="error_create_xdag_wallet">Kunne ikke oprette tegnebog</string>
+  <string name="error_restore_xdag_wallet">Kunne ikke gendanne tegnebogen</string>
   <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
   <string name="error_password">Password incorrect</string>
   <string name="error_password_not_same">Password inconsistent</string>
@@ -110,13 +110,13 @@
   <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
   <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
   <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
-  <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
-  <string name="wallet_explain_1">No wallet detected!\n</string>
-  <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
-  <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
-  <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-  <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
-  <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
+  <string name="restore_explain_8">Vær opmærksom på: SD kort er ikke sikkert, skal du overføre sikkerhedskopieringsfiler til et sikkert sted.\n</string>
+  <string name="wallet_explain_1">Ingen tegnebog opdaget!\n</string>
+  <string name="wallet_explain_2">Du har to måder at få din tegnebog.\n</string>
+  <string name="wallet_explain_3">Opret en ny tegnebog. Du kan oprette en helt ny tegnebog.\n</string>
+  <string name="wallet_explain_4">Gendan en gammel tegnebog. Du kan importere din gamle tegnebog her.\n</string>
+  <string name="wallet_explain_5">Vi beder om tilladelse til at skrive til et eksternt SD kort, skal du ikke benægte det.\n</string>
+  <string name="cover_explain">Opdaget, at der findes en backup i/sdcard/xdag, vil du overskrive den? Du kan ikke gendanne den gamle backup, hvis du overskriver.</string>
   <!-- settings-->
-  <string name="settings_show_usage">Don\'t display usage</string>
+  <string name="settings_show_usage">Vis ikke brugen</string>
 </resources>
