@@ -72,32 +72,32 @@
   <string name="success_send_coin">Sendt med succes</string>
   <string name="success_backup_xdag_wallet">Tegnebog sikke rhedskopi oprettes i /sdcard/xdag </string>
   <!-- setting item-->
-  <string name="more_messages">Message</string>
-  <string name="more_backup_wallet">Backup wallet</string>
+  <string name="more_messages">Besked</string>
+  <string name="more_backup_wallet">Backup tegnebog</string>
   <string name="more_suggest">Feedback</string>
-  <string name="more_wallet">Switch wallet</string>
-  <string name="more_pool">Switch pool</string>
-  <string name="more_xdag_io">Community website - xdag.io</string>
+  <string name="more_wallet">Skift tegnebog</string>
+  <string name="more_pool">Skift pool</string>
+  <string name="more_xdag_io">Fællesskabet hjemmeside - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
-  <string name="error_password_format">Please input 6 to 18 characters, numbers, or special characters</string>
+  <string name="error_password_format">Indtast venligst 6 til 18 tegn, tal eller specialtegn</string>
   <!-- about -->
-  <string name="slogan">Fluent and Stable XDAG wallet</string>
+  <string name="slogan">Flydende og stabil XDAG tegnebog</string>
   <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
   <!-- update -->
-  <string name="update">Update</string>
-  <string name="close">Close</string>
-  <string name="new_version_available">New version detected：%1$s</string>
+  <string name="update">Opdatering</string>
+  <string name="close">Luk</string>
+  <string name="new_version_available">Ny version fundet：%1$s</string>
   <!-- explain-->
-  <string name="usage">Usage</string>
-  <string name="function_explain">Terms</string>
-  <string name="backup_explain">I have read the content above</string>
-  <string name="not_show_explain">Don\'t display again</string>
-  <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
-  <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
-  <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
-  <string name="use_explain_2">Caution:\n</string>
+  <string name="usage">Brug</string>
+  <string name="function_explain">Vilkår</string>
+  <string name="backup_explain">Jeg har læst indholdet ovenfor</string>
+  <string name="not_show_explain">Vis ikke igen</string>
+  <string name="restore_read_explain">Jeg har læst indholdet ovenfor ,og oprettet en backup i xdag mappen</string>
+  <string name="check_root_explain">Forsigtighed! Enheden har rod, er det en stor risiko at fortsætte.</string>
+  <string name="use_explain_1">XDAG Android tegnebog er stadig i beta-version.\n</string>
+  <string name="use_explain_2">Forsigtig:\n</string>
   <string name="use_explain_3">Please backup your wallet in case of loss of wallet due to bugs.\n</string>
   <string name="use_explain_4">WE ARE NOT RESPONSIBLE FOR ANY LOSS OF ASSETS.\n</string>
   <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
