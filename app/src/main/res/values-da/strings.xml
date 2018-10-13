@@ -55,22 +55,22 @@
   <string name="error_sdcard_not_available">Intet SD kort fundet</string>
   <string name="error_create_xdag_wallet">Kunne ikke oprette tegnebog</string>
   <string name="error_restore_xdag_wallet">Kunne ikke gendanne tegnebogen</string>
-  <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
-  <string name="error_password">Password incorrect</string>
-  <string name="error_password_not_same">Password inconsistent</string>
-  <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
-  <string name="error_balance_too_small">Amount not sufficient</string>
-  <string name="error_invalid_recv_address">Invalid address</string>
-  <string name="error_invalid_pool_address">Invalid pool address</string>
-  <string name="error_pool_address_exists">Pool address already exists</string>
-  <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
-  <string name="error_server_problem">The server is running out of the way</string>
-  <string name="error_send_coin_itself">can\'t transfer XDAG to itself</string>
+  <string name="error_backup_xdag_wallet">Kunne ikke backup tegnebog</string>
+  <string name="error_password">Adgangskode forkert</string>
+  <string name="error_password_not_same">AdgangsKode inkonsekvent</string>
+  <string name="error_noting_to_transfer">Det beløb, der skal sendes, skal være større end 0</string>
+  <string name="error_balance_too_small">Beløb ikke tilstrækkeligt</string>
+  <string name="error_invalid_recv_address">Ugyldig adresse</string>
+  <string name="error_invalid_pool_address">Ugyldig pool adresse</string>
+  <string name="error_pool_address_exists">Pool adresse findes allerede</string>
+  <string name="error_cannot_delete_selected_pool">Du kan ikke slette den valgte pool adresse</string>
+  <string name="error_server_problem">Server blev timeout</string>
+  <string name="error_send_coin_itself">kan ikke overføre XDAG til sig selv</string>
   <!-- success -->
-  <string name="success_refresh">Refreshed successfully</string>
-  <string name="success_copy_address">Copied successfully</string>
-  <string name="success_send_coin">Sent successfully</string>
-  <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
+  <string name="success_refresh">Opdateret med succes</string>
+  <string name="success_copy_address">Kopieret med succes</string>
+  <string name="success_send_coin">Sendt med succes</string>
+  <string name="success_backup_xdag_wallet">Tegnebog sikke rhedskopi oprettes i /sdcard/xdag </string>
   <!-- setting item-->
   <string name="more_messages">Message</string>
   <string name="more_backup_wallet">Backup wallet</string>
