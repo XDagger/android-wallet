@@ -62,14 +62,14 @@
   <string name="error_balance_too_small">Bedrag niet voldoende</string>
   <string name="error_invalid_recv_address">Ongeldig adres</string>
   <string name="error_invalid_pool_address">Ongeldig pool adres</string>
-  <string name="error_pool_address_exists">Pool address already exists</string>
-  <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
-  <string name="error_server_problem">The server is running out of the way</string>
-  <string name="error_send_coin_itself">can\'t transfer XDAG to itself</string>
+  <string name="error_pool_address_exists">Pool adres bestaat al</string>
+  <string name="error_cannot_delete_selected_pool">U kunt het geselecteerde pool adres niet verwijderen</string>
+  <string name="error_server_problem">Server heeft een time out</string>
+  <string name="error_send_coin_itself">kan niet overdragen XDAG aan zichzelf</string>
   <!-- success -->
-  <string name="success_refresh">Refreshed successfully</string>
-  <string name="success_copy_address">Copied successfully</string>
-  <string name="success_send_coin">Sent successfully</string>
+  <string name="success_refresh">Vernieuwd met succes</string>
+  <string name="success_copy_address">Met succes gekopieerd</string>
+  <string name="success_send_coin">Succesvol verzonden</string>
   <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
   <!-- setting item-->
   <string name="more_messages">Message</string>
