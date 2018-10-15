@@ -70,31 +70,31 @@
   <string name="success_refresh">Vernieuwd met succes</string>
   <string name="success_copy_address">Met succes gekopieerd</string>
   <string name="success_send_coin">Succesvol verzonden</string>
-  <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
+  <string name="success_backup_xdag_wallet">Portemonnee back-up is gemaakt in /sdcard/xdag</string>
   <!-- setting item-->
-  <string name="more_messages">Message</string>
-  <string name="more_backup_wallet">Backup wallet</string>
+  <string name="more_messages">Bericht</string>
+  <string name="more_backup_wallet">Backup portemonnee</string>
   <string name="more_suggest">Feedback</string>
-  <string name="more_wallet">Switch wallet</string>
+  <string name="more_wallet">Schakelaar portemonnee</string>
   <string name="more_pool">Switch pool</string>
-  <string name="more_xdag_io">Community website - xdag.io</string>
+  <string name="more_xdag_io">Website van de communautair - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
   <string name="password_format">0123456789abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ@?#$_-+()/\*:;!~`|£¤€^{}[]%=,.&lt;&gt;&amp;\'\"\\</string>
-  <string name="error_password_format">Please input 6 to 18 characters, numbers, or special characters</string>
+  <string name="error_password_format">Voer 6 tot 18 tekens, cijfers of speciale tekens in</string>
   <!-- about -->
-  <string name="slogan">Fluent and Stable XDAG wallet</string>
+  <string name="slogan">Vloeiend en stabiel XDAG portemonnee</string>
   <string name="about_explain">We are dedicated to develop a fluent and stable XDAG wallet. If you have any question or suggestion, please send us you feedback.\n\nSource code is listed on github, link is shown as below. Everyone are welcomed to contribute to this project.\n\nReminder:\n\nPlease backup your wallet files somewhere.\n\nWe saved your files in Android private folder, but backup and restore use external SD card as storage (folder name: sdcard/xdag/). SD Card is not safe enough for backup, please transfer your wallet backup files to somewhere else.\n\nAny uninstallation or deleting data will cause lose of wallet, and NO WAY TO RECOVER.\nPlease backup your wallet before any such operations.\n\nWE ARE NOT RESPONSIBLE FOR ANY LOSE OF ASSETS.</string>
   <!-- update -->
   <string name="update">Update</string>
-  <string name="close">Close</string>
-  <string name="new_version_available">New version detected：%1$s</string>
+  <string name="close">Sluiten</string>
+  <string name="new_version_available">Nieuwe versie gedetecteerd：%1$s</string>
   <!-- explain-->
-  <string name="usage">Usage</string>
-  <string name="function_explain">Terms</string>
-  <string name="backup_explain">I have read the content above</string>
-  <string name="not_show_explain">Don\'t display again</string>
-  <string name="restore_read_explain">I have read the content above, and created a backup in xdag folder</string>
+  <string name="usage">Gebruik</string>
+  <string name="function_explain">Voorwaarden</string>
+  <string name="backup_explain">Ik heb de inhoud hierboven gelezen</string>
+  <string name="not_show_explain">Niet opnieuw weergeven</string>
+  <string name="restore_read_explain">Ik heb de inhoud hierboven gelezen, en creëerde een backup in xdag map</string>
   <string name="check_root_explain">Caution! Your device is rooted, it\'s a high risk to continue.</string>
   <string name="use_explain_1">XDAG Android wallet is still in beta version.\n</string>
   <string name="use_explain_2">Caution:\n</string>
