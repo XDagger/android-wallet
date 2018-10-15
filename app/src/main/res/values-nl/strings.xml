@@ -37,15 +37,15 @@
   <string name="add_pool_address">Pool adres toevoegen</string>
   <string name="delete_pool_address">Pool adres verwijderen:%1$s?</string>
   <string name="reset_pool_address">Whether restore to the default pool address?</string>
-  <string name="not_remind_again">Don\'t remind again</string>
+  <string name="not_remind_again">Niet opnieuw herinneren</string>
   <!-- please -->
-  <string name="please_set_password">Please set wallet password</string>
-  <string name="please_retype_password">Please retype wallet password</string>
-  <string name="please_input_password">Please input password</string>
-  <string name="please_input_random">Please input random key</string>
-  <string name="please_wait_read_wallet">Reading wallet data..</string>
-  <string name="please_wait_transfer">Transfer in progress..</string>
-  <string name="please_backup_your_xdag_wallet_first">Please read this carefully, and backup your wallet.</string>
+  <string name="please_set_password">Stel portemonnee wachtwoord</string>
+  <string name="please_retype_password">Gelieve opnieuw te portefeuille wachtwoord</string>
+  <string name="please_input_password">Gelieve input wachtwoord</string>
+  <string name="please_input_random">Gelieve input random sleutel</string>
+  <string name="please_wait_read_wallet">Lezing portemonnee gegevens..</string>
+  <string name="please_wait_transfer">Overdracht in uitvoering..</string>
+  <string name="please_backup_your_xdag_wallet_first">Lees dit aandachtig en maak een backup van uw portemonnee.</string>
   <string name="please_wait_loading">Loading in progress..</string>
   <string name="please_wait_connecting_pool">Connecting to main net..</string>
   <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
