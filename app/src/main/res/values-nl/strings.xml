@@ -108,15 +108,15 @@
   <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
   <string name="restore_explain_4">To restore your wallet, you have to copy your wallet files to the xdag folder in your SD card\'s root folder.\n</string>
   <string name="restore_explain_5">SD card is not a safe place for backups, any VIRUS can steal backup files from SD card.\n</string>
-  <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
-  <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
-  <string name="restore_explain_8">Please keep in mind: SD card is not safe, please transfer backup files to a secure location.\n</string>
-  <string name="wallet_explain_1">No wallet detected!\n</string>
-  <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
-  <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
-  <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-  <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
-  <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
+  <string name="restore_explain_6">Bij het terugzetten van een portefeuille, wordt de backup verplaatst naar Android prive map.\n</string>
+  <string name="restore_explain_7">U kunt op elk gewenst moment een backup van uw portefeuille maken op een SD kaart.\n</string>
+  <string name="restore_explain_8">Onthoud: SD kaart is niet veilig, u back-up bestanden naar een veilige locatie.\n</string>
+  <string name="wallet_explain_1">Geen portemonnee gedetecteerd!</string>
+  <string name="wallet_explain_2">Je hebt twee manieren om je portemonnee te bemachtigen.\n</string>
+  <string name="wallet_explain_3">Maak een nieuwe portemonnee. U kunt een geheel nieuwe portemonnee maken.\n</string>
+  <string name="wallet_explain_4">Herstel een oude portemonnee. U uw oude portemonnee hier importeren.\n</string>
+  <string name="wallet_explain_5">We zullen vragen om toestemming om te schrijven naar een externe SD kaart, neem dan niet ontkennen.\n</string>
+  <string name="cover_explain">Gedetecteerd dat er een backup bestaat in /sdcard/xdag，wilt u deze overschrijven? U zult niet in staat zijn om de oude backup terug te vorderen als je overschrijven.</string>
   <!-- settings-->
-  <string name="settings_show_usage">Don\'t display usage</string>
+  <string name="settings_show_usage">Gebruik niet weergeven</string>
 </resources>
