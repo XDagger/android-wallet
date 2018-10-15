@@ -28,7 +28,7 @@
   <string name="the_function_developing_please_wait">Worden voortgezet.</string>
   <string name="continue_use">Blijven</string>
   <string name="exit">Sluit</string>
-  <string name="switch_pool_to">Switch pool \n%1$s</string>
+  <string name="switch_pool_to">Verander pool \n%1$s</string>
   <string name="tran_detail">Transactie details</string>
   <string name="warning">Waarschuwing</string>
   <string name="ensure">Bevestigen</string>
@@ -76,7 +76,7 @@
   <string name="more_backup_wallet">Backup portemonnee</string>
   <string name="more_suggest">Feedback</string>
   <string name="more_wallet">Schakelaar portemonnee</string>
-  <string name="more_pool">Switch pool</string>
+  <string name="more_pool">Verander pool</string>
   <string name="more_xdag_io">Website van de communautair - xdag.io</string>
   <string name="more_github">GitHub - XDagger</string>
   <!-- password format -->
@@ -84,7 +84,7 @@
   <string name="error_password_format">Voer 6 tot 18 tekens, cijfers of speciale tekens in</string>
   <!-- about -->
   <string name="slogan">Vloeiend en stabiel XDAG portemonnee</string>
-  <string name="about_explain">We zijn toegewijd aan het ontwikkelen van een stabiele en efficiënte xdag portemonnee. Als je een vraag of suggestie hebt, stuur ons dan je feedback.\n\nBroncode staat op github, link wordt getoond zoals hieronder. Iedereen is welkom om een bijdrage te leveren aan dit project.\n\nHerinnering:\n\nMaak een backup van je portefeuillebestanden.\n\nWe hebben je bestanden opgeslagen in de privé-map van Android, maar maak een backup en herstel van de externe SD kaart als opslag ( mapnaam: sdcard/xdag/). SD kaart is niet veilig genoeg voor backup, breng uw backup bestanden voor uw portemonnee naar een andere locatie.\n\nElke verwijdering of verwijdering van gegevens leidt tot verlies van de portemonnee en GEEN MANIER TOT HERSTELLING.\nMaak een backup van uw portemonnee voordat dergelijke bewerkingen worden uitgevoerd.\n\nWE ZIJN NIET VERANTWOORDELIJK VOOR ENIGE VERLIES VAN ACTIVA.</string>
+  <string name="about_explain">We zijn toegewijd aan het ontwikkelen van een stabiele en efficiënte xdag portemonnee. Als je een vraag of suggestie hebt, stuur ons dan je feedback.\n\nBroncode staat op github, link wordt getoond zoals hieronder. Iedereen is welkom om een bijdrage te leveren aan dit project.\n\nHerinnering:\n\nGelieve een backup van uw portemonnee bestanden ergens.\n\nWe hebben uw bestanden in de privémap van Android opgeslagen, maar backup en terugzetten gebruiken externe SD kaarten als opslag (map naam: sdcard/xdag/). SD kaart is niet veilig genoeg voor backup, breng uw backup bestanden voor uw portemonnee naar een andere locatie.\n\nElke verwijdering of verwijdering van gegevens leidt tot verlies van de portemonnee en GEEN MANIER TOT HERSTELLING.\nMaak een backup van uw portemonnee voordat u dergelijke bewerkingen uitvoert.\n\nWE ZIJN NIET VERANTWOORDELIJK VOOR ENIGE VERLIES VAN ACTIVA.</string>
   <!-- update -->
   <string name="update">Update</string>
   <string name="close">Sluiten</string>
