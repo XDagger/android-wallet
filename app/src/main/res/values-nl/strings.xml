@@ -31,11 +31,11 @@
   <string name="switch_pool_to">Switch pool \n%1$s</string>
   <string name="tran_detail">Transactie details</string>
   <string name="warning">Waarschuwing</string>
-  <string name="ensure">Confirm</string>
-  <string name="available_xdag">Available %1$s XDAG</string>
-  <string name="cancel">Cancel</string>
-  <string name="add_pool_address">Add pool address</string>
-  <string name="delete_pool_address">Delete pool address:%1$s?</string>
+  <string name="ensure">Bevestigen</string>
+  <string name="available_xdag">Beschikbaar %1$s XDAG</string>
+  <string name="cancel">Annuleren</string>
+  <string name="add_pool_address">Pool adres toevoegen</string>
+  <string name="delete_pool_address">Pool adres verwijderen:%1$s?</string>
   <string name="reset_pool_address">Whether restore to the default pool address?</string>
   <string name="not_remind_again">Don\'t remind again</string>
   <!-- please -->
