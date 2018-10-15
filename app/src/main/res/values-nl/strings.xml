@@ -46,14 +46,14 @@
   <string name="please_wait_read_wallet">Lezing portemonnee gegevens..</string>
   <string name="please_wait_transfer">Overdracht in uitvoering..</string>
   <string name="please_backup_your_xdag_wallet_first">Lees dit aandachtig en maak een backup van uw portemonnee.</string>
-  <string name="please_wait_loading">Loading in progress..</string>
-  <string name="please_wait_connecting_pool">Connecting to main net..</string>
-  <string name="please_restore_read">Please read this page and copy your backup files to xdag folder</string>
+  <string name="please_wait_loading">Bezig met laden..</string>
+  <string name="please_wait_connecting_pool">Verbinding maken met de belangrijkste net..</string>
+  <string name="please_restore_read">Lees deze pagina en kopieer uw backup bestanden naar de xdag map</string>
   <!-- error tips -->
-  <string name="error_cannot_identify_qr_code">Failed to identify QRCode</string>
-  <string name="error_file_make_fail">Failed to create file</string>
-  <string name="error_sdcard_not_available">No SD card detected</string>
-  <string name="error_create_xdag_wallet">Failed to create wallet</string>
+  <string name="error_cannot_identify_qr_code">Niet te identificeren QRCode</string>
+  <string name="error_file_make_fail">Het maken van bestand is mislukt</string>
+  <string name="error_sdcard_not_available">Geen SD kaart gedetecteerd</string>
+  <string name="error_create_xdag_wallet">Het maken van de Portemonnee is mislukt</string>
   <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
   <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
   <string name="error_password">Password incorrect</string>
