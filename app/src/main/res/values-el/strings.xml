@@ -4,14 +4,14 @@
   <string name="app_name">XDagWallet</string>
   <string name="XDAG">XDAG</string>
   <!-- common -->
-  <string name="home">Home</string>
-  <string name="send">Send</string>
-  <string name="receive">Receive</string>
-  <string name="more">More</string>
-  <string name="setting">Settings</string>
-  <string name="send_xdag">Send XDAG</string>
-  <string name="receive_xdag">Receive XDAG</string>
-  <string name="scan">Scan QRCode</string>
+  <string name="home">Αρχική σελίδα</string>
+  <string name="send">Στείλτε</string>
+  <string name="receive">Λάβετε</string>
+  <string name="more">Περισσότερα</string>
+  <string name="setting">Ρυθμίσεις</string>
+  <string name="send_xdag">Στείλτε XDAG</string>
+  <string name="receive_xdag">Λάβετε XDAG</string>
+  <string name="scan">Σάρωση QRCode</string>
   <string name="to_address">To Address</string>
   <string name="send_to_address">Send to Address</string>
   <string name="amount_to_send">Amount</string>
