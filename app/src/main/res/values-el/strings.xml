@@ -54,25 +54,25 @@
   <string name="error_file_make_fail">Απέτυχε να δημιουργήσει αρχείο</string>
   <string name="error_sdcard_not_available">Δεν εντοπίστηκε κάρτα SD</string>
   <string name="error_create_xdag_wallet">Αποτυχία δημιουργίας πορτοφολιού</string>
-  <string name="error_restore_xdag_wallet">Failed to restore wallet</string>
-  <string name="error_backup_xdag_wallet">Failed to backup wallet</string>
-  <string name="error_password">Password incorrect</string>
-  <string name="error_password_not_same">Password inconsistent</string>
-  <string name="error_noting_to_transfer">Amount to send must be greater than 0</string>
-  <string name="error_balance_too_small">Amount not sufficient</string>
-  <string name="error_invalid_recv_address">Invalid address</string>
+  <string name="error_restore_xdag_wallet">Αποτυχία επαναφοράς πορτοφολιού</string>
+  <string name="error_backup_xdag_wallet">Αποτυχία δημιουργίας αντιγράφων ασφαλείας του πορτοφολιού</string>
+  <string name="error_password">Εσφαλμένος κωδικός πρόσβασης</string>
+  <string name="error_password_not_same">Ασυνεπής κωδικός πρόσβασης</string>
+  <string name="error_noting_to_transfer">Το αποστελλόμενο ποσό πρέπει να είναι μεγαλύτερο από 0</string>
+  <string name="error_balance_too_small">Το ποσό δεν επαρκεί</string>
+  <string name="error_invalid_recv_address">Μη έγκυρη διεύθυνση</string>
   <string name="error_invalid_pool_address">Invalid pool address</string>
-  <string name="error_pool_address_exists">Pool address already exists</string>
-  <string name="error_cannot_delete_selected_pool">You cannot delete the selected pool address</string>
-  <string name="error_server_problem">The server is running out of the way</string>
-  <string name="error_send_coin_itself">can\'t transfer XDAG to itself</string>
+  <string name="error_pool_address_exists">Η διεύθυνση πισίνας υπάρχει ήδη</string>
+  <string name="error_cannot_delete_selected_pool">Δεν μπορείτε να διαγράψετε την επιλεγμένη διεύθυνση της πισίνας</string>
+  <string name="error_server_problem">Ο διακομιστής έχει λήξει</string>
+  <string name="error_send_coin_itself">δεν μπορεί να μεταφέρει το XDAG στον εαυτό του</string>
   <!-- success -->
-  <string name="success_refresh">Refreshed successfully</string>
-  <string name="success_copy_address">Copied successfully</string>
-  <string name="success_send_coin">Sent successfully</string>
-  <string name="success_backup_xdag_wallet">Wallet backup is created in /sdcard/xdag </string>
+  <string name="success_refresh">Ανανεώθηκε με επιτυχία</string>
+  <string name="success_copy_address">Αντιγραφή με επιτυχία</string>
+  <string name="success_send_coin">Απεστάλη επιτυχώς</string>
+  <string name="success_backup_xdag_wallet">Δημιουργία αντιγράφων ασφαλείας πορτοφολιού δημιουργείται στο /sdcard/xdag</string>
   <!-- setting item-->
-  <string name="more_messages">Message</string>
+  <string name="more_messages">Μήνυμα</string>
   <string name="more_backup_wallet">Backup wallet</string>
   <string name="more_suggest">Feedback</string>
   <string name="more_wallet">Switch wallet</string>
@@ -111,12 +111,12 @@
   <string name="restore_explain_6">When restoring a wallet, the backup is moved to Android private folder.\n</string>
   <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
   <string name="restore_explain_8">Λάβετε υπόψη σας: Η κάρτα SD δεν είναι ασφαλής, μεταφέρετε τα αρχεία ασφαλείας σε ασφαλή τοποθεσία.\n</string>
-  <string name="wallet_explain_1">No wallet detected!\n</string>
-  <string name="wallet_explain_2">You have two ways to get your wallet.\n</string>
-  <string name="wallet_explain_3">Create a new wallet. You can create an entirely new wallet.\n</string>
-  <string name="wallet_explain_4">Restore an old wallet. You can import your old wallet here.\n</string>
-  <string name="wallet_explain_5">We will ask for permission to write to an external SD Card, please do not deny it.\n</string>
-  <string name="cover_explain">Detected that a backup exists in /sdcard/xdag，do you want to overwrite it? You will be unable to recover the old backup if you overwrite.</string>
+  <string name="wallet_explain_1">Δεν εντοπίστηκε πορτοφόλι!\n</string>
+  <string name="wallet_explain_2">Έχετε δύο τρόπους για να πάρετε το πορτοφόλι σας.\n</string>
+  <string name="wallet_explain_3">Δημιουργήστε ένα νέο πορτοφόλι. Μπορείτε να δημιουργήσετε ένα εντελώς νέο πορτοφόλι.\n</string>
+  <string name="wallet_explain_4">Επαναφέρετε ένα παλιό πορτοφόλι. Μπορείτε να εισαγάγετε το παλιό σας πορτοφόλι εδώ.\n</string>
+  <string name="wallet_explain_5">Θα ζητήσουμε την άδεια να γράψει σε μια εξωτερική κάρτα SD, παρακαλώ μην το αρνηθεί.\n</string>
+  <string name="cover_explain">Εντοπίστηκε ότι ένα αντίγραφο ασφαλείας που υπάρχει στο /sdcard/xdag, θέλετε να το αντικαταστήσετε; Θα είστε σε θέση να ανακτήσει το παλιό αντίγραφο ασφαλείας, αν αντικαταστήσετε.</string>
   <!-- settings-->
-  <string name="settings_show_usage">Don\'t display usage</string>
+  <string name="settings_show_usage">Μην εμφανίζετε τη χρήση</string>
 </resources>
