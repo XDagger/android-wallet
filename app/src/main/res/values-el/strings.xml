@@ -61,7 +61,7 @@
   <string name="error_noting_to_transfer">Το αποστελλόμενο ποσό πρέπει να είναι μεγαλύτερο από 0</string>
   <string name="error_balance_too_small">Το ποσό δεν επαρκεί</string>
   <string name="error_invalid_recv_address">Μη έγκυρη διεύθυνση</string>
-  <string name="error_invalid_pool_address">Invalid pool address</string>
+  <string name="error_invalid_pool_address">Η διεύθυνση της πισίνας δεν είναι έγκυρη</string>
   <string name="error_pool_address_exists">Η διεύθυνση πισίνας υπάρχει ήδη</string>
   <string name="error_cannot_delete_selected_pool">Δεν μπορείτε να διαγράψετε την επιλεγμένη διεύθυνση της πισίνας</string>
   <string name="error_server_problem">Ο διακομιστής έχει λήξει</string>
@@ -109,7 +109,7 @@
   <string name="restore_explain_4">Για να επαναφέρετε το πορτοφόλι σας, πρέπει να αντιγράψετε τα αρχεία πορτοφολιού στο φάκελο xdag στον ριζικό φάκελο της κάρτας SD.\n</string>
   <string name="restore_explain_5">Η κάρτα SD δεν είναι ασφαλές μέρος για τα αντίγραφα ασφαλείας, οποιοσδήποτε Ιός μπορεί να κλέψει τα αρχεία αντιγράφων ασφαλείας από την κάρτα SD.\n</string>
   <string name="restore_explain_6">Κατά την επαναφορά ενός πορτοφολιού, το αντίγραφο ασφαλείας μεταφέρεται σε ιδιωτικό φάκελο Android.\n</string>
-  <string name="restore_explain_7">You can backup your wallet to a SD Card at any time.\n</string>
+  <string name="restore_explain_7">Μπορείτε να δημιουργήσετε αντίγραφα ασφαλείας του πορτοφολιού σας σε μια κάρτα SD ανά πάσα στιγμή.\n</string>
   <string name="restore_explain_8">Λάβετε υπόψη σας: Η κάρτα SD δεν είναι ασφαλής, μεταφέρετε τα αρχεία ασφαλείας σε ασφαλή τοποθεσία.\n</string>
   <string name="wallet_explain_1">Δεν εντοπίστηκε πορτοφόλι!\n</string>
   <string name="wallet_explain_2">Έχετε δύο τρόπους για να πάρετε το πορτοφόλι σας.\n</string>
