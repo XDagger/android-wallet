@@ -5,13 +5,14 @@ static def buildTime() {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion compile_version
+    buildToolsVersion build_tools_version
     defaultConfig {
         applicationId "io.xdag.xdagwallet"
         minSdkVersion min_version
         targetSdkVersion target_version
-        versionCode 23
-        versionName "0.2.3"
+        versionCode 24
+        versionName "0.2.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -19,7 +20,6 @@ android {
             }
         }
         ndk {
-            //abiFilters "armeabi-v7a","x86"
             abiFilters "armeabi-v7a"
         }
     }
@@ -42,7 +42,7 @@ android {
     }
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "xdag_android_${variant.buildType.name}_v${defaultConfig.versionName}_${buildTime()}.apk"
+            outputFileName = "android_wallet_${variant.buildType.name}_v${defaultConfig.versionName}_${buildTime()}.apk"
         }
     }
     lintOptions {
@@ -58,7 +58,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '28.0.3'
 }
 
 dependencies {

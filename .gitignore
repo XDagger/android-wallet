@@ -60,4 +60,5 @@ fastlane/test_output
 fastlane/readme.md
 
 app/xdagwallt.jks
-.DS_store
+*.DS_store
+app/release
