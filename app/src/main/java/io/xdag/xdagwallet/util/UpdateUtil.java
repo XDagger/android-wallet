@@ -22,19 +22,9 @@ public class UpdateUtil {
             versionLayout.setVisibility(View.VISIBLE);
             tvDesc.setText(context.getString(R.string.new_version_available, versionModel.versionName));
 
-            tvUpdate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    IntentUtil.openBrowser(context, versionModel.url);
-                }
-            });
+            tvUpdate.setOnClickListener(v -> IntentUtil.openBrowser(context, versionModel.url));
 
-            tvClose.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    versionLayout.setVisibility(View.GONE);
-                }
-            });
+            tvClose.setOnClickListener(v -> versionLayout.setVisibility(View.GONE));
 
         } else {
             versionLayout.setVisibility(View.GONE);
