@@ -6,7 +6,6 @@ static def buildTime() {
 
 android {
     compileSdkVersion compile_version
-    buildToolsVersion build_tools_version
     defaultConfig {
         applicationId "io.xdag.xdagwallet"
         minSdkVersion min_version
