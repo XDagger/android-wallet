@@ -39,7 +39,6 @@ public class MainActivity extends ToolbarActivity {
 
     private static final String EXTRA_RESTORE = "extra_restore";
     private static final String EXTRA_SWITCH_POOL = "extra_switch_pool";
-    public static boolean isStart = false;
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation mNavigationView;
 
@@ -56,7 +55,6 @@ public class MainActivity extends ToolbarActivity {
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        isStart = true;
         ActivityStack.getInstance().finishNotTopActivities();
     }
 
