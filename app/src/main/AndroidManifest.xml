@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         package="io.xdag.xdagwallet">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -14,7 +15,8 @@
             android:icon="@mipmap/ic_launcher"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
         <meta-data
                 android:name="android.max_aspect"
                 android:value="2.4"/>

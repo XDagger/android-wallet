@@ -87,7 +87,7 @@ public class UsageActivity extends ToolbarActivity
                     if (mCbRootRemind.isChecked()) {
                         Config.setNotRemindRoot(true);
                     }
-                    if (isNotShow()) {
+                    if (isNotDisplay()) {
                         WalletActivity.start(mContext);
                         finish();
                     }
@@ -99,7 +99,7 @@ public class UsageActivity extends ToolbarActivity
                     mContext.finish();
                 });
             builder.show();
-        } else if (isNotShow()) {
+        } else if (isNotDisplay()) {
             WalletActivity.start(mContext);
             finish();
         } else {
@@ -116,7 +116,7 @@ public class UsageActivity extends ToolbarActivity
             return;
         }
         WalletActivity.start(mContext);
-        if (isNotShow()) {
+        if (isNotDisplay()) {
             finish();
         }
     }
@@ -128,7 +128,7 @@ public class UsageActivity extends ToolbarActivity
     }
 
 
-    public static boolean isNotShow() {
+    public static boolean isNotDisplay() {
         return Config.isUserBackup() && Config.isNotDisplayUsage();
     }
 
@@ -163,8 +163,5 @@ public class UsageActivity extends ToolbarActivity
     @Override protected void onDestroy() {
         RxUtil.dispose(mDisposable);
         super.onDestroy();
-        if (!MainActivity.isStart) {
-            ActivityStack.getInstance().exit();
-        }
     }
 }

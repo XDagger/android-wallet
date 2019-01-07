@@ -43,11 +43,11 @@
   <string name="please_retype_password">Zopakujte heslo peněženky</string>
   <string name="please_input_password">Zadejte prosím heslo</string>
   <string name="please_input_random">Zadejte prosím náhodný klíč</string>
-  <string name="please_wait_read_wallet">Načítání dat peněženky...</string>
-  <string name="please_wait_transfer">Přenos v procesu...</string>
+  <string name="please_wait_read_wallet">Načítání dat peněženky..</string>
+  <string name="please_wait_transfer">Přenos v procesu..</string>
   <string name="please_backup_your_xdag_wallet_first">Tuto zprávu čtěte prosím pečlivě a zazálohujte svoji peněženku.</string>
-  <string name="please_wait_loading">Načítání...</string>
-  <string name="please_wait_connecting_pool">Připojování k hlavní síti...</string>
+  <string name="please_wait_loading">Načítání..</string>
+  <string name="please_wait_connecting_pool">Připojování k hlavní síti..</string>
   <string name="please_restore_read">Čtěte prosím pozorně tuto stránku a zkopírujte svoje záložní soubory do složky xdag</string>
   <!-- error tips -->
   <string name="error_cannot_identify_qr_code">Chyba při identifikaci QR kódu</string>
