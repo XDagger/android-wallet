@@ -24,7 +24,6 @@ public class LoadingBuilder extends AlertBuilder {
         super.init();
         View view = View.inflate(getContext(), R.layout.layout_dialog_loading, null);
         setView(view);
-        setCancelable(false);
         mTvMessage = view.findViewById(R.id.dialog_loading_tv);
     }
 
