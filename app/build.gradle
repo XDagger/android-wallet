@@ -73,8 +73,6 @@ dependencies {
     implementation 'com.tapadoo.android:alerter:2.0.5'
     // https://github.com/yanzhenjie/AndPermission
     implementation 'com.yanzhenjie:permission:2.0.0-rc6'
-    // https://github.com/aurelhubert/ahbottomnavigation
-    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
     // https://github.com/PureWriter/about-page
     implementation 'me.drakeet.support:about:2.1.1'
     implementation 'me.drakeet.multitype:multitype:3.4.4'
