@@ -19,11 +19,11 @@ public class ApiServer {
         throw new UnsupportedOperationException("ApiServer cannot be instantiated !");
     }
 
-    static TransactionApi getTransactionApi(String baseUrl) {
+    static TransactionApi createTransactionApi(String baseUrl) {
         return ApiFactory.getInstance().createApi(baseUrl, TransactionApi.class);
     }
 
-    static ConfigApi getConfigApi() {
+    static ConfigApi createConfigApi() {
         return ApiFactory.getInstance().createApi(BASE_URL_GITHUB, ConfigApi.class);
     }
 }

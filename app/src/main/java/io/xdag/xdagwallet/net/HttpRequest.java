@@ -31,14 +31,14 @@ public class HttpRequest {
 
 
     public Disposable getConfigInfo(Consumer<ConfigModel> consumer) {
-        return ApiServer.getConfigApi().getConfigInfo()
+        return ApiServer.createConfigApi().getConfigInfo()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(consumer, new ErrorConsumer());
     }
 
 
     public Disposable getVersionInfo(Consumer<VersionModel> consumer) {
-        return ApiServer.getConfigApi().getVersionInfo()
+        return ApiServer.createConfigApi().getVersionInfo()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(consumer, new ErrorConsumer());
     }
@@ -46,7 +46,7 @@ public class HttpRequest {
 
     public Disposable getBlockList(Activity activity, String address, Consumer<List<BlockDetailModel.BlockAsAddress>> consumer) {
         String baseUrl = Config.getTransactionHost();
-        return ApiServer.getTransactionApi(baseUrl).getBlockDetail(address)
+        return ApiServer.createTransactionApi(baseUrl).getBlockDetail(address)
             .observeOn(AndroidSchedulers.mainThread())
             .map(new Detail2AddressListFunction())
             .subscribe(consumer, throwable -> {
@@ -58,7 +58,7 @@ public class HttpRequest {
                 }
 
                 // if failed request api2 again
-                ApiServer.getTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
+                ApiServer.createTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
                     .getBlockDetail(address)
                     .observeOn(AndroidSchedulers.mainThread())
                     .map(new Detail2AddressListFunction())
@@ -68,7 +68,7 @@ public class HttpRequest {
 
     public Disposable getBlockDetail(Activity activity, String address, Consumer<List<BlockDetailModel.BlockAsAddress>> consumer) {
         String baseUrl = Config.getTransactionHost();
-        return ApiServer.getTransactionApi(baseUrl).getBlockDetail(address)
+        return ApiServer.createTransactionApi(baseUrl).getBlockDetail(address)
             .observeOn(AndroidSchedulers.mainThread())
             .map(new Detail2TranListFunction())
             .subscribe(consumer, throwable -> {
@@ -80,7 +80,7 @@ public class HttpRequest {
                 }
 
                 // if failed request api2 again
-                ApiServer.getTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
+                ApiServer.createTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
                     .getBlockDetail(address)
                     .observeOn(AndroidSchedulers.mainThread())
                     .map(new Detail2TranListFunction())
