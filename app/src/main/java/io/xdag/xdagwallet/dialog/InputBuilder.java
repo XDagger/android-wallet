@@ -30,7 +30,6 @@ public class InputBuilder extends AlertBuilder {
         View view = View.inflate(getContext(), R.layout.layout_dialog_input, null);
         setView(view);
         mEtInput = view.findViewById(R.id.dialog_input_et);
-        setCancelable(false);
         setPositiveButton(R.string.ensure, (dialog, which) -> {
             if (mOnPositiveClickListener != null) {
                 mOnPositiveClickListener.onClick(dialog, mEtInput.getText().toString());
