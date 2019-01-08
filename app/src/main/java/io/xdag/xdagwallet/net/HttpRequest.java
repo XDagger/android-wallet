@@ -9,10 +9,8 @@ import io.xdag.xdagwallet.model.BlockDetailModel;
 import io.xdag.xdagwallet.model.ConfigModel;
 import io.xdag.xdagwallet.model.VersionModel;
 import io.xdag.xdagwallet.net.error.ErrorConsumer;
-import io.xdag.xdagwallet.net.error.NoTransactionException;
 import io.xdag.xdagwallet.net.rx.Detail2AddressListFunction;
 import io.xdag.xdagwallet.net.rx.Detail2TranListFunction;
-import io.xdag.xdagwallet.util.AlertUtil;
 import java.util.List;
 
 /**
@@ -22,9 +20,11 @@ public class HttpRequest {
 
     private static final HttpRequest sInstance = new HttpRequest();
 
+
     public static HttpRequest get() {
         return sInstance;
     }
+
 
     private HttpRequest() {
     }
@@ -44,48 +44,19 @@ public class HttpRequest {
     }
 
 
-    public Disposable getBlockList(Activity activity, String address, Consumer<List<BlockDetailModel.BlockAsAddress>> consumer) {
-        String baseUrl = Config.getTransactionHost();
-        return ApiServer.createTransactionApi(baseUrl).getBlockDetail(address)
+    public Disposable getTransactions(Activity activity, String address, Consumer<List<BlockDetailModel.BlockAsAddress>> consumer) {
+        return ApiServer.createTransactionApi().getBlockDetail(address)
             .observeOn(AndroidSchedulers.mainThread())
             .map(new Detail2AddressListFunction())
-            .subscribe(consumer, throwable -> {
-
-                // no transaction
-                if (throwable instanceof NoTransactionException) {
-                    AlertUtil.show(activity, throwable.getMessage());
-                    return;
-                }
-
-                // if failed request api2 again
-                ApiServer.createTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
-                    .getBlockDetail(address)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .map(new Detail2AddressListFunction())
-                    .subscribe(consumer, new ErrorConsumer(activity));
-            });
+            .subscribe(consumer, new ErrorConsumer(activity));
     }
 
-    public Disposable getBlockDetail(Activity activity, String address, Consumer<List<BlockDetailModel.BlockAsAddress>> consumer) {
-        String baseUrl = Config.getTransactionHost();
-        return ApiServer.createTransactionApi(baseUrl).getBlockDetail(address)
+
+    public Disposable getTransactionDetail(Activity activity, String address, Consumer<List<BlockDetailModel.BlockAsAddress>> consumer) {
+        return ApiServer.createTransactionApi().getBlockDetail(address)
             .observeOn(AndroidSchedulers.mainThread())
             .map(new Detail2TranListFunction())
-            .subscribe(consumer, throwable -> {
-
-                // no transaction
-                if (throwable instanceof NoTransactionException) {
-                    AlertUtil.show(activity, throwable.getMessage());
-                    return;
-                }
-
-                // if failed request api2 again
-                ApiServer.createTransactionApi(ApiServer.BASE_URL_TRANSACTION2)
-                    .getBlockDetail(address)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .map(new Detail2TranListFunction())
-                    .subscribe(consumer, new ErrorConsumer(activity));
-            });
+            .subscribe(consumer, new ErrorConsumer(activity));
     }
 
 }
