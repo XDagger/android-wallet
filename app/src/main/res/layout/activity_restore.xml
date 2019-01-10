@@ -12,13 +12,13 @@
         
         <TextView
             android:id="@+id/restore_tv_explain"
-            style="@style/Xdag.Item.Explain.Text"
+            style="@style/XDAG.Item.Explain.Text"
             android:lineSpacingExtra="@dimen/space_8"
             tools:text="说明文字" />
         
         <Button
             android:id="@+id/restore_btn_restore"
-            style="@style/Xdag.Button"
+            style="@style/XDAG.Button"
             android:layout_marginTop="@dimen/space_32"
             android:text="@string/restore_wallet"
             app:layout_constraintBottom_toTopOf="@id/restore_cb_read"

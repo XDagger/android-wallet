@@ -162,7 +162,7 @@ public class MainActivity extends ToolbarActivity {
                 getString(R.string.send)));
         mBottomBar.addItem(
             new BottomBarItem(mContext, R.mipmap.ic_more, R.mipmap.ic_more_unselected,
-                getString(R.string.settings)));
+                getString(R.string.setting)));
 
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override public void onTabSelected(int position, int prePosition) {
