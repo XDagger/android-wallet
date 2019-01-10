@@ -34,7 +34,7 @@
     
     <Button
         android:id="@+id/receive_tv_copy"
-        style="@style/Xdag.Button"
+        style="@style/XDAG.Button"
         android:layout_width="0dp"
         android:layout_marginTop="@dimen/space_32"
         android:text="@string/copy_address"

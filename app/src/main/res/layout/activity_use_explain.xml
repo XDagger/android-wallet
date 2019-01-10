@@ -13,13 +13,13 @@
             android:layout_height="wrap_content">
 
         <TextView
-                style="@style/Xdag.Item.Explain.Text"
+                style="@style/XDAG.Item.Explain.Text"
                 android:id="@+id/explain_tv_explain_text"
                 android:lineSpacingExtra="@dimen/space_8"
                 tools:text="说明文字"/>
 
         <Button
-                style="@style/Xdag.Button"
+                style="@style/XDAG.Button"
                 android:id="@+id/explain_btn_pool"
                 android:layout_marginTop="@dimen/space_16"
                 android:text="@string/more_pool"
@@ -28,7 +28,7 @@
                 app:layout_constraintVertical_chainStyle="packed"/>
 
         <Button
-                style="@style/Xdag.Button"
+                style="@style/XDAG.Button"
                 android:id="@+id/explain_btn_start"
                 android:text="@string/start_use"
                 android:layout_marginTop="@dimen/space_16"

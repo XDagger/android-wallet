@@ -87,7 +87,7 @@
             app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
-            style="@style/Xdag.Button"
+            style="@style/XDAG.Button"
             android:id="@+id/send_btn_xdag"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
