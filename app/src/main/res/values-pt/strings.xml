@@ -36,7 +36,7 @@
     <string name="cancel">Cancelar</string>
     <string name="add_pool_address">Adicionar endereço do pool</string>
     <string name="delete_pool_address">Excluir endereço do pool:%1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">Se redefinir para o endereço de pool padrão?</string>
     <string name="not_remind_again">Não lembre de novo</string>
     <!-- please -->
     <string name="please_set_password">Por favor, defina a senha da carteira</string>
