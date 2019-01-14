@@ -36,7 +36,7 @@
     <string name="cancel">Stornieren</string>
     <string name="add_pool_address">Pool adresse hinzufügen</string>
     <string name="delete_pool_address">Löschen der pool adresse:%1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">Ob auf der standard pool adresse zurücksetzen?</string>
     <string name="not_remind_again">Keine aufforderung mehr</string>
     <!-- please -->
     <string name="please_set_password">Bitte brieftasche kennwort festlegen</string>
