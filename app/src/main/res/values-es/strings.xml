@@ -36,7 +36,7 @@
     <string name="cancel">Cancelar</string>
     <string name="add_pool_address">Añadir dirección de pool</string>
     <string name="delete_pool_address">¿Eliminar pool con la dirección:%1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">¿Si restablecer la dirección predeterminada de piscina?</string>
     <string name="not_remind_again">No volver a recordar</string>
     <!-- please -->
     <string name="please_set_password">Por favor, establece una contraseña para la cartera</string>
