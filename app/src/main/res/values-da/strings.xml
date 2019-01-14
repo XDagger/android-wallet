@@ -36,7 +36,7 @@
     <string name="cancel">Annullere</string>
     <string name="add_pool_address">Tilføj pool adresse</string>
     <string name="delete_pool_address">Slette pool adresse:%1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">Hvorvidt genoprette til standard pool adresse?</string>
     <string name="not_remind_again">Ikke minde igen</string>
     <!-- please -->
     <string name="please_set_password">Angiv tegnebog adgangskode</string>
