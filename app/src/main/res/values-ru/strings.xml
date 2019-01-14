@@ -36,7 +36,7 @@
     <string name="cancel">Отмена</string>
     <string name="add_pool_address">Добавить адрес пула</string>
     <string name="delete_pool_address">Удалить адрес %1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">Ли сбросить адрес пула по умолчанию?</string>
     <string name="not_remind_again">Не напоминать больше</string>
     <!-- please -->
     <string name="please_set_password">Пожалуйста, задайте пароль кошелька</string>
