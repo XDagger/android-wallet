@@ -36,7 +36,7 @@
     <string name="cancel">Hủy bỏ</string>
     <string name="add_pool_address">Thêm địa chỉ Hồ bơi</string>
     <string name="delete_pool_address">Xóa hồ bơi địa chỉ:%1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">Cho dù khôi phục lại địa chỉ hồ bơi mặc định?</string>
     <string name="not_remind_again">Đừng nhắc nhở một lần nữa</string>
     <!-- please -->
     <string name="please_set_password">Vui lòng đặt mật khẩu ví</string>
