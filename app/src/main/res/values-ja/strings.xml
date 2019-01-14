@@ -36,7 +36,7 @@
     <string name="cancel">キャンセル</string>
     <string name="add_pool_address">追加のプール アドレス</string>
     <string name="delete_pool_address">プール アドレスを削除:%1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">デフォルト プール アドレスにリセットするかどうか?</string>
     <string name="not_remind_again">このメッセージを表示しない</string>
     <!-- please -->
     <string name="please_set_password">ウォレットの暗証番号設置してください</string>
