@@ -36,7 +36,7 @@
     <string name="cancel">취소</string>
     <string name="add_pool_address">풀 주소 늘리기</string>
     <string name="delete_pool_address">풀 주소 삭제:%1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">기본 풀 주소로 재설정 여부?</string>
     <string name="not_remind_again">돈 \' t는 다시 생각나 게</string>
     <!-- please -->
     <string name="please_set_password">지갑 암호를 설정 하십시오</string>
