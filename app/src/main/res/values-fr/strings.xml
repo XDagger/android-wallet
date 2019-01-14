@@ -36,7 +36,7 @@
     <string name="cancel">Annuler</string>
     <string name="add_pool_address">Ajouter une adresse de pool</string>
     <string name="delete_pool_address">Effacer l\'adresse de la pool:%1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">Que ce soit réinitialisé à l\'adresse du pool par défaut?</string>
     <string name="not_remind_again">Ne pas se souvenir</string>
     <!-- please -->
     <string name="please_set_password">Veuillez définir un mot de passe</string>
