@@ -36,7 +36,7 @@
     <string name="cancel">Ακυρώσετε</string>
     <string name="add_pool_address">Προσθήκη διεύθυνσης πισίνας</string>
     <string name="delete_pool_address">Διαγραφή διεύθυνσης πισίνας:%1$s?</string>
-    <string name="reset_pool_address">Whether reset to the default pool address?</string>
+    <string name="reset_pool_address">Είτε επαναφέρετε την προεπιλεγμένη διεύθυνση πισίνα?</string>
     <string name="not_remind_again">Μην το υπενθυμίσετε ξανά</string>
     <!-- please -->
     <string name="please_set_password">Ορίστε τον κωδικό πρόσβασης πορτοφολιού</string>
