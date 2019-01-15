@@ -193,8 +193,7 @@ public class QRUtils {
         int qrwidth = qrCode.getWidth();
         int waterWidth = (int) (qrwidth * 0.3);//0.3为logo占二维码大小的倍数 建议不要过大，否则二维码失效
         float scale = waterWidth / (float) logo.getWidth();
-        Bitmap waterQrcode = createWaterMaskCenter(qrCode, zoomImg(logo, scale));
-        return waterQrcode;
+        return createWaterMaskCenter(qrCode, zoomImg(logo, scale));
     }
 
 
@@ -204,8 +203,7 @@ public class QRUtils {
         int qrwidth = qrCode.getWidth();
         int waterWidth = (int) (qrwidth * 0.3);//0.3为logo占二维码大小的倍数 建议不要过大，否则二维码失效
         float scale = waterWidth / (float) logo.getWidth();
-        Bitmap waterQrcode = createWaterMaskCenter(qrCode, zoomImg(logo, scale));
-        return waterQrcode;
+        return createWaterMaskCenter(qrCode, zoomImg(logo, scale));
     }
 
 

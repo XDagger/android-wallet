@@ -56,7 +56,7 @@ public class TranDetailActivity extends ListActivity<BlockDetailModel.BlockAsAdd
     private void requestTranDetail(final boolean alert) {
 
         mDisposable.add(
-            HttpRequest.get().getBlockDetail(mContext, mAddress,
+            HttpRequest.get().getTransactionDetail(mContext, mAddress,
                 blockAsAddresses -> showTransaction(blockAsAddresses, alert))
         );
     }

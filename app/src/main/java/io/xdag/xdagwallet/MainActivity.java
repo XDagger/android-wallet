@@ -7,11 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import butterknife.BindView;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
-import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
@@ -23,6 +20,8 @@ import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ToolbarUtil;
+import io.xdag.xdagwallet.widget.BottomBar;
+import io.xdag.xdagwallet.widget.BottomBarItem;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagEventManager;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
@@ -39,9 +38,8 @@ public class MainActivity extends ToolbarActivity {
 
     private static final String EXTRA_RESTORE = "extra_restore";
     private static final String EXTRA_SWITCH_POOL = "extra_switch_pool";
-    public static boolean isStart = false;
     @BindView(R.id.bottom_navigation)
-    AHBottomNavigation mNavigationView;
+    BottomBar mBottomBar;
 
     private FragmentManager mFragmentManager;
     private HomeFragment mHomeFragment;
@@ -56,7 +54,6 @@ public class MainActivity extends ToolbarActivity {
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        isStart = true;
         ActivityStack.getInstance().finishNotTopActivities();
     }
 
@@ -72,6 +69,7 @@ public class MainActivity extends ToolbarActivity {
         return true;
     }
 
+
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
         mFragmentManager = getSupportFragmentManager();
@@ -80,7 +78,7 @@ public class MainActivity extends ToolbarActivity {
         } else {
             recoverFragment();
         }
-        initNavigationView();
+        initBottomBar();
     }
 
 
@@ -131,7 +129,7 @@ public class MainActivity extends ToolbarActivity {
             XdagHandlerWrapper.getInstance(this).disconnectPool();
             mHomeFragment.showNotReady();
             showFragment(mHomeFragment);
-            mNavigationView.setCurrentItem(mHomeFragment.getPosition());
+            mBottomBar.setCurrentItem(mHomeFragment.getPosition());
         }
     }
 
@@ -151,34 +149,23 @@ public class MainActivity extends ToolbarActivity {
     }
 
 
-    private void initNavigationView() {
-        // create items
-        AHBottomNavigationItem home =
-            new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_home);
-        AHBottomNavigationItem receive =
-            new AHBottomNavigationItem(getString(R.string.receive), R.drawable.ic_receive);
-        AHBottomNavigationItem send =
-            new AHBottomNavigationItem(getString(R.string.send), R.drawable.ic_send);
-        AHBottomNavigationItem setting =
-            new AHBottomNavigationItem(getString(R.string.more), R.drawable.ic_more);
-        // add items
-        mNavigationView.addItem(home);
-        mNavigationView.addItem(receive);
-        mNavigationView.addItem(send);
-        mNavigationView.addItem(setting);
-        // the selectedImage item color
-        mNavigationView.setAccentColor(Common.getColor(R.color.colorPrimary));
-        // the unselected item color
-        mNavigationView.setInactiveColor(Common.getColor(R.color.GERY));
-        // set titles
-        mNavigationView.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
-        // set current item selectedImage
-        mNavigationView.setCurrentItem(0);
-        ToolbarUtil.setToolbar(0, getToolbar());
-        // set listeners
-        mNavigationView.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
-            @Override
-            public boolean onTabSelected(int position, boolean wasSelected) {
+    private void initBottomBar() {
+
+        mBottomBar.addItem(
+            new BottomBarItem(mContext, R.mipmap.ic_home, R.mipmap.ic_home_unselected,
+                getString(R.string.home)));
+        mBottomBar.addItem(
+            new BottomBarItem(mContext, R.mipmap.ic_receive, R.mipmap.ic_receive_unselected,
+                getString(R.string.receive)));
+        mBottomBar.addItem(
+            new BottomBarItem(mContext, R.mipmap.ic_send, R.mipmap.ic_send_unselected,
+                getString(R.string.send)));
+        mBottomBar.addItem(
+            new BottomBarItem(mContext, R.mipmap.ic_more, R.mipmap.ic_more_unselected,
+                getString(R.string.setting)));
+
+        mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
+            @Override public void onTabSelected(int position, int prePosition) {
                 switch (position) {
                     case 0:
                         showFragment(mHomeFragment);
@@ -193,8 +180,13 @@ public class MainActivity extends ToolbarActivity {
                         showFragment(mSettingFragment);
                         break;
                 }
-                return true;
             }
+
+
+            @Override public void onTabUnselected(int position) { }
+
+
+            @Override public void onTabReselected(int position) { }
         });
     }
 

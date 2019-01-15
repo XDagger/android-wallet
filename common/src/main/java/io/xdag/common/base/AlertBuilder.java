@@ -14,6 +14,14 @@ public class AlertBuilder extends AlertDialog.Builder {
         init();
     }
 
+
     protected void init() {
+    }
+
+
+    @Override public AlertDialog create() {
+        AlertDialog dialog = super.create();
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
     }
 }

@@ -2,5 +2,7 @@
 <resources>
     
     <color name="page_background">#f1f1f1</color>
+    <color name="bottom_bar_selected">#00004E</color>
+    <color name="bottom_bar_un_selected">#9B9B9B</color>
 
 </resources>

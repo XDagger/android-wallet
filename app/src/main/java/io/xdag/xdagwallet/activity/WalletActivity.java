@@ -27,14 +27,6 @@ public class WalletActivity extends ToolbarActivity {
     @BindView(R.id.wallet_tv_function_text)
     TextView mTvFunction;
 
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
-        super.onCreate(savedInstanceState);
-    }
-
-
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_wallet;
@@ -87,7 +79,6 @@ public class WalletActivity extends ToolbarActivity {
             .onGranted(data -> {
                 if (XdagHandlerWrapper.createSDCardFile(mContext) != null) {
                     RestoreActivity.start(mContext);
-                    finish();
                 }
             })
             .start();
@@ -108,7 +99,7 @@ public class WalletActivity extends ToolbarActivity {
 
     @Override
     protected int getToolbarMode() {
-        if (UsageActivity.isNotShow()) {
+        if (UsageActivity.isNotDisplay()) {
             return ToolbarMode.MODE_NONE;
         }
         return ToolbarMode.MODE_BACK;

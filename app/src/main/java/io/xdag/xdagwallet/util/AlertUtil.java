@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.tapadoo.alerter.Alerter;
 
+import io.xdag.common.util.ToastUtil;
 import io.xdag.xdagwallet.R;
 
 /**
@@ -22,12 +23,17 @@ public class AlertUtil {
 
 
     public static void show(Activity activity, String message) {
-        Alerter.create(activity)
+        if (activity != null) {
+            Alerter.create(activity)
                 .setDuration(ALERT_DURATION)
                 .hideIcon()
                 .setTextAppearance(R.style.AlertTextStyle)
                 .setBackgroundColorRes(R.color.colorAccent)
                 .setText(message)
                 .show();
+        } else {
+            ToastUtil.showCenter(message);
+        }
+
     }
 }

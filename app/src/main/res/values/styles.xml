@@ -9,16 +9,16 @@
         <item name="android:windowBackground">@drawable/splash_window</item>
     </style>
     
-    <style name="Xdag">
+    <style name="XDAG">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
     
-    <style name="Xdag.Item">
+    <style name="XDAG.Item">
         <item name="android:layout_width">match_parent</item>
     </style>
     
-    <style name="Xdag.Item.Explain">
+    <style name="XDAG.Item.Explain">
         <item name="android:layout_marginLeft">1dp</item>
         <item name="android:layout_marginRight">1dp</item>
         <item name="android:paddingTop">12dp</item>
@@ -29,17 +29,17 @@
         <item name="android:textSize">14sp</item>
     </style>
     
-    <style name="Xdag.Item.Explain.Text">
+    <style name="XDAG.Item.Explain.Text">
         <item name="android:textColor">#de000000</item>
         <item name="android:background">@color/WHITE</item>
         <item name="android:elevation">1dp</item>
     </style>
     
-    <style name="Xdag.Button">
+    <style name="XDAG.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginLeft">32dp</item>
         <item name="android:layout_marginRight">32dp</item>
-        <item name="android:background">@drawable/shape_btn_update</item>
+        <item name="android:background">@drawable/bg_shape_btn</item>
         <item name="android:textColor">@color/WHITE</item>
         <item name="android:textSize">18sp</item>
     </style>

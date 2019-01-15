@@ -130,7 +130,7 @@ public class HomeFragment extends BaseMainFragment {
 
     private void requestTransaction() {
         mDisposable.add(HttpRequest.get()
-            .getBlockList(mContext, mTvAddress.getText().toString(), this::showTransaction));
+            .getTransactions(mContext, mTvAddress.getText().toString(), this::showTransaction));
     }
 
 

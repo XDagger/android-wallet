@@ -6,13 +6,12 @@ static def buildTime() {
 
 android {
     compileSdkVersion compile_version
-    buildToolsVersion build_tools_version
     defaultConfig {
         applicationId "io.xdag.xdagwallet"
         minSdkVersion min_version
         targetSdkVersion target_version
-        versionCode 24
-        versionName "0.2.4"
+        versionCode 25
+        versionName "0.2.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -74,8 +73,6 @@ dependencies {
     implementation 'com.tapadoo.android:alerter:2.0.5'
     // https://github.com/yanzhenjie/AndPermission
     implementation 'com.yanzhenjie:permission:2.0.0-rc6'
-    // https://github.com/aurelhubert/ahbottomnavigation
-    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
     // https://github.com/PureWriter/about-page
     implementation 'me.drakeet.support:about:2.1.1'
     implementation 'me.drakeet.multitype:multitype:3.4.4'
