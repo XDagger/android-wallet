@@ -10,7 +10,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="@string/password_format"
-            android:maxLength="18"
             android:layout_marginLeft="@dimen/space_24"
             android:layout_marginRight="@dimen/space_24"
             android:inputType="textPassword">
