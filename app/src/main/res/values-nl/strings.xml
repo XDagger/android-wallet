@@ -16,6 +16,8 @@
   <string name="send_to_address">Verzenden naar Adres</string>
   <string name="amount_to_send">Bedrag</string>
   <string name="amount">Bedrag</string>
+  <string name="remark_to_send">opmerking(facultatief)</string>
+  <string name="remark">opmerking</string>
   <string name="not_ready">Niet gereed</string>
   <string name="create_wallet">Portemonnee Maken</string>
   <string name="restore_wallet">Portemonnee Herstellen</string>

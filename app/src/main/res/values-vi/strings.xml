@@ -16,6 +16,8 @@
   <string name="send_to_address">Gửi đến địa chỉ</string>
   <string name="amount_to_send">Số lượng</string>
   <string name="amount">Số lượng</string>
+  <string name="remark_to_send">ghi(tùy)</string>
+  <string name="remark">ghi</string>
   <string name="not_ready">Không sẵn sàng</string>
   <string name="create_wallet">Tạo ví</string>
   <string name="restore_wallet">Khôi phục ví</string>

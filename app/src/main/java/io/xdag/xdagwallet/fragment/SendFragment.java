@@ -31,6 +31,8 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
     EditText mEtAmount;
     @BindView(R.id.send_et_address)
     EditText mEtAddress;
+    @BindView(R.id.send_et_remark)
+    EditText mEtRemark;
     @BindView(R.id.send_btn_xdag)
     Button mBtnSendXdag;
     @BindView(R.id.send_tv_available)
@@ -110,11 +112,12 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
     void send_btn_xdag() {
         String address = mEtAddress.getText().toString();
         String amount = mEtAmount.getText().toString();
+        String remark = mEtRemark.getText().toString();
         if(TextUtils.equals(address, Config.getAddress())) {
             AlertUtil.show(mContext,R.string.error_send_coin_itself);
             return;
         }
-        getXdagHandler().xferXdagCoin(address, amount);
+        getXdagHandler().xferXdagCoin(address, amount,remark);
     }
 
     @OnClick({R.id.send_tv_available})

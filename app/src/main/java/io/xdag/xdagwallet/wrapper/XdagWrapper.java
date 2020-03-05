@@ -40,8 +40,8 @@ public class XdagWrapper {
     }
 
 
-    public int XdagXferToAddress(String address, String amount) {
-        return XdagXfer(address, amount);
+    public int XdagXferToAddress(String address, String amount,String remark) {
+        return XdagXfer(address, amount,remark);
     }
 
 
@@ -76,7 +76,7 @@ public class XdagWrapper {
     private native int XdagDisConnect();
 
 
-    private native int XdagXfer(String address, String amount);
+    private native int XdagXfer(String address, String amount,String remark);
 
 
     private native int XdagNotifyNativeMsg(String authInfo);

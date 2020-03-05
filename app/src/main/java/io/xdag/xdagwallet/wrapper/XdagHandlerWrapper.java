@@ -38,6 +38,7 @@ public class XdagHandlerWrapper {
     private static final String KEY_POOL = "key_pool";
     private static final String KEY_ADDRESS = "key_address";
     private static final String KEY_AMOUNT = "key_amount";
+    private static final String KEY_REMARK = "key_remark";
 
     public static List<String> WALLET_LIST = Arrays.asList("dnet_key.dat", "wallet.dat", "storage");
 
@@ -79,11 +80,12 @@ public class XdagHandlerWrapper {
     }
 
 
-    public void xferXdagCoin(@NonNull String address, @NonNull String amount) {
+    public void xferXdagCoin(@NonNull String address, @NonNull String amount,@Nullable String remark) {
         Message msg = Message.obtain();
         Bundle data = new Bundle();
         data.putString(KEY_ADDRESS, address);
         data.putString(KEY_AMOUNT, amount);
+        data.putString(KEY_REMARK, remark);
         msg.what = MSG_XFER_XDAG_COIN;
         msg.setData(data);
         mXdagHandler.sendMessage(msg);
@@ -128,8 +130,9 @@ public class XdagHandlerWrapper {
                     Bundle data = msg.getData();
                     String address = data.getString(KEY_ADDRESS);
                     String amount = data.getString(KEY_AMOUNT);
+                    String remark = data.getString(KEY_REMARK);
                     XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                    xdagWrapper.XdagXferToAddress(address, amount);
+                    xdagWrapper.XdagXferToAddress(address, amount,remark);
                 }
                 break;
                 default: {

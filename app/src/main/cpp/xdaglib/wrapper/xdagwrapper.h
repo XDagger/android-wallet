@@ -43,6 +43,7 @@ typedef enum {
     en_event_balance_too_small      = 0x3001,
     en_event_invalid_recv_address   = 0x3002,
     en_event_xdag_transfered        = 0x3003,
+    en_event_invalid_remark         = 0x3004,
 
     //miner net thread error
     en_event_connect_pool_timeout   = 0x4000,
@@ -158,7 +159,7 @@ extern const char* xdag_get_version();
 extern void xdag_wrapper_init(const void* callback_object,
                               st_xdag_app_msg* (*callback_func)(const void* callback_object,st_xdag_event *event));
 
-extern void xdag_send_coin(const char* amount,const char* address);
+extern void xdag_send_coin(const char* amount,const char* address,const char* remark);
 
 extern void report_ui_walletinit_event(en_xdag_event_type event_type,en_xdag_program_state program_state,const char* err_msg);
 extern void report_ui_xfer_event(en_xdag_event_type event_type,en_xdag_program_state program_state,const char* err_msg);

@@ -51,7 +51,11 @@ public class BlockDetailModel extends ErrorResponse {
         public String address;
         public String amount;
         public String time;
+        public String remark;
 
+        public String getRemark(){
+            return remark;
+        }
 
         public int getTypeImage() {
             if (isInput()) {

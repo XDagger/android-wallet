@@ -325,15 +325,18 @@ JNIEXPORT jint JNICALL Java_io_xdag_xdagwallet_wrapper_XdagWrapper_XdagXfer(
         JNIEnv *env,
         jobject *obj,
         jstring recvAddress,
-        jstring sendAmount) {
+        jstring sendAmount,
+        jstring sendRemark) {
 
     jboolean isCopy = JNI_TRUE;
     const char* address = env->GetStringUTFChars(recvAddress,&isCopy);
     isCopy = JNI_TRUE;
     const char* amount = env->GetStringUTFChars(sendAmount,&isCopy);
+    isCopy = JNI_TRUE;
+    const char* remark = env->GetStringUTFChars(sendRemark,&isCopy);
 
-    LOGI("xdag xfer coins recv address %s recv amount %s ",address,amount);
-    xdag_send_coin(amount,address);
+    LOGI("xdag xfer coins recv address %s recv amount %s remark %s ",address,amount,remark);
+    xdag_send_coin(amount,address,remark);
 
     return 0;
 }

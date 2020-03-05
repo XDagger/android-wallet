@@ -16,6 +16,8 @@
   <string name="send_to_address">Отправить на адрес</string>
   <string name="amount_to_send">Сумма</string>
   <string name="amount">Сумма</string>
+  <string name="remark_to_send">Замечания(выбранный)</string>
+  <string name="remark">Замечания</string>
   <string name="not_ready">Не готово</string>
   <string name="create_wallet">Создать кошелёк</string>
   <string name="restore_wallet">Восстановить кошелёк</string>
