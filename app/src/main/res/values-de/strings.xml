@@ -16,6 +16,8 @@
   <string name="send_to_address">An adresse senden</string>
   <string name="amount_to_send">Betrag</string>
   <string name="amount">Betrag</string>
+  <string name="remark_to_send">Bemerkungen(Optional)</string>
+  <string name="remark">Bemerkungen</string>
   <string name="not_ready">Nicht bereit</string>
   <string name="create_wallet">Brieftasche Erstellen</string>
   <string name="restore_wallet">Brieftasche Wiederherstellen</string>

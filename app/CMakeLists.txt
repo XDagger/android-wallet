@@ -555,6 +555,7 @@ set(XDAG_SRC_FILES
                 src/main/cpp/xdaglib/dnet/dnet_threads.c
                 src/main/cpp/xdaglib/dnet/dnet_tap.c
 
+                src/main/cpp/xdaglib/client/utils/utils.c
                 src/main/cpp/xdaglib/client/address.c
                 src/main/cpp/xdaglib/client/block.c
                 src/main/cpp/xdaglib/client/crypt.c

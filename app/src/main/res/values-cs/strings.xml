@@ -16,6 +16,8 @@
   <string name="send_to_address">Odeslat na adresu</string>
   <string name="amount_to_send">Množství k odeslání</string>
   <string name="amount">Množství</string>
+  <string name="remark_to_send">Poznámky(Volitelné)</string>
+  <string name="remark">Poznámky</string>
   <string name="not_ready">Nepřipraven</string>
   <string name="create_wallet">Vytvořit peněženku</string>
   <string name="restore_wallet">Obnovit peněženku</string>

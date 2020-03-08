@@ -16,6 +16,8 @@
   <string name="send_to_address">Αποστολή προς διεύθυνση</string>
   <string name="amount_to_send">Ποσό</string>
   <string name="amount">Ποσό</string>
+  <string name="remark_to_send">Παρατηρήσεις(Προαιρετικό)</string>
+  <string name="remark">Παρατηρήσεις</string>
   <string name="not_ready">Δεν είναι έτοιμο</string>
   <string name="create_wallet">Δημιουργία πορτοφολιού</string>
   <string name="restore_wallet">Επαναφορά πορτοφολιού</string>

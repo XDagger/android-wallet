@@ -34,6 +34,7 @@
 #include "sync.h"
 #include "pool.h"
 #include "memory.h"
+#include "utils/utils.h"
 #include "../wrapper/xdagwrapper.h"
 
 //macro defines
@@ -41,7 +42,7 @@
 #define XDAG_COMMAND_MAX		0x1000
 #define UNIX_SOCK               "unix_sock.dat"
 #define XFER_MAX_IN             11
-#define Nfields(d)				(2 + d->nfields + 3 * d->nkeys + 2 * d->outsig)
+#define Nfields(d)				(2 + d->fieldsCount + 3 * d->keysCount + 2 * d->outsig)
 
 //inline structs
 struct account_callback_data {
@@ -58,7 +59,8 @@ struct xfer_callback_data {
 	struct xdag_field fields[XFER_MAX_IN + 1];
 	int keys[XFER_MAX_IN + 1];
 	xdag_amount_t todo, done, remains;
-	int nfields, nkeys, outsig;
+	int fieldsCount, keysCount, outsig,hasRemark;
+    xdag_remark_t remark;
 };
 
 //global variables
@@ -132,21 +134,25 @@ static int make_block(struct xfer_callback_data *d)
 {
     int res;
 
-    if (d->nfields != XFER_MAX_IN)
-        memcpy(d->fields + d->nfields, d->fields + XFER_MAX_IN, sizeof(xdag_hashlow_t));
+    if (d->fieldsCount != XFER_MAX_IN){
+        memcpy(d->fields + d->fieldsCount, d->fields + XFER_MAX_IN, sizeof(xdag_hashlow_t));
+    }
+    d->fields[d->fieldsCount].amount = d->todo;
 
-    d->fields[d->nfields].amount = d->todo;
-    res = xdag_create_block(d->fields, d->nfields, 1, 0, 0);
+    if(d->hasRemark) {
+        memcpy(d->fields + d->fieldsCount + d->hasRemark, d->remark, sizeof(xdag_remark_t));
+    }
+    res = xdag_create_block(d->fields, d->fieldsCount, 1, d->hasRemark,0, 0);
     if (res) {
         xdag_err("FAILED: to %s xfer %.9Lf %s, error %d",
-                      xdag_hash2address(d->fields[d->nfields].hash), amount2cheatcoins(d->todo), coinname, res);
+                      xdag_hash2address(d->fields[d->fieldsCount].hash), amount2cheatcoins(d->todo), coinname, res);
         return -1;
     }
 
     d->done += d->todo;
     d->todo = 0;
-    d->nfields = 0;
-    d->nkeys = 0;
+    d->fieldsCount = 0;
+    d->keysCount = 0;
     d->outsig = 1;
 
     return 0;
@@ -182,17 +188,17 @@ static int xfer_coin_callback(void *data, xdag_hash_t hash, xdag_amount_t amount
     if (g_is_pool && xdag_main_time() < (time >> 16) + 2 * XDAG_POOL_N_CONFIRMATIONS)
         return 0;
 
-    for (i = 0; i < d->nkeys; ++i) {
+    for (i = 0; i < d->keysCount; ++i) {
         if (n_our_key == d->keys[i])
             break;
     }
 
-    if (i == d->nkeys) d->keys[d->nkeys++] = n_our_key;
+    if (i == d->keysCount) d->keys[d->keysCount++] = n_our_key;
     if (d->keys[XFER_MAX_IN] == n_our_key) d->outsig = 0;
 
     if (Nfields(d) > XDAG_BLOCK_FIELDS) {
         if (make_block(d)) return -1;
-        d->keys[d->nkeys++] = n_our_key;
+        d->keys[d->keysCount++] = n_our_key;
         if (d->keys[XFER_MAX_IN] == n_our_key)
             d->outsig = 0;
     }
@@ -200,8 +206,8 @@ static int xfer_coin_callback(void *data, xdag_hash_t hash, xdag_amount_t amount
     if (amount < todo)
         todo = amount;
 
-    memcpy(d->fields + d->nfields, hash, sizeof(xdag_hashlow_t));
-    d->fields[d->nfields++].amount = todo;
+    memcpy(d->fields + d->fieldsCount, hash, sizeof(xdag_hashlow_t));
+    d->fields[d->fieldsCount++].amount = todo;
     d->todo += todo, d->remains -= todo;
     xdag_log_xfer(hash, d->fields[XFER_MAX_IN].hash, todo);
 
@@ -276,7 +282,7 @@ static uint64_t get_timestamp(void)
     uint64_t result = (uint64_t)(unsigned long)tp.tv_sec << 10 | ((tp.tv_usec << 10) / 1000000);
     return result;
 }
-int xdag_xfer_coin(const char* amount,const char* address){
+int xdag_xfer_coin(const char* amount,const char* address,const char* remark){
 
     uint32_t pwd[4];
     struct xfer_callback_data xfer;
@@ -299,6 +305,11 @@ int xdag_xfer_coin(const char* amount,const char* address){
         return 1;
     }
 
+	if(remark && !validate_remark(remark)) {
+		report_ui_xfer_event(en_event_invalid_remark,POOL,"incorrect remark");
+		return 1;
+	}
+
     /* ask user type in password */
     int res = xdag_user_crypt_action(0, 0, 0, 3);
     if (res == 1) {
@@ -310,6 +321,8 @@ int xdag_xfer_coin(const char* amount,const char* address){
     }
 
     xdag_wallet_default_key(&xfer.keys[XFER_MAX_IN]);
+    memcpy(xfer.remark, remark, strlen(remark));
+    xfer.hasRemark = 1;
     xfer.outsig = 1;
     g_xdag_state = XDAG_STATE_XFER;
     g_xdag_xfer_last = (xdag_time_t)time(0);

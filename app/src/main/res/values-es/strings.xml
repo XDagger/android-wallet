@@ -16,6 +16,8 @@
   <string name="send_to_address">Enviar a la dirección</string>
   <string name="amount_to_send">Cantidad</string>
   <string name="amount">Cantidad</string>
+  <string name="remark_to_send">Observaciones(Opciones)</string>
+  <string name="remark">Observaciones</string>
   <string name="not_ready">No está listo</string>
   <string name="create_wallet">Crear Cartera</string>
   <string name="restore_wallet">Restaurar Cartera</string>

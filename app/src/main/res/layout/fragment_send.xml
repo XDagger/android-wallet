@@ -64,27 +64,56 @@
             app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/DEEP_GERY"
-            android:layout_marginEnd="@dimen/space_16"
-            app:layout_constraintRight_toRightOf="@id/send_et_amount"
-            android:textSize="@dimen/size_text"
-            app:layout_constraintBottom_toBottomOf="@id/send_et_amount"
-            app:layout_constraintTop_toTopOf="@id/send_et_amount"
-            android:text="@string/XDAG"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/DEEP_GERY"
+        android:layout_marginEnd="@dimen/space_16"
+        app:layout_constraintRight_toRightOf="@id/send_et_amount"
+        android:textSize="@dimen/size_text"
+        app:layout_constraintBottom_toBottomOf="@id/send_et_amount"
+        app:layout_constraintTop_toTopOf="@id/send_et_amount"
+        android:text="@string/XDAG"/>
 
     <TextView
-            android:id="@+id/send_tv_available"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_8"
-            app:layout_constraintTop_toBottomOf="@id/send_et_amount"
-            android:layout_marginEnd="@dimen/space_16"
-            android:textSize="@dimen/size_tip"
-            android:textColor="@color/colorPrimary"
-            android:text="Available 0 XDAG"
-            app:layout_constraintRight_toRightOf="parent"/>
+        android:id="@+id/send_tv_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@id/send_et_amount"
+        android:layout_marginEnd="@dimen/space_16"
+        android:textSize="@dimen/size_tip"
+        android:textColor="@color/colorPrimary"
+        android:text="Available 0 XDAG"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/send_tv_remark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/send_et_amount"
+        app:layout_constraintLeft_toLeftOf="@id/send_tv_address"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/BLACK"
+        android:textSize="@dimen/size_title"
+        android:text="@string/remark_to_send"/>
+
+    <EditText
+        android:id="@+id/send_et_remark"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:textColor="@color/GERY"
+        android:textSize="@dimen/size_text"
+        android:layout_marginTop="@dimen/space_8"
+        android:padding="@dimen/space_16"
+        android:paddingLeft="@dimen/space_16"
+        android:paddingBottom="12dp"
+        android:paddingTop="12dp"
+        android:background="@color/MORE_LIGHT_GERY"
+        android:hint="@string/remark"
+        app:layout_constraintTop_toBottomOf="@id/send_tv_remark"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Button
             style="@style/XDAG.Button"
@@ -92,8 +121,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/send_xdag"
-            android:layout_marginTop="100dp"
-            app:layout_constraintTop_toBottomOf="@id/send_et_amount"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toBottomOf="@id/send_et_remark"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
 

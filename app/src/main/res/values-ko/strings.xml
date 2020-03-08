@@ -16,6 +16,8 @@
   <string name="send_to_address">주소 보내기</string>
   <string name="amount_to_send">금액</string>
   <string name="amount">금액</string>
+  <string name="remark_to_send">평론(옵션)</string>
+  <string name="remark">평론</string>
   <string name="not_ready">준비 되지 않음</string>
   <string name="create_wallet">지갑 만들기</string>
   <string name="restore_wallet">월렛 복원</string>
