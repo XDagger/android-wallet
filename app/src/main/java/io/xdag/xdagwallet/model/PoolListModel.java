@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class PoolListModel implements Serializable {
 
-    private static final String CACHE_KEY = "io,xdag.android-wallet.pool.list";
+    private static final String CACHE_KEY = "io.xdag.android-wallet.pool.list";
 
     private static final PoolListModel sInstance = new PoolListModel();
 
@@ -40,30 +40,8 @@ public class PoolListModel implements Serializable {
 
     public void init() {
         poolList.clear();
+        // xdagmine.com:13654
         poolList.add(new PoolModel("xdagmine.com:13654"));
-        poolList.add(new PoolModel("feipool.xyz:13654"));
-        poolList.add(new PoolModel("xdagscan.com:13654"));
-        poolList.add(new PoolModel("cn.xdag.vspool.com:13654"));
-        poolList.add(new PoolModel("142.44.143.234:777"));
-        poolList.add(new PoolModel("pool.xdagcn.com:13654"));
-        poolList.add(new PoolModel("pool.xdagpool.com:13654"));
-        poolList.add(new PoolModel("xdag.coolmine.top:13654"));
-        poolList.add(new PoolModel("109.196.45.218:443"));
-        poolList.add(new PoolModel("139.99.124.23:13654"));
-        poolList.add(new PoolModel("xdag.jeepool.com:13654"));
-        poolList.add(new PoolModel("95.216.36.234:13654"));
-        poolList.add(new PoolModel("pool.xdagcn.com:13654"));
-        poolList.add(new PoolModel("xdag.yourspool.com:443"));
-        poolList.add(new PoolModel("xdag.uupool.cn:13654"));
-        poolList.add(new PoolModel("139.99.124.135:13654"));
-        poolList.add(new PoolModel("136.243.55.153:13654"));
-        poolList.add(new PoolModel("pool1.xdag.signal2noi.se:443"));
-        poolList.add(new PoolModel("78.46.82.220:13654"));
-        poolList.add(new PoolModel("172.105.216.53:3355"));
-        poolList.add(new PoolModel("142.44.143.234:777"));
-        poolList.add(new PoolModel("xdag.coolmine.top:13654"));
-        poolList.add(new PoolModel("xdag.poolaroid.cash:443"));
-        poolList.add(new PoolModel("pool.xdag.us:13654"));
     }
 
 

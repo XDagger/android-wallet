@@ -30,6 +30,7 @@ public class TransactionAdapter
     protected void convert(BaseViewHolder helper, final BlockDetailModel.BlockAsAddress item) {
         helper.setText(R.id.item_transaction_tv_address, item.address);
         helper.setText(R.id.item_transaction_tv_amount, item.getAmount());
+        helper.setText(R.id.item_transaction_tv_remark, item.remark);
         helper.setTextColor(R.id.item_transaction_tv_amount, item.getAmountColor());
         helper.setImageResource(R.id.item_transaction_img_type, item.getTypeImage());
 
