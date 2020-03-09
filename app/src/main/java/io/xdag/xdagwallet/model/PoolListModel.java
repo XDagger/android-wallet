@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class PoolListModel implements Serializable {
 
-    private static final String CACHE_KEY = "io,xdag.android-wallet.pool.list";
+    private static final String CACHE_KEY = "io.xdag.android-wallet.pool.list";
 
     private static final PoolListModel sInstance = new PoolListModel();
 
@@ -40,8 +40,8 @@ public class PoolListModel implements Serializable {
 
     public void init() {
         poolList.clear();
-        poolList.add(new PoolModel("equal.xdag.org:13656"));
-        poolList.add(new PoolModel("solo.xdag.org:13655"));
+        // xdagmine.com:13654
+        poolList.add(new PoolModel("xdagmine.com:13654"));
     }
 
 

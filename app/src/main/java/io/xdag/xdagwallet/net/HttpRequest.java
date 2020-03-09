@@ -1,17 +1,18 @@
 package io.xdag.xdagwallet.net;
 
 import android.app.Activity;
+
+import java.util.List;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.model.BlockDetailModel;
 import io.xdag.xdagwallet.model.ConfigModel;
 import io.xdag.xdagwallet.model.VersionModel;
 import io.xdag.xdagwallet.net.error.ErrorConsumer;
 import io.xdag.xdagwallet.net.rx.Detail2AddressListFunction;
 import io.xdag.xdagwallet.net.rx.Detail2TranListFunction;
-import java.util.List;
 
 /**
  * created by lxm on 2018/8/31.
