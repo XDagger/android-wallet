@@ -16,6 +16,8 @@
   <string name="send_to_address">收款地址</string>
   <string name="amount_to_send">发送数量</string>
   <string name="amount">數量</string>
+  <string name="remark_to_send">備注(可選)</string>
+  <string name="remark">備注</string>
   <string name="not_ready">准備中</string>
   <string name="create_wallet">創建錢包</string>
   <string name="restore_wallet">恢復錢包</string>

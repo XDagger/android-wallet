@@ -1,62 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:elevation="@dimen/elevation"
-        android:focusable="true"
-        android:padding="@dimen/space_16">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:elevation="@dimen/elevation"
+    android:focusable="true"
+    android:padding="@dimen/space_16">
 
     <ImageView
-            android:id="@+id/item_transaction_img_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_input"
-            android:textSize="@dimen/size_text"
-            app:layout_constraintBottom_toBottomOf="@id/item_transaction_tv_time"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/item_transaction_tv_address"/>
+        android:id="@+id/item_transaction_img_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_input"
+        android:textSize="@dimen/size_text"
+        app:layout_constraintBottom_toBottomOf="@id/item_transaction_tv_time"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_transaction_tv_address" />
 
     <TextView
-            android:id="@+id/item_transaction_tv_address"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_8"
-            android:layout_marginLeft="@dimen/space_8"
-            android:layout_marginRight="@dimen/space_8"
-            android:ellipsize="middle"
-            android:singleLine="true"
-            android:textColor="@color/LIGHT_BLACK"
-            app:layout_constraintLeft_toRightOf="@id/item_transaction_img_type"
-            app:layout_constraintRight_toLeftOf="@id/item_transaction_tv_amount"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="ewrXrSDbCmqH/fkLuQkEMiwed3709C2k"/>
+        android:id="@+id/item_transaction_tv_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_8"
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_marginRight="@dimen/space_8"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:textColor="@color/LIGHT_BLACK"
+        app:layout_constraintLeft_toRightOf="@id/item_transaction_img_type"
+        app:layout_constraintRight_toLeftOf="@id/item_transaction_tv_amount"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="ewrXrSDbCmqH/fkLuQkEMiwed3709C2k" />
 
     <TextView
-            android:id="@+id/item_transaction_tv_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/size_title"
-            app:layout_constraintBottom_toBottomOf="@id/item_transaction_img_type"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/item_transaction_img_type"
-            tools:text="+100"/>
+        android:id="@+id/item_transaction_tv_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/size_title"
+        app:layout_constraintBottom_toBottomOf="@id/item_transaction_img_type"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_transaction_img_type"
+        tools:text="+100" />
 
     <TextView
-            android:id="@+id/item_transaction_tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            android:layout_marginTop="@dimen/space_4"
-            android:textColor="@color/GERY"
-            android:textSize="@dimen/size_tip"
-            app:layout_constraintLeft_toLeftOf="@id/item_transaction_tv_address"
-            app:layout_constraintTop_toBottomOf="@id/item_transaction_tv_address"
-            tools:text="2018/2/23 23:33"/>
+        android:id="@+id/item_transaction_tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        android:textColor="@color/GERY"
+        android:textSize="@dimen/size_tip"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="@id/item_transaction_tv_address"
+        app:layout_constraintTop_toBottomOf="@id/item_transaction_tv_address"
+        tools:text="2018/2/23 23:33" />
+
+    <TextView
+        android:id="@+id/item_transaction_tv_remark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/GERY"
+        android:textSize="@dimen/size_tip"
+        android:visibility="visible"
+        android:layout_marginStart="@dimen/space_32"
+        app:layout_constraintBottom_toBottomOf="@id/item_transaction_tv_time"
+        app:layout_constraintLeft_toRightOf="@id/item_transaction_tv_time"
+        app:layout_constraintTop_toTopOf="@id/item_transaction_tv_time"
+        tools:text="remark" />
 
 </android.support.constraint.ConstraintLayout>

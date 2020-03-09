@@ -4,10 +4,6 @@ This XDAG Wallet is based on the C implementation of XDAG, and developed for And
 
 [<img src=https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png height="88">](https://play.google.com/store/apps/details?id=io.xdag.xdagwallet)
 
-### Status
-[![Throughput Graph](https://graphs.waffle.io/XDagger/android-wallet/throughput.svg)](https://waffle.io/XDagger/android-wallet/metrics/throughput)
-
-
 ## How to build 
 
 * Download the sourcecode from master branch and open it with latest Android Studio

@@ -64,8 +64,8 @@ const char* xdag_get_version(){
     return XDAG_VERSION;
 }
 
-void xdag_send_coin(const char* amount,const char* address){
-    xdag_xfer_coin(amount,address);
+void xdag_send_coin(const char* amount,const char* address, const char* remark){
+    xdag_xfer_coin(amount,address,remark);
 }
 
 void xdag_wrapper_init(const void* callback_object,

@@ -16,6 +16,8 @@
   <string name="send_to_address">Inviare all\'indirizzo</string>
   <string name="amount_to_send">Importo</string>
   <string name="amount">Importo</string>
+  <string name="remark_to_send">osservazione(facoltativo)</string>
+  <string name="remark">osservazione</string>
   <string name="not_ready">Non pronto</string>
   <string name="create_wallet">Crea Portafoglio</string>
   <string name="restore_wallet">Ripristina Portafoglio</string>

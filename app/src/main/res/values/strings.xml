@@ -16,6 +16,8 @@
     <string name="send_to_address">Send to Address</string>
     <string name="amount_to_send">Amount</string>
     <string name="amount">Amount</string>
+    <string name="remark_to_send">Remark(Optional)</string>
+    <string name="remark">Remark</string>
     <string name="not_ready">Not ready</string>
     <string name="create_wallet">Create Wallet</string>
     <string name="restore_wallet">Restore Wallet</string>

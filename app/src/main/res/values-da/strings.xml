@@ -16,6 +16,8 @@
   <string name="send_to_address">Send til Adresse</string>
   <string name="amount_to_send">Beløb</string>
   <string name="amount">Beløb</string>
+  <string name="remark_to_send">Bemærkninger(Frivillig)</string>
+  <string name="remark">Bemærkninger</string>
   <string name="not_ready">Ikke klar</string>
   <string name="create_wallet">Opret Tegnebog</string>
   <string name="restore_wallet">Gendan Tegnebog</string>

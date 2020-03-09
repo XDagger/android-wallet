@@ -20,6 +20,7 @@
 #include "pool.h"
 #include "memory.h"
 #include "address.h"
+#include "utils/utils.h"
 
 #define MAIN_CHAIN_PERIOD       (xdag_time_t)(64 << 10)
 #define MAX_WAITING_MAIN        1
@@ -33,15 +34,6 @@
 #define MAX_LINKS               15
 #define MAKE_BLOCK_PERIOD       13
 #define QUERY_RETRIES           2
-
-enum bi_flags {
-	BI_MAIN         = 0x01,
-	BI_MAIN_CHAIN   = 0x02,
-	BI_APPLIED      = 0x04,
-	BI_MAIN_REF     = 0x08,
-	BI_REF          = 0x10,
-	BI_OURS         = 0x20,
-};
 
 struct block_backrefs;
 
@@ -151,6 +143,17 @@ static inline void accept_amount(struct block_internal *bi, xdag_amount_t sum)
 			*(ti->ourprev ? &ti->ourprev->ournext : &ourfirst) = ti;
 		}
 	}
+}
+
+static inline size_t remark_acceptance(xdag_remark_t origin)
+{
+    char remark_buf[33] = {0};
+    memcpy(remark_buf, origin, sizeof(xdag_remark_t));
+    size_t size = validate_remark(remark_buf);
+    if(size){
+        return size;
+    }
+    return 0;
 }
 
 static uint64_t apply_block(struct block_internal *bi)
@@ -389,7 +392,7 @@ static int add_block_nolock(struct xdag_block *newBlock, xdag_time_t limit)
 	int keysCount = 0, ourKeysCount = 0;
 	int signInCount = 0, signOutCount = 0;
 	int signinmask = 0, signoutmask = 0;
-	int inmask = 0, outmask = 0;
+	int inmask = 0, outmask = 0,remark_index = 0;
 	int verified_keys_mask = 0, err, type;
 	struct block_internal tmpNodeBlock, *blockRef, *blockRef0;
 	xdag_diff_t diff0, diff;
@@ -445,6 +448,10 @@ static int add_block_nolock(struct xdag_block *newBlock, xdag_time_t limit)
 				public_keys[keysCount++].pub = (uint64_t*)((uintptr_t)&newBlock->field[i].data | (type - XDAG_FIELD_PUBLIC_KEY_0));
 			}
 			break;
+        case XDAG_FIELD_REMARK:
+            tmpNodeBlock.flags |= BI_REMARK;
+            remark_index = i;
+            break;
 		default:
 			err = 3;
 			goto end;
@@ -460,6 +467,14 @@ static int add_block_nolock(struct xdag_block *newBlock, xdag_time_t limit)
 		err = 4;
 		goto end;
 	}
+
+    /* check remark */
+    if(tmpNodeBlock.flags & BI_REMARK) {
+        if(!remark_acceptance(newBlock->field[remark_index].remark)) {
+            err = 0xE;
+            goto end;
+        }
+    }
 
 	if (signOutCount) {
 		our_keys = xdag_wallet_our_keys(&ourKeysCount);
@@ -740,7 +755,7 @@ int xdag_add_block(struct xdag_block *b)
  * in the following 'noutput' fields similarly - outputs, fee; send_time (time of sending the block);
  * if it is greater than the current one, then the mining is performed to generate the most optimal hash
  */
-int xdag_create_block(struct xdag_field *fields, int ninput, int noutput, xdag_amount_t fee, xdag_time_t send_time)
+int xdag_create_block(struct xdag_field *fields, int ninput, int noutput, int has_remark, xdag_amount_t fee, xdag_time_t send_time)
 {
 	struct xdag_block b[2];
 	int i, j, res, res0, mining, defkeynum, keysnum[XDAG_BLOCK_FIELDS], nkeys, nkeysnum = 0, outsigkeyind = -1;
@@ -764,7 +779,7 @@ int xdag_create_block(struct xdag_field *fields, int ninput, int noutput, xdag_a
 		}
 	}
 	
-	res0 = 1 + ninput + noutput + 3 * nkeysnum + (outsigkeyind < 0 ? 2 : 0);
+	res0 = 1 + ninput + noutput + has_remark + 3 * nkeysnum + (outsigkeyind < 0 ? 2 : 0);
 	
 	if (res0 > XDAG_BLOCK_FIELDS) {
 		return -1;
@@ -808,6 +823,10 @@ int xdag_create_block(struct xdag_field *fields, int ninput, int noutput, xdag_a
 
 	for (j = 0; j < noutput; ++j) {
 		setfld(XDAG_FIELD_OUT, fields + ninput + j, xdag_hash_t);
+	}
+
+	if(has_remark) {
+		setfld(XDAG_FIELD_REMARK, fields + ninput + noutput, xdag_remark_t);
 	}
 
 	for (j = 0; j < nkeysnum; ++j) {
@@ -1029,7 +1048,7 @@ begin:
 			nblk = nblk / 61 + (nblk % 61 > (unsigned)rand() % 61);
 
 			while (nblk--) {
-				xdag_create_block(0, 0, 0, 0, 0);
+				xdag_create_block(0, 0, 0, 0, 0, 0);
 			}
 		}
 
@@ -1148,7 +1167,7 @@ int xdag_get_our_block(xdag_hash_t hash)
 	pthread_mutex_unlock(&block_mutex);
 	
 	if (!bi) {
-		xdag_create_block(0, 0, 0, 0, 0);
+		xdag_create_block(0, 0, 0, 0, 0, 0);
 		pthread_mutex_lock(&block_mutex);
 		bi = ourfirst;
 		pthread_mutex_unlock(&block_mutex);

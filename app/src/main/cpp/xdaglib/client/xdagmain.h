@@ -65,7 +65,7 @@ extern void xdag_show_state(xdag_hash_t hash);
 
 extern int (*g_xdag_show_state)(const char *state, const char *balance, const char *address);
 
-extern int xdag_xfer_coin(const char* amount,const char* address);
+extern int xdag_xfer_coin(const char* amount,const char* address,const char* remark);
 
 extern void xdag_uninit();
 
