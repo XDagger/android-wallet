@@ -10,8 +10,8 @@ android {
         applicationId "io.xdag.xdagwallet"
         minSdkVersion min_version
         targetSdkVersion target_version
-        versionCode 25
-        versionName "0.2.5"
+        versionCode 27
+        versionName "0.2.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
