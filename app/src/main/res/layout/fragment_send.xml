@@ -101,7 +101,6 @@
         android:id="@+id/send_et_remark"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
         android:textColor="@color/GERY"
         android:textSize="@dimen/size_text"
         android:layout_marginTop="@dimen/space_8"

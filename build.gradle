@@ -4,7 +4,7 @@ buildscript {
     ext.min_version = 21
     ext.target_version = 28
     ext.support_version = '28.0.0'
-    ext.butterknife_version = '9.0.0-SNAPSHOT'
+    ext.butterknife_version = '9.0.0'
     ext.adapter_helper = '2.9.36'
     ext.leakcanary_version = '1.5.4'
     ext.retrofit_version = '2.4.0'
