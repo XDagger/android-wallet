@@ -1,4 +1,6 @@
 # XDAG Android Wallet
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FXDagger%2Fandroid-wallet.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FXDagger%2Fandroid-wallet?ref=badge_shield)
+
 
 This XDAG Wallet is based on the C implementation of XDAG, and developed for Android platform. 
 
@@ -83,3 +85,7 @@ We use `Thank you for your efforts.` in comments on the code review to indicate 
 
 [BillLevesque](https://github.com/amazingMan2017) (XDAG ABnr08l/kpFfvKLDBzv0+smQhbJo1RVy)   
 [ssyijiu](https://github.com/ssyijiu) (XDAG J2dlqLjgFmwloguyxiBUM3nitW3f6Ki9)  
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FXDagger%2Fandroid-wallet.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FXDagger%2Fandroid-wallet?ref=badge_large)
