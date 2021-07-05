@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.Toast;
 
 import io.xdag.common.util.ToastUtil;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import io.xdag.xdagwallet.dialog.LoadingBuilder;
 import io.xdag.xdagwallet.dialog.TipBuilder;
 import io.xdag.xdagwallet.fragment.SendFragment;
 import io.xdag.xdagwallet.util.AlertUtil;
-
+import io.xdag.xdagwallet.wrapper.XdagEvent;
 /**
  * created by ssyijiu  on 2018/7/28
  * <p>
@@ -35,12 +36,11 @@ public class XdagEventManager {
     private int mLastProgramState = XdagEvent.NINT;
 
     private List<OnEventUpdateCallback> mEventUpdateCallbacks = new ArrayList<>();
-
+    private String password;
     private LoadingBuilder mLoadingBuilder;
     private AlertDialog mLoadingDialog;
     private AlertDialog mTipDialog;
     private AlertDialog mInputDialog;
-
     @SuppressLint("StaticFieldLeak")
     private static XdagEventManager sInstance = null;
 
@@ -66,12 +66,11 @@ public class XdagEventManager {
         switch (event.eventType) {
             case XdagEvent.en_event_type_pwd:
             case XdagEvent.en_event_set_pwd:
-            case XdagEvent.en_event_retype_pwd:
-            case XdagEvent.en_event_set_rdm: {
+            case XdagEvent.en_event_retype_pwd: {
                 mLoadingDialog.dismiss();
                 mInputDialog.setMessage(getTipMessage(event.eventType));
                 mInputDialog.show();
-                showInputNegativeButton(event);
+                //showInputNegativeButton(event);
                 InputMethodUtil.showSoftInput(mActivity);
             }
             break;
@@ -92,15 +91,17 @@ public class XdagEventManager {
                     event.addressLoadState == XdagEvent.en_address_ready) {
                     notifyAddressReady(event);
                 }
-
-                if (mActivity.getXdagHandler().isNotConnectedToPool(event)) {
-                    if (!mInputDialog.isShowing()) {
-                        mLoadingBuilder.setMessage(Common.getString(R.string.please_wait_connecting_pool));
-                        mLoadingDialog.show();
-                    }
-                } else {
-                    mLoadingDialog.dismiss();
+                if(event.programState==XdagEvent.TIME){
+                    Toast.makeText(mActivity,"时间错误",Toast.LENGTH_SHORT).show();
                 }
+//                if (mActivity.getXdagHandler().isNotConnectedToPool(event)) {
+//                    if (!mInputDialog.isShowing()) {
+//                        mLoadingBuilder.setMessage(Common.getString(R.string.please_wait_connecting_pool));
+//                        mLoadingDialog.show();
+//                    }
+//                } else {
+//                    mLoadingDialog.dismiss();
+//                }
 
                 // xfer success
                 if (event.programState == XdagEvent.POOL && mLastProgramState == XdagEvent.XFER) {
@@ -130,7 +131,7 @@ public class XdagEventManager {
         mLastProgramState = event.programState;
     }
 
-
+    //通知事件更新
     private void notifyEventUpdate(XdagEvent event) {
         if (!mEventUpdateCallbacks.isEmpty()) {
             for (OnEventUpdateCallback callback : mEventUpdateCallbacks) {
@@ -171,7 +172,7 @@ public class XdagEventManager {
 
         mTipDialog = new TipBuilder(mActivity)
             .setPositiveListener((dialog, which) -> {
-                XdagWrapper.getInstance().XdagNotifyMsg();
+                //XdagWrapper.getInstance().XdagNotifyMsg();
                 dialog.dismiss();
                 mLoadingBuilder.setMessage(R.string.please_wait_read_wallet);
                 mLoadingDialog.show();
@@ -187,19 +188,20 @@ public class XdagEventManager {
                         InputMethodUtil.showSoftInput(mActivity);
                     }, 500);
                 } else {
+                    this.password = input;
                     XdagWrapper.getInstance().XdagNotifyMsg(input);
                     dialog.dismiss();
-                    mLoadingBuilder.setMessage(R.string.please_wait_connecting_pool);
-                    mLoadingDialog.show();
+
                 }
                 InputMethodUtil.hideSoftInput(mActivity);
             })
             .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
-                XdagWrapper.getInstance().XdagNotifyMsg();
+                XdagWrapper.getInstance().XdagNotifyMsg("");
                 InputMethodUtil.hideSoftInput(mActivity);
             }).create();
 
         mLoadingDialog.show();
+        mLoadingDialog.dismiss();
     }
 
 
@@ -229,14 +231,14 @@ public class XdagEventManager {
     }
 
 
-    private void showInputNegativeButton(XdagEvent event) {
-        if (event.eventType == XdagEvent.en_event_type_pwd &&
-            mActivity.mShowFragment instanceof SendFragment) {
-            mInputDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setVisibility(View.VISIBLE);
-        } else {
-            mInputDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setVisibility(View.INVISIBLE);
-        }
-    }
+//    private void showInputNegativeButton(XdagEvent event) {
+//        if (event.eventType == XdagEvent.en_event_type_pwd &&
+//            mActivity.mShowFragment instanceof SendFragment) {
+//            mInputDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setVisibility(View.VISIBLE);
+//        } else {
+//            mInputDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setVisibility(View.INVISIBLE);
+//        }
+//    }
 
 
     public void addOnEventUpdateCallback(OnEventUpdateCallback callback) {

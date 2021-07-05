@@ -118,6 +118,7 @@ public class XdagEvent {
     public static final int MINE = 16;
     public static final int STST = 17;
     public static final int SYNC = 18;
+    public static final int TIME = 19;
     /**
      * xdag program state end
      */
@@ -134,7 +135,9 @@ public class XdagEvent {
     public String errorMsg;
     public String appLogMsg;
 
-
+    public XdagEvent(int eventType){
+        this.eventType = eventType;
+    }
     public XdagEvent(int procedureType,
                      int eventType,
                      int logLevel,

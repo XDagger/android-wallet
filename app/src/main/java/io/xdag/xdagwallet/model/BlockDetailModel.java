@@ -15,7 +15,7 @@ import io.xdag.xdagwallet.net.error.ErrorResponse;
 
 public class BlockDetailModel extends ErrorResponse {
 
-    public String block;
+    //public String block;
     public String time;
     public String timestamp;
     public String flags;

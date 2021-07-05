@@ -3,6 +3,8 @@ package io.xdag.xdagwallet;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
@@ -13,6 +15,7 @@ import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
 import io.xdag.xdagwallet.config.Config;
+import io.xdag.xdagwallet.config.XdagConfig;
 import io.xdag.xdagwallet.fragment.BaseMainFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.MoreFragment;
@@ -49,8 +52,6 @@ public class MainActivity extends ToolbarActivity {
     public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
-    private XdagEventManager mXdagEventManager;
-
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,29 +92,26 @@ public class MainActivity extends ToolbarActivity {
 
     @Override
     protected void initData() {
-        mXdagEventManager = XdagEventManager.getInstance(this);
-        mXdagEventManager.initDialog();
-
         // request permissions
-        AndPermission.with(mContext)
-            .runtime()
-            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-            .onGranted(data -> connectToPool())
-            .start();
+//        AndPermission.with(mContext)
+//            .runtime()
+//            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+//            .onGranted(data -> connectToPool())
+//            .start();
     }
 
 
     private void connectToPool() {
         if (mRestore) {
             if (getXdagHandler().restoreWallet()) {
-                getXdagHandler().connectToPool(Config.getPoolAddress());
+                //getXdagHandler().connectToPool(Config.getPoolAddress());
             } else {
                 AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
             }
 
         } else {
             if (getXdagHandler().createWallet()) {
-                getXdagHandler().connectToPool(Config.getPoolAddress());
+                //getXdagHandler().connectToPool(Config.getPoolAddress());
             } else {
                 AlertUtil.show(mContext, R.string.error_create_xdag_wallet);
             }
@@ -145,7 +143,7 @@ public class MainActivity extends ToolbarActivity {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ProcessXdagEvent(XdagEvent event) {
-        mXdagEventManager.manageEvent(event);
+
     }
 
 
@@ -196,7 +194,7 @@ public class MainActivity extends ToolbarActivity {
         mReceiveFragment = ReceiveFragment.newInstance();
         mSendFragment = SendFragment.newInstance();
         mSettingFragment = MoreFragment.newInstance();
-
+        showFragment(mHomeFragment);
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
             HomeFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mReceiveFragment, R.id.container,
@@ -205,8 +203,6 @@ public class MainActivity extends ToolbarActivity {
             SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
             MoreFragment.class.getName());
-
-        showFragment(mHomeFragment);
     }
 
 

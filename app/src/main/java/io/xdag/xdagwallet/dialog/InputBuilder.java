@@ -17,7 +17,7 @@ public class InputBuilder extends AlertBuilder {
 
     private OnPositiveClickListener mOnPositiveClickListener;
     private EditText mEtInput;
-
+    private int type;
 
     public InputBuilder(@NonNull Context context) {
         super(context);
@@ -50,6 +50,13 @@ public class InputBuilder extends AlertBuilder {
         return this;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public interface OnPositiveClickListener {
         void onClick(DialogInterface dialog, String input);

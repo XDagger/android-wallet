@@ -1,0 +1,1 @@
+ninja: error: '../../../../src/main/cpp/openssl/crypto/aes/aes_core.c', needed by 'CMakeFiles/crypto.dir/src/main/cpp/openssl/crypto/aes/aes_core.c.o', missing and no known rule to make it

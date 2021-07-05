@@ -1,0 +1,69 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet",
+      "sdkFolder": "C:\\Users\\wenrui\\AppData\\Local\\Android\\Sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\build\\intermediates",
+      "gradleModulePathName": ":app",
+      "moduleRootFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app",
+      "makeFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\.cxx",
+      "cxxFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx",
+      "ndkFolder": "C:\\Users\\wenrui\\AppData\\Local\\Android\\Sdk\\ndk\\22.1.7171670",
+      "ndkVersion": "22.1.7171670",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [
+      "-std\u003dc++11 -frtti -fexceptions"
+    ],
+    "variantName": "release",
+    "soFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\build\\intermediates\\cmake\\release\\lib",
+    "objFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\build\\intermediates\\cmake\\release\\obj",
+    "jsonFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release",
+    "gradleBuildOutputFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cxx\\release",
+    "isDebuggableEnabled": false,
+    "validAbiList": [
+      "ARMEABI_V7A"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "ARMEABI_V7A",
+  "abiPlatformVersion": 26,
+  "cxxBuildFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a",
+  "jsonFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a\\android_gradle_build.json",
+  "gradleBuildOutputFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cxx\\release\\armeabi-v7a",
+  "objFolder": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\build\\intermediates\\cmake\\release\\obj\\armeabi-v7a",
+  "buildCommandFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a\\build_command.txt",
+  "buildOutputFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a\\build_output.txt",
+  "modelOutputFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a\\build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cxx\\release\\armeabi-v7a\\CMakeLists.txt",
+    "toolchainWrapperFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cxx\\release\\armeabi-v7a\\android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cxx\\release\\armeabi-v7a\\build_generation_state.json",
+    "cacheKeyFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cxx\\release\\armeabi-v7a\\compiler_cache_key.json",
+    "compilerCacheUseFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cxx\\release\\armeabi-v7a\\compiler_cache_use.json",
+    "compilerCacheWriteFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cxx\\release\\armeabi-v7a\\compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cxx\\release\\armeabi-v7a\\compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a\\json_generation_record.json",
+  "compileCommandsJsonFile": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a\\compile_commands.json"
+}

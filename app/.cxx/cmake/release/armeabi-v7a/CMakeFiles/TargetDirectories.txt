@@ -1,0 +1,5 @@
+C:/Users/wenrui/Desktop/aw/android-wallet/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/wenrui/Desktop/aw/android-wallet/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/crypto.dir
+C:/Users/wenrui/Desktop/aw/android-wallet/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/wenrui/Desktop/aw/android-wallet/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/xdag.dir
+C:/Users/wenrui/Desktop/aw/android-wallet/app/.cxx/cmake/release/armeabi-v7a/CMakeFiles/ssl.dir

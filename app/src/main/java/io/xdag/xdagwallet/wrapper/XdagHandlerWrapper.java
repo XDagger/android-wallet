@@ -21,6 +21,7 @@ import io.xdag.common.util.SDCardUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.AlertUtil;
+import io.xdag.xdagwallet.wallet.Wallet;
 
 /**
  * created by lxm on 2018/7/18.
@@ -34,12 +35,12 @@ public class XdagHandlerWrapper {
     private static final int MSG_CONNECT_TO_POOL = 1;
     private static final int MSG_DISCONNECT_FROM_POOL = 2;
     private static final int MSG_XFER_XDAG_COIN = 3;
-
+    private static final int MSG_WALLET_INIT = 4;
     private static final String KEY_POOL = "key_pool";
     private static final String KEY_ADDRESS = "key_address";
     private static final String KEY_AMOUNT = "key_amount";
     private static final String KEY_REMARK = "key_remark";
-
+    private static final String KEY_PASSWORD = "key_password";
     public static List<String> WALLET_LIST = Arrays.asList("dnet_key.dat", "wallet.dat", "storage");
 
     private Activity mActivity;
@@ -99,6 +100,14 @@ public class XdagHandlerWrapper {
         msg.setData(data);
         mXdagHandler.sendMessage(msg);
     }
+    public void walletInit(String password){
+        Message msg = Message.obtain();
+        Bundle data = new Bundle();
+        data.putString(KEY_PASSWORD,password);
+        msg.what = MSG_WALLET_INIT;
+        msg.setData(data);
+        mXdagHandler.sendMessage(msg);
+    }
 
 
     static class XdagHandler extends NoLeakHandler<Activity> {
@@ -132,9 +141,15 @@ public class XdagHandlerWrapper {
                     String amount = data.getString(KEY_AMOUNT);
                     String remark = data.getString(KEY_REMARK);
                     XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                    xdagWrapper.XdagXferToAddress(address, amount,remark);
+                    //xdagWrapper.XdagXferToAddress(address, amount, remark);
                 }
                 break;
+                case MSG_WALLET_INIT:{
+                    Bundle data = msg.getData();
+                    String password = data.getString(KEY_PASSWORD);
+                    XdagWrapper xdagWrapper = XdagWrapper.getInstance();
+
+                }
                 default: {
                     MLog.e("unknow command from ui");
                 }

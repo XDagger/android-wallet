@@ -8,6 +8,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.config.Config;
+import io.xdag.xdagwallet.config.XdagConfig;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.XdagPaymentURI;
 import io.xdag.xdagwallet.util.ZbarUtil;
@@ -35,27 +36,13 @@ public class ReceiveFragment extends BaseMainFragment {
     @Override
     protected void initView(View rootView) {
         super.initView(rootView);
-        XdagEventManager.getInstance(getMainActivity()).addOnEventUpdateCallback(new XdagEventManager.OnEventUpdateCallback() {
-            @Override
-            public void onAddressReady(XdagEvent event) {
-            }
-
-            @Override
-            public void onEventUpdate(XdagEvent event) {
-                mTvAddress.setText(event.address);
-                Config.setAddress(event.address);
-                if (event.addressLoadState == XdagEvent.en_address_ready) {
-                    String receiveUrl = new XdagPaymentURI.Builder().address(event.address).build().getURI();
-                    mImgQrAddress.setImageBitmap(ZbarUtil.createQRCode(receiveUrl));
-                } else {
-                    mImgQrAddress.setImageDrawable(getResources().getDrawable(R.drawable.pic_empty));
-                }
-            }
-
-            @Override
-            public void onEventXfer(XdagEvent event) {
-            }
-        });
+        String address = XdagConfig.getInstance().getAddress();
+        if(address==null||address.length()==0){
+            address = Config.getAddress();
+        }
+        String receiveUrl = new XdagPaymentURI.Builder().address(address).build().getURI();
+        mImgQrAddress.setImageBitmap(ZbarUtil.createQRCode(receiveUrl));//设置二维码
+        mTvAddress.setText(address);
     }
 
     @OnClick({R.id.receive_tv_copy, R.id.receive_tv_address})

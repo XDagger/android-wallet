@@ -4,6 +4,25 @@ import android.util.Log;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.io.PrintStream;
+import java.util.List;
+
+import io.xdag.common.util.ToastUtil;
+import io.xdag.xdagwallet.config.Config;
+import io.xdag.xdagwallet.config.XdagConfig;
+import io.xdag.xdagwallet.core.Address;
+import io.xdag.xdagwallet.core.Block;
+import io.xdag.xdagwallet.core.BlockBuilder;
+import io.xdag.xdagwallet.crypto.ECKeyPair;
+import io.xdag.xdagwallet.crypto.Keys;
+import io.xdag.xdagwallet.crypto.MnemonicUtils;
+import io.xdag.xdagwallet.crypto.SecureRandomUtils;
+import io.xdag.xdagwallet.util.BasicUtils;
+import io.xdag.xdagwallet.util.BytesUtils;
+import io.xdag.xdagwallet.util.StringUtils;
+import io.xdag.xdagwallet.util.XdagTime;
+import io.xdag.xdagwallet.wallet.Wallet;
+
 public class XdagWrapper {
     static {
         System.loadLibrary("xdag");
@@ -31,60 +50,56 @@ public class XdagWrapper {
 
 
     public int XdagConnectToPool(String poolAddr) {
-        return XdagConnect(poolAddr);
+        return 0;
     }
 
 
     public int XdagDisConnectFromPool() {
-        return XdagDisConnect();
+        return 0;
     }
 
 
-    public int XdagXferToAddress(String address, String amount,String remark) {
-        return XdagXfer(address, amount,remark);
-    }
-
+//    public int XdagXferToAddress(String address, String amount,String remark) {
+//        return XdagXfer(address, amount,remark);
+//    }
+public void XdagXferToAddress(ECKeyPair keyPair,String address,String amount,String remark){
+    long xdagTime = XdagTime.getCurrentTimestamp();
+    Address from = new Address(BasicUtils.address2Hash(Config.getAddress()));
+    Address to  = new Address(BasicUtils.address2Hash(address));
+    double amount1 = StringUtils.getDouble(amount);
+    long amount2 = BasicUtils.xdag2amount(amount1);
+    Block block = BlockBuilder.generateTransactionBlock(keyPair,xdagTime,from,to,amount2,remark);
+    Log.i("Transaction","New BlockAddress:" + BytesUtils.toHexString(block.getXdagBlock().getData()));
+}
 
     public int XdagWrapperInit() {
-        return XdagInit();
+        return 0;
     }
 
 
     public int XdagWrapperUnInit() {
-        return XdagUnInit();
+        return 0;
     }
 
 
-    public int XdagNotifyMsg() {
-        return XdagNotifyMsg("");
-    }
-
+//    public int XdagNotifyMsg() {
+//        return XdagNotifyMsg("");
+//    }
+//
+//    public int XdagNotifyMsg(String authInfo) {
+//        return XdagNotifyNativeMsg(authInfo);
+//    }
     public int XdagNotifyMsg(String authInfo) {
-        return XdagNotifyNativeMsg(authInfo);
+return 0;
     }
 
-
-    private native int XdagInit();
-
-
-    private native int XdagUnInit();
-
-
-    private native int XdagConnect(String poolAddr);
-
-
-    private native int XdagDisConnect();
-
-
-    private native int XdagXfer(String address, String amount,String remark);
-
-
-    private native int XdagNotifyNativeMsg(String authInfo);
 
 
     public void updateUi(XdagEvent event) {
 
     }
+
+
 
 
     public static void nativeCallbackFunc(XdagEvent event) {

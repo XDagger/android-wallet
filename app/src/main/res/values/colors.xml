@@ -4,5 +4,28 @@
     <color name="page_background">#f1f1f1</color>
     <color name="bottom_bar_selected">#00004E</color>
     <color name="bottom_bar_un_selected">#9B9B9B</color>
+    <color name="white">#ffffff</color>
+    <color name="mine_menu_divider_color">#eaeaea</color>
+    <color name="base_text_color">#323232</color>
+    <color name="transfer_advanced_setting_help_text_color">#36c4e1</color>
+    <color name="item_divider_bg_color">#F0F0F0</color>
+    <color name="property_ico_worth_color">#999999</color>
+    <color name="discovery_application_text_color">#292929</color>
+
+    <!--通用背景色-->
+    <color name="common_bg">@color/white</color>
+
+    <!--通用一级标题的颜色-->
+    <color name="common_h1">#212121</color>
+    <!--通用触摸背景色-->
+    <color name="common_touch_bg">#E3E3E3</color>
+
+    <!--通用分割线细-->
+    <color name="common_divider_narrow">#E3E3E3</color>
+
+    <color name="search_ico_upload_token">#33c2e2</color>
+
+    <color name="derive_private_key_bg_color">#f2f3f5</color>
+
 
 </resources>
