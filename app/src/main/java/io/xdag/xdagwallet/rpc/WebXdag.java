@@ -1,5 +1,6 @@
 package io.xdag.xdagwallet.rpc;
 
+import io.xdag.xdagwallet.rpc.response.TransactionState;
 import io.xdag.xdagwallet.rpc.response.Web3ClientVersion;
 import io.xdag.xdagwallet.rpc.response.XdagBalance;
 import io.xdag.xdagwallet.rpc.response.XdagBlockNumber;
@@ -59,11 +60,11 @@ public class WebXdag extends JsonRpc2_0Web3j {
                 XdagSendTransaction.class);
     }
 
-    public Request<?, XdagGetTransactionByHash> xdagGetTransactionByHash(String signedTransactionData){
-        return new Request<String,XdagGetTransactionByHash>(
+    public Request<?, TransactionState> xdagGetTransactionByHash(String hash){
+        return new Request<String,TransactionState>(
                 "xdag_getTransactionByHash",
-                Arrays.asList(signedTransactionData),
+                Arrays.asList(hash,"true"),
                 web3jService,
-                XdagGetTransactionByHash.class);
+                TransactionState.class);
     }
 }

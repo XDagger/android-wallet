@@ -116,7 +116,7 @@ public class WalletUtils {
         return false;
     }
     public static void walletStart(Wallet wallet){
-        //wallet = loadWallet().exists() ? loadAndUnlockWallet() : createNewWallet();
+
         if (!wallet.isHdWalletInitialized()) {
             initializedHdSeed(wallet, System.out);
         }
@@ -144,7 +144,6 @@ public class WalletUtils {
                 Block AddressBlock = BlockBuilder.generateAddressBlock(wallet.getAccount(0), XdagTime.getCurrentTimestamp());
                 newAddress = BytesUtils.toHexString(AddressBlock.getXdagBlock().getData());
                 Log.i("Wallet","New BlockAddress:" + newAddress);
-                //RpcManager.get().sendXfer(newAddress);
                 byte[] adr = AddressBlock.getHash();
                 xdagAddress = hash2Address(adr);
                 XdagConfig.getInstance().setAddress(xdagAddress);
@@ -153,11 +152,7 @@ public class WalletUtils {
                 enc.write(adr);
                 FileUtils.writeByteArrayToFile(file, enc.toBytes());
             }else{
-                byte[] address = FileUtils.readFileToByteArray(file);
-                byte[] adr = new byte[32];
-                System.arraycopy(address,0,adr,0,32);
-                xdagAddress = hash2Address(adr);
-                XdagConfig.getInstance().setAddress(xdagAddress);
+                loadAddress(activity);
             }
         } catch (IOException e) {
             ToastUtil.show("创建地址失败");
@@ -188,4 +183,17 @@ public class WalletUtils {
 
     }
 
+    public static void loadAddress(Activity activity){
+        File file = new File(activity.getFilesDir(),"xdag/address.dat");
+        byte[] address = new byte[0];
+        try {
+            address = FileUtils.readFileToByteArray(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        byte[] adr = new byte[32];
+        System.arraycopy(address,0,adr,0,32);
+        XdagConfig.getInstance().setAddress(hash2Address(adr));
+        Config.setAddress(hash2Address(adr));
+    }
 }

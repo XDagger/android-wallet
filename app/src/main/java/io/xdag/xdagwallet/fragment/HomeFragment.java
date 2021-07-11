@@ -11,14 +11,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.apache.commons.io.FileUtils;
-import org.web3j.protocol.http.HttpService;
+
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
@@ -59,12 +56,10 @@ import io.xdag.xdagwallet.widget.EmptyView;
 import io.xdag.xdagwallet.wrapper.XdagEventManager;
 
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintStream;
+
 import java.util.List;
 
-import static io.xdag.xdagwallet.util.BasicUtils.hash2Address;
+
 
 /**
  * created by lxm on 2018/5/24.
@@ -94,7 +89,6 @@ public class HomeFragment extends BaseMainFragment {
     @BindView(R.id.version_close)
     TextView mTvVersionClose;
     private InputPwdDialogFragment mInputPwdDialogFragment;
-    private SetPwdDialogFragment mSetPwdDialogFragment;
     private TransactionAdapter mAdapter;
     private View mEmptyView;
     private CompositeDisposable mDisposable = new CompositeDisposable();
@@ -153,34 +147,10 @@ public class HomeFragment extends BaseMainFragment {
                 String password= data.getStringExtra(InputPwdDialogFragment.PASSWORD);
                 Log.i(TAG,"input password is " + password);
                 mInputPwdDialogFragment.dismiss();
-//                wallet = loadAndUnlockWallet(password);
-//                walletStart();
-                createWalletInteract.load(password,mContext).subscribe(this::showAddress_Balance, this::showError);
-
+                mDisposable.add(createWalletInteract.load(password,mContext).subscribe(this::showAddress_Balance, this::showError));
             }else {
                 Log.i(TAG,"input password canceled");
                 mInputPwdDialogFragment.dismiss();
-                return;
-            }
-        }
-        else if(requestCode == Config.REQUEST_CODE_SET_PWD){
-            if(resultCode == Activity.RESULT_OK){
-                String password1 = data.getStringExtra(SetPwdDialogFragment.PASSWORD1);
-                String password2 = data.getStringExtra(SetPwdDialogFragment.PASSWORD2);
-                if(password1.equals(password2)){
-                    mSetPwdDialogFragment.dismiss();
-                    //TODO:弹出加载框
-                    wallet = createNewWallet(password1);
-                    walletStart();
-                }else{
-                    //TODO:提示UI两次密码不一致
-                    mSetPwdDialogFragment.dismiss();
-                    Log.e(TAG,"password not the same");
-                    showSetPwdDialog(getResources().getString(R.string.error_password_not_same));
-                    return;
-                }
-            }else{
-                Log.w(TAG,"illegal result code from set password dialog" + resultCode);
                 return;
             }
         }
@@ -211,59 +181,9 @@ public class HomeFragment extends BaseMainFragment {
     }
 
 
-    private void showSetPwdDialog(String title){
-        //set password to create wallet
-        if(mSetPwdDialogFragment == null){
-            mSetPwdDialogFragment = new SetPwdDialogFragment();
-        }
-
-        Bundle bundle = new Bundle();
-        bundle.putString("title",title);
-        mSetPwdDialogFragment.setArguments(bundle);
-        mSetPwdDialogFragment.setTargetFragment(HomeFragment.this,Config.REQUEST_CODE_SET_PWD);
-        mSetPwdDialogFragment.show(getFragmentManager(),"set password");
-    }
-
-
-    private void walletStart(){
-        XdagConfig.getInstance().setWallet(wallet);
-        if (!wallet.isHdWalletInitialized()) {
-            initializedHdSeed(wallet, System.out);
-        }
-        List<ECKeyPair> accounts = wallet.getAccounts();
-        if (accounts.isEmpty()) {
-            ECKeyPair key = wallet.addAccountWithNextHdKey();
-            wallet.flush();
-            System.out.println("New Address:" + BytesUtils.toHexString(Keys.toBytesAddress(key)));
-            Log.i("Wallet","New WalletAddress:" + BytesUtils.toHexString(Keys.toBytesAddress(key)));
-        }
-        Log.i("Wallet","New WalletAddress:" + BytesUtils.toHexString(Keys.toBytesAddress( wallet.getAccount(0) )));
-        loadAddress();
-        mTvAddress.setText(address);
-        //loadBalance();
-        loadBalance(XdagConfig.getInstance().getAddress());
-    }
-
-
     private void loadBalance(String address) {
         getBalance(address);
     }
-
-
-    private void loadAddress() {
-        try {
-            File file = new File(mContext.getFilesDir(),"xdag/address.dat");
-            byte[] address = FileUtils.readFileToByteArray(file);
-            byte[] adr = new byte[32];
-            System.arraycopy(address,0,adr,0,32);
-            this.address = hash2Address(adr);
-            Config.setAddress(this.address);
-        } catch (IOException e) {
-            ToastUtil.show("加载地址失败");
-            e.printStackTrace();
-        }
-    }
-
 
     @Override
     protected void initData() {
@@ -271,7 +191,6 @@ public class HomeFragment extends BaseMainFragment {
         requestUpdate();
         //requestTransaction();
     }
-
 
     private void requestUpdate() {
         mDisposable.add(
@@ -338,63 +257,9 @@ public class HomeFragment extends BaseMainFragment {
         return new Wallet();
     }
 
-    public Wallet loadAndUnlockWallet(String password) {
-        Wallet wallet = loadWallet();
-        if (!wallet.unlock(password)) {
-            System.err.println("Invalid password");
-        }
-
-        return wallet;
+    private void getBalance(String address){
+        mDisposable.add(RpcManager.get().getBalance(address).subscribe(this::setmTvBalance,new WebErrorConsumer()));
     }
-
-    public Wallet createNewWallet(String newPassword) {
-        if (newPassword == null) {
-            return null;
-        }
-        //setPassword(newPassword);
-        Wallet wallet = loadWallet();
-
-        if (!wallet.unlock(newPassword) || !wallet.flush()) {
-            ToastUtil.show("Create New WalletError");
-            return null;
-        }
-
-        return wallet;
-    }
-
-    public boolean initializedHdSeed(Wallet wallet, PrintStream printer) {
-        if (wallet.isUnlocked() && !wallet.isHdWalletInitialized()) {
-            // HD Mnemonic
-            printer.println("HdWallet Initializing...");
-            byte[] initialEntropy = new byte[16];
-            SecureRandomUtils.secureRandom().nextBytes(initialEntropy);
-            String phrase = MnemonicUtils.generateMnemonic(initialEntropy);
-            printer.println("HdWallet Mnemonic:"+ phrase);
-
-            wallet.initializeHdWallet(phrase);
-            wallet.flush();
-            printer.println("HdWallet Initialized Successfully!");
-            return true;
-        }
-        return false;
-    }
-
-    private Disposable getBalance(String address){
-        return Observable.just(address)
-                .map(new Function<String, String>() {
-                    @Override
-                    public String apply(@NonNull String address) throws Exception {
-                        WebXdag web = Web3XdagFactory.build(new HttpService(Config.POOL_TEST));
-                        XdagBalance w = web.xdagGetBalance(address).sendAsync().get();
-                        Log.i("余额:",w.getBalance());
-                        return w.getBalance();
-                    }
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::setmTvBalance,new WebErrorConsumer());
-    }
-
     public void setmTvBalance(String balance){
         //mTvBalance.setText(balance);
         mCollapsingToolbarLayout.setTitle(balance);

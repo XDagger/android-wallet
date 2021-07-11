@@ -8,15 +8,21 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import java.io.File;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.util.DensityUtil;
+import io.xdag.common.util.FileUtil;
 import io.xdag.common.util.TextStyleUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.AlertUtil;
+
+import static io.xdag.xdagwallet.wrapper.XdagHandlerWrapper.XDAG_FILE;
+import static io.xdag.xdagwallet.wrapper.XdagHandlerWrapper.createSDCardFile;
 
 /**
  * created by ssyijiu  on 2018/7/22
@@ -73,7 +79,16 @@ public class RestoreActivity extends ToolbarActivity {
             AlertUtil.show(mContext,R.string.please_restore_read);
             return;
         }
-        MainActivity.start(mContext, true);
+//        MainActivity.start(mContext, true);
+        if(restoreWallet()){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            //this.finish();
+        }
+        else {
+            AlertUtil.show(this, R.string.error_file_make_fail);
+        }
+
     }
 
     @Override
@@ -84,5 +99,24 @@ public class RestoreActivity extends ToolbarActivity {
     public static void start(Activity context) {
         Intent intent = new Intent(context, RestoreActivity.class);
         context.startActivity(intent);
+    }
+
+    public boolean restoreWallet() {
+
+        File tempFile = createSDCardFile(this);
+        File xdagFile = createXdagFile();
+
+        return tempFile != null && xdagFile != null && FileUtil.moveDir(tempFile, xdagFile);
+    }
+
+    private File createXdagFile() {
+
+        File file = new File(this.getFilesDir(), XDAG_FILE);
+        if (!file.exists() && !file.mkdirs()) {
+            AlertUtil.show(this, R.string.error_file_make_fail);
+        } else {
+            return file;
+        }
+        return null;
     }
 }

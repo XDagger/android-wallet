@@ -37,7 +37,7 @@
             <ImageView
                 android:layout_width="9dp"
                 android:layout_height="16dp"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/ic_back1" />
 
         </LinearLayout>
 

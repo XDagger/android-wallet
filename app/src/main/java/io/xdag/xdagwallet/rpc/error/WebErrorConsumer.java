@@ -10,6 +10,7 @@ public class WebErrorConsumer implements Consumer<Throwable> {
 
         String message = throwable.getMessage();
         Log.e("Error",message);
+        Log.e("Error",throwable.toString());
     }
 
 }

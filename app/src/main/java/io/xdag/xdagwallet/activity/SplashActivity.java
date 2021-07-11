@@ -14,11 +14,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Permission;
+
 import io.xdag.xdagwallet.R;
 
 
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.wallet.WalletUtils;
+import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -63,14 +67,23 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.new_account_action:
-                // TODO:最好闪屏页就创建钱包，不要在MainActivity里面创建
                 Intent goNewAccount = new Intent(this,CreateWalletActivity.class);
                 startActivity(goNewAccount);
                 this.finish();
                 break;
             case R.id.import_account_action:
-//                Intent goImportAccount = new Intent(this,ImportWalletActivity.class);
-//                startActivityForResult(goImportAccount,Constants.REQUEST_CODE_IMPORT_WALLET);
+
+//                Intent goRestoreAccount = new Intent(this,RestoreActivity.class);
+//                startActivity(goRestoreAccount);
+//                this.finish();
+                AndPermission.with(this)
+                        .runtime()
+                        .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+                        .onGranted(data -> {
+                            RestoreActivity.start(this);
+                        })
+                        .start();
+
                 break;
         }
     }
