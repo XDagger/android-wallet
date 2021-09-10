@@ -205,7 +205,7 @@ public class HomeFragment extends BaseMainFragment {
 
     private void requestTransaction() {
         mDisposable.add(HttpRequest.get()
-            .getTransactions(mContext,"fY3P4RZuhnwz+JACZup/CoK6Yl6yEwGn", this::showTransaction));//mTvAddress.getText().toString()
+            .getTransactions(mContext,"fY3P4RZuhnwz+JACZup/CoK6Yl6yEwGn", this::showTransaction));//mTvAddress.getText().toString()  测试交易地址"fY3P4RZuhnwz+JACZup/CoK6Yl6yEwGn"
     }
 
 
@@ -262,6 +262,7 @@ public class HomeFragment extends BaseMainFragment {
     }
     public void setmTvBalance(String balance){
         //mTvBalance.setText(balance);
+        System.out.println(balance);
         mCollapsingToolbarLayout.setTitle(balance);
     }
 

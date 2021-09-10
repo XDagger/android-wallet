@@ -19,7 +19,7 @@ public class Config {
     private static final String CONFIG_KEY_TRAN_HOST = "config_key_tran_host";
     private static final String CONFIG_KEY_ADDRESS = "config_key_address";
     public static final String POOL = "https://mainnet.infura.io/v3/d5407bf1341d40da96502b39a7e95edb";
-    public static final String POOL_TEST = "http://192.168.31.248:4444";
+    public static final String POOL_TEST = "http://101.33.118.156:4444";
     public static final int REQUEST_CODE_SET_PWD = 1;
     public static final int REQUEST_CODE_INPUT_PWD_LOGIN = 2;
     public static final int REQUEST_CODE_SEND_TRANSACTION = 5;
