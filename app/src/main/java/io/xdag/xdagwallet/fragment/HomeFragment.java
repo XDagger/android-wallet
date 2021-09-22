@@ -189,7 +189,7 @@ public class HomeFragment extends BaseMainFragment {
     protected void initData() {
         super.initData();
         requestUpdate();
-        //requestTransaction();
+        requestTransaction();
     }
 
     private void requestUpdate() {
@@ -205,7 +205,7 @@ public class HomeFragment extends BaseMainFragment {
 
     private void requestTransaction() {
         mDisposable.add(HttpRequest.get()
-            .getTransactions(mContext,"fY3P4RZuhnwz+JACZup/CoK6Yl6yEwGn", this::showTransaction));//mTvAddress.getText().toString()  测试交易地址"fY3P4RZuhnwz+JACZup/CoK6Yl6yEwGn"
+            .getTransactions(mContext,XdagConfig.getInstance().getAddress(), this::showTransaction));
     }
 
 

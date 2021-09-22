@@ -14,6 +14,9 @@ public class BlockBuilder {
         refs.add(new Address(to.getHashLow(), FieldType.XDAG_FIELD_OUT, amount));
         List<ECKeyPair> keys = new ArrayList<>();
         keys.add(key);
+        if(remark==null||remark.length()==0){
+            remark = null;
+        }
         return new Block(xdagTime, refs, null, false, keys, remark, 0); // orphan
     }
     public static Block generateAddressBlock(ECKeyPair key, long xdagTime){

@@ -202,8 +202,9 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
         Block block = BlockBuilder.generateTransactionBlock(keyPair,xdagTime,from,to,amount2,remark);
         block.signOut(keyPair);
         Log.i(TAG,"HashLow"+BytesUtils.toHexString(block.getHashLow()));
+        Log.i(TAG,"New BlockData:" + BytesUtils.toHexString(block.getXdagBlock().getData()));
+        Log.i(TAG,"BlockAddress:" + BasicUtils.hash2Address(block.getHash()));
         sendTransaction(BytesUtils.toHexString(block.getXdagBlock().getData()));
-        Log.i(TAG,"New BlockAddress:" + BytesUtils.toHexString(block.getXdagBlock().getData()));
     }
 
     private void textClear() {
@@ -232,70 +233,38 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
     }
 
     private void add(String address){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                TransactionList list = RpcManager.get().getTransactionList();
-                list.add(address,"Pending");
-                mTvTransaction.setText(list.getNum()+"笔交易正在进行中...");
-
-                while(true){
-                    try {
-                        Thread.sleep(20000);
-                        WebXdag web = Web3XdagFactory.build(new HttpService(Config.POOL_TEST));
-                        TransactionState tra = web.xdagGetTransactionByHash(address).send();
-                        Log.i("交易状态:",address+"的状态"+tra.getTransactionDTO().state);
-                        Log.i("待处理交易数量",String.valueOf(list.getNum()));
-                        list.change(address,tra.getTransactionDTO().state);
-                        if("Accepted".equals(list.getTransactionList().get(address))) {
-                            list.remove(address);
-                            if(list.getNum()==0) {
-                                System.out.println("设置为空");
-                                mTvTransaction.setText("");
-                            }
-                            else{
-                                mTvTransaction.setText(list.getNum()+"笔交易正在进行中...");
-                            }
-                            break;
-                        }
-                    } catch (Throwable e){
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
-        System.out.println(address);
-    }
-    private void add1(String address){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                TransactionList list = RpcManager.get().getTransactionList();
-                list.add(address,"Pending");
-                while (true){
-                    try{
-                        Thread.sleep(20000);
-                        mDisposable.add(RpcManager.get().CheckTransactionStatus(address).subscribe(new Consumer<String>() {
-                            @Override
-                            public void accept(String s) throws Exception {
-
-                                if(list.getNum()==0){
-                                    mTvTransaction.setText("");
-                                }
-                                else {
-                                    mTvTransaction.setText(list.getNum()+"笔交易正在进行中...");
-                                }
-                            }
-                        },new WebErrorConsumer()));
-                    }catch (Throwable e){
-                        e.printStackTrace();
-                    }
-                    if("Accepted".equals(list.getTransactionList().get(address))) {
-                        list.remove(address);
-                        break;
-                    }
-                }
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                TransactionList list = RpcManager.get().getTransactionList();
+//                list.add(address,"Pending");
+//                mTvTransaction.setText(list.getNum()+"笔交易正在进行中...");
+//
+//                while(true){
+//                    try {
+//                        Thread.sleep(20000);
+//                        WebXdag web = Web3XdagFactory.build(new HttpService(Config.POOL_TEST));
+//                        TransactionState tra = web.xdagGetTransactionByHash(address).send();
+//                        Log.i("交易状态:",address+"的状态"+tra.getTransactionDTO().state);
+//                        Log.i("待处理交易数量",String.valueOf(list.getNum()));
+//                        list.change(address,tra.getTransactionDTO().state);
+//                        if("Accepted".equals(list.getTransactionList().get(address))) {
+//                            list.remove(address);
+//                            if(list.getNum()==0) {
+//                                System.out.println("设置为空");
+//                                mTvTransaction.setText("");
+//                            }
+//                            else{
+//                                mTvTransaction.setText(list.getNum()+"笔交易正在进行中...");
+//                            }
+//                            break;
+//                        }
+//                    } catch (Throwable e){
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }).start();
+//        System.out.println(address);
     }
 }

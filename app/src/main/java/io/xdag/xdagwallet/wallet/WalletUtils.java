@@ -124,11 +124,9 @@ public class WalletUtils {
         if (accounts.isEmpty()) {
             ECKeyPair key = wallet.addAccountWithNextHdKey();
             wallet.flush();
-            System.out.println("New Address:" + BytesUtils.toHexString(Keys.toBytesAddress(key)));
             Log.i("Wallet","New WalletAddress:" + BytesUtils.toHexString(Keys.toBytesAddress(key)));
         }
-        Log.i("Wallet","New WalletAddress:" + BytesUtils.toHexString(Keys.toBytesAddress( wallet.getAccount(0) )));
-
+        Log.i("Wallet","First WalletAddress:" + BytesUtils.toHexString(Keys.toBytesAddress( wallet.getAccount(0) )));
         XdagConfig.getInstance().setWallet(wallet);
 
     }

@@ -65,7 +65,7 @@ public class Wallet {
     private static final int VERSION = 4;
     private static final int SALT_LENGTH = 16;
     private static final int BCRYPT_COST = 12;
-    private static final String path = "/data/data/io.xdag.xdagwallet/files/xdag/newwallet.dat";
+    private static final String path = "/data/data/io.xdag.xdagwallet/files/xdag/wallet.dat";
     private Set<PosixFilePermission> POSIX_SECURED_PERMISSIONS = null;
 
     private final File file;
@@ -76,7 +76,7 @@ public class Wallet {
     // hd wallet key
     private String mnemonicPhrase = "";
     private int nextAccountIndex = 0;
-    private final String TAG = "newwallet";
+    private final String TAG = "wallet";
 
 
     /**
