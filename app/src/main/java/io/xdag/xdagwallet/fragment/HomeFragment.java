@@ -188,8 +188,8 @@ public class HomeFragment extends BaseMainFragment {
     @Override
     protected void initData() {
         super.initData();
-        requestUpdate();
-        requestTransaction();
+        //requestUpdate();
+        //requestTransaction();
     }
 
     private void requestUpdate() {
@@ -262,7 +262,8 @@ public class HomeFragment extends BaseMainFragment {
     }
     public void setmTvBalance(String balance){
         //mTvBalance.setText(balance);
-        System.out.println(balance);
+        //System.out.println(balance);
+        requestTransaction();
         mCollapsingToolbarLayout.setTitle(balance);
     }
 
