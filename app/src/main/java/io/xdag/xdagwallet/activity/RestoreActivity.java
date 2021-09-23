@@ -58,7 +58,7 @@ public class RestoreActivity extends ToolbarActivity {
 //                        .append("dnet_key.dat\n").setBullet(gapWidth)
                         .append("address.dat\n").setBullet(gapWidth)
                         .setForegroundColor(color)
-                        .append("newwallet.dat\n").setBullet(gapWidth)
+                        .append("wallet.dat\n").setBullet(gapWidth)
                         .setForegroundColor(color)
                         .appendLine()
                         .append(getString(R.string.restore_explain_4))
