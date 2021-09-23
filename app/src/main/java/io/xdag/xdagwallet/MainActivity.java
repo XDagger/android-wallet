@@ -3,33 +3,22 @@ package io.xdag.xdagwallet;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import butterknife.BindView;
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.Permission;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
-import io.xdag.xdagwallet.config.Config;
-import io.xdag.xdagwallet.config.XdagConfig;
 import io.xdag.xdagwallet.fragment.BaseMainFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.MoreFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
-import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ToolbarUtil;
 import io.xdag.xdagwallet.widget.BottomBar;
 import io.xdag.xdagwallet.widget.BottomBarItem;
-import io.xdag.xdagwallet.wrapper.XdagEvent;
-import io.xdag.xdagwallet.wrapper.XdagEventManager;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * created by ssyijiu  on 2018/5/22
@@ -101,22 +90,6 @@ public class MainActivity extends ToolbarActivity {
     }
 
 
-    private void connectToPool() {
-        if (mRestore) {
-            if (getXdagHandler().restoreWallet()) {
-                //getXdagHandler().connectToPool(Config.getPoolAddress());
-            } else {
-                AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
-            }
-
-        } else {
-            if (getXdagHandler().createWallet()) {
-                //getXdagHandler().connectToPool(Config.getPoolAddress());
-            } else {
-                AlertUtil.show(mContext, R.string.error_create_xdag_wallet);
-            }
-        }
-    }
 
 
     @Override
@@ -124,7 +97,6 @@ public class MainActivity extends ToolbarActivity {
         super.onNewIntent(intent);
         boolean switchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
         if (switchPool) {
-            XdagHandlerWrapper.getInstance(this).disconnectPool();
             mHomeFragment.showNotReady();
             showFragment(mHomeFragment);
             mBottomBar.setCurrentItem(mHomeFragment.getPosition());
@@ -135,15 +107,6 @@ public class MainActivity extends ToolbarActivity {
     @Override protected void onDestroy() {
         super.onDestroy();
         ActivityStack.getInstance().exit();
-    }
-
-
-    /**
-     * the event from c
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void ProcessXdagEvent(XdagEvent event) {
-
     }
 
 

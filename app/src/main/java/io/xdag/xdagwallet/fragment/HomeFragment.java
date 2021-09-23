@@ -17,43 +17,25 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.common.tool.MLog;
-import io.xdag.common.util.ToastUtil;
-import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
 import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.config.XdagConfig;
-import io.xdag.xdagwallet.core.Block;
-import io.xdag.xdagwallet.core.BlockBuilder;
-import io.xdag.xdagwallet.crypto.ECKeyPair;
-import io.xdag.xdagwallet.crypto.Keys;
-import io.xdag.xdagwallet.crypto.MnemonicUtils;
-import io.xdag.xdagwallet.crypto.SecureRandomUtils;
-import io.xdag.xdagwallet.crypto.SimpleEncoder;
 import io.xdag.xdagwallet.dialog.InputPwdDialogFragment;
-import io.xdag.xdagwallet.dialog.SetPwdDialogFragment;
 import io.xdag.xdagwallet.model.BlockDetailModel;
 import io.xdag.xdagwallet.net.HttpRequest;
 import io.xdag.xdagwallet.rpc.RpcManager;
-import io.xdag.xdagwallet.rpc.Web3XdagFactory;
-import io.xdag.xdagwallet.rpc.WebXdag;
 import io.xdag.xdagwallet.rpc.error.WebErrorConsumer;
-import io.xdag.xdagwallet.rpc.response.XdagBalance;
 import io.xdag.xdagwallet.util.AlertUtil;
-import io.xdag.xdagwallet.util.BytesUtils;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
 import io.xdag.xdagwallet.util.UpdateUtil;
-import io.xdag.xdagwallet.util.XdagTime;
 import io.xdag.xdagwallet.wallet.CreateWalletInteract;
 import io.xdag.xdagwallet.wallet.Wallet;
 import io.xdag.xdagwallet.widget.EmptyView;
-import io.xdag.xdagwallet.wrapper.XdagEventManager;
+//import io.xdag.xdagwallet.wrapper.XdagEventManager;
 
 
 
@@ -92,7 +74,6 @@ public class HomeFragment extends BaseMainFragment {
     private TransactionAdapter mAdapter;
     private View mEmptyView;
     private CompositeDisposable mDisposable = new CompositeDisposable();
-    private XdagEventManager mXdagEventManager;
     private Wallet wallet;
     private String address = "";
     private static final String TAG = "HomeFragment";
@@ -125,9 +106,7 @@ public class HomeFragment extends BaseMainFragment {
             mAdapter.setEmptyView(mEmptyView);
         }
         mRecyclerView.setAdapter(mAdapter);
-        //rpcManager.getXdagBalanceAsyncTask().execute(mContext,mTvBalance,"0xfc23b61db3a1dce083e82da5a2ccfd91a2211f7c");
-        mXdagEventManager = XdagEventManager.getInstance((MainActivity) mContext);
-        mXdagEventManager.initDialog();
+
         createWalletInteract = new CreateWalletInteract();
         if(XdagConfig.getInstance().getWallet()==null&&loadWallet().exists()){
             showInputPwdDialog(getResources().getString(R.string.please_input_password));
@@ -261,8 +240,6 @@ public class HomeFragment extends BaseMainFragment {
         mDisposable.add(RpcManager.get().getBalance(address).subscribe(this::setmTvBalance,new WebErrorConsumer()));
     }
     public void setmTvBalance(String balance){
-        //mTvBalance.setText(balance);
-        //System.out.println(balance);
         requestTransaction();
         mCollapsingToolbarLayout.setTitle(balance);
     }

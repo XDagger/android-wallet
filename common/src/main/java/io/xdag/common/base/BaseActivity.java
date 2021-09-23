@@ -42,9 +42,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             parseIntent(getIntent());
         }
         if (enableEventBus()) {
-            if (!EventBus.getDefault().isRegistered(this)) {
-                EventBus.getDefault().register(this);
-            }
+//            if (!EventBus.getDefault().isRegistered(this)) {
+//                EventBus.getDefault().register(this);
+//            }
         }
         initData();
     }
