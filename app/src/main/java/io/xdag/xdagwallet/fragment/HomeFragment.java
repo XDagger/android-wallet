@@ -1,28 +1,47 @@
 package io.xdag.xdagwallet.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.xdag.common.tool.AppBarStateChangedListener;
 import io.xdag.common.tool.MLog;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.adapter.TransactionAdapter;
+import io.xdag.xdagwallet.config.Config;
+import io.xdag.xdagwallet.config.XdagConfig;
+import io.xdag.xdagwallet.dialog.InputPwdDialogFragment;
 import io.xdag.xdagwallet.model.BlockDetailModel;
 import io.xdag.xdagwallet.net.HttpRequest;
+import io.xdag.xdagwallet.rpc.RpcManager;
+import io.xdag.xdagwallet.rpc.error.WebErrorConsumer;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.CopyUtil;
 import io.xdag.xdagwallet.util.RxUtil;
 import io.xdag.xdagwallet.util.UpdateUtil;
+import io.xdag.xdagwallet.wallet.CreateWalletInteract;
+import io.xdag.xdagwallet.wallet.Wallet;
 import io.xdag.xdagwallet.widget.EmptyView;
-import io.xdag.xdagwallet.wrapper.XdagEvent;
-import io.xdag.xdagwallet.wrapper.XdagEventManager;
+//import io.xdag.xdagwallet.wrapper.XdagEventManager;
+
+
+
 import java.util.List;
+
+
 
 /**
  * created by lxm on 2018/5/24.
@@ -39,6 +58,8 @@ public class HomeFragment extends BaseMainFragment {
     CollapsingToolbarLayout mCollapsingToolbarLayout;
     @BindView(R.id.home_tv_address)
     TextView mTvAddress;
+    @BindView(R.id.home_tv_balance)
+    TextView mTvBalance;
 
     // update
     @BindView(R.id.version_layout)
@@ -49,12 +70,14 @@ public class HomeFragment extends BaseMainFragment {
     TextView mTvVersionUpdate;
     @BindView(R.id.version_close)
     TextView mTvVersionClose;
-
+    private InputPwdDialogFragment mInputPwdDialogFragment;
     private TransactionAdapter mAdapter;
     private View mEmptyView;
     private CompositeDisposable mDisposable = new CompositeDisposable();
-
-
+    private Wallet wallet;
+    private String address = "";
+    private static final String TAG = "HomeFragment";
+    private CreateWalletInteract createWalletInteract;
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_home;
@@ -74,48 +97,79 @@ public class HomeFragment extends BaseMainFragment {
                     state.equals(AppBarStateChangedListener.State.EXPANDED));
             }
         });
-
         if (mEmptyView == null) {
             mEmptyView = new EmptyView(mContext);
             mEmptyView.setOnClickListener(v -> requestTransaction());
         }
-
         if (mAdapter == null) {
             mAdapter = new TransactionAdapter(null);
             mAdapter.setEmptyView(mEmptyView);
         }
-
         mRecyclerView.setAdapter(mAdapter);
-        XdagEventManager.getInstance(getMainActivity())
-            .addOnEventUpdateCallback(new XdagEventManager.OnEventUpdateCallback() {
-                @Override
-                public void onAddressReady(XdagEvent event) {
-                    requestTransaction();
-                }
 
-
-                @Override
-                public void onEventUpdate(XdagEvent event) {
-                    mTvAddress.setText(event.address);
-                    mCollapsingToolbarLayout.setTitle(event.balance);
-                }
-
-
-                @Override
-                public void onEventXfer(XdagEvent event) {
-                    requestTransaction();
-                }
-            });
-
+        createWalletInteract = new CreateWalletInteract();
+        if(XdagConfig.getInstance().getWallet()==null&&loadWallet().exists()){
+            showInputPwdDialog(getResources().getString(R.string.please_input_password));
+        }
+        else{
+            mTvAddress.setText(XdagConfig.getInstance().getAddress());
+            loadBalance(XdagConfig.getInstance().getAddress());
+        }
     }
 
 
     @Override
-    protected void initData() {
-        super.initData();
-        requestUpdate();
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode== Config.REQUEST_CODE_INPUT_PWD_LOGIN){
+            if(resultCode == Activity.RESULT_OK){
+                String password= data.getStringExtra(InputPwdDialogFragment.PASSWORD);
+                Log.i(TAG,"input password is " + password);
+                mInputPwdDialogFragment.dismiss();
+                mDisposable.add(createWalletInteract.load(password,mContext).subscribe(this::showAddress_Balance, this::showError));
+            }else {
+                Log.i(TAG,"input password canceled");
+                mInputPwdDialogFragment.dismiss();
+                return;
+            }
+        }
+        else{
+            Log.w(TAG,"unknow request code from dialog" + requestCode);
+            return;
+        }
+        return;
+    }
+    private void showAddress_Balance(Wallet wallet){
+        mTvAddress.setText(XdagConfig.getInstance().getAddress());
+        loadBalance(XdagConfig.getInstance().getAddress());
+    }
+    private void showError(Throwable errorInfo){
+        showInputPwdDialog(getResources().getString(R.string.error_password));
     }
 
+    private void showInputPwdDialog(String title){
+        //input password to unlock wallet
+        if(mInputPwdDialogFragment == null){
+            mInputPwdDialogFragment = new InputPwdDialogFragment();
+        }
+        Bundle bundle = new Bundle();
+        bundle.putString("title",title);
+        mInputPwdDialogFragment.setArguments(bundle);
+        mInputPwdDialogFragment.setTargetFragment(HomeFragment.this,2);
+        mInputPwdDialogFragment.show(getFragmentManager(),"input password");
+    }
+
+
+    private void loadBalance(String address) {
+        getBalance(address);
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+        //requestUpdate();
+        //requestTransaction();
+    }
 
     private void requestUpdate() {
         mDisposable.add(
@@ -130,7 +184,7 @@ public class HomeFragment extends BaseMainFragment {
 
     private void requestTransaction() {
         mDisposable.add(HttpRequest.get()
-            .getTransactions(mContext, mTvAddress.getText().toString(), this::showTransaction));
+            .getTransactions(mContext,XdagConfig.getInstance().getAddress(), this::showTransaction));
     }
 
 
@@ -164,6 +218,7 @@ public class HomeFragment extends BaseMainFragment {
     public void onRefresh() {
         super.onRefresh();
         requestTransaction();
+        loadBalance(XdagConfig.getInstance().getAddress());
     }
 
 
@@ -176,4 +231,18 @@ public class HomeFragment extends BaseMainFragment {
     public int getPosition() {
         return 0;
     }
+
+    public Wallet loadWallet() {
+        return new Wallet();
+    }
+
+    private void getBalance(String address){
+        mDisposable.add(RpcManager.get().getBalance(address).subscribe(this::setmTvBalance,new WebErrorConsumer()));
+    }
+    public void setmTvBalance(String balance){
+        requestTransaction();
+        mCollapsingToolbarLayout.setTitle(balance);
+    }
+
+
 }

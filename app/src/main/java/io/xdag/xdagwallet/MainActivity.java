@@ -7,26 +7,18 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import butterknife.BindView;
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.Permission;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
-import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.fragment.BaseMainFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
 import io.xdag.xdagwallet.fragment.MoreFragment;
 import io.xdag.xdagwallet.fragment.ReceiveFragment;
 import io.xdag.xdagwallet.fragment.SendFragment;
-import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.ToolbarUtil;
 import io.xdag.xdagwallet.widget.BottomBar;
 import io.xdag.xdagwallet.widget.BottomBarItem;
-import io.xdag.xdagwallet.wrapper.XdagEvent;
-import io.xdag.xdagwallet.wrapper.XdagEventManager;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * created by ssyijiu  on 2018/5/22
@@ -49,8 +41,6 @@ public class MainActivity extends ToolbarActivity {
     public BaseMainFragment mShowFragment;
 
     private boolean mRestore;
-    private XdagEventManager mXdagEventManager;
-
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,34 +81,15 @@ public class MainActivity extends ToolbarActivity {
 
     @Override
     protected void initData() {
-        mXdagEventManager = XdagEventManager.getInstance(this);
-        mXdagEventManager.initDialog();
-
         // request permissions
-        AndPermission.with(mContext)
-            .runtime()
-            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-            .onGranted(data -> connectToPool())
-            .start();
+//        AndPermission.with(mContext)
+//            .runtime()
+//            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+//            .onGranted(data -> connectToPool())
+//            .start();
     }
 
 
-    private void connectToPool() {
-        if (mRestore) {
-            if (getXdagHandler().restoreWallet()) {
-                getXdagHandler().connectToPool(Config.getPoolAddress());
-            } else {
-                AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
-            }
-
-        } else {
-            if (getXdagHandler().createWallet()) {
-                getXdagHandler().connectToPool(Config.getPoolAddress());
-            } else {
-                AlertUtil.show(mContext, R.string.error_create_xdag_wallet);
-            }
-        }
-    }
 
 
     @Override
@@ -126,7 +97,6 @@ public class MainActivity extends ToolbarActivity {
         super.onNewIntent(intent);
         boolean switchPool = intent.getBooleanExtra(EXTRA_SWITCH_POOL, false);
         if (switchPool) {
-            XdagHandlerWrapper.getInstance(this).disconnectPool();
             mHomeFragment.showNotReady();
             showFragment(mHomeFragment);
             mBottomBar.setCurrentItem(mHomeFragment.getPosition());
@@ -137,15 +107,6 @@ public class MainActivity extends ToolbarActivity {
     @Override protected void onDestroy() {
         super.onDestroy();
         ActivityStack.getInstance().exit();
-    }
-
-
-    /**
-     * the event from c
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void ProcessXdagEvent(XdagEvent event) {
-        mXdagEventManager.manageEvent(event);
     }
 
 
@@ -196,7 +157,7 @@ public class MainActivity extends ToolbarActivity {
         mReceiveFragment = ReceiveFragment.newInstance();
         mSendFragment = SendFragment.newInstance();
         mSettingFragment = MoreFragment.newInstance();
-
+        showFragment(mHomeFragment);
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
             HomeFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mReceiveFragment, R.id.container,
@@ -205,8 +166,6 @@ public class MainActivity extends ToolbarActivity {
             SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
             MoreFragment.class.getName());
-
-        showFragment(mHomeFragment);
     }
 
 

@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical">
     
     <LinearLayout
@@ -84,15 +85,24 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         app:layout_collapseMode="parallax">
-                    
+
                     <TextView
-                            android:id="@+id/home_tv_address"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="20dp"
-                            android:textColor="@color/WHITE"
-                            android:textSize="@dimen/size_text" />
+                        android:id="@+id/home_tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/WHITE"
+                        android:textSize="@dimen/size_text" />
+
+                    <TextView
+                        android:id="@+id/home_tv_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="70dp"
+                        android:textColor="@color/WHITE"
+                        android:textSize="@dimen/size_text" />
                 
                 </FrameLayout>
                 

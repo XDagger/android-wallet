@@ -12,7 +12,10 @@ import io.xdag.xdagwallet.net.api.TransactionApi;
  */
 public class ApiServer {
 
-    public static final String BASE_URL_TRANSACTION = "https://explorer.xdag.io/api/block/";
+    //http://146.56.240.230/
+    public static final String BASE_URL_TRANSACTION = "http://146.56.240.230/api/block/";
+    //public static final String BASE_URL_TRANSACTION = "https://testexplorer.xdag.io/api/block/";
+    //public static final String BASE_URL_TRANSACTION = "https://explorer.xdag.io/api/block/";
     private static final String BASE_URL_GITHUB = "https://raw.githubusercontent.com/";
 
     private ApiServer() {
@@ -21,7 +24,8 @@ public class ApiServer {
 
     static TransactionApi createTransactionApi() {
         String baseUrl = Config.getTransactionHost();
-        return ApiFactory.getInstance().createApi(baseUrl, TransactionApi.class);
+        TransactionApi a = ApiFactory.getInstance().createApi(baseUrl, TransactionApi.class);
+        return  a;
     }
 
     static ConfigApi createConfigApi() {

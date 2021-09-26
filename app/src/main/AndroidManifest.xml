@@ -16,13 +16,15 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
+            android:networkSecurityConfig="@xml/network_security_config"
+            tools:replace="android:allowBackup"
             tools:ignore="GoogleAppIndexingWarning">
         <meta-data
                 android:name="android.max_aspect"
                 android:value="2.4"/>
 
         <activity
-                android:name=".activity.UsageActivity"
+                android:name=".activity.SplashActivity"
                 android:theme="@style/AppSplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -33,13 +35,20 @@
         <activity
                 android:name=".MainActivity"
                 android:launchMode="singleTask"
-                android:windowSoftInputMode="adjustPan"/>
+                android:windowSoftInputMode="adjustPan"
+            android:theme="@style/activityTheme"
+            />
         <activity android:name=".activity.WalletActivity"/>
         <activity android:name=".activity.RestoreActivity"/>
         <activity android:name=".activity.AboutActivity"/>
         <activity android:name=".activity.TranDetailActivity"/>
         <activity android:name=".activity.PoolListActivity"/>
         <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.CreateWalletActivity"/>
+        <activity android:name=".activity.MnemonicBackupActivity"/>
+        <activity android:name=".activity.VerifyMnemonicBackupActivity"/>
+        <activity android:name=".activity.WalletBackupActivity"/>
+        <activity android:name=".activity.UsageActivity"/>
     </application>
 
 </manifest>

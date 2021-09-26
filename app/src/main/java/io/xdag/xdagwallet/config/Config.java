@@ -2,6 +2,7 @@ package io.xdag.xdagwallet.config;
 
 import io.xdag.common.util.SPUtil;
 import io.xdag.xdagwallet.net.ApiServer;
+import io.xdag.xdagwallet.wallet.Wallet;
 
 /**
  * created by lxm on 2018/7/18.
@@ -17,7 +18,11 @@ public class Config {
     private static final String CONFIG_KEY_NOT_REMIND_ROOT = "config_key_not_remind_root";
     private static final String CONFIG_KEY_TRAN_HOST = "config_key_tran_host";
     private static final String CONFIG_KEY_ADDRESS = "config_key_address";
-
+    public static final String POOL = "";
+    public static final String POOL_TEST = "http://101.33.118.156:4444";
+    public static final int REQUEST_CODE_SET_PWD = 1;
+    public static final int REQUEST_CODE_INPUT_PWD_LOGIN = 2;
+    public static final int REQUEST_CODE_SEND_TRANSACTION = 5;
 
     public static void setPoolAddress(String poolAddress) {
         SPUtil.putString(CONFIG_KEY_POOL, poolAddress);

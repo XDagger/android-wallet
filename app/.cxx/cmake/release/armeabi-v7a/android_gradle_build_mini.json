@@ -1,0 +1,28 @@
+{
+  "buildFiles": [
+    "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\wenrui\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "ssl-Release-armeabi-v7a": {
+      "artifactName": "ssl",
+      "buildCommand": "C:\\Users\\wenrui\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a --target ssl",
+      "abi": "armeabi-v7a",
+      "output": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\build\\intermediates\\cmake\\release\\obj\\armeabi-v7a\\libssl.so"
+    },
+    "xdag-Release-armeabi-v7a": {
+      "artifactName": "xdag",
+      "buildCommand": "C:\\Users\\wenrui\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a --target xdag",
+      "abi": "armeabi-v7a",
+      "output": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\build\\intermediates\\cmake\\release\\obj\\armeabi-v7a\\libxdag.so"
+    },
+    "crypto-Release-armeabi-v7a": {
+      "artifactName": "crypto",
+      "buildCommand": "C:\\Users\\wenrui\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\.cxx\\cmake\\release\\armeabi-v7a --target crypto",
+      "abi": "armeabi-v7a",
+      "output": "C:\\Users\\wenrui\\Desktop\\aw\\android-wallet\\app\\build\\intermediates\\cmake\\release\\obj\\armeabi-v7a\\libcrypto.so"
+    }
+  }
+}

@@ -1,4 +1,4 @@
 {
     "defaultPool": "xdagmine.com:13654",
-    "transactionHost": "https://explorer.xdag.io/api/block/"
+    "transactionHost": "http://146.56.240.230/api/block/"
 }
