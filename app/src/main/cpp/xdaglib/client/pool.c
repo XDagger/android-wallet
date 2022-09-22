@@ -84,7 +84,7 @@ xdag_hash_t g_xdag_mined_hashes[N_CONFIRMATIONS], g_xdag_mined_nonce[N_CONFIRMAT
 static int g_xdag_pool = 0;
 
 static int g_max_nminers = START_N_MINERS, g_max_nminers_ip = START_N_MINERS_IP, g_nminers = 0, g_socket = -1,
-	g_stop_mining = 1, g_stop_general_mining = 1;
+	g_stop_mining = 1, g_stop_general_mining = 1,is_crypto = 1;
 static struct miner *g_miners, g_local_miner, g_fund_miner;
 static struct pollfd *g_fds;
 static struct dfslib_crypt *g_crypt;
@@ -117,62 +117,69 @@ static void report_ui_pool_event(en_xdag_event_type event_type,const char* err_m
 
 static int send_to_pool(struct xdag_field *fld, int nfld)
 {
-	struct xdag_field f[XDAG_BLOCK_FIELDS];
+	uint8_t to_send[sizeof(uint32_t) + sizeof(struct xdag_block)];
 	xdag_hash_t h;
 	struct miner *m = &g_local_miner;
-	int i, res, todo = nfld * sizeof(struct xdag_field), done = 0;
+	uint32_t todo = nfld * sizeof(struct xdag_field), done = 0;
 
-	if (g_socket < 0) {
-		pthread_mutex_unlock(&g_pool_mutex);
+	if(g_socket < 0) {
+	    pthread_mutex_unlock(&g_pool_mutex);
 		return -1;
 	}
+	memcpy(to_send, &todo, sizeof(uint32_t));
+	memcpy(to_send + sizeof(uint32_t), fld, todo);
+	todo += sizeof(uint32_t);
+	struct xdag_field* f = (struct xdag_field*) (to_send + sizeof(uint32_t));
 
-	memcpy(f, fld, todo);
-
-	if (nfld == XDAG_BLOCK_FIELDS) {
+	if(nfld == XDAG_BLOCK_FIELDS) {
 		f[0].transport_header = 0;
-		
+
 		xdag_hash(f, sizeof(struct xdag_block), h);
-		
+
 		f[0].transport_header = HEADER_WORD;
-		
+
 		uint32_t crc = crc_of_array((uint8_t*)f, sizeof(struct xdag_block));
-		
+
 		f[0].transport_header |= (uint64_t)crc << 32;
 	}
 
-	for (i = 0; i < nfld; ++i) {
-		dfslib_encrypt_array(g_crypt, (uint32_t*)(f + i), DATA_SIZE, m->nfield_out++);
+	if (is_crypto == 1) {
+		for(int i = 0; i < nfld; ++i) {
+			dfslib_encrypt_array(g_crypt, (uint32_t*)(f + i), DATA_SIZE, m->nfield_out++);
+		}
 	}
 
-	while (todo) {
+	while(todo) {
 		struct pollfd p;
-		
+
 		p.fd = g_socket;
 		p.events = POLLOUT;
-		
-		if (!poll(&p, 1, 1000)) continue;
-		
-		if (p.revents & (POLLHUP | POLLERR)) {
-			pthread_mutex_unlock(&g_pool_mutex);
+
+		if(!poll(&p, 1, 1000)) continue;
+
+		if(p.revents & (POLLHUP | POLLERR)) {
 			return -1;
 		}
 
-		if (!(p.revents & POLLOUT)) continue;
-		
-		res = write(g_socket, (uint8_t*)f + done, todo);
-		if (res <= 0) {
-			pthread_mutex_unlock(&g_pool_mutex);
-            return -1;
+		if(!(p.revents & POLLOUT)) continue;
+#if defined(_WIN32) || defined(_WIN64)
+        int res = (int)send(g_socket, (char *)to_send + done, (int)todo, 0);
+#else
+        int res = (int)write(g_socket, to_send + done, todo);
+#endif
+		if(res <= 0) {
+		    pthread_mutex_unlock(&g_pool_mutex);
+			return -1;
 		}
-        done += res, todo -= res;
+
+		done += res;
+		todo -= res;
 	}
-    xdag_app_debug("send block to the pool alread send  %d  fields",done);
 	pthread_mutex_unlock(&g_pool_mutex);
-	
-	if (nfld == XDAG_BLOCK_FIELDS) {
-                xdag_app_debug("Sent  : %016llx%016llx%016llx%016llx t=%llx res=%d",
-					   h[3], h[2], h[1], h[0], fld[0].time, 0);
+
+	if(nfld == XDAG_BLOCK_FIELDS) {
+		xdag_info("Sent  : %016llx%016llx%016llx%016llx t=%llx res=%d",
+			h[3], h[2], h[1], h[0], fld[0].time, 0);
 	}
 
 	return 0;

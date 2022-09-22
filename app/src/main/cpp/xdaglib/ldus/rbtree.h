@@ -5,10 +5,6 @@
 
 #include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 struct ldus_rbtree {
 	struct ldus_rbtree *left;
 	struct ldus_rbtree *right;
@@ -216,10 +212,5 @@ prefix int ldus_rbtree_remove(struct ldus_rbtree **proot, struct ldus_rbtree *no
 	if (_rbtree_color(*proot)) { *proot = 0; return 0; } \
 	*proot = 0; return 1; \
 }
-
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

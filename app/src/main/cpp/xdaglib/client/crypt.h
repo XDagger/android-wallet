@@ -32,7 +32,7 @@ extern int xdag_sign(const void *key, const xdag_hash_t hash, xdag_hash_t sign_r
 extern int xdag_verify_signature(const void *key, const xdag_hash_t hash, const xdag_hash_t sign_r, const xdag_hash_t sign_s);
 
 #ifdef __cplusplus
-}
+};
 #endif
 
 #endif

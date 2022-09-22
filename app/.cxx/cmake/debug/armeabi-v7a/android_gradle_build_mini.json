@@ -1,0 +1,28 @@
+{
+  "buildFiles": [
+    "/Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/mac/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/.cxx/cmake/debug/armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "crypto-Debug-armeabi-v7a": {
+      "artifactName": "crypto",
+      "buildCommand": "/Users/mac/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/.cxx/cmake/debug/armeabi-v7a --target crypto",
+      "abi": "armeabi-v7a",
+      "output": "/Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libcrypto.so"
+    },
+    "ssl-Debug-armeabi-v7a": {
+      "artifactName": "ssl",
+      "buildCommand": "/Users/mac/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/.cxx/cmake/debug/armeabi-v7a --target ssl",
+      "abi": "armeabi-v7a",
+      "output": "/Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libssl.so"
+    },
+    "xdag-Debug-armeabi-v7a": {
+      "artifactName": "xdag",
+      "buildCommand": "/Users/mac/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/.cxx/cmake/debug/armeabi-v7a --target xdag",
+      "abi": "armeabi-v7a",
+      "output": "/Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libxdag.so"
+    }
+  }
+}
