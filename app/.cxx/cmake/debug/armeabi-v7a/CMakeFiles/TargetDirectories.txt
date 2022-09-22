@@ -1,5 +1,0 @@
-/Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/xdag.dir
-/Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/ssl.dir
-/Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
-/Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
-/Users/mac/AndroidStudioProjects/xdag-android-wallet-git/android-wallet/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/crypto.dir
