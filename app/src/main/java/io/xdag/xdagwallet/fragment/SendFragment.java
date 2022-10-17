@@ -79,7 +79,7 @@ public class SendFragment extends BaseMainFragment implements Toolbar.OnMenuItem
         if (item.getItemId() == R.id.action_scan) {
             AndPermission.with(mContext)
                     .runtime()
-                    .permission(Permission.READ_EXTERNAL_STORAGE, Permission.CAMERA)
+                    .permission(Permission.CAMERA)
                     .onGranted(data -> ZbarUtil.startScan(mContext, new QRManager.OnScanResultCallback() {
                         @Override
                         public void onScanSuccess(String result) {

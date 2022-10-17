@@ -189,7 +189,7 @@ public class XdagHandlerWrapper {
         File tempFile = createSDCardFile(mActivity);
         File xdagFile = createXdagFile();
 
-        return tempFile != null && xdagFile != null && FileUtil.moveDir(tempFile, xdagFile);
+        return xdagFile != null && FileUtil.moveDir(tempFile, xdagFile);
     }
 
 
@@ -198,7 +198,7 @@ public class XdagHandlerWrapper {
         File tempFile = createSDCardFile(mActivity);
         File xdagFile = createXdagFile();
 
-        return tempFile != null && xdagFile != null && FileUtil.copyDir(xdagFile, tempFile);
+        return tempFile != null && FileUtil.copyDir(xdagFile, tempFile);
 
     }
 

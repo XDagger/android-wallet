@@ -130,5 +130,6 @@
 
     <!-- settings-->
     <string name="settings_show_usage">Don\'t display usage</string>
+    <string name="no_file_access_permission">No file access permission!</string>
 
 </resources>
