@@ -73,15 +73,9 @@ public class WalletActivity extends ToolbarActivity {
 
     @OnClick(R.id.wallet_btn_restore)
     void wallet_btn_restore() {
-        AndPermission.with(mContext)
-            .runtime()
-            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-            .onGranted(data -> {
-                if (XdagHandlerWrapper.createSDCardFile(mContext) != null) {
-                    RestoreActivity.start(mContext);
-                }
-            })
-            .start();
+        if (XdagHandlerWrapper.createSDCardFile(mContext) != null) {
+            RestoreActivity.start(mContext);
+        }
     }
 
 

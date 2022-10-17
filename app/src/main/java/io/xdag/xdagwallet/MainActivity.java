@@ -93,13 +93,7 @@ public class MainActivity extends ToolbarActivity {
     protected void initData() {
         mXdagEventManager = XdagEventManager.getInstance(this);
         mXdagEventManager.initDialog();
-
-        // request permissions
-        AndPermission.with(mContext)
-            .runtime()
-            .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-            .onGranted(data -> connectToPool())
-            .start();
+        connectToPool();
     }
 
 
