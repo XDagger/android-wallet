@@ -2,13 +2,21 @@ package io.xdag.xdagwallet;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
-import butterknife.BindView;
+
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import butterknife.BindView;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
@@ -25,8 +33,6 @@ import io.xdag.xdagwallet.widget.BottomBarItem;
 import io.xdag.xdagwallet.wrapper.XdagEvent;
 import io.xdag.xdagwallet.wrapper.XdagEventManager;
 import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * created by ssyijiu  on 2018/5/22
@@ -52,7 +58,8 @@ public class MainActivity extends ToolbarActivity {
     private XdagEventManager mXdagEventManager;
 
 
-    @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityStack.getInstance().finishNotTopActivities();
     }
@@ -99,12 +106,20 @@ public class MainActivity extends ToolbarActivity {
 
     private void connectToPool() {
         if (mRestore) {
-            if (getXdagHandler().restoreWallet()) {
-                getXdagHandler().connectToPool(Config.getPoolAddress());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (!Environment.isExternalStorageManager()) {
+                    startActivityForResult(new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION), 101);
+                } else {
+                    restoreWallet();
+                }
             } else {
-                AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
+                AndPermission.with(mContext)
+                        .runtime()
+                        .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+                        .onGranted(data -> restoreWallet())
+                        .onDenied(strings -> AlertUtil.show(mContext, getString(R.string.no_file_access_permission)))
+                        .start();
             }
-
         } else {
             if (getXdagHandler().createWallet()) {
                 getXdagHandler().connectToPool(Config.getPoolAddress());
@@ -127,8 +142,28 @@ public class MainActivity extends ToolbarActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 101) {
+            if (Environment.isExternalStorageManager()) {
+                restoreWallet();
+            } else {
+                AlertUtil.show(mContext, getString(R.string.no_file_access_permission));
+            }
+        }
+    }
 
-    @Override protected void onDestroy() {
+    private void restoreWallet() {
+        if (getXdagHandler().restoreWallet()) {
+            getXdagHandler().connectToPool(Config.getPoolAddress());
+        } else {
+            AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
         ActivityStack.getInstance().exit();
     }
@@ -146,20 +181,21 @@ public class MainActivity extends ToolbarActivity {
     private void initBottomBar() {
 
         mBottomBar.addItem(
-            new BottomBarItem(mContext, R.mipmap.ic_home, R.mipmap.ic_home_unselected,
-                getString(R.string.home)));
+                new BottomBarItem(mContext, R.mipmap.ic_home, R.mipmap.ic_home_unselected,
+                        getString(R.string.home)));
         mBottomBar.addItem(
-            new BottomBarItem(mContext, R.mipmap.ic_receive, R.mipmap.ic_receive_unselected,
-                getString(R.string.receive)));
+                new BottomBarItem(mContext, R.mipmap.ic_receive, R.mipmap.ic_receive_unselected,
+                        getString(R.string.receive)));
         mBottomBar.addItem(
-            new BottomBarItem(mContext, R.mipmap.ic_send, R.mipmap.ic_send_unselected,
-                getString(R.string.send)));
+                new BottomBarItem(mContext, R.mipmap.ic_send, R.mipmap.ic_send_unselected,
+                        getString(R.string.send)));
         mBottomBar.addItem(
-            new BottomBarItem(mContext, R.mipmap.ic_more, R.mipmap.ic_more_unselected,
-                getString(R.string.setting)));
+                new BottomBarItem(mContext, R.mipmap.ic_more, R.mipmap.ic_more_unselected,
+                        getString(R.string.setting)));
 
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
-            @Override public void onTabSelected(int position, int prePosition) {
+            @Override
+            public void onTabSelected(int position, int prePosition) {
                 switch (position) {
                     case 0:
                         showFragment(mHomeFragment);
@@ -177,10 +213,14 @@ public class MainActivity extends ToolbarActivity {
             }
 
 
-            @Override public void onTabUnselected(int position) { }
+            @Override
+            public void onTabUnselected(int position) {
+            }
 
 
-            @Override public void onTabReselected(int position) { }
+            @Override
+            public void onTabReselected(int position) {
+            }
         });
     }
 
@@ -192,13 +232,13 @@ public class MainActivity extends ToolbarActivity {
         mSettingFragment = MoreFragment.newInstance();
 
         addFragmentToActivity(mFragmentManager, mHomeFragment, R.id.container,
-            HomeFragment.class.getName());
+                HomeFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mReceiveFragment, R.id.container,
-            ReceiveFragment.class.getName());
+                ReceiveFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSendFragment, R.id.container,
-            SendFragment.class.getName());
+                SendFragment.class.getName());
         addFragmentToActivity(mFragmentManager, mSettingFragment, R.id.container,
-            MoreFragment.class.getName());
+                MoreFragment.class.getName());
 
         showFragment(mHomeFragment);
     }
@@ -206,25 +246,25 @@ public class MainActivity extends ToolbarActivity {
 
     private void recoverFragment() {
         mHomeFragment = (HomeFragment) mFragmentManager.findFragmentByTag(
-            HomeFragment.class.getName());
+                HomeFragment.class.getName());
         mReceiveFragment = (ReceiveFragment) mFragmentManager.findFragmentByTag(
-            ReceiveFragment.class.getName());
+                ReceiveFragment.class.getName());
         mSendFragment = (SendFragment) mFragmentManager.findFragmentByTag(
-            SendFragment.class.getName());
+                SendFragment.class.getName());
         mSettingFragment = (MoreFragment) mFragmentManager.findFragmentByTag(
-            MoreFragment.class.getName());
+                MoreFragment.class.getName());
     }
 
 
     private void showFragment(BaseMainFragment fragment) {
         if (mShowFragment != fragment) {
             mFragmentManager.beginTransaction()
-                .hide(mHomeFragment)
-                .hide(mReceiveFragment)
-                .hide(mSendFragment)
-                .hide(mSettingFragment)
-                .show(fragment)
-                .commit();
+                    .hide(mHomeFragment)
+                    .hide(mReceiveFragment)
+                    .hide(mSendFragment)
+                    .hide(mSettingFragment)
+                    .show(fragment)
+                    .commit();
             mShowFragment = fragment;
             ToolbarUtil.setToolbar(mShowFragment.getPosition(), getToolbar());
         }

@@ -1,7 +1,16 @@
 package io.xdag.xdagwallet.fragment;
 
+import android.content.Intent;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.Settings;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Permission;
+
 import butterknife.OnClick;
 import io.xdag.common.util.IntentUtil;
 import io.xdag.common.util.SDCardUtil;
@@ -49,11 +58,19 @@ public class MoreFragment extends BaseMainFragment {
 
     @OnClick(R.id.more_backup)
     void setting_backup() {
-
-        if (isSDCardWalletExists()) {
-            mBuilder.create().show();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager()) {
+                startActivityForResult(new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION), 101);
+            } else {
+                checkBackup();
+            }
         } else {
-            backupWallet();
+            AndPermission.with(mContext)
+                    .runtime()
+                    .permission(Permission.WRITE_EXTERNAL_STORAGE)
+                    .onGranted(data -> checkBackup())
+                    .onDenied(strings -> AlertUtil.show(mContext, getString(R.string.no_file_access_permission)))
+                    .start();
         }
     }
 
@@ -101,6 +118,13 @@ public class MoreFragment extends BaseMainFragment {
         IntentUtil.openBrowser(mContext, "https://xdag.io");
     }
 
+    private void checkBackup() {
+        if (isSDCardWalletExists()) {
+            mBuilder.create().show();
+        } else {
+            backupWallet();
+        }
+    }
 
     private void backupWallet() {
         if (getXdagHandler().backupWallet()) {
@@ -110,8 +134,21 @@ public class MoreFragment extends BaseMainFragment {
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 101) {
+            if (Environment.isExternalStorageManager()) {
+                checkBackup();
+            } else {
+                AlertUtil.show(mContext, "No file access permission!");
+            }
+        }
+    }
+
 
     private boolean isSDCardWalletExists() {
+
         if (SDCardUtil.isAvailable()) {
             File file = new File(SDCardUtil.getSDCardPath(), XdagHandlerWrapper.XDAG_FILE);
             return file.exists() &&
