@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+            android:exported="false"
             android:requestLegacyExternalStorage="true"
             android:name=".App"
             android:allowBackup="false"
@@ -24,6 +25,7 @@
                 android:value="2.4"/>
 
         <activity
+                android:exported="true"
                 android:name=".activity.UsageActivity"
                 android:theme="@style/AppSplashTheme">
             <intent-filter>
