@@ -41,7 +41,7 @@ public class PoolListModel implements Serializable {
     public void init() {
         poolList.clear();
         // xdagmine.com:13654
-        poolList.add(new PoolModel("xdagmine.com:13654"));
+        poolList.add(new PoolModel("116.202.3.220:13655"));
     }
 
 
