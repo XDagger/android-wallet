@@ -2,6 +2,7 @@ package io.xdag.xdagwallet;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,6 +21,7 @@ import butterknife.BindView;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
+import io.xdag.common.util.DeviceUtils;
 import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.fragment.BaseMainFragment;
 import io.xdag.xdagwallet.fragment.HomeFragment;
@@ -44,6 +46,8 @@ public class MainActivity extends ToolbarActivity {
 
     private static final String EXTRA_RESTORE = "extra_restore";
     private static final String EXTRA_SWITCH_POOL = "extra_switch_pool";
+    private static final int REQUEST_CODE_READ_FILE_FROM_EXTERNAL = 101;
+
     @BindView(R.id.bottom_navigation)
     BottomBar mBottomBar;
 
@@ -106,17 +110,13 @@ public class MainActivity extends ToolbarActivity {
 
     private void connectToPool() {
         if (mRestore) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                if (!Environment.isExternalStorageManager()) {
-                    startActivityForResult(new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION), 101);
-                } else {
-                    restoreWallet();
-                }
+            if (DeviceUtils.afterQ()) {
+                requestReadExternalStorage();
             } else {
                 AndPermission.with(mContext)
                         .runtime()
                         .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-                        .onGranted(data -> restoreWallet())
+                        .onGranted(data -> requestReadExternalStorage())
                         .onDenied(strings -> AlertUtil.show(mContext, getString(R.string.no_file_access_permission)))
                         .start();
             }
@@ -145,21 +145,27 @@ public class MainActivity extends ToolbarActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101) {
-            if (Environment.isExternalStorageManager()) {
-                restoreWallet();
-            } else {
-                AlertUtil.show(mContext, getString(R.string.no_file_access_permission));
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_CODE_READ_FILE_FROM_EXTERNAL && data != null) {
+                try {
+                    Uri fileUri = data.getData();
+                    if (getXdagHandler().restoreWallet(mContext, fileUri)) {
+                        getXdagHandler().connectToPool(Config.getPoolAddress());
+                    } else {
+                        AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    private void restoreWallet() {
-        if (getXdagHandler().restoreWallet()) {
-            getXdagHandler().connectToPool(Config.getPoolAddress());
-        } else {
-            AlertUtil.show(mContext, R.string.error_restore_xdag_wallet);
-        }
+    private void requestReadExternalStorage() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("*/*");
+        startActivityForResult(Intent.createChooser(intent, "Chose XDAG backup zip file"), REQUEST_CODE_READ_FILE_FROM_EXTERNAL);
     }
 
     @Override
@@ -173,7 +179,7 @@ public class MainActivity extends ToolbarActivity {
      * the event from c
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void ProcessXdagEvent(XdagEvent event) {
+    public void processXdagEvent(XdagEvent event) {
         mXdagEventManager.manageEvent(event);
     }
 

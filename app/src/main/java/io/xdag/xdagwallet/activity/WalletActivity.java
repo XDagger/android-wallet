@@ -69,9 +69,7 @@ public class WalletActivity extends ToolbarActivity {
 
     @OnClick(R.id.wallet_btn_restore)
     void wallet_btn_restore() {
-        if (XdagHandlerWrapper.createBackupFile(mContext) != null) {
-            RestoreActivity.start(mContext);
-        }
+        RestoreActivity.start(mContext);
     }
 
 

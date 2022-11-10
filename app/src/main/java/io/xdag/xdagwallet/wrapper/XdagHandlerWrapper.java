@@ -4,8 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -23,7 +23,7 @@ import java.util.List;
 import io.reactivex.annotations.Nullable;
 import io.xdag.common.tool.MLog;
 import io.xdag.common.tool.NoLeakHandler;
-import io.xdag.common.util.FileUtil;
+import io.xdag.common.util.DeviceUtils;
 import io.xdag.common.util.SDCardUtil;
 import io.xdag.common.util.ZipUtils;
 import io.xdag.xdagwallet.MainActivity;
@@ -39,7 +39,7 @@ import io.xdag.xdagwallet.util.BackupUtils;
 public class XdagHandlerWrapper {
 
     public static final String XDAG_FILE = "xdag";
-    private static final String BACKUP_ZIP = "xdag_backup.zip";
+    public static final String BACKUP_ZIP = "xdag_backup.zip";
 
     private static final int MSG_CONNECT_TO_POOL = 1;
     private static final int MSG_DISCONNECT_FROM_POOL = 2;
@@ -151,25 +151,7 @@ public class XdagHandlerWrapper {
             }
         }
     }
-
-
-    /**
-     * create file: sdcard/xdag/
-     */
-    @Nullable
-    public static File createBackupFile(Activity activity) {
-        if (SDCardUtil.isAvailable()) {
-            File backupFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), BACKUP_ZIP);
-            if (!backupFile.exists() && !backupFile.mkdirs()) {
-                AlertUtil.show(activity, R.string.error_file_make_fail);
-            } else {
-                return backupFile;
-            }
-        } else {
-            AlertUtil.show(activity, R.string.error_sdcard_not_available);
-        }
-        return null;
-    }
+    
 
     public static boolean hasBackup() {
         File backupFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), BACKUP_ZIP);
@@ -193,12 +175,18 @@ public class XdagHandlerWrapper {
     }
 
 
-    public boolean restoreWallet() {
-
-        File tempFile = createBackupFile(mActivity);
-        File xdagFile = createWalletFile();
-
-        return xdagFile != null && FileUtil.moveDir(tempFile, xdagFile);
+    public boolean restoreWallet(Context context, Uri fileUri) {
+        File zipFile = new File(mActivity.getFilesDir(), BACKUP_ZIP);
+        boolean result = BackupUtils.copyFieUriToInnerStorage(context, fileUri, zipFile);
+        if (result) {
+            try {
+                ZipUtils.unzipFile(zipFile, mActivity.getFilesDir());
+            } catch (IOException e) {
+                result = false;
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
 
@@ -217,20 +205,30 @@ public class XdagHandlerWrapper {
             e.printStackTrace();
         }
 
-        Uri externalUri;
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-            File externalFile = createBackupFile(mActivity);
-            externalUri = Uri.fromFile(externalFile);
-        } else {
-            ContentResolver resolver = mActivity.getContentResolver();
-            ContentValues values = new ContentValues();
-            values.put(MediaStore.Downloads.DISPLAY_NAME, BACKUP_ZIP);
-            values.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOCUMENTS);
-            Uri uri = MediaStore.Files.getContentUri("external");
-            externalUri = resolver.insert(uri, values);
+        Uri externalUri = null;
+        try {
+            if (DeviceUtils.afterQ()) {
+                ContentResolver resolver = mActivity.getContentResolver();
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Downloads.DISPLAY_NAME, BACKUP_ZIP);
+                values.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOCUMENTS);
+                Uri uri = MediaStore.Files.getContentUri("external");
+                externalUri = resolver.insert(uri, values);
+            } else {
+                File backupFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), BACKUP_ZIP);
+                if (backupFile.exists()) {
+                    backupFile.delete();
+                }
+                backupFile.createNewFile();
+                externalUri = Uri.fromFile(backupFile);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        return BackupUtils.copyInternalFileToExternal(mActivity, zipFile.getAbsolutePath(), externalUri);
+        if (externalUri != null) {
+            return BackupUtils.copyInternalFileToExternal(mActivity, zipFile.getAbsolutePath(), externalUri);
+        }
+        return false;
 
     }
 

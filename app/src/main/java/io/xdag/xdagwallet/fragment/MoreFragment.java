@@ -1,9 +1,14 @@
 package io.xdag.xdagwallet.fragment;
 
+import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Permission;
+
 import butterknife.OnClick;
+import io.xdag.common.util.DeviceUtils;
 import io.xdag.common.util.IntentUtil;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.activity.AboutActivity;
@@ -48,13 +53,16 @@ public class MoreFragment extends BaseMainFragment {
 
     @OnClick(R.id.more_backup)
     void setting_backup() {
-//        AndPermission.with(mContext)
-//                .runtime()
-//                .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
-//                .onGranted(data -> checkBackup())
-//                .onDenied(strings -> AlertUtil.show(mContext, getString(R.string.no_file_access_permission)))
-//                .start();
-        checkBackup();
+        if (DeviceUtils.afterQ()) {
+            checkBackup();
+        } else {
+            AndPermission.with(mContext)
+                    .runtime()
+                    .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+                    .onGranted(data -> checkBackup())
+                    .onDenied(strings -> AlertUtil.show(mContext, getString(R.string.no_file_access_permission)))
+                    .start();
+        }
     }
 
     @OnClick(R.id.more_switch_wallet)
