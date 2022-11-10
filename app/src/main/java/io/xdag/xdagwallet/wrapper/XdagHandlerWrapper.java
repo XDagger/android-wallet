@@ -151,7 +151,7 @@ public class XdagHandlerWrapper {
             }
         }
     }
-    
+
 
     public static boolean hasBackup() {
         File backupFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), BACKUP_ZIP);
