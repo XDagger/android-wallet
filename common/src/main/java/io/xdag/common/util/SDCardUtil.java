@@ -24,37 +24,4 @@ public class SDCardUtil {
         String state = Environment.getExternalStorageState();
         return state != null && state.equals(Environment.MEDIA_MOUNTED);
     }
-
-
-    /**
-     * 获取SD卡路径，使用前先判断 SDCard 是否可用，不可用自行处理
-     *
-     * @return sdcard path
-     */
-    public static String getSDCardPath() {
-        return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator;
-    }
-
-
-    /**
-     * 获取SD卡的可用容量 单位byte
-     *
-     * @return the byte sdcard can use
-     */
-    public static long getUsableSize() {
-        if (isAvailable()) {
-            File file = new File(getSDCardPath());
-            return file.getUsableSpace();
-        }
-        return 0;
-    }
-
-
-    /**
-     * 获取SD卡的可用容量的描述
-     */
-    public static String getUsableSizeDesc() {
-        return Formatter.formatFileSize(Common.getContext(), getUsableSize());
-    }
-
 }

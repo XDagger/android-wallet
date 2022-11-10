@@ -2,14 +2,21 @@ package io.xdag.xdagwallet.wrapper;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,9 +25,11 @@ import io.xdag.common.tool.MLog;
 import io.xdag.common.tool.NoLeakHandler;
 import io.xdag.common.util.FileUtil;
 import io.xdag.common.util.SDCardUtil;
+import io.xdag.common.util.ZipUtils;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
 import io.xdag.xdagwallet.util.AlertUtil;
+import io.xdag.xdagwallet.util.BackupUtils;
 
 /**
  * created by lxm on 2018/7/18.
@@ -30,6 +39,7 @@ import io.xdag.xdagwallet.util.AlertUtil;
 public class XdagHandlerWrapper {
 
     public static final String XDAG_FILE = "xdag";
+    private static final String BACKUP_ZIP = "xdag_backup.zip";
 
     private static final int MSG_CONNECT_TO_POOL = 1;
     private static final int MSG_DISCONNECT_FROM_POOL = 2;
@@ -80,7 +90,7 @@ public class XdagHandlerWrapper {
     }
 
 
-    public void xferXdagCoin(@NonNull String address, @NonNull String amount,@Nullable String remark) {
+    public void xferXdagCoin(@NonNull String address, @NonNull String amount, @Nullable String remark) {
         Message msg = Message.obtain();
         Bundle data = new Bundle();
         data.putString(KEY_ADDRESS, address);
@@ -113,7 +123,7 @@ public class XdagHandlerWrapper {
             switch (msg.what) {
                 case MSG_CONNECT_TO_POOL: {
                     MLog.i("receive msg connect to the pool thread id " +
-                        Thread.currentThread().getId());
+                            Thread.currentThread().getId());
                     Bundle data = msg.getData();
                     String poolAddr = data.getString(KEY_POOL);
                     XdagWrapper xdagWrapper = XdagWrapper.getInstance();
@@ -132,7 +142,7 @@ public class XdagHandlerWrapper {
                     String amount = data.getString(KEY_AMOUNT);
                     String remark = data.getString(KEY_REMARK);
                     XdagWrapper xdagWrapper = XdagWrapper.getInstance();
-                    xdagWrapper.XdagXferToAddress(address, amount,remark);
+                    xdagWrapper.XdagXferToAddress(address, amount, remark);
                 }
                 break;
                 default: {
@@ -147,19 +157,23 @@ public class XdagHandlerWrapper {
      * create file: sdcard/xdag/
      */
     @Nullable
-    public static File createSDCardFile(Activity activity) {
+    public static File createBackupFile(Activity activity) {
         if (SDCardUtil.isAvailable()) {
-            File file = new File(SDCardUtil.getSDCardPath(), XDAG_FILE);
-            if (!file.exists() && !file.mkdirs()) {
+            File backupFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), BACKUP_ZIP);
+            if (!backupFile.exists() && !backupFile.mkdirs()) {
                 AlertUtil.show(activity, R.string.error_file_make_fail);
             } else {
-                return file;
+                return backupFile;
             }
         } else {
             AlertUtil.show(activity, R.string.error_sdcard_not_available);
         }
         return null;
+    }
 
+    public static boolean hasBackup() {
+        File backupFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), BACKUP_ZIP);
+        return backupFile.exists() && backupFile.isFile();
     }
 
 
@@ -167,7 +181,7 @@ public class XdagHandlerWrapper {
      * create file: /data/data/io.xdag.xdagwallet/files/xdag/
      */
     @Nullable
-    private File createXdagFile() {
+    public File createWalletFile() {
 
         File file = new File(mActivity.getFilesDir(), XDAG_FILE);
         if (!file.exists() && !file.mkdirs()) {
@@ -179,15 +193,10 @@ public class XdagHandlerWrapper {
     }
 
 
-    public boolean createWallet() {
-        return createXdagFile() != null;
-    }
-
-
     public boolean restoreWallet() {
 
-        File tempFile = createSDCardFile(mActivity);
-        File xdagFile = createXdagFile();
+        File tempFile = createBackupFile(mActivity);
+        File xdagFile = createWalletFile();
 
         return xdagFile != null && FileUtil.moveDir(tempFile, xdagFile);
     }
@@ -195,10 +204,33 @@ public class XdagHandlerWrapper {
 
     public boolean backupWallet() {
 
-        File tempFile = createSDCardFile(mActivity);
-        File xdagFile = createXdagFile();
+        File srcFile = createWalletFile();
+        if (srcFile == null) {
+            AlertUtil.show(mActivity, "Wallet file error!");
+            return false;
+        }
 
-        return tempFile != null && FileUtil.copyDir(xdagFile, tempFile);
+        File zipFile = new File(mActivity.getFilesDir(), BACKUP_ZIP);
+        try {
+            ZipUtils.zipFile(srcFile, zipFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Uri externalUri;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            File externalFile = createBackupFile(mActivity);
+            externalUri = Uri.fromFile(externalFile);
+        } else {
+            ContentResolver resolver = mActivity.getContentResolver();
+            ContentValues values = new ContentValues();
+            values.put(MediaStore.Downloads.DISPLAY_NAME, BACKUP_ZIP);
+            values.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOCUMENTS);
+            Uri uri = MediaStore.Files.getContentUri("external");
+            externalUri = resolver.insert(uri, values);
+        }
+
+        return BackupUtils.copyInternalFileToExternal(mActivity, zipFile.getAbsolutePath(), externalUri);
 
     }
 

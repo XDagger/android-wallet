@@ -121,7 +121,7 @@ public class MainActivity extends ToolbarActivity {
                         .start();
             }
         } else {
-            if (getXdagHandler().createWallet()) {
+            if (getXdagHandler().createWalletFile() != null) {
                 getXdagHandler().connectToPool(Config.getPoolAddress());
             } else {
                 AlertUtil.show(mContext, R.string.error_create_xdag_wallet);
