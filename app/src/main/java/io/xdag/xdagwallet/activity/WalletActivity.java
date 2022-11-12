@@ -3,12 +3,8 @@ package io.xdag.xdagwallet.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
-
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.Permission;
 
 import java.io.File;
 import java.util.Arrays;
@@ -73,9 +69,7 @@ public class WalletActivity extends ToolbarActivity {
 
     @OnClick(R.id.wallet_btn_restore)
     void wallet_btn_restore() {
-        if (XdagHandlerWrapper.createSDCardFile(mContext) != null) {
-            RestoreActivity.start(mContext);
-        }
+        RestoreActivity.start(mContext);
     }
 
 

@@ -1277,7 +1277,7 @@ public final class FileUtil {
     }
 
 
-    private static boolean isSpace(final String s) {
+    public static boolean isSpace(final String s) {
         if (s == null) return true;
         for (int i = 0, len = s.length(); i < len; ++i) {
             if (!Character.isWhitespace(s.charAt(i))) {
