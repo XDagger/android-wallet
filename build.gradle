@@ -16,7 +16,7 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.6.4'
         classpath "com.jakewharton:butterknife-gradle-plugin:${butterknife_version}"
         classpath 'com.liulishuo.okcheck:gradle:0.1.8'
     }
