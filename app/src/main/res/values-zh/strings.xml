@@ -105,6 +105,7 @@
   <string name="use_explain_5">任何卸载应用、删除数据的行为都将造成钱包文件丢失，且无法找回，请您在进行这些操作前务必备份您的钱包。\n</string>
   <string name="use_explain_6">为保证钱包事物的连续性，目前的版本应用内的很多弹框都不可取消，请您见谅。\n</string>
   <string name="use_explain_7">我们在后续版本中将改善这个问题。</string>
+  <string name="network_upgrade_0_6_1">XDAG 0.6.1 主网升级后，该安卓钱包将不再支持转账操作，请务必将钱包备份文件导出到电脑钱包使用。\n钱包备份路径：Documents/xdag_backup.zip</string>
   <string name="restore_explain_1">XDAG 因为其独特的设计，\n</string>
   <string name="restore_explain_2">目前不支持私钥、助记词等方式备份和恢复钱包。\n</string>
   <string name="restore_explain_3">您只能通过以下钱包文件来备份和恢复您的钱包：\n</string>

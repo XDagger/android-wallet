@@ -20,11 +20,20 @@
 
         <Button
                 style="@style/XDAG.Button"
+                android:id="@+id/explain_btn_backup"
+                android:text="@string/more_backup_wallet"
+                android:layout_marginTop="@dimen/space_16"
+                app:layout_constraintBottom_toTopOf="@id/explain_btn_pool"
+                app:layout_constraintTop_toBottomOf="@id/explain_tv_explain_text"
+                app:layout_constraintVertical_chainStyle="packed"/>
+
+        <Button
+                style="@style/XDAG.Button"
                 android:id="@+id/explain_btn_pool"
                 android:layout_marginTop="@dimen/space_16"
                 android:text="@string/more_pool"
                 app:layout_constraintBottom_toTopOf="@id/explain_btn_start"
-                app:layout_constraintTop_toBottomOf="@id/explain_tv_explain_text"
+                app:layout_constraintTop_toBottomOf="@id/explain_btn_backup"
                 app:layout_constraintVertical_chainStyle="packed"/>
 
         <Button
@@ -53,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_4"
                 android:text="@string/not_show_explain"
+                android:visibility="gone"
                 android:textSize="@dimen/size_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="@id/explain_btn_start"

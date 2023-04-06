@@ -59,9 +59,9 @@ public class XdagHandlerWrapper {
     private static XdagHandlerWrapper sInstance = null;
 
 
-    public static XdagHandlerWrapper getInstance(MainActivity activity) {
+    public static XdagHandlerWrapper getInstance(Activity activity) {
         synchronized (XdagHandlerWrapper.class) {
-            if (sInstance == null) {
+            if (sInstance == null || activity.isDestroyed() || activity.isFinishing()) {
                 synchronized (XdagHandlerWrapper.class) {
                     sInstance = new XdagHandlerWrapper(activity);
                 }
@@ -72,7 +72,7 @@ public class XdagHandlerWrapper {
     }
 
 
-    private XdagHandlerWrapper(MainActivity activity) {
+    private XdagHandlerWrapper(Activity activity) {
         mActivity = activity;
         HandlerThread handlerThread = new HandlerThread("XdagProcessThread");
         handlerThread.start();
