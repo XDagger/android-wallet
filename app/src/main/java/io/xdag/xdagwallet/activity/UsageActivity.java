@@ -9,11 +9,15 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.scottyab.rootbeer.RootBeer;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Permission;
+
 import io.reactivex.disposables.Disposable;
 import io.xdag.common.Common;
 import io.xdag.common.base.ToolbarActivity;
 import io.xdag.common.tool.ActivityStack;
 import io.xdag.common.tool.ToolbarMode;
+import io.xdag.common.util.DeviceUtils;
 import io.xdag.common.util.TextStyleUtil;
 import io.xdag.xdagwallet.MainActivity;
 import io.xdag.xdagwallet.R;
@@ -21,6 +25,7 @@ import io.xdag.xdagwallet.config.Config;
 import io.xdag.xdagwallet.net.HttpRequest;
 import io.xdag.xdagwallet.util.AlertUtil;
 import io.xdag.xdagwallet.util.RxUtil;
+import io.xdag.xdagwallet.wrapper.XdagHandlerWrapper;
 
 /**
  * created by ssyijiu  on 2018/7/22
@@ -40,6 +45,8 @@ public class UsageActivity extends ToolbarActivity
     View mRootRemindLayout;
     CheckBox mCbRootRemind;
 
+    AlertDialog.Builder mBuilder;
+
 
     @Override
     protected int getLayoutResId() {
@@ -54,13 +61,12 @@ public class UsageActivity extends ToolbarActivity
                 .append(getString(R.string.use_explain_1))
                 .append(getString(R.string.use_explain_2))
                 .append(getString(R.string.use_explain_3))
-                .setForegroundColor(Common.getColor(R.color.RED))
                 .append(getString(R.string.use_explain_4))
                 .append(getString(R.string.use_explain_5))
-                .setForegroundColor(Common.getColor(R.color.RED))
                 .appendLine()
                 .append(getString(R.string.use_explain_6))
-                .append(getString(R.string.use_explain_7))
+                .append(getString(R.string.network_upgrade_0_6_1))
+                .setForegroundColor(Common.getColor(R.color.RED))
                 .create()
         );
 
@@ -68,6 +74,12 @@ public class UsageActivity extends ToolbarActivity
         mCbNoShow.setOnCheckedChangeListener(this);
         mRootRemindLayout = View.inflate(mContext, R.layout.dialog_item_checkbox, null);
         mCbRootRemind = mRootRemindLayout.findViewById(R.id.dialog_cb);
+
+        mBuilder = new AlertDialog.Builder(mContext)
+                .setTitle(R.string.warning)
+                .setMessage(R.string.cover_explain)
+                .setPositiveButton(R.string.cover, (dialog, which) -> backupWallet())
+                .setNegativeButton(R.string.cancel, null);
     }
 
 
@@ -109,6 +121,20 @@ public class UsageActivity extends ToolbarActivity
     }
 
 
+    @OnClick(R.id.explain_btn_backup)
+    void explain_btn_backup() {
+        if (DeviceUtils.afterQ()) {
+            checkBackup();
+        } else {
+            AndPermission.with(mContext)
+                    .runtime()
+                    .permission(Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE)
+                    .onGranted(data -> checkBackup())
+                    .onDenied(strings -> AlertUtil.show(mContext, getString(R.string.no_file_access_permission)))
+                    .start();
+        }
+    }
+
     @OnClick(R.id.explain_btn_start)
     void explain_btn_start() {
         if (!Config.isUserBackup()) {
@@ -127,6 +153,22 @@ public class UsageActivity extends ToolbarActivity
         PoolListActivity.start(mContext, true);
     }
 
+
+    private void checkBackup() {
+        if (XdagHandlerWrapper.hasBackup()) {
+            mBuilder.create().show();
+        } else {
+            backupWallet();
+        }
+    }
+
+    private void backupWallet() {
+        if (XdagHandlerWrapper.getInstance(this).backupWallet()) {
+            AlertUtil.show(mContext, R.string.success_backup_xdag_wallet);
+        } else {
+            AlertUtil.show(mContext, R.string.error_backup_xdag_wallet);
+        }
+    }
 
     public static boolean isNotDisplay() {
         return Config.isUserBackup() && Config.isNotDisplayUsage();

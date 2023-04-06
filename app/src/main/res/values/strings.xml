@@ -113,6 +113,7 @@
     <string name="use_explain_5">Uninstalling or deleting data will cause loss of wallet, and NO WAY TO RECOVER. Please backup your wallet first.\n</string>
     <string name="use_explain_6">To ensure transactions, popups are not cancelable.\n</string>
     <string name="use_explain_7">We will improve this in later releases.</string>
+    <string name="network_upgrade_0_6_1">After the XDAG 0.6.1 mainnet upgrade, this Android wallet will no longer support transfer operations. Please make sure to export the wallet backup file to your computer wallet for use.\nWallet backup path: Documents/xdag_backup.zip</string>
     <string name="restore_explain_1">Due to special data structure of XDAG, \n</string>
     <string name="restore_explain_2">XDAG wallet doesn\'t support backup or restore through private key or mnemonic code currently.\n</string>
     <string name="restore_explain_3">You can only backup and restore your wallet by files in xdag folder.\n</string>
